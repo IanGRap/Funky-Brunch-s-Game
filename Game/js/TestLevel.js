@@ -5,32 +5,10 @@ var TestLevel = function(game){
     //array of the circles on the board
     var circles;
     //timer for when the puzzle needs to be completed (In milliseconds)
-    var timer = 10000;
+    var timer;
 
     //layouts of board layouts, 1 is green 0 is red
-    var obstacles = [
-        [
-            [0, 0, 1, 1, 0],
-            [0, 0, 0, 1, 0],
-            [0, 0, 0, 1, 0],
-            [0, 0, 1, 1, 0],
-            [0, 0, 0, 0, 0]
-        ],
-        [
-            [0, 0, 0, 0, 0],
-            [0, 1, 1, 0, 0],
-            [0, 0, 1, 1, 0],
-            [0, 0, 0, 1, 1],
-            [0, 0, 0, 0, 0]
-        ],
-        [
-            [0, 1, 0, 0, 0],
-            [0, 1, 0, 0, 0],
-            [0, 0, 1, 0, 0],
-            [0, 0, 1, 1, 0],
-            [0, 0, 0, 1, 0]
-        ]
-    ];
+    var obstacles;
 };
 
 TestLevel.prototype = {
@@ -45,6 +23,32 @@ TestLevel.prototype = {
     },
 
     create: function(){
+        this.obstacles = [
+            [
+                [0, 0, 1, 1, 0],
+                [0, 0, 0, 1, 0],
+                [0, 0, 0, 1, 0],
+                [0, 0, 1, 1, 0],
+                [0, 0, 0, 0, 0]
+            ],
+            [
+                [0, 0, 0, 0, 0],
+                [0, 1, 1, 0, 0],
+                [0, 0, 1, 1, 0],
+                [0, 0, 0, 1, 1],
+                [0, 0, 0, 0, 0]
+            ],
+            [
+                [0, 1, 0, 0, 0],
+                [0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0],
+                [0, 0, 1, 1, 0],
+                [0, 0, 0, 1, 0]
+            ]
+        ];
+
+        this.timer = 10000;
+
         // define a new board object
         this.board = new Board(game, game.world.height/64, game.world.width/64, 64);
         game.add.existing(this.board);
@@ -72,14 +76,14 @@ TestLevel.prototype = {
         this.board.tiles[1][0].place(this.circles[5]);
 
         // pass one of the obstacles for the board object
-        this.board.setTiles(obstacles[Math.floor(Math.random() * 3)]);
+        this.board.setTiles(this.obstacles[Math.floor(Math.random() * 3)]);
     },
 
 
     update: function(){
         // decrease timer
-        timer -= game.time.elapsed;
-        if(timer <= 0){
+        this.timer -= game.time.elapsed;
+        if(this.timer <= 0){
             //if there are no circles on red tiles, you win
             if(this.board.check()){
                 game.state.start('WinScreen');

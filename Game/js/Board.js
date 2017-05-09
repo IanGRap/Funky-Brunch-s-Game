@@ -17,7 +17,7 @@ function Board(game, columns, rows, tileSize){
             //create cube
 			cube = new Cube(game, 'cubes', c, r);
 			game.add.existing(cube);
-			placeCube(c * 64, r * 64);
+			//placeCube(c * 64, r * 64);
             // set the reference by dividing by the size of the cube
 			this.tiles[c/tileSize][r/tileSize] = cube;
 		}
