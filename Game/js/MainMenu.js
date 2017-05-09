@@ -1,17 +1,22 @@
-var MainMenu = function(game){
-    var press;
-}
+var MainMenu = {
 
-MainMenu.prototype = {
+    //press: undefined,
+
+    preload: function(){
+
+    },
 
     create : function(){
-        this.press = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        game.add.text(16, 16, "Move all of the circles onto the green squares in 10 seconds. \nUse wasd to move and the spacebar to select.", {fontSize: '32px', fill: 'Coral'});
+        //text for explaining rules and prompting the player to start
+      //  this.press = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+      //  game.add.text(16, 16, "Move all of the circles onto the green squares in 10 seconds. \nUse wasd to move and the spacebar to select.", {fontSize: '32px', fill: 'Coral'});
     },
 
     update : function(){
-        if(this.press.isDown){
-            game.state.start('TestLevel');
-        }
+        // if spacebar pressed, go to test level
+    //    if(this.press.isDown){
+    //        game.state.start('TestLevel');
+    //    }
     }
-}
+
+};
