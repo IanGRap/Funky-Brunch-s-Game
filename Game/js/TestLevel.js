@@ -8,7 +8,7 @@ var TestLevel = function(game){
     var timer;
 
     //layouts of board layouts, 1 is green 0 is red
-    var obstacles;
+    var obstacles;  
 };
 
 TestLevel.prototype = {
@@ -53,14 +53,14 @@ TestLevel.prototype = {
         this.board = new Board(game, game.world.height/64, game.world.width/64, 64);
         game.add.existing(this.board);
 
-        //make 6 circles, 2 of each color
+        //make 6 circles, 2 of each color   Trait Arrays 
         this.circles = [
-            new Circle(game, 'red', 0, 0),
-            new Circle(game, 'red', 0, 0),
-            new Circle(game, 'blue', 0, 0),
-            new Circle(game, 'blue', 0, 0),
-            new Circle(game, 'green', 0, 0),
-            new Circle(game, 'green', 0, 0)
+            new Circle(game, 'red', 0, 0,  ["Conservative"]),
+            new Circle(game, 'red', 0, 0,  ["Liberal"]),
+            new Circle(game, 'blue', 0, 0, ["Soccer"]),
+            new Circle(game, 'blue', 0, 0, ["Baseball"]),
+            new Circle(game, 'green', 0, 0,["Football"]),
+            new Circle(game, 'green', 0, 0,["Football"])
         ];
 
         for(let i=0; i<this.circles.length; i++){
@@ -82,15 +82,10 @@ TestLevel.prototype = {
 
     update: function(){
         // decrease timer
-        this.timer -= game.time.elapsed;
-        if(this.timer <= 0){
+        //this.timer -= game.time.elapsed;
+       // if(this.timer <= 0){
             //if there are no circles on red tiles, you win
-            if(this.board.check()){
-                game.state.start('WinScreen');
-            //else it is game over
-            } else {
-                game.state.start('LoseScreen');
-            }
-        }
+
+       // }
     }
 };

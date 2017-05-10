@@ -1,11 +1,14 @@
 // constructor for circle
-function Circle(game, key, locationX, locationY){
+function Circle(game, key, locationX, locationY,traits){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
     // animations for circle being highlighted
     this.animations.add('nonactive', [0], 2, true);
     this.animations.add('active', [1], 2, true);
+
+    //trait set
+    this.traits = traits;
 
     //this.inputEnabled = true;
     //reference for if this is the circle currently being selected
@@ -32,3 +35,9 @@ Circle.prototype.activate = function(){
         this.animations.play('active');
     }
 };
+
+//logs the traits of the selected circle
+Circle.prototype.showtraits = function(){
+	console.log(this.traits);
+};
+

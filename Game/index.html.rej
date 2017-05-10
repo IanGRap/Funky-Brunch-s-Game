@@ -1,0 +1,10 @@
+diff a/Game/index.html b/Game/index.html	(rejected hunks)
+@@ -18,6 +18,8 @@
+ 
+ 	<h1>Ian Rapoport's Armada Demo / Modern Art</h1>
+ 
++	<div id="gameDiv"></div>
++
+ 	<script type="text/javascript">
+ 
+ 	</script>
