@@ -47,18 +47,18 @@ TestLevel.prototype = {
             ]
         ];
 
-        this.timer = 10000;
+        this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, game.world.height/64, game.world.width/64, 64);
+        this.board = new Board(game, 320/64, 320/64, 64, 0, 0);
         game.add.existing(this.board);
 
         //make 6 circles, 2 of each color
         this.circles = [
-            new Circle(game, 'red', 0, 0),
-            new Circle(game, 'red', 0, 0),
-            new Circle(game, 'blue', 0, 0),
-            new Circle(game, 'blue', 0, 0),
+            new Circle(game, 'green', 0, 0),
+            new Circle(game, 'green', 0, 0),
+            new Circle(game, 'green', 0, 0),
+            new Circle(game, 'green', 0, 0),
             new Circle(game, 'green', 0, 0),
             new Circle(game, 'green', 0, 0)
         ];
@@ -85,11 +85,11 @@ TestLevel.prototype = {
         this.timer -= game.time.elapsed;
         if(this.timer <= 0){
             //if there are no circles on red tiles, you win
-            if(this.board.check()){
+            if(this.board.checkTiles()){
                 game.state.start('WinScreen');
             //else it is game over
             } else {
-                game.state.start('LoseScreen');
+                //game.state.start('LoseScreen');
             }
         }
     }

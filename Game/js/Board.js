@@ -1,5 +1,5 @@
 //board constructor
-function Board(game, columns, rows, tileSize){
+function Board(game, columns, rows, tileSize, originX, originY){
     //sprite constructor
     Phaser.Sprite.call(this, game, -200, -200, 'cubes');
 
@@ -15,7 +15,7 @@ function Board(game, columns, rows, tileSize){
     for(let r=0; r<game.world.height; r+=tileSize){
 		for(let c=0; c<game.world.width; c+=tileSize){
             //create cube
-			cube = new Cube(game, 'cubes', c, r);
+			cube = new Cube(game, 'cubes', c + originX, r + originY);
 			game.add.existing(cube);
 			//placeCube(c * 64, r * 64);
             // set the reference by dividing by the size of the cube
@@ -95,6 +95,7 @@ Board.prototype.select = function(){
 //take in a2d array that oultines the colors of our board
 Board.prototype.setTiles = function(outline){
     //cycle through all of our tiles and the indicies of the input array
+    console.log(""+outline);
     for(let r=0; r<this.tiles.length; r++){
 		for(let c=0; c<this.tiles[0].length; c++){
             //if the input array has a 0 at this location set the corresponding tile to red
@@ -112,7 +113,7 @@ Board.prototype.setTiles = function(outline){
 }
 
 // go through every tile and check and see if any of themare red but also have an item on them at the end of the timer
-Board.prototype.check = function(){
+Board.prototype.checkTiles = function(){
     for(let r=0; r<this.tiles.length; r++){
 		for(let c=0; c<this.tiles[0].length; c++){
             // if this tile is red but has an item return false
