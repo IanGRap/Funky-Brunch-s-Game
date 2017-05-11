@@ -12,14 +12,14 @@ function Board(game, columns, rows, tileSize, originX, originY){
 
     // fill tiles with cubes
     var cube;
-    for(let r=0; r<game.world.height; r+=tileSize){
-		for(let c=0; c<game.world.width; c+=tileSize){
+    for(let r=0; r<rows; r++){
+		for(let c=0; c<columns; c++){
             //create cube
-			cube = new Cube(game, 'cubes', c + originX, r + originY);
+			cube = new Cube(game, 'cubes', (c * tileSize) + originX, (r * tileSize) + originY);
 			game.add.existing(cube);
 			//placeCube(c * 64, r * 64);
             // set the reference by dividing by the size of the cube
-			this.tiles[c/tileSize][r/tileSize] = cube;
+			this.tiles[c][r] = cube;
 		}
 	}
 
@@ -85,6 +85,9 @@ Board.prototype.select = function(){
             //set references to our selected item to null
             this.selectedRow = null;
             this.selectedColumn = null;
+            if(this.checkTiles()){
+                game.state.start("WinScreen");
+            }
         } else {
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");

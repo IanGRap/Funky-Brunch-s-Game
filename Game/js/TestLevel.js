@@ -50,7 +50,7 @@ TestLevel.prototype = {
         this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, 320/64, 320/64, 64, 0, 0);
+        this.board = new Board(game, 320/64, 320/64, 64, 128, 128);
         game.add.existing(this.board);
 
         //make 6 circles, 2 of each color
@@ -82,7 +82,7 @@ TestLevel.prototype = {
 
     update: function(){
         // decrease timer
-        this.timer -= game.time.elapsed;
+        /*this.timer -= game.time.elapsed;
         if(this.timer <= 0){
             //if there are no circles on red tiles, you win
             if(this.board.checkTiles()){
@@ -91,6 +91,6 @@ TestLevel.prototype = {
             } else {
                 //game.state.start('LoseScreen');
             }
-        }
+        }*/
     }
 };
