@@ -9,6 +9,12 @@ var TestLevel = function(game){
 
     //layouts of board layouts, 1 is green 0 is red
     var obstacles;
+
+    var dialogue;
+
+    var testTimer;
+
+    var f;
 };
 
 TestLevel.prototype = {
@@ -20,9 +26,12 @@ TestLevel.prototype = {
         game.load.spritesheet('red', 'assets/red.png', 64, 64);
         game.load.spritesheet('blue', 'assets/blue.png', 64, 64);
         game.load.spritesheet('green', 'assets/green.png', 64, 64);
+        game.load.image('dialogue', "assets/dialoguePlaceholder.png");
     },
 
     create: function(){
+        this.f = true;
+
         this.obstacles = [
             [
                 [0, 0, 1, 1, 0],
@@ -46,6 +55,8 @@ TestLevel.prototype = {
                 [0, 0, 0, 1, 0]
             ]
         ];
+
+        this.testTimer = 5000;
 
         this.timer = 12500;
 
@@ -77,20 +88,20 @@ TestLevel.prototype = {
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles[Math.floor(Math.random() * 3)]);
+
+        this.dialogue = new Dialogue(game, 'dialogue', 96);
+        game.add.existing(this.dialogue);
     },
 
 
     update: function(){
-        // decrease timer
-        /*this.timer -= game.time.elapsed;
-        if(this.timer <= 0){
-            //if there are no circles on red tiles, you win
-            if(this.board.checkTiles()){
-                game.state.start('WinScreen');
-            //else it is game over
-            } else {
-                //game.state.start('LoseScreen');
-            }
-        }*/
+        this.testTimer -= game.time.elapsed;
+        if(this.testTimer <= 0 && this.f){
+            this.dialogue.addDialogue('Ian', 'Here\'s what Ian has to say');
+            this.dialogue.addDialogue('Jerkface', 'Boring');
+            this.dialogue.addDialogue('Ian', 'You\'re boring you douche');
+            this.f = false;
+            //this.testTimer = 5000;
+        }
     }
 };
