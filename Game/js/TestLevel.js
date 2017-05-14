@@ -53,14 +53,17 @@ TestLevel.prototype = {
         this.board = new Board(game, 320/64, 320/64, 64, 128, 128);
         game.add.existing(this.board);
 
-        //make 6 circles, 2 of each color   Trait Arrays 
+        //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
+        //actually terrible and promotes differences, we'll need to do some writing brainstorming
+
+        //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.circles = [
-            new Circle(game, 'red', 0, 0,  ["Conservative"]),
-            new Circle(game, 'red', 0, 0,  ["Liberal"]),
-            new Circle(game, 'blue', 0, 0, ["Soccer"]),
-            new Circle(game, 'blue', 0, 0, ["Baseball"]),
-            new Circle(game, 'green', 0, 0,["Football"]),
-            new Circle(game, 'green', 0, 0,["Football"])
+            new Circle(game, 'red', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"]),
+            new Circle(game, 'red', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"]),
+            new Circle(game, 'blue', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"]),
+            new Circle(game, 'blue', 0, 0, ["Lazy"],["Sporty"],["I don't feel like being ACTIVE"]),
+            new Circle(game, 'green', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"]),
+            new Circle(game, 'green', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're realyl EXTROVERTED"])
 
         ];
 

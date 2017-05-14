@@ -86,32 +86,32 @@ Board.prototype.select = function(){
             //Shows traits of the selected tile and its neighbors
             console.log("Placed Tile:");
             this.tiles[this.currentRow][this.currentColumn].item.showtraits();
-            //Left
+            //Above
             if(this.currentRow != 0){
             	if(this.tiles[this.currentRow - 1][this.currentColumn].item != null){
-            		console.log("Left Neighbor:");
+            		console.log("Above Neighbor:");
             		this.tiles[this.currentRow - 1][this.currentColumn].item.showtraits();
           	  }
             }
-            //Right
+            //Below
             if(this.currentRow != this.tiles.length-1){
 	           	if(this.tiles[this.currentRow + 1][this.currentColumn].item != null){
-	           		console.log("Right Neighbor:");
+	           		console.log("Below Neighbor:");
 	          		this.tiles[this.currentRow + 1][this.currentColumn].item.showtraits();
 	       	  	}
             }
-            //Above
+            //Left
             if(this.currentColumn != 0){
             	if(this.tiles[this.currentRow][this.currentColumn - 1].item != null){
-            		console.log("Above Neighbor:");
+            		console.log("Left Neighbor:");
 
             		this.tiles[this.currentRow][this.currentColumn - 1].item.showtraits();
           	  }
             }
-            //Below
+            //Right
             if(this.currentColumn != this.tiles[0].length - 1){
             	if(this.tiles[this.currentRow][this.currentColumn + 1].item != null){
-            		console.log("Below Neighbor:");
+            		console.log("Right Neighbor:");
 
             		this.tiles[this.currentRow][this.currentColumn + 1].item.showtraits();
           	  }

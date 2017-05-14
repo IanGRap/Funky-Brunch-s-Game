@@ -1,5 +1,5 @@
 // constructor for circle
-function Circle(game, key, locationX, locationY,traits){
+function Circle(game, key, locationX, locationY,traits,conflicts,conflictText){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
