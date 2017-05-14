@@ -61,7 +61,7 @@ TestLevel.prototype = {
             new Circle(game, 'red', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"]),
             new Circle(game, 'red', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"]),
             new Circle(game, 'blue', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"]),
-            new Circle(game, 'blue', 0, 0, ["Lazy"],["Sporty"],["I don't feel like being ACTIVE"]),
+            new Circle(game, 'blue', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"]),
             new Circle(game, 'green', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"]),
             new Circle(game, 'green', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're realyl EXTROVERTED"])
 
