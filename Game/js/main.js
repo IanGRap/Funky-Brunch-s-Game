@@ -1,5 +1,5 @@
 // make the game
-var game = new Phaser.Game(320, 320, Phaser.AUTO, 'gameDiv', { preload: preload, create: create, update: update});
+var game = new Phaser.Game(640, 640, Phaser.AUTO, 'gameDiv', { preload: preload, create: create, update: update});
 
 // define functions for states
 function preload(){};

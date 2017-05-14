@@ -1,5 +1,5 @@
 //board constructor
-function Board(game, columns, rows, tileSize){
+function Board(game, columns, rows, tileSize, originX, originY){
     //sprite constructor
     Phaser.Sprite.call(this, game, -200, -200, 'cubes');
 
@@ -12,14 +12,14 @@ function Board(game, columns, rows, tileSize){
 
     // fill tiles with cubes
     var cube;
-    for(let r=0; r<game.world.height; r+=tileSize){
-		for(let c=0; c<game.world.width; c+=tileSize){
+    for(let r=0; r<rows; r++){
+		for(let c=0; c<columns; c++){
             //create cube
-			cube = new Cube(game, 'cubes', c, r);
+			cube = new Cube(game, 'cubes', (c * tileSize) + originX, (r * tileSize) + originY);
 			game.add.existing(cube);
 			//placeCube(c * 64, r * 64);
             // set the reference by dividing by the size of the cube
-			this.tiles[c/tileSize][r/tileSize] = cube;
+			this.tiles[r][c] = cube;
 		}
 	}
 
@@ -120,6 +120,9 @@ Board.prototype.select = function(){
             //set references to our selected item to null
             this.selectedRow = null;
             this.selectedColumn = null;
+            if(this.checkTiles()){
+                game.state.start("WinScreen");
+            }
         } else {
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");
@@ -130,24 +133,29 @@ Board.prototype.select = function(){
 //take in a2d array that oultines the colors of our board
 Board.prototype.setTiles = function(outline){
     //cycle through all of our tiles and the indicies of the input array
-    for(let r=0; r<this.tiles.length; r++){
-		for(let c=0; c<this.tiles[0].length; c++){
-            //if the input array has a 0 at this location set the corresponding tile to red
-			if(outline[r][c] == 0){
-				this.tiles[r][c].charge();
-			}
-		}
-	}
-    //set our cursor to the origin with no item selected
-    this.currentRow = 0;
-    this.currentColumn = 0;
-    this.selectedRow = null;
-    this.selectedColumn = null;
-    this.tiles[0][0].activate();
+    if(outline.length != this.tiles.length || outline[0].length != this.tiles[0].length){
+        console.log("argument for setTiles() has different dimension than board");
+    } else {
+        for(let r=0; r<this.tiles.length; r++){
+            for(let c=0; c<this.tiles[0].length; c++){
+                //if the input array has a 0 at this location set the corresponding tile to red
+                if(outline[r][c] == 0){
+                    this.tiles[r][c].charge();
+                }
+            }
+        }
+
+        //set our cursor to the origin with no item selected
+        this.currentRow = 0;
+        this.currentColumn = 0;
+        this.selectedRow = null;
+        this.selectedColumn = null;
+        this.tiles[0][0].activate();
+    }
 }
 
 // go through every tile and check and see if any of themare red but also have an item on them at the end of the timer
-Board.prototype.check = function(){
+Board.prototype.checkTiles = function(){
     for(let r=0; r<this.tiles.length; r++){
 		for(let c=0; c<this.tiles[0].length; c++){
             // if this tile is red but has an item return false
@@ -161,7 +169,7 @@ Board.prototype.check = function(){
 }
 
 //these functions are mapped to keyboard presses and change our currently highlighted tile by changing our currently highlighted row and column
-Board.prototype.goUp = function(){
+Board.prototype.goLeft = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentColumn --;
     if(this.currentColumn  <0){
@@ -170,7 +178,7 @@ Board.prototype.goUp = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
 }
 
-Board.prototype.goRight = function(){
+Board.prototype.goDown = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentRow++;
     if(this.currentRow >= this.tiles.length){
@@ -179,7 +187,7 @@ Board.prototype.goRight = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
 }
 
-Board.prototype.goLeft = function(){
+Board.prototype.goUp = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentRow--;
     if(this.currentRow <0){
@@ -188,7 +196,7 @@ Board.prototype.goLeft = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
 }
 
-Board.prototype.goDown = function(){
+Board.prototype.goRight = function(){
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentColumn ++;
     if(this.currentColumn  >= this.tiles[0].length){
