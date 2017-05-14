@@ -58,7 +58,8 @@ function Board(game, columns, rows, tileSize, originX, originY){
 Board.prototype = Object.create(Phaser.Sprite.prototype);
 Board.prototype.constructor = Board;
 
-Board.prototype.update = function(){};
+Board.prototype.update = function(){
+};
 
 // called when we select a tile
 Board.prototype.select = function(){
