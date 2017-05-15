@@ -58,8 +58,7 @@ function Board(game, columns, rows, tileSize, originX, originY){
 Board.prototype = Object.create(Phaser.Sprite.prototype);
 Board.prototype.constructor = Board;
 
-Board.prototype.update = function(){
-};
+Board.prototype.update = function(){};
 
 // called when we select a tile
 Board.prototype.select = function(){
@@ -75,20 +74,87 @@ Board.prototype.select = function(){
             //set the item to active
             this.tiles[this.selectedRow][this.selectedColumn].item.activate();
         }
-    //if we do have an item selected
+    //if we do have an item selected aka placing an item
     } else {
         //if the tile we are on does not have an item
         if(temp == null){
-            //place our selected item on this tile
-            this.tiles[this.currentRow][this.currentColumn].place( this.tiles[this.selectedRow][this.selectedColumn].grab() );
-            //set the item we placed to no longer active
-            this.tiles[this.currentRow][this.currentColumn].item.activate();
-            //set references to our selected item to null
-            this.selectedRow = null;
-            this.selectedColumn = null;
-            if(this.checkTiles()){
-                game.state.start("WinScreen");
+        	
+            //Shows traits of the selected tile and its neighbors
+            console.log("______________________");
+            console.log("Placed Tile:");
+           	//makes a temp var for the proposed object to move in
+          	var proposed = this.tiles[this.selectedRow][this.selectedColumn].item;
+          	proposed.showTraits();
+
+          	let noConflicts = true;
+
+            //Above
+            if(this.currentRow != 0){
+            	if(this.tiles[this.currentRow - 1][this.currentColumn].item != null){
+            		console.log("Above Neighbor:");
+            		// checks if there's a conflict of traits
+            		let check = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictCheck(proposed);
+            		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
+            		if(check[0]){ 
+            			noConflicts = false;
+            			console.log(this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
+            		}
+          	  }
             }
+            //Below
+            if(this.currentRow != this.tiles.length-1){
+	           	if(this.tiles[this.currentRow + 1][this.currentColumn].item != null){
+	           		console.log("Below Neighbor:");
+	           		// checks if there's a conflict of traits
+            		let check = this.tiles[this.currentRow + 1][this.currentColumn].item.conflictCheck(proposed);
+            		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
+            		if(check[0]){ 
+            			noConflicts = false;
+            			console.log(this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
+            		}
+	          		
+	       	  	}
+            }
+            //Left
+            if(this.currentColumn != 0){
+            	if(this.tiles[this.currentRow][this.currentColumn - 1].item != null){
+            		console.log("Left Neighbor:");
+            		// checks if there's a conflict of traits
+            		let check = this.tiles[this.currentRow][this.currentColumn - 1].item.conflictCheck(proposed);
+            		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
+            		if(check[0]){ 
+            			noConflicts = false;
+            			console.log(this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
+            		}
+          	  }
+            }
+            //Right
+            if(this.currentColumn != this.tiles[0].length - 1){
+            	if(this.tiles[this.currentRow][this.currentColumn + 1].item != null){
+            		console.log("Right Neighbor:");
+            		// checks if there's a conflict of traits
+            		let check = this.tiles[this.currentRow][this.currentColumn + 1].item.conflictCheck(proposed);
+            		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
+            		if(check[0]){ 
+            			noConflicts = false;
+            			console.log(this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
+            		}
+          	  }
+            }
+
+            if(noConflicts){
+	            //place our selected item on this tile
+	            this.tiles[this.currentRow][this.currentColumn].place( this.tiles[this.selectedRow][this.selectedColumn].grab() );
+	            //set the item we placed to no longer active
+	            this.tiles[this.currentRow][this.currentColumn].item.activate();
+
+	            //set references to our selected item to null
+	            this.selectedRow = null;
+	            this.selectedColumn = null;
+	            if(this.checkTiles()){
+	                game.state.start("WinScreen");
+	            }
+      		}
         } else {
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");

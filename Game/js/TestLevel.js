@@ -8,13 +8,7 @@ var TestLevel = function(game){
     var timer;
 
     //layouts of board layouts, 1 is green 0 is red
-    var obstacles;
-
-    var dialogue;
-
-    var testTimer;
-
-    var f;
+    var obstacles;  
 };
 
 TestLevel.prototype = {
@@ -26,12 +20,9 @@ TestLevel.prototype = {
         game.load.spritesheet('red', 'assets/red.png', 64, 64);
         game.load.spritesheet('blue', 'assets/blue.png', 64, 64);
         game.load.spritesheet('green', 'assets/green.png', 64, 64);
-        game.load.image('dialogue', "assets/dialoguePlaceholder.png");
     },
 
     create: function(){
-        this.f = true;
-
         this.obstacles = [
             [
                 [0, 0, 1, 1, 0],
@@ -56,22 +47,24 @@ TestLevel.prototype = {
             ]
         ];
 
-        this.testTimer = 5000;
-
         this.timer = 12500;
 
         // define a new board object
         this.board = new Board(game, 320/64, 320/64, 64, 128, 128);
         game.add.existing(this.board);
 
-        //make 6 circles, 2 of each color
+        //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
+        //actually terrible and promotes differences, we'll need to do some writing brainstorming
+
+        //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.circles = [
-            new Circle(game, 'green', 0, 0),
-            new Circle(game, 'green', 0, 0),
-            new Circle(game, 'green', 0, 0),
-            new Circle(game, 'green', 0, 0),
-            new Circle(game, 'green', 0, 0),
-            new Circle(game, 'green', 0, 0)
+            new Circle(game, 'red', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"]),
+            new Circle(game, 'red', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"]),
+            new Circle(game, 'blue', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"]),
+            new Circle(game, 'blue', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"]),
+            new Circle(game, 'green', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"]),
+            new Circle(game, 'green', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're realyl EXTROVERTED"])
+
         ];
 
         for(let i=0; i<this.circles.length; i++){
@@ -88,20 +81,20 @@ TestLevel.prototype = {
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles[Math.floor(Math.random() * 3)]);
-
-        this.dialogue = new Dialogue(game, 'dialogue', 96);
-        game.add.existing(this.dialogue);
     },
 
 
     update: function(){
-        this.testTimer -= game.time.elapsed;
-        if(this.testTimer <= 0 && this.f){
-            this.dialogue.addDialogue('Ian', 'Here\'s what Ian has to say');
-            this.dialogue.addDialogue('Jerkface', 'Boring');
-            this.dialogue.addDialogue('Ian', 'You\'re boring you douche');
-            this.f = false;
-            //this.testTimer = 5000;
-        }
+        // decrease timer
+        /*this.timer -= game.time.elapsed;
+        if(this.timer <= 0){
+            //if there are no circles on red tiles, you win
+            if(this.board.checkTiles()){
+                game.state.start('WinScreen');
+            //else it is game over
+            } else {
+                //game.state.start('LoseScreen');
+            }
+        }*/
     }
 };

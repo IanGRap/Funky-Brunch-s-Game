@@ -1,0 +1,35 @@
+diff a/Game/js/Cube.js b/Game/js/Cube.js	(rejected hunks)
+@@ -1,27 +0,25 @@
+-// Ian Rapoport
+-// irapopor
+-// CMPM 120
+-// 1 May 2017
+-// Armada Assignment
+-
+-// constructor for ship
++// constructor for cube
+ function Cube(game, key, locationX, locationY){
+     // sprite constructor
+     Phaser.Sprite.call(this, game, locationX, locationY, key);
+ 
++    //animations for different cube colors
+     this.animations.add('green', [0], 2, true);
+     this.animations.add('greenHighlight', [3], 2, true);
+     this.animations.add('red', [2], 2, true);
+     this.animations.add('redHighlight', [5], 2, true);
+     this.animations.play('green');
+ 
+-    this.inputEnabled = true;
++    // reference to if this is the cube currently highlighted
+     this.active = false;
+ 
++    // I think we need this to be able to get reference to the cubes position
+     this.enableBody = true;
+ 
++    // Reference to the circle on this cube, null otherwise
+     this.item = null;
+ 
++    // if this cube is red and therefore a danger tile
+     this.charged = false;
+ }
+ 
