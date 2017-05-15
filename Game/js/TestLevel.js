@@ -17,12 +17,23 @@ TestLevel.prototype = {
     preload: function(){
         // cube sprite
         game.load.spritesheet('cubes', 'assets/protoCubes.png', 64, 64);
-        game.load.spritesheet('red', 'assets/red.png', 64, 64);
-        game.load.spritesheet('blue', 'assets/blue.png', 64, 64);
-        game.load.spritesheet('green', 'assets/green.png', 64, 64);
+        //charcter images
+        game.load.spritesheet('astronaut', 'assets/astronaughtimg.png', 64, 64);
+        game.load.spritesheet('scientist', 'assets/scientistimg.png', 64, 64);
+        game.load.spritesheet('ghost', 'assets/ghostimg.png', 64, 64);
+        game.load.spritesheet('knight', 'assets/knightimg.png', 64, 64);
+        game.load.spritesheet('dino', 'assets/dinoimg.png', 64, 64);
+        game.load.spritesheet('dog', 'assets/dogimg.png', 64, 64);
+        //backround image
+        game.load.image('river','assets/river.png');
     },
 
     create: function(){
+
+        //loads background image
+        game.add.image(0,0,'river');
+
+
         this.obstacles = [
             [
                 [0, 0, 1, 1, 0],
@@ -58,12 +69,12 @@ TestLevel.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.circles = [
-            new Circle(game, 'red', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"]),
-            new Circle(game, 'red', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"]),
-            new Circle(game, 'blue', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"]),
-            new Circle(game, 'blue', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"]),
-            new Circle(game, 'green', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"]),
-            new Circle(game, 'green', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're realyl EXTROVERTED"])
+            new Circle(game, 'dog', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"]),
+            new Circle(game, 'scientist', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"]),
+            new Circle(game, 'knight', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"]),
+            new Circle(game, 'dino', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"]),
+            new Circle(game, 'ghost', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"]),
+            new Circle(game, 'astronaut', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're realyl EXTROVERTED"])
 
         ];
 
