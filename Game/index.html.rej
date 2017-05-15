@@ -1,0 +1,10 @@
+diff a/Game/index.html b/Game/index.html	(rejected hunks)
+@@ -2,7 +2,7 @@
+ <html lang="en"> 
+ <head> 
+ 	<meta charset="UTF-8" />
+-	<title>Funky Brunch</title>
++	<title>Ian Rapoport's First Phaser Game</title>
+ 	<script type="text/javascript" src="../framework/phaser.min.js"></script>
+ 	<script type="text/javascript" src="js/Cube.js"></script>
+ 	<script type="text/javascript" src="js/Board.js"></script>
