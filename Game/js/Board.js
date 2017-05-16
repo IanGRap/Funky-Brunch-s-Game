@@ -1,5 +1,5 @@
 //board constructor
-function Board(game, columns, rows, tileSize, originX, originY){
+function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     //sprite constructor
     Phaser.Sprite.call(this, game, -200, -200, 'cubes');
 
@@ -22,6 +22,9 @@ function Board(game, columns, rows, tileSize, originX, originY){
 			this.tiles[r][c] = cube;
 		}
 	}
+
+    // reference to dialogue system
+    this.dialogue = dialogue;
 
     // the row and column we currently have highlighted
     this.currentRow = 0;
@@ -97,6 +100,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+                        //display conflict text with UI
+                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             		}
           	  }
@@ -110,6 +115,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+                        //display conflict text with UI
+                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
             		}
 	          		
@@ -124,6 +131,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+                        //display conflict text with UI
+                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
             		}
           	  }
@@ -137,6 +146,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+                        //display conflict text with UI
+                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
             		}
           	  }

@@ -1,5 +1,5 @@
 // constructor for circle
-function Circle(game, key, locationX, locationY,traits,conflicts,conflictText){
+function Circle(game, key, locationX, locationY, traits, conflicts, conflictText, name){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
@@ -18,6 +18,8 @@ function Circle(game, key, locationX, locationY,traits,conflicts,conflictText){
 
     //reference for circle position
     this.enableBody = true;
+
+    this.name = name;
 }
 
 // set inherited prototype

@@ -1,15 +1,17 @@
 // constructor for circle
 function Dialogue(game, key, width){
-    this.text = game.add.text(32, game.world.height-64, "", {fontSize: '32px', fill: 'Red'});
 
     // sprite constructor
-    Phaser.Sprite.call(this, game, 0, game.world.height, key);
+    Phaser.Group.call(this, game);
+    console.dir(this);
 
-    //this.anchor.setTo(0, 1);
+    this.UI = this.create(0, game.world.height - width, key);
+
+    this.text = game.add.text(32, game.world.height-64, "", {fontSize: '20px', fill: 'Red'});
 
     let l = game.world.width / width;
 
-    this.scale.setTo(l, 1);
+    this.UI.scale.setTo(l, 1);
 
     this.upcomingSpeakers = [null, null, null];
     this.upcomingConversations = [null, null, null];
@@ -21,9 +23,9 @@ function Dialogue(game, key, width){
 }
 
 // set inherited prototype
-Dialogue.prototype = Object.create(Phaser.Sprite.prototype);
+Dialogue.prototype = Object.create(Phaser.Group.prototype);
 // declare constructor
-Dialogue.prototype.constructor = Circle;
+Dialogue.prototype.constructor = Dialogue;
 
 Dialogue.prototype.addDialogue = function(speaker, text){
     console.log("adding text");

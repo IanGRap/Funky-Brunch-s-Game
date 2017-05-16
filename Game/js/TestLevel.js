@@ -26,12 +26,18 @@ TestLevel.prototype = {
         game.load.spritesheet('dog', 'assets/dogimg.png', 64, 64);
         //backround image
         game.load.image('river','assets/river.png');
+        //dialogue UI
+        game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
     },
 
     create: function(){
 
         //loads background image
         game.add.image(0,0,'river');
+
+        //add dialogue system
+        this.dialogue = new Dialogue(game, 'dialogue', 96);
+        game.add.existing(this.dialogue);
 
 
         this.obstacles = [
@@ -61,7 +67,7 @@ TestLevel.prototype = {
         this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, 320/64, 320/64, 64, 128, 128);
+        this.board = new Board(game, 320/64, 320/64, 64, 128, 128, this.dialogue);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
@@ -69,12 +75,12 @@ TestLevel.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.circles = [
-            new Circle(game, 'dog', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"]),
-            new Circle(game, 'scientist', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"]),
-            new Circle(game, 'knight', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"]),
-            new Circle(game, 'dino', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"]),
-            new Circle(game, 'ghost', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"]),
-            new Circle(game, 'astronaut', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're realyl EXTROVERTED"])
+            new Circle(game, 'dog', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"], 'Dog'),
+            new Circle(game, 'scientist', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"], 'Scientist'),
+            new Circle(game, 'knight', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"], 'Knight'),
+            new Circle(game, 'dino', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"], 'Dinosaur'),
+            new Circle(game, 'ghost', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"], 'Ghost'),
+            new Circle(game, 'astronaut', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're really EXTROVERTED"], 'Astronaut')
 
         ];
 
