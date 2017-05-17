@@ -79,8 +79,13 @@ Board.prototype.select = function(){
         }
     //if we do have an item selected aka placing an item
     } else {
+        // the player is placing the character where they are located
+        if(this.currentColumn == this.selectedColumn && this.currentRow == this.selectedRow){
+            this.tiles[this.selectedRow][this.selectedColumn].item.activate();
+            this.selectedColumn = null;
+            this.selectedRow = null;
         //if the tile we are on does not have an item
-        if(temp == null){
+        }else if(temp == null){
         	
             //Shows traits of the selected tile and its neighbors
             console.log("______________________");
@@ -100,9 +105,16 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+                 
+
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
+
+                        //get x and y for above this.tiles[this.currentRow - 1][this.currentColumn].item.x 
+                        //image.set bubble at x and y
+                        //if y > certain range change position 
+
             		}
           	  }
             }
@@ -165,7 +177,12 @@ Board.prototype.select = function(){
 	            if(this.checkTiles()){
 	                game.state.start("WinScreen");
 	            }
-      		}
+      		} else {
+                //make our currently selected character unselected
+                proposed.activate();
+                this.selectedRow = null;
+                this.selectedColumn = null;
+            }
         } else {
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");

@@ -1,5 +1,5 @@
 // constructor for circle
-function Circle(game, key, locationX, locationY, traits, conflicts, conflictText, name){
+function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
@@ -23,13 +23,13 @@ function Circle(game, key, locationX, locationY, traits, conflicts, conflictText
 }
 
 // set inherited prototype
-Circle.prototype = Object.create(Phaser.Sprite.prototype);
+Character.prototype = Object.create(Phaser.Sprite.prototype);
 // declare constructor
-Circle.prototype.constructor = Circle;
+Character.prototype.constructor = Character;
 
-Circle.prototype.update = function(){};
+Character.prototype.update = function(){};
 
-Circle.prototype.activate = function(){
+Character.prototype.activate = function(){
     // set animations based on if this is selected circle
     if(this.active){
         this.active = false;
@@ -41,12 +41,12 @@ Circle.prototype.activate = function(){
 };
 
 //logs the traits of the selected circle
-Circle.prototype.showTraits = function(){
+Character.prototype.showTraits = function(){
 	console.log("Trait Array : " + this.traits);
 };
 
 //Checks for Conflicts Among Traits    input : (other circle object)
-Circle.prototype.conflictCheck = function(other){
+Character.prototype.conflictCheck = function(other){
 	for(let i = 0; i < this.conflicts.length; i++){
 		console.log(this.traits[i]);
 		for(let j = 0; j < other.traits.length; j++){
