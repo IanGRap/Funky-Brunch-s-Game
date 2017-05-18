@@ -1,3 +1,8 @@
+//global vars
+var startX;
+var startY;
+
+
 //board constructor
 function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     //sprite constructor
@@ -22,6 +27,12 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
 			this.tiles[r][c] = cube;
 		}
 	}
+
+	//sets the global orgin point for use in bubbles
+    startX = originX;
+    startY = originY;
+
+
 
     // reference to dialogue system
     this.dialogue = dialogue;
@@ -88,6 +99,55 @@ Board.prototype.update = function(){};
 
 // called when we select a tile
 Board.prototype.select = function(){
+
+	    //Sets the scale so it will work with differntly sized boards (YEEEE)
+    var scale = 64;
+
+
+    //error array for clearing text
+    var messages = ["","","",""];
+
+
+    //Word Wrap code example from previous game for reference
+    /*
+    //draws the text over the sprite
+    var style = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 133, align: "center"};    
+    var text = game.add.text(0,-10,this.text,style);
+    text.anchor.set(0.5);
+    this.addChild(text);
+    */
+
+    //declares variables for bubbles
+    var upb = game.add.sprite(200,200,'speachbubble');
+    upb.anchor.setTo(0.5,0.5);
+    upb.angle = 0;
+
+    var downb = game.add.sprite(400,200,'speachbubble');
+    downb.anchor.setTo(0.5,0.5);
+    downb.angle = 180;
+
+
+    var leftb = game.add.sprite(200,400,'speachbubble');
+    leftb.anchor.setTo(0.5,0.5);
+    leftb.angle = 270;
+
+    var rightb = game.add.sprite(400,400,'speachbubble'); 
+    rightb.anchor.setTo(0.5,0.5);
+    rightb.angle = 90;
+
+    //GET RID OF THIS LATER!! TESTING PURPOSES ONLY
+    upb.scale.setTo(.5, .5);
+    downb.scale.setTo(.5, .5);
+    leftb.scale.setTo(.5, .5);
+    rightb.scale.setTo(.5, .5);
+
+    //hide 'em!
+    upb.visible = false;
+    downb.visible = false;
+    leftb.visible = false;
+    rightb.visible = false;
+    
+
     //reference to the item on this tile, if there is one
     var temp = this.tiles[this.currentRow][this.currentColumn].item;
     //if we currently don't have an item selected
@@ -134,9 +194,12 @@ Board.prototype.select = function(){
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
 
-                        //get x and y for above this.tiles[this.currentRow - 1][this.currentColumn].item.x 
-                        //image.set bubble at x and y
-                        //if y > certain range change position 
+                      
+                        // position and show bubble
+                        upb.x = this.currentColumn * scale + startX + scale/2;
+                        upb.y = startY + (this.currentRow - 1.6) * scale;
+                        upb.visible = true;
+
 
             		}
           	  }
@@ -153,6 +216,12 @@ Board.prototype.select = function(){
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
+            			
+                        // position and show bubble
+                        downb.x = this.currentColumn * scale + startX + scale/2;
+                        downb.y = startY + (this.currentRow + 2.7) * scale;
+                        downb.visible = true;
+
             		}
 	          		
 	       	  	}
@@ -169,6 +238,12 @@ Board.prototype.select = function(){
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
+            		
+                        // position and show bubble
+                        leftb.x = (this.currentColumn - 1) * scale + startX - scale/2;
+                        leftb.y = startY + this.currentRow * scale + scale/2;
+                        leftb.visible = true;
+
             		}
           	  }
             }
@@ -184,6 +259,13 @@ Board.prototype.select = function(){
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
             			console.log(this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
+            			
+                        // position and show bubble
+                        rightb.x = (this.currentColumn + 2) * scale + startX + scale/2;
+                        rightb.y = startY + this.currentRow * scale + scale/2;
+                        rightb.visible = true;
+                        //leftb.angle = 180;
+
             		}
           	  }
             }

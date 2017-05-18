@@ -28,6 +28,8 @@ TestLevel.prototype = {
         game.load.image('river','assets/river.png');
         //dialogue UI
         game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
+        game.load.image('speachbubble','assets/speachbubble.png');
+
     },
 
     create: function(){
