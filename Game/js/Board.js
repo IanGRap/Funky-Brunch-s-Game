@@ -39,22 +39,45 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     this.down = game.input.keyboard.addKey(Phaser.Keyboard.S);
     this.l = game.input.keyboard.addKey(Phaser.Keyboard.A);
     this.r = game.input.keyboard.addKey(Phaser.Keyboard.D);
+    this.upArrow = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+    this.downArrow = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+    this.lArrow = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+    this.rArrow = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+
     this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+    this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
 
     //this is weird, but essentially we are setting each key to call a function when pressed,
     //makes it so we don't have to worry about holding down the key
     this.spacebar.onDown.add(this.select, this);
+
     this.up.onDown.add(this.goUp, this);
     this.r.onDown.add(this.goRight, this);
     this.l.onDown.add(this.goLeft, this);
     this.down.onDown.add(this.goDown, this);
+    this.upArrow.onDown.add(this.goUp, this);
+    this.rArrow.onDown.add(this.goRight, this);
+    this.lArrow.onDown.add(this.goLeft, this);
+    this.downArrow.onDown.add(this.goDown, this);
+
+    this.f.onDown.add(this.fullscreen, this);
+
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
     //this makes the above part work
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.W);
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.A);
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.S);
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.D);
+    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.UP);
+    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.RIGHT);
+    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.LEFT);
+    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.DOWN);
+
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
+
+    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.F);
 }
 
 //set prototype and constructor
@@ -226,6 +249,14 @@ Board.prototype.checkTiles = function(){
 	}
     // if no tiles are red and have an item on them, return true
     return true;
+}
+
+Board.prototype.fullscreen = function(){
+    if(game.scale.isFullScreen){
+        game.scale.stopFullScreen();
+    } else {
+        game.scale.startFullScreen(false);
+    }
 }
 
 //these functions are mapped to keyboard presses and change our currently highlighted tile by changing our currently highlighted row and column
