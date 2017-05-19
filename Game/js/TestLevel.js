@@ -44,25 +44,25 @@ TestLevel.prototype = {
 
         this.obstacles = [
             [
+                [0, 0, 0, 0, 0],
+                [0, 1, 1, 0, 0],
                 [0, 0, 1, 1, 0],
-                [0, 0, 0, 1, 0],
-                [0, 0, 0, 1, 0],
-                [0, 0, 1, 1, 0],
+                [0, 1, 1, 0, 0],
                 [0, 0, 0, 0, 0]
             ],
             [
                 [0, 0, 0, 0, 0],
                 [0, 1, 1, 0, 0],
                 [0, 0, 1, 1, 0],
-                [0, 0, 0, 1, 1],
+                [0, 1, 1, 0, 0],
                 [0, 0, 0, 0, 0]
             ],
             [
-                [0, 1, 0, 0, 0],
-                [0, 1, 0, 0, 0],
-                [0, 0, 1, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 1, 1, 0, 0],
                 [0, 0, 1, 1, 0],
-                [0, 0, 0, 1, 0]
+                [0, 1, 1, 0, 0],
+                [0, 0, 0, 0, 0]
             ]
         ];
 
@@ -77,12 +77,12 @@ TestLevel.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.characters = [
-            new Character(game, 'dog', 0, 0,  ["Conservative"],["Liberal"],["I don't want to stand with a LIBERAL"], 'Dog'),
-            new Character(game, 'scientist', 0, 0,  ["Liberal"],["Conservative"],["I don't want to stand with a CONSERVATIVE"], 'Scientist'),
-            new Character(game, 'knight', 0, 0, ["Active"],["Lazy"],["I wish you weren't so LAZY"], 'Knight'),
-            new Character(game, 'dino', 0, 0, ["Lazy"],["Active"],["I don't feel like being ACTIVE"], 'Dinosaur'),
-            new Character(game, 'ghost', 0, 0,["Extroverted"],["Shy"],["I want to talk but you're so SHY"], 'Ghost'),
-            new Character(game, 'astronaut', 0, 0,["Shy"],["Extroverted"],["I just need some space, you're really EXTROVERTED"], 'Astronaut')
+            new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog'),
+            new Character(game, 'scientist', 0, 0,  ["Silly"],["Serious"],["Why so SERIOUS?"], 'Scientist'),
+            new Character(game, 'knight', 0, 0, ["Serious"],["Silly"],["I don't want to play with someone so SILLY"], 'Knight'),
+            new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur'),
+            new Character(game, 'ghost', 0, 0,["Allergies"],["Dog"],["Achoo, I think I'm allergic to Dogs"], 'Ghost'),
+            new Character(game, 'astronaut', 0, 0,["Quiet"],["Noise"],["You're too NOISY!"], 'Astronaut')
 
         ];
 

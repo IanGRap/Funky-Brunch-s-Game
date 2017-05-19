@@ -2,7 +2,13 @@
 var startX;
 var startY;
 
+var upb;
+var downb;
+var rightb;
+var leftb;
 
+var hide = false;
+ 
 //board constructor
 function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     //sprite constructor
@@ -45,37 +51,12 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     this.selectedRow = null;
     this.selectedColumn = null;
 
-    //get our input keys
-    this.up = game.input.keyboard.addKey(Phaser.Keyboard.W);
-    this.down = game.input.keyboard.addKey(Phaser.Keyboard.S);
-    this.l = game.input.keyboard.addKey(Phaser.Keyboard.A);
-    this.r = game.input.keyboard.addKey(Phaser.Keyboard.D);
-    this.upArrow = game.input.keyboard.addKey(Phaser.Keyboard.UP);
-    this.downArrow = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
-    this.lArrow = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
-    this.rArrow = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+    
 
-    this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
-
-    //this is weird, but essentially we are setting each key to call a function when pressed,
-    //makes it so we don't have to worry about holding down the key
-    this.spacebar.onDown.add(this.select, this);
-
-    this.up.onDown.add(this.goUp, this);
-    this.r.onDown.add(this.goRight, this);
-    this.l.onDown.add(this.goLeft, this);
-    this.down.onDown.add(this.goDown, this);
-    this.upArrow.onDown.add(this.goUp, this);
-    this.rArrow.onDown.add(this.goRight, this);
-    this.lArrow.onDown.add(this.goLeft, this);
-    this.downArrow.onDown.add(this.goDown, this);
-
-    this.f.onDown.add(this.fullscreen, this);
 
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-
+/*
     //this makes the above part work
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.W);
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.A);
@@ -86,21 +67,73 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.LEFT);
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.DOWN);
 
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
-
     game.input.keyboard.removeKeyCapture(Phaser.Keyboard.F);
+    */
 }
 
 //set prototype and constructor
 Board.prototype = Object.create(Phaser.Sprite.prototype);
 Board.prototype.constructor = Board;
 
-Board.prototype.update = function(){};
+Board.prototype.update = function(){
+	//get our input keys
+    this.up = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    this.down = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    this.l = game.input.keyboard.addKey(Phaser.Keyboard.A);
+    this.r = game.input.keyboard.addKey(Phaser.Keyboard.D);
+    this.upArrow = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+    this.downArrow = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+    this.lArrow = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+    this.rArrow = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+
+
+    this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
+    this.h = game.input.keyboard.addKey(Phaser.Keyboard.H);
+
+
+    //this is weird, but essentially we are setting each key to call a function when pressed,
+    //makes it so we don't have to worry about holding down the key
+
+    //Checks if it needs to use a key press for hiding
+    if(hide == true){
+
+	    this.up.onDown.add(this.hidebubbles, this);
+	    this.r.onDown.add(this.hidebubbles, this);
+	    this.l.onDown.add(this.hidebubbles, this);
+	    this.down.onDown.add(this.hidebubbles, this);
+	    this.upArrow.onDown.add(this.hidebubbles, this);
+	    this.rArrow.onDown.add(this.hidebubbles, this);
+	    this.lArrow.onDown.add(this.hidebubbles, this);
+	    this.downArrow.onDown.add(this.hidebubbles, this);
+	}else if(hide == false){
+		this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+
+	    this.spacebar.onDown.add(this.select, this);
+
+	    this.up.onDown.add(this.goUp, this);
+	    this.r.onDown.add(this.goRight, this);
+	    this.l.onDown.add(this.goLeft, this);
+	    this.down.onDown.add(this.goDown, this);
+	    this.upArrow.onDown.add(this.goUp, this);
+	    this.rArrow.onDown.add(this.goRight, this);
+	    this.lArrow.onDown.add(this.goLeft, this);
+	    this.downArrow.onDown.add(this.goDown, this);
+
+	    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
+
+
+	}
+		
+		this.f.onDown.add(this.fullscreen, this);
+
+
+};
 
 // called when we select a tile
 Board.prototype.select = function(){
 
-	    //Sets the scale so it will work with differntly sized boards (YEEEE)
+	//Sets the scale so it will work with differntly sized boards (YEEEE)
     var scale = 64;
 
 
@@ -108,30 +141,42 @@ Board.prototype.select = function(){
     var messages = ["","","",""];
 
 
+    if(hide){
+	    upb.visible = false;
+		downb.visible = false;
+		rightb.visible = false;
+		leftb.visible = false;
+		hide = false;
+	}	
+
+
+
     //Word Wrap code example from previous game for reference
     /*
     //draws the text over the sprite
-    var style = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 133, align: "center"};    
     var text = game.add.text(0,-10,this.text,style);
     text.anchor.set(0.5);
     this.addChild(text);
     */
 
+    //var style = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 133, align: "center"};    
+
+
     //declares variables for bubbles
-    var upb = game.add.sprite(200,200,'speachbubble');
+    upb = game.add.sprite(200,200,'speachbubble');
     upb.anchor.setTo(0.5,0.5);
     upb.angle = 0;
 
-    var downb = game.add.sprite(400,200,'speachbubble');
+    downb = game.add.sprite(400,200,'speachbubble');
     downb.anchor.setTo(0.5,0.5);
     downb.angle = 180;
 
 
-    var leftb = game.add.sprite(200,400,'speachbubble');
+    leftb = game.add.sprite(200,400,'speachbubble');
     leftb.anchor.setTo(0.5,0.5);
     leftb.angle = 270;
 
-    var rightb = game.add.sprite(400,400,'speachbubble'); 
+    rightb = game.add.sprite(400,400,'speachbubble'); 
     rightb.anchor.setTo(0.5,0.5);
     rightb.angle = 90;
 
@@ -199,8 +244,6 @@ Board.prototype.select = function(){
                         upb.x = this.currentColumn * scale + startX + scale/2;
                         upb.y = startY + (this.currentRow - 1.6) * scale;
                         upb.visible = true;
-
-
             		}
           	  }
             }
@@ -223,7 +266,6 @@ Board.prototype.select = function(){
                         downb.visible = true;
 
             		}
-	          		
 	       	  	}
             }
             //Left
@@ -292,6 +334,26 @@ Board.prototype.select = function(){
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");
         }
+    	//this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+/*
+    	spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    	let x = true;
+    	while(x){
+    		if(spacebar.onDown){
+    			console.log("HI MOM");
+    			rightb.visible = false;
+
+    			x = false;	
+    		}
+    	}
+*/
+    	  //  this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    	  //    this.spacebar.onDown.add(this.select, this);
+
+    	//		if(score==12&&cursors.down.isDown&&spawn2==0){
+
+    		hide = true;
+
     }
 }
 
@@ -339,6 +401,21 @@ Board.prototype.fullscreen = function(){
     } else {
         game.scale.startFullScreen(false);
     }
+}
+
+Board.prototype.hidebubbles = function(){
+	
+	upb.visible = false;
+	downb.visible = false;
+	rightb.visible = false;
+	leftb.visible = false;
+
+	hide = false;
+	
+}
+Board.prototype.spaceredundancy= function(){
+	console.log("MM");
+	hide = false;
 }
 
 //these functions are mapped to keyboard presses and change our currently highlighted tile by changing our currently highlighted row and column
