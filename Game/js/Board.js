@@ -1,4 +1,5 @@
 //global vars
+
 var startX;
 var startY;
 
@@ -48,8 +49,6 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     startX = originX;
     startY = originY;
 
-
-
     // reference to dialogue system
     this.dialogue = dialogue;
 
@@ -61,24 +60,8 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     this.selectedRow = null;
     this.selectedColumn = null;
 
-    
-
-
-
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-/*
-    //this makes the above part work
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.W);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.A);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.S);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.D);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.UP);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.RIGHT);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.LEFT);
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.DOWN);
 
-    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.F);
-    */
 }
 
 //set prototype and constructor
@@ -100,10 +83,6 @@ Board.prototype.update = function(){
     this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
     this.h = game.input.keyboard.addKey(Phaser.Keyboard.H);
 
-
-    //this is weird, but essentially we are setting each key to call a function when pressed,
-    //makes it so we don't have to worry about holding down the key
-
     //Checks if it needs to use a key press for hiding
     if(hide == true){
 
@@ -116,8 +95,8 @@ Board.prototype.update = function(){
 	    this.lArrow.onDown.add(this.hidebubbles, this);
 	    this.downArrow.onDown.add(this.hidebubbles, this);
 	}else if(hide == false){
+		//Special case for spacebar
 		this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
 
 	    this.spacebar.onDown.add(this.select, this);
 
@@ -131,13 +110,9 @@ Board.prototype.update = function(){
 	    this.downArrow.onDown.add(this.goDown, this);
 
 	    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
-
-
 	}
-		
+		//Fullscreen code will always work regardless of placing tiles
 		this.f.onDown.add(this.fullscreen, this);
-
-
 };
 
 // called when we select a tile
@@ -146,10 +121,8 @@ Board.prototype.select = function(){
 	//Sets the scale so it will work with differntly sized boards (YEEEE)
     var scale = 64;
 
-
     //error array for clearing text
     var messages = ["","","",""];
-
 
     if(hide){
 	    upb.visible = false;
@@ -165,19 +138,6 @@ Board.prototype.select = function(){
 		hide = false;
 	}	
 
-
-
-    //Word Wrap code example from previous game for reference
-    /*
-    //draws the text over the sprite
-    var text = game.add.text(0,-10,this.text,style);
-    text.anchor.set(0.5);
-    this.addChild(text);
-    */
-
-    //var style = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 133, align: "center"};    
-
-
     //declares variables for bubbles
     upb = game.add.sprite(200,200,'speachbubble');
     upb.anchor.setTo(0.5,0.5);
@@ -187,7 +147,6 @@ Board.prototype.select = function(){
     downb.anchor.setTo(0.5,0.5);
     downb.angle = 180;
 
-
     leftb = game.add.sprite(200,400,'speachbubble');
     leftb.anchor.setTo(0.5,0.5);
     leftb.angle = 270;
@@ -196,7 +155,7 @@ Board.prototype.select = function(){
     rightb.anchor.setTo(0.5,0.5);
     rightb.angle = 90;
 
-    //GET RID OF THIS LATER!! TESTING PURPOSES ONLY
+    //GET RID OF THIS LATER!! TESTING PURPOSES ONLY: It is used to make the bubbles small for now, but when we increase the scale it'll need to be bigger
     upb.scale.setTo(.5, .5);
     downb.scale.setTo(.5, .5);
     leftb.scale.setTo(.5, .5);
@@ -250,11 +209,9 @@ Board.prototype.select = function(){
             		if(check[0]){ 
             			noConflicts = false;
                  
-
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]];
-
                       
                         // position and show bubble
                         upb.x = this.currentColumn * scale + startX + scale/2;
@@ -266,9 +223,8 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textup = game.add.text(upb.x + 2,upb.y,speach,styleup);
 					    textup.anchor.set(0.5);
-    
             		}
-          	  }
+          	  	}
             }
             //Below
             if(this.currentRow != this.tiles.length-1){
@@ -293,9 +249,6 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textdown = game.add.text(downb.x,downb.y + 5,speach,styledown);
 					    textdown.anchor.set(0.5);
-    
-
-
             		}
 	       	  	}
             }
@@ -322,9 +275,8 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textleft = game.add.text(leftb.x - 5,leftb.y,speach,styleleft);
 					    textleft.anchor.set(0.5);
-
             		}
-          	  }
+          	 	}
             }
             //Right
             if(this.currentColumn != this.tiles[0].length - 1){
@@ -377,26 +329,8 @@ Board.prototype.select = function(){
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");
         }
-    	//this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-/*
-    	spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    	let x = true;
-    	while(x){
-    		if(spacebar.onDown){
-    			console.log("HI MOM");
-    			rightb.visible = false;
-
-    			x = false;	
-    		}
-    	}
-*/
-    	  //  this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    	  //    this.spacebar.onDown.add(this.select, this);
-
-    	//		if(score==12&&cursors.down.isDown&&spawn2==0){
-
+        	//Starts the process of hiding the bubbles after they've been shown
     		hide = true;
-
     }
 }
 
