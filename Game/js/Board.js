@@ -7,6 +7,16 @@ var downb;
 var rightb;
 var leftb;
 
+var textup = "";
+var textdown = "";
+var textleft = "";
+var textright = "";
+
+var styleup;
+var styledown;
+var styleleft;
+var styleright;
+
 var hide = false;
  
 //board constructor
@@ -146,6 +156,12 @@ Board.prototype.select = function(){
 		downb.visible = false;
 		rightb.visible = false;
 		leftb.visible = false;
+
+		textup.visible = false;
+		textdown.visible = false;
+		textleft.visible = false;
+		textright.visible = false;
+
 		hide = false;
 	}	
 
@@ -237,13 +253,20 @@ Board.prototype.select = function(){
 
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
-            			console.log(this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
+            			let speach = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]];
 
                       
                         // position and show bubble
                         upb.x = this.currentColumn * scale + startX + scale/2;
                         upb.y = startY + (this.currentRow - 1.6) * scale;
                         upb.visible = true;
+
+                        //Makes style for text with wordwrap so the text stays on the speach bubble
+                       	styleup = { font: "14px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 90, align: "center"};    
+                        //draws the text over the sprite
+					    textup = game.add.text(upb.x + 2,upb.y,speach,styleup);
+					    textup.anchor.set(0.5);
+    
             		}
           	  }
             }
@@ -258,12 +281,20 @@ Board.prototype.select = function(){
             			noConflicts = false;
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
-            			console.log(this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
+            			let speach = this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]];
             			
                         // position and show bubble
                         downb.x = this.currentColumn * scale + startX + scale/2;
                         downb.y = startY + (this.currentRow + 2.7) * scale;
                         downb.visible = true;
+
+                       	//Makes style for text with wordwrap so the text stays on the speach bubble
+                       	styledown = { font: "15px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 100, align: "center"};    
+                        //draws the text over the sprite
+					    textdown = game.add.text(downb.x,downb.y + 5,speach,styledown);
+					    textdown.anchor.set(0.5);
+    
+
 
             		}
 	       	  	}
@@ -279,12 +310,18 @@ Board.prototype.select = function(){
             			noConflicts = false;
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
-            			console.log(this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
+            			let speach = this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]];
             		
                         // position and show bubble
                         leftb.x = (this.currentColumn - 1) * scale + startX - scale/2;
                         leftb.y = startY + this.currentRow * scale + scale/2;
                         leftb.visible = true;
+
+                        //Makes style for text with wordwrap so the text stays on the speach bubble
+                       	styleleft = { font: "15px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 80, align: "center"};    
+                        //draws the text over the sprite
+					    textleft = game.add.text(leftb.x - 5,leftb.y,speach,styleleft);
+					    textleft.anchor.set(0.5);
 
             		}
           	  }
@@ -300,13 +337,19 @@ Board.prototype.select = function(){
             			noConflicts = false;
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
-            			console.log(this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
+            			let speach = this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]];
             			
                         // position and show bubble
                         rightb.x = (this.currentColumn + 2) * scale + startX + scale/2;
                         rightb.y = startY + this.currentRow * scale + scale/2;
                         rightb.visible = true;
-                        //leftb.angle = 180;
+
+                        //Makes style for text with wordwrap so the text stays on the speach bubble
+                       	styleright = { font: "14px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 90, align: "center"};    
+                        //draws the text over the sprite
+					    textright = game.add.text(rightb.x + 15,rightb.y,speach,styleright);
+					    textright.anchor.set(0.5);
+
 
             		}
           	  }
@@ -410,12 +453,13 @@ Board.prototype.hidebubbles = function(){
 	rightb.visible = false;
 	leftb.visible = false;
 
+	textup.visible = false;
+	textdown.visible = false;
+	textleft.visible = false;
+	textright.visible = false;
+
 	hide = false;
 	
-}
-Board.prototype.spaceredundancy= function(){
-	console.log("MM");
-	hide = false;
 }
 
 //these functions are mapped to keyboard presses and change our currently highlighted tile by changing our currently highlighted row and column
