@@ -16,7 +16,7 @@ MainMenu.prototype = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-        game.add.text(16, 16, "Move all of the circles \nonto the green squares \nin 10 seconds. \nUse wasd to move \nand the spacebar to select. \nPress f anytime to toggle fullscreen.", {fontSize: '16px', fill: 'Coral'});
+        game.add.text(16, 16, "Position your fellow kids so you can all get along", {fontSize: '16px', fill: 'Coral'});
     },
 
     update : function(){

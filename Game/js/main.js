@@ -11,8 +11,11 @@ game.state.add('MainMenu', MainMenu);
 game.state.add('TestLevel', TestLevel);
 game.state.add('LoseScreen', LoseScreen);
 game.state.add('WinScreen', WinScreen);
+game.state.add('Intro', Intro);
 
 //start with Main Menu State
-game.state.start('MainMenu');
+game.state.start('Intro');
+
+//game.state.start('MainMenu');
 
 
