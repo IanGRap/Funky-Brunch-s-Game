@@ -1,17 +1,18 @@
 // constructor for circle
-function Speach(game, key, locationX, locationY, dialogue){
+function Speach(game, key, locationX, locationY, dialogue,scale){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
     // animations for circle being highlighted
     this.animations.add('passive', [0], 2, true);
     this.animations.add('active', [1,2], 2, true);
+    this.scale.setTo(scale,scale);
 
     // Variables for character scroll effect
     this.next = 0;
     this.time = game.time.now;
     this.writing = true;
-    this.delay = 60;
+    this.delay = 40;
     this.dialogue = dialogue;
 
     //Makes style for text with wordwrap so the text stays on the speach bubble
@@ -39,9 +40,8 @@ Speach.prototype.constructor = Speach;
 
 Speach.prototype.update = function(){
     if(this.writing){
-        if (game.time.now - this.time > this.delay){//3 seconds have elapsed, so safe to do something
-            console.log("time up!");
-
+        if (game.time.now - this.time > this.delay){ // Delay is up for writing the next character
+            //When timer is up write next character
             if(this.next < this.dialogue.length){
                 this.text.text = this.text.text.concat(this.dialogue.charAt(this.next));
                 this.next++;

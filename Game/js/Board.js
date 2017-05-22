@@ -207,7 +207,7 @@ Board.prototype.select = function(){
             		let check = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictCheck(proposed);
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
-            			noConflicts = false;
+            			qnoConflicts = false;
                  
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
