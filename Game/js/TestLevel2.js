@@ -1,4 +1,4 @@
-var TestLevel = function(game){
+var TestLevel2 = function(game){
 
     //reference to the board object
     var board;
@@ -11,12 +11,12 @@ var TestLevel = function(game){
     var obstacles;  
 };
 
-TestLevel.prototype = {
+TestLevel2.prototype = {
     
     //load in art assets
     preload: function(){
         // cube sprite
-        game.load.spritesheet('cubes', 'assets/tilesV2.png', 192, 192);
+        game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
         //charcter images
         game.load.spritesheet('astronaut', 'assets/astronaughtimg.png', 64, 64);
         game.load.spritesheet('scientist', 'assets/scientistimg.png', 64, 64);
@@ -69,7 +69,7 @@ TestLevel.prototype = {
         this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, 5, 5, 192, 128, 128, this.dialogue);
+        this.board = new Board(game, 5, 5, 128, 128, 128, this.dialogue);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept

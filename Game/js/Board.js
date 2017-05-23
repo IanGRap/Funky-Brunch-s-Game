@@ -22,9 +22,8 @@ var hide = false;
  
 //board constructor
 function Board(game, columns, rows, tileSize, originX, originY, dialogue){
-    //sprite constructor
-    Phaser.Sprite.call(this, game, -200, -200, 'cubes');
-
+    //group constructor
+    Phaser.Group.call(this, game);
     //reference to the cubes that set up our tile system essentially
     //set 2d array with dimensions rows x columns
     this.tiles = [rows];
@@ -44,6 +43,8 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
 			this.tiles[r][c] = cube;
 		}
 	}
+
+    this.scale = tileSize;
 
 	//sets the global orgin point for use in bubbles
     startX = originX;
@@ -65,7 +66,7 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
 }
 
 //set prototype and constructor
-Board.prototype = Object.create(Phaser.Sprite.prototype);
+Board.prototype = Object.create(Phaser.Group.prototype);
 Board.prototype.constructor = Board;
 
 Board.prototype.update = function(){
@@ -119,7 +120,7 @@ Board.prototype.update = function(){
 Board.prototype.select = function(){
 
 	//Sets the scale so it will work with differntly sized boards (YEEEE)
-    var scale = 64;
+    //var this.scale = 64;
 
     //error array for clearing text
     var messages = ["","","",""];
@@ -188,7 +189,7 @@ Board.prototype.select = function(){
             this.selectedColumn = null;
             this.selectedRow = null;
         //if the tile we are on does not have an item
-        }else if(temp == null){
+        }else /*if(temp == null)*/{
         	
             //Shows traits of the selected tile and its neighbors
             console.log("______________________");
@@ -207,15 +208,15 @@ Board.prototype.select = function(){
             		let check = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictCheck(proposed);
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
-            			qnoConflicts = false;
+            			noConflicts = false;
                  
                         //display conflict text with UI
                         this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]];
                       
                         // position and show bubble
-                        upb.x = this.currentColumn * scale + startX + scale/2;
-                        upb.y = startY + (this.currentRow - 1.6) * scale;
+                        upb.x = this.currentColumn * this.scale + startX + this.scale/2;
+                        upb.y = startY + (this.currentRow - 1.6) * this.scale;
                         upb.visible = true;
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
@@ -240,8 +241,8 @@ Board.prototype.select = function(){
             			let speach = this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]];
             			
                         // position and show bubble
-                        downb.x = this.currentColumn * scale + startX + scale/2;
-                        downb.y = startY + (this.currentRow + 2.7) * scale;
+                        downb.x = this.currentColumn * this.scale + startX + this.scale/2;
+                        downb.y = startY + (this.currentRow + 2.7) * this.scale;
                         downb.visible = true;
 
                        	//Makes style for text with wordwrap so the text stays on the speach bubble
@@ -266,8 +267,8 @@ Board.prototype.select = function(){
             			let speach = this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]];
             		
                         // position and show bubble
-                        leftb.x = (this.currentColumn - 1) * scale + startX - scale/2;
-                        leftb.y = startY + this.currentRow * scale + scale/2;
+                        leftb.x = (this.currentColumn - 1) * this.scale + startX - this.scale/2;
+                        leftb.y = startY + this.currentRow * this.scale + this.scale/2;
                         leftb.visible = true;
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
@@ -292,8 +293,8 @@ Board.prototype.select = function(){
             			let speach = this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]];
             			
                         // position and show bubble
-                        rightb.x = (this.currentColumn + 2) * scale + startX + scale/2;
-                        rightb.y = startY + this.currentRow * scale + scale/2;
+                        rightb.x = (this.currentColumn + 2) * this.scale + startX + this.scale/2;
+                        rightb.y = startY + this.currentRow * this.scale + this.scale/2;
                         rightb.visible = true;
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
@@ -308,10 +309,21 @@ Board.prototype.select = function(){
             }
 
             if(noConflicts){
+                console.log("no conflict");
+                let t = null;
+                //check if there is a character on the current tile and we are therefore swaping characters
+                if(this.tiles[this.currentRow][this.currentColumn].item != null){
+                    t = this.tiles[this.currentRow][this.currentColumn].grab();
+                }
 	            //place our selected item on this tile
 	            this.tiles[this.currentRow][this.currentColumn].place( this.tiles[this.selectedRow][this.selectedColumn].grab() );
 	            //set the item we placed to no longer active
 	            this.tiles[this.currentRow][this.currentColumn].item.activate();
+
+                //if there ended up being a character on the tile, put that character in previous position
+                if(t != null){
+                    this.tiles[this.selectedRow][this.selectedColumn].place( t );
+                }
 
 	            //set references to our selected item to null
 	            this.selectedRow = null;
@@ -321,14 +333,15 @@ Board.prototype.select = function(){
 	            }
       		} else {
                 //make our currently selected character unselected
-                proposed.activate();
+                /*proposed.activate();
                 this.selectedRow = null;
-                this.selectedColumn = null;
+                this.selectedColumn = null;*/
             }
-        } else {
+        }
+        /*} else {
             //this means we tired to place our selected item on a tile that already has an item
             console.log("thing here");
-        }
+        }*/
         	//Starts the process of hiding the bubbles after they've been shown
     		hide = true;
     }
