@@ -223,7 +223,7 @@ function kidschat3(){
 }
 
 function gamestart(){
-    game.state.start('TestLevel');
+    game.state.start('TestLevel2');
 }
 
 
