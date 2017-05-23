@@ -56,7 +56,7 @@ Intro.prototype = {
         var backgroundfront = game.add.image(0,0,'backgroundfront');
 
 
-        door = game.add.sprite(650,1060,'door');  
+        door = game.add.sprite(650,1130,'door');  
         door.scale.setTo(1,.9);                    //REMOVE WHEN YOU GET PROPER ASSETS
         //makes door animations
         door.animations.add('open',[0,1,2]);      
@@ -92,7 +92,7 @@ Intro.prototype = {
 
 
         game.camera.follow(camera);
-
+        camera.alpha = 0;
 
 
 
@@ -171,7 +171,7 @@ function dinowalking(){
     dino.animations.play('walk',3);
 
     door.kill();
-    door = game.add.sprite(650,1060,'door');  
+    door = game.add.sprite(650,1130,'door');  
     door.scale.setTo(1,.9);                    //REMOVE WHEN YOU GET PROPER ASSETS
     //makes door animations
     door.animations.add('open',[0,1,2]);  
@@ -213,16 +213,18 @@ function walkright(){
 }
 
 function kidschat1(){
-    dialogue("Hey Dino, glad you could make it to the party.",1950,1200,'speachR',kidschat2,1.8);
+    dialogue("Hey Dino,  glad you could make it to the party.",1950,1200,'speachR',kidschat2,1.8);
 }
 function kidschat2(){
     dialogue("No problem Doc, where's everyone at?",700,1100,'speachL',kidschat3,1.8);
 }
 function kidschat3(){
-    dialogue("They're inside with their parents right now. Anyways, want to play a game?",1950,1200,'speachR',kidschat1,1.8);
+    dialogue("They're inside with their parents right now. Anyways, want to play a game?",1950,1200,'speachR',gamestart,1.8);
 }
 
-
+function gamestart(){
+    game.state.start('TestLevel');
+}
 
 
 //Function to do the work on the Speach js file
