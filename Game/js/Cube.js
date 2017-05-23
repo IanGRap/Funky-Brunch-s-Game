@@ -4,10 +4,10 @@ function Cube(game, key, locationX, locationY){
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
     //animations for different cube colors
-    this.animations.add('green', [0], 2, true);
+    this.animations.add('normal', [0], 2, true);
+    this.animations.add('normalHighlight', [1], 2, true);
+    this.animations.add('green', [2], 2, true);
     this.animations.add('greenHighlight', [3], 2, true);
-    this.animations.add('red', [2], 2, true);
-    this.animations.add('redHighlight', [5], 2, true);
     this.animations.play('green');
 
     // reference to if this is the cube currently highlighted
@@ -37,7 +37,7 @@ Cube.prototype.activate = function(){
         this.active = false;
         //set to not selected animation based on whether or not this is a dangerous tile
         if(this.charged){
-            this.animations.play('red');
+            this.animations.play('normal');
         } else {
             this.animations.play('green');
         }
@@ -45,7 +45,7 @@ Cube.prototype.activate = function(){
     } else {
         this.active = true;
         if(this.charged){
-            this.animations.play('redHighlight');
+            this.animations.play('normalHighlight');
         } else {
             this.animations.play('greenHighlight');
         }
@@ -73,5 +73,5 @@ Cube.prototype.grab = function(){
 //set dangerous flag to true and change color to red
 Cube.prototype.charge = function(){
     this.charged = true;
-    this.animations.play('red');
+    this.animations.play('normal');
 }

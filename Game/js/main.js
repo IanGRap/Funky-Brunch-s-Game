@@ -9,12 +9,13 @@ function update(){};
 // load in states
 game.state.add('MainMenu', MainMenu);
 game.state.add('TestLevel', TestLevel);
+game.state.add('TestLevel2', TestLevel2);
 game.state.add('LoseScreen', LoseScreen);
 game.state.add('WinScreen', WinScreen);
 game.state.add('Intro', Intro);
 
 //start with Main Menu State
-game.state.start('Intro');
+game.state.start('TestLevel2');
 
 //game.state.start('MainMenu');
 
