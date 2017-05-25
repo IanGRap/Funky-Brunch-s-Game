@@ -21,7 +21,7 @@ var styleright;
 var hide = false;
  
 //board constructor
-function Board(game, columns, rows, tileSize, originX, originY, dialogue){
+function Board(game, columns, rows, tileSize, originX, originY){
     //group constructor
     Phaser.Group.call(this, game);
     //reference to the cubes that set up our tile system essentially
@@ -51,7 +51,7 @@ function Board(game, columns, rows, tileSize, originX, originY, dialogue){
     startY = originY;
 
     // reference to dialogue system
-    this.dialogue = dialogue;
+    //this.dialogue = dialogue;
 
     // the row and column we currently have highlighted
     this.currentRow = 0;
@@ -211,7 +211,7 @@ Board.prototype.select = function(){
             			noConflicts = false;
                  
                         //display conflict text with UI
-                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
+                        //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]];
                       
                         // position and show bubble
@@ -237,7 +237,7 @@ Board.prototype.select = function(){
             		if(check[0]){ 
             			noConflicts = false;
                         //display conflict text with UI
-                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
+                        //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]];
             			
                         // position and show bubble
@@ -263,7 +263,7 @@ Board.prototype.select = function(){
             		if(check[0]){ 
             			noConflicts = false;
                         //display conflict text with UI
-                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
+                        //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]];
             		
                         // position and show bubble
@@ -289,7 +289,7 @@ Board.prototype.select = function(){
             		if(check[0]){ 
             			noConflicts = false;
                         //display conflict text with UI
-                        this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
+                        //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]];
             			
                         // position and show bubble
@@ -328,9 +328,7 @@ Board.prototype.select = function(){
 	            //set references to our selected item to null
 	            this.selectedRow = null;
 	            this.selectedColumn = null;
-	            if(this.checkTiles()){
-	                game.state.start("WinScreen");
-	            }
+	            this.setDisplay();
       		} else {
                 //make our currently selected character unselected
                 /*proposed.activate();
@@ -368,6 +366,7 @@ Board.prototype.setTiles = function(outline){
         this.selectedRow = null;
         this.selectedColumn = null;
         this.tiles[0][0].activate();
+        this.setDisplay();
     }
 }
 
@@ -411,37 +410,51 @@ Board.prototype.hidebubbles = function(){
 
 //these functions are mapped to keyboard presses and change our currently highlighted tile by changing our currently highlighted row and column
 Board.prototype.goLeft = function(){
+    this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentColumn --;
     if(this.currentColumn  <0){
         this.currentColumn  = 0;
     }
     this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.setDisplay();
 }
 
 Board.prototype.goDown = function(){
+    this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentRow++;
     if(this.currentRow >= this.tiles.length){
         this.currentRow = this.tiles.length-1;
     }
     this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.setDisplay();
 }
 
 Board.prototype.goUp = function(){
+    this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentRow--;
     if(this.currentRow <0){
         this.currentRow = 0;
     }
     this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.setDisplay();
 }
 
 Board.prototype.goRight = function(){
+    this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentColumn ++;
     if(this.currentColumn  >= this.tiles[0].length){
         this.currentColumn  = this.tiles[0].length-1;
     }
     this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.setDisplay();
+}
+
+Board.prototype.setDisplay = function(){
+    if(this.tiles[this.currentRow][this.currentColumn ].item != null){
+        this.tiles[this.currentRow][this.currentColumn ].item.displaying = !this.tiles[this.currentRow][this.currentColumn ].item.displaying;
+    }
 }

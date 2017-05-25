@@ -24,7 +24,7 @@ MainMenu.prototype = {
     },
 
     start : function(){
-        game.state.start('TestLevel');
+        game.state.start('testLevel2');
     },
 
     fullscreen : function(){

@@ -1,5 +1,5 @@
 // constructor for circle
-function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name){
+function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name, visibleTraits){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
@@ -20,6 +20,16 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.enableBody = true;
 
     this.name = name;
+
+    this.traitTracker = visibleTraits;
+
+    this.displaying = false;
+    this.displayText;
+    this.updateDisplay();
+    
+    this.displayStats = game.add.text(game.world.width - 192, 256, this.displayText, {fontSize: '30px', fill: 'Red'});
+
+    this.displaySprite = game.add.sprite(game.world.width - 192, 128, key);
 }
 
 // set inherited prototype
@@ -27,7 +37,36 @@ Character.prototype = Object.create(Phaser.Sprite.prototype);
 // declare constructor
 Character.prototype.constructor = Character;
 
-Character.prototype.update = function(){};
+Character.prototype.updateDisplay = function(){
+    this.displayText = ""+this.name;
+    for(let i=0; i<this.traits.length; i++){
+        if(this.traitTracker[i] != false){
+            this.displayText += "\n"+this.traits[i];
+        } else {
+            this.displayText += "\n???";
+        }
+    }
+}
+
+Character.prototype.revealTrait = function(trait){
+    for(let i=0; i<this.traits.length; i++){
+        if(this.traits[i] == trait){
+            this.traitTracker[i] = true;
+            break;
+        }
+    }
+}
+
+Character.prototype.update = function(){
+    if(this.displaying){
+        this.updateDisplay();
+        this.displayStats.text = this.displayText;
+        this.displaySprite.alpha = 1;
+    } else {
+        this.displayStats.text = "";
+        this.displaySprite.alpha = 0;
+    }
+};
 
 Character.prototype.activate = function(){
     // set animations based on if this is selected circle
@@ -51,6 +90,8 @@ Character.prototype.conflictCheck = function(other){
 		console.log(this.traits[i]);
 		for(let j = 0; j < other.traits.length; j++){
 			if(this.conflicts[i] == other.traits[j]){
+                other.revealTrait(other.traits[j]);
+                this.revealTrait(this.traits[i]);
 				return [true,i];
 			}
 		}

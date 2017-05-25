@@ -38,8 +38,8 @@ TestLevel2.prototype = {
         game.add.image(0,0,'river');
 
         //add dialogue system
-        this.dialogue = new Dialogue(game, 'dialogue', 96);
-        game.add.existing(this.dialogue);
+        //this.dialogue = new Dialogue(game, 'dialogue', 96);
+        //game.add.existing(this.dialogue);
 
 
         this.obstacles = [
@@ -69,7 +69,7 @@ TestLevel2.prototype = {
         this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, 5, 5, 128, 128, 128, this.dialogue);
+        this.board = new Board(game, 5, 5, 128, 128, 128);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
@@ -77,12 +77,12 @@ TestLevel2.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.characters = [
-            new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog'),
-            new Character(game, 'scientist', 0, 0,  ["Silly"],["Serious"],["Why so SERIOUS?"], 'Scientist'),
-            new Character(game, 'knight', 0, 0, ["Serious"],["Silly"],["I don't want to play with someone so SILLY"], 'Knight'),
-            new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur'),
-            new Character(game, 'ghost', 0, 0,["Allergies"],["Dog"],["Achoo, I think I'm allergic to Dogs"], 'Ghost'),
-            new Character(game, 'astronaut', 0, 0,["Quiet"],["Noise"],["You're too NOISY!"], 'Astronaut')
+            new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog', dogTraits),
+            new Character(game, 'scientist', 0, 0,  ["Silly"],["Serious"],["Why so SERIOUS?"], 'Scientist', docTraits),
+            new Character(game, 'knight', 0, 0, ["Serious"],["Silly"],["I don't want to play with someone so SILLY"], 'Knight', knightTraits),
+            new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur', dinoTraits),
+            new Character(game, 'ghost', 0, 0,["Allergies"],["Dog"],["Achoo, I think I'm allergic to Dogs"], 'Ghost', ghostTraits),
+            new Character(game, 'astronaut', 0, 0,["Quiet"],["Noise"],["You're too NOISY!"], 'Astronaut', astronautTraits)
 
         ];
 
@@ -104,16 +104,8 @@ TestLevel2.prototype = {
 
 
     update: function(){
-        // decrease timer
-        /*this.timer -= game.time.elapsed;
-        if(this.timer <= 0){
-            //if there are no circles on red tiles, you win
-            if(this.board.checkTiles()){
-                game.state.start('WinScreen');
-            //else it is game over
-            } else {
-                //game.state.start('LoseScreen');
-            }
-        }*/
+        if(this.board.checkTiles()){
+            game.state.start("TestLevel2");
+        }
     }
 };

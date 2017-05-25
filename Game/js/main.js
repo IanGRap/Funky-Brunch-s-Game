@@ -6,6 +6,42 @@ function preload(){};
 function create(){};
 function update(){};
 
+// persistent arrays tracking which traits of the characters are discovered
+var dinoTraits = [];
+var ghostTraits = [];
+var dogTraits = [];
+var docTraits = [];
+var knightTraits = [];
+var astronautTraits = [];
+var dinoConflicts = [];
+var ghostConflicts = [];
+var dogConflicts = [];
+var docConflicts = [];
+var knightConflicts = [];
+var astronautConflicts = [];
+
+var stats = [
+	dinoTraits,
+	ghostTraits,
+	dogTraits,
+	docTraits,
+	knightTraits,
+	astronautTraits,
+	dinoConflicts,
+	ghostConflicts,
+	dogConflicts,
+	docConflicts,
+	knightConflicts,
+	astronautConflicts
+];
+
+for(let i=0; i<stats.length; i++){
+	stats[i].length = 10;
+	for(let j=0; j<stats[i].length; j++){
+		stats[i][j] = false;
+	}
+}
+
 // load in states
 game.state.add('MainMenu', MainMenu);
 game.state.add('TestLevel', TestLevel);
@@ -15,7 +51,7 @@ game.state.add('WinScreen', WinScreen);
 game.state.add('Intro', Intro);
 
 //start with Main Menu State
-game.state.start('Intro');
+game.state.start('TestLevel2');
 
 //game.state.start('MainMenu');
 
