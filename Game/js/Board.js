@@ -27,7 +27,7 @@ var placed;
 var misplaced;
  
 //board constructor
-function Board(game, columns, rows, tileSize, originX, originY){
+function Board(game, rows, columns, tileSize, originX, originY){
     //group constructor
     Phaser.Group.call(this, game);
     //reference to the cubes that set up our tile system essentially
