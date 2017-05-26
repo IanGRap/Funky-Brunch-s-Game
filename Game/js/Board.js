@@ -328,7 +328,11 @@ Board.prototype.select = function(){
                 let t = null;
                 //check if there is a character on the current tile and we are therefore swaping characters
                 if(this.tiles[this.currentRow][this.currentColumn].item != null){
+<<<<<<< HEAD
                 	this.setDisplay();
+=======
+                    this.setDisplay();
+>>>>>>> 561106c32c34c8cb4310091fd4a2d317f0880ef5
                     t = this.tiles[this.currentRow][this.currentColumn].grab();
                 }
 	            //place our selected item on this tile
