@@ -3,8 +3,12 @@ var MainMenu = function(game){
 }
 
 MainMenu.prototype = {
+    preload : function(){
+        game.load.image('menu','assets/menuplaceholder.png');
+    },
 
     create : function(){
+        var background = game.add.image(0,0,'menu');
         //text for explaining rules and prompting the player to start
         this.press = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
@@ -16,7 +20,9 @@ MainMenu.prototype = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-        game.add.text(16, 16, "Position your fellow kids so you can all get along", {fontSize: '16px', fill: 'Coral'});
+        var text = game.add.text(650, 350, "Press Space to Start \n Press f to pay respects and go fullscreen \n use wsad or arrow keys to move and space to select", {fontSize: '25px',align: "center", fill: 'black'});
+        text.anchor.setTo(0.5,0.5);
+
     },
 
     update : function(){
@@ -24,7 +30,7 @@ MainMenu.prototype = {
     },
 
     start : function(){
-        game.state.start('testLevel2');
+        game.state.start('Intro');
     },
 
     fullscreen : function(){

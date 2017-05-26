@@ -1,4 +1,4 @@
-// constructor for circle
+// constructor for Speach
 function Speach(game, key, locationX, locationY, dialogue,scale){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
@@ -14,6 +14,9 @@ function Speach(game, key, locationX, locationY, dialogue,scale){
     this.writing = true;
     this.delay = 40;
     this.dialogue = dialogue;
+
+    boop = game.add.audio('dialogue');
+
 
     //Makes style for text with wordwrap so the text stays on the speach bubble
     this.style = { font: "25px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};    
@@ -33,6 +36,7 @@ function Speach(game, key, locationX, locationY, dialogue,scale){
     this.addChild(this.text);
 }
 
+var boop;
 // set inherited prototype
 Speach.prototype = Object.create(Phaser.Sprite.prototype);
 // declare constructor
@@ -43,6 +47,7 @@ Speach.prototype.update = function(){
         if (game.time.now - this.time > this.delay){ // Delay is up for writing the next character
             //When timer is up write next character
             if(this.next < this.dialogue.length){
+                boop.play();
                 this.text.text = this.text.text.concat(this.dialogue.charAt(this.next));
                 this.next++;
                 this.time = game.time.now;

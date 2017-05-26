@@ -19,6 +19,12 @@ var styleleft;
 var styleright;
 
 var hide = false;
+
+//audio
+var tick;
+var select;
+var placed;
+var misplaced;
  
 //board constructor
 function Board(game, columns, rows, tileSize, originX, originY){
@@ -60,6 +66,12 @@ function Board(game, columns, rows, tileSize, originX, originY){
     // the row and column of the circle we have selected, null otherwise
     this.selectedRow = null;
     this.selectedColumn = null;
+
+    //sets the audio
+    tick = game.add.audio('tick');
+    select = game.add.audio('select');
+    placed  = game.add.audio('placed');
+    misplaced = game.add.audio('misplaced');
 
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
@@ -121,6 +133,7 @@ Board.prototype.select = function(){
 
 	//Sets the scale so it will work with differntly sized boards (YEEEE)
     //var this.scale = 64;
+   	
 
     //error array for clearing text
     var messages = ["","","",""];
@@ -175,6 +188,7 @@ Board.prototype.select = function(){
     if(this.selectedRow == null){
         //if the tile we are on does have an item
         if(temp != null){
+        	select.play();
             // make this item our selected item by storing the row and column it is on
             this.selectedRow = this.currentRow;
             this.selectedColumn = this.currentColumn;
@@ -309,6 +323,7 @@ Board.prototype.select = function(){
             }
 
             if(noConflicts){
+            	placed.play();
                 console.log("no conflict");
                 let t = null;
                 //check if there is a character on the current tile and we are therefore swaping characters
@@ -330,6 +345,7 @@ Board.prototype.select = function(){
 	            this.selectedColumn = null;
 	            this.setDisplay();
       		} else {
+      			misplaced.play();
                 //make our currently selected character unselected
                 /*proposed.activate();
                 this.selectedRow = null;
@@ -410,6 +426,7 @@ Board.prototype.hidebubbles = function(){
 
 //these functions are mapped to keyboard presses and change our currently highlighted tile by changing our currently highlighted row and column
 Board.prototype.goLeft = function(){
+	tick.play();
     this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentColumn --;
@@ -421,6 +438,7 @@ Board.prototype.goLeft = function(){
 }
 
 Board.prototype.goDown = function(){
+	tick.play();
     this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentRow++;
@@ -432,6 +450,7 @@ Board.prototype.goDown = function(){
 }
 
 Board.prototype.goUp = function(){
+	tick.play();
     this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentRow--;
@@ -443,6 +462,7 @@ Board.prototype.goUp = function(){
 }
 
 Board.prototype.goRight = function(){
+	tick.play();
     this.setDisplay();
     this.tiles[this.currentRow][this.currentColumn ].activate();
     this.currentColumn ++;

@@ -15,6 +15,9 @@ TestLevel2.prototype = {
     
     //load in art assets
     preload: function(){
+        //fixes aftermath of intro
+        game.world.scale.set(1);
+
         // cube sprite
         game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
         //charcter images
@@ -26,17 +29,32 @@ TestLevel2.prototype = {
         game.load.spritesheet('dog', 'assets/dogimg.png', 64, 64);
         //backround image
         game.load.image('river','assets/river.png');
+        game.load.image('boat','assets/Boat.png');
         //dialogue UI
         game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
         game.load.image('speachbubble','assets/speachbubble.png');
+        //audio
+        game.load.audio('tick',['assets/audio/tick.mp3']);
+        game.load.audio('select',['assets/audio/select.mp3']);
+        game.load.audio('placed',['assets/audio/placed.mp3']);
+        game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
+
+
+
+
 
     },
 
     create: function(){
 
         //loads background image
-        game.add.image(0,0,'river');
+        river = game.add.image(700,400,'river');
+        river.scale.setTo(1.3,2.5);
+        river.anchor.setTo(0.5,0.5);
+        river.angle = 90;
 
+        var boat = game.add.image(-100,120,'boat');
+        boat.scale.setTo(2.7,2.7);
         //add dialogue system
         //this.dialogue = new Dialogue(game, 'dialogue', 96);
         //game.add.existing(this.dialogue);
@@ -78,11 +96,11 @@ TestLevel2.prototype = {
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.characters = [
             new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog', dogTraits),
-            new Character(game, 'scientist', 0, 0,  ["Silly"],["Serious"],["Why so SERIOUS?"], 'Scientist', docTraits),
-            new Character(game, 'knight', 0, 0, ["Serious"],["Silly"],["I don't want to play with someone so SILLY"], 'Knight', knightTraits),
+            new Character(game, 'scientist', 0, 0,  ["Silly","Fraidy Cat"],["Serious","Spooky"],["Why so SERIOUS?","You're scaring me!"], 'Scientist', docTraits),
+            new Character(game, 'knight', 0, 0, ["Serious","Fantasy"],["Silly","Sci-Fi"],["I don't want to play with someone so SILLY","I wanted to play fantasy"], 'Knight', knightTraits),
             new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur', dinoTraits),
-            new Character(game, 'ghost', 0, 0,["Allergies"],["Dog"],["Achoo, I think I'm allergic to Dogs"], 'Ghost', ghostTraits),
-            new Character(game, 'astronaut', 0, 0,["Quiet"],["Noise"],["You're too NOISY!"], 'Astronaut', astronautTraits)
+            new Character(game, 'ghost', 0, 0,["Allergies","Spooky"],["Dog","Fraidy Cat"],["Achoo, I think I'm allergic to Dogs", "Boo! You're scared!"], 'Ghost', ghostTraits),
+            new Character(game, 'astronaut', 0, 0,["Quiet","Sci-Fi"],["Noise","Fantasy"],["You're too NOISY!","I wanted to play Sci-Fi"], 'Astronaut', astronautTraits)
 
         ];
 

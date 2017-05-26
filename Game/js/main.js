@@ -51,8 +51,7 @@ game.state.add('WinScreen', WinScreen);
 game.state.add('Intro', Intro);
 
 //start with Main Menu State
-game.state.start('TestLevel2');
-
-//game.state.start('MainMenu');
+game.state.start('MainMenu');
+//game.state.start('TestLevel2');
 
 

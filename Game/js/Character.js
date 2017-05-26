@@ -3,6 +3,9 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
+    //DEBUG>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
+    this.scale.setTo(2,2);
+
     // animations for circle being highlighted
     this.animations.add('nonactive', [0], 2, true);
     this.animations.add('active', [1], 2, true);
@@ -27,9 +30,13 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.displayText;
     this.updateDisplay();
     
-    this.displayStats = game.add.text(game.world.width - 192, 256, this.displayText, {fontSize: '30px', fill: 'Red'});
+    this.displayStats = game.add.text(1200, 256, this.displayText, {fontSize: '30px', fill: 'Red'});
+    this.displayStats.anchor.setTo(0.5,0.5);
 
-    this.displaySprite = game.add.sprite(game.world.width - 192, 128, key);
+    this.displaySprite = game.add.sprite(1200, 128, key);
+    this.displaySprite.anchor.setTo(0.5,0.5);
+    this.displaySprite.scale.setTo(2,2);
+
 }
 
 // set inherited prototype
@@ -38,10 +45,14 @@ Character.prototype = Object.create(Phaser.Sprite.prototype);
 Character.prototype.constructor = Character;
 
 Character.prototype.updateDisplay = function(){
+        console.log("HERES THE DISPLAY TEXT " + this.displayText);
+
     this.displayText = ""+this.name;
     for(let i=0; i<this.traits.length; i++){
         if(this.traitTracker[i] != false){
+
             this.displayText += "\n"+this.traits[i];
+
         } else {
             this.displayText += "\n???";
         }
