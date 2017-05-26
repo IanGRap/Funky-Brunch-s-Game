@@ -232,7 +232,7 @@ function gamestart(){
 }
 
 function level1start(){
-    game.state.start('TestLevel2');
+    game.state.start('Tutorial');
 }
 
 
