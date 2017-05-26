@@ -61,11 +61,6 @@ Intro.prototype = {
         //Starts the music
         introSong();
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG SCREEN WIPE
-        wipe = new ScreenWipe(game,wipe);
-        game.add.existing(wipe);
-
-
         //Sets the background images
         var background = game.add.image(0,0,'background');
         car = game.add.sprite(-300,1090,'car');  
@@ -112,7 +107,7 @@ Intro.prototype = {
        //   /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
        if(scaletrigger == 1){
             if(worldScale < 1.3){
-                worldScale += 0.0002;
+                worldScale += 0.0004;
             }
         }
        //    *///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
@@ -146,7 +141,7 @@ Intro.prototype = {
 
 function movedown1(){
     scaletrigger = 1;
-    tween = game.add.tween(camera).to( { y: 1160, x: 700},20000,"Linear",true,0);
+    tween = game.add.tween(camera).to( { y: 1160, x: 700},17000,"Linear",true,0);
     //console.log("Hey there");
 
     //starts the timer for the car moving into the shot
@@ -161,6 +156,7 @@ function movedown1(){
 
 function cartalk1(){
     //Adds the speach bubble
+    themeIntro();
     dialogue("Have a good time with your\nfriends Sam!",400,1000,'speachL',cartalk2,1);
 }
 function cartalk2(){
@@ -229,6 +225,13 @@ function kidschat3(){
 }
 
 function gamestart(){
+    //Screen Wipe Object Creation
+    wipe = new ScreenWipe(game,'wipe');
+    game.add.existing(wipe);
+    wipe.animOutComplex(level1start,5000,3800,1.5);
+}
+
+function level1start(){
     game.state.start('TestLevel2');
 }
 
@@ -270,7 +273,7 @@ function introSong(){
     music.play();
 
     //Jump to next song when over
-    music.onStop.add(function(){ themeIntro(); }, this);
+   // music.onStop.add(function(){ themeIntro(); }, this);
 }
 
 function themeIntro(){

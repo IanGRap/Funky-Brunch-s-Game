@@ -1,10 +1,13 @@
 var MainMenu = function(game){
 
 }
+//Screenwipe var
+var wipe;
 
 MainMenu.prototype = {
     preload : function(){
         game.load.image('menu','assets/menuplaceholder.png');
+        game.load.image('wipe','assets/wipe.png');
     },
 
     create : function(){
@@ -14,6 +17,10 @@ MainMenu.prototype = {
         this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
         this.press.onDown.add(this.start, this);
         this.f.onDown.add(this.fullscreen, this);
+
+        //Screen Wipe Object Creation
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
 
         game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
         game.input.keyboard.removeKeyCapture(Phaser.Keyboard.F);
@@ -30,9 +37,12 @@ MainMenu.prototype = {
     },
 
     start : function(){
-        game.state.start('Intro');
+        wipe.animOut(this.nextstate);
     },
-
+    nextstate : function(){
+        game.state.start('Tutorial');
+       //game.state.start('Intro');
+    },
     fullscreen : function(){
         console.log("fullscreen function");
         if(game.scale.isFullScreen){
