@@ -11,6 +11,9 @@ var TestLevel2 = function(game){
     var obstacles;  
 };
 
+//Screen wipe effect
+var wipe;
+
 TestLevel2.prototype = {
     
     //load in art assets
@@ -38,11 +41,8 @@ TestLevel2.prototype = {
         game.load.audio('select',['assets/audio/select.mp3']);
         game.load.audio('placed',['assets/audio/placed.mp3']);
         game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
-
-
-
-
-
+        //Wipe Image
+        game.load.image('wipe','assets/wipe.png');
     },
 
     create: function(){
@@ -118,12 +118,20 @@ TestLevel2.prototype = {
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles[Math.floor(Math.random() * 3)]);
+
+        //Screen Wipe Object Creation
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
     },
 
 
     update: function(){
         if(this.board.checkTiles()){
-            game.state.start("TestLevel2");
+            wipe.animOut(this.nextlevel);
         }
+    },
+    nextlevel: function(){
+        game.state.start("TestLevel2");
     }
 };

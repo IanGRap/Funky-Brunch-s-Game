@@ -44,12 +44,12 @@ for(let i=0; i<stats.length; i++){
 
 // load in states
 game.state.add('MainMenu', MainMenu);
+game.state.add('Tutorial', Tutorial);
 game.state.add('TestLevel', TestLevel);
 game.state.add('TestLevel2', TestLevel2);
 game.state.add('LoseScreen', LoseScreen);
 game.state.add('WinScreen', WinScreen);
 game.state.add('Intro', Intro);
-game.state.add('Tutorial', Tutorial);
 
 //start with Main Menu State
 game.state.start('MainMenu');

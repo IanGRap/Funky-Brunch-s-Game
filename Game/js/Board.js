@@ -27,7 +27,7 @@ var placed;
 var misplaced;
  
 //board constructor
-function Board(game, rows, columns, tileSize, originX, originY){
+function Board(game, columns, rows, tileSize, originX, originY){
     //group constructor
     Phaser.Group.call(this, game);
     //reference to the cubes that set up our tile system essentially
@@ -328,7 +328,7 @@ Board.prototype.select = function(){
                 let t = null;
                 //check if there is a character on the current tile and we are therefore swaping characters
                 if(this.tiles[this.currentRow][this.currentColumn].item != null){
-                    this.setDisplay();
+                	this.setDisplay();
                     t = this.tiles[this.currentRow][this.currentColumn].grab();
                 }
 	            //place our selected item on this tile
