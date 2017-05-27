@@ -76,15 +76,15 @@ Tutorial.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]    
 
-        var dinoAttributes = ["serious"];
+        var dinoAttributes = ["chill"];
         var dinoConflicts = [];
         var dinoText = [];
         var knightAttributes = ["serious"];
         var knightConflicts = ["silly"];
-        var knightText = ["That potion isn't real. I need a party that plays SERIOUSLY"];
+        var knightText = ["I need a party that plays SERIOUSLY"];
         var scientistAttributes = ["silly"];
-        var scientistConflicts = [];
-        var scientistText = [];
+        var scientistConflicts = ["serious"];
+        var scientistText = ["I want someone silly"];
 
         this.characters = [
             new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits),

@@ -223,7 +223,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
-                 
+                 		this.tiles[this.currentRow - 1][this.currentColumn].incorrect();
+
                         //display conflict text with UI
                         //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow - 1][this.currentColumn].item.conflictText[check[1]];
@@ -238,6 +239,11 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textup = game.add.text(upb.x + 2,upb.y,speach,styleup);
 					    textup.anchor.set(0.5);
+
+            		}else{
+            			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow - 1][this.currentColumn])){
+            				this.tiles[this.currentRow - 1][this.currentColumn].correct();
+            			}
             		}
           	  	}
             }
@@ -250,6 +256,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+            			this.tiles[this.currentRow + 1][this.currentColumn].incorrect();
+
                         //display conflict text with UI
                         //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow + 1][this.currentColumn].item.conflictText[check[1]];
@@ -264,6 +272,10 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textdown = game.add.text(downb.x,downb.y + 5,speach,styledown);
 					    textdown.anchor.set(0.5);
+            		}else{
+                    	if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow + 1][this.currentColumn])){
+            				this.tiles[this.currentRow + 1][this.currentColumn].correct();
+            			}
             		}
 	       	  	}
             }
@@ -276,6 +288,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+            			this.tiles[this.currentRow][this.currentColumn - 1].incorrect();
+
                         //display conflict text with UI
                         //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow][this.currentColumn - 1].item.conflictText[check[1]];
@@ -290,6 +304,10 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textleft = game.add.text(leftb.x - 5,leftb.y,speach,styleleft);
 					    textleft.anchor.set(0.5);
+            		}else{
+            			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn - 1])){
+            				this.tiles[this.currentRow][this.currentColumn - 1].correct();
+            			}
             		}
           	 	}
             }
@@ -302,6 +320,8 @@ Board.prototype.select = function(){
             		//if there's a conflict it makes it so the tile won't place and it console logs the error text which is stored in check[1]
             		if(check[0]){ 
             			noConflicts = false;
+            			this.tiles[this.currentRow][this.currentColumn + 1].incorrect();
+
                         //display conflict text with UI
                         //this.dialogue.addDialogue(proposed.name, this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]]);
             			let speach = this.tiles[this.currentRow][this.currentColumn + 1].item.conflictText[check[1]];
@@ -316,8 +336,10 @@ Board.prototype.select = function(){
                         //draws the text over the sprite
 					    textright = game.add.text(rightb.x + 15,rightb.y,speach,styleright);
 					    textright.anchor.set(0.5);
-
-
+            		}else{
+            			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn + 1])){
+            				this.tiles[this.currentRow][this.currentColumn + 1].correct();
+            			}
             		}
           	  }
             }
