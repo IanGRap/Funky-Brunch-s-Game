@@ -11,6 +11,7 @@ var Tutorial = function(game){
 
 //Wipe var
 var wipe;
+var do1 = true;
 
 Tutorial.prototype = {
     
@@ -112,7 +113,11 @@ Tutorial.prototype = {
 
     update: function(){
         if(this.board.checkTiles()){
-            wipe.animOut(this.nextlevel);
+            if(do1){
+                do1 = false;
+                wipe.animOut(this.nextlevel);
+
+            }
         }
     },
     nextlevel: function(){

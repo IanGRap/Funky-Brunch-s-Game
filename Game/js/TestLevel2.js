@@ -13,6 +13,7 @@ var TestLevel2 = function(game){
 
 //Screen wipe effect
 var wipe;
+var do1 = true;
 
 TestLevel2.prototype = {
     
@@ -128,7 +129,10 @@ TestLevel2.prototype = {
 
     update: function(){
         if(this.board.checkTiles()){
-            wipe.animOut(this.nextlevel);
+            if(do1){
+                do1 = false;
+                wipe.animOut(this.nextlevel);
+            }
         }
     },
     nextlevel: function(){
