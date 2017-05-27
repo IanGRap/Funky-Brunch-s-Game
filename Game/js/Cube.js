@@ -5,9 +5,9 @@ function Cube(game, key, locationX, locationY){
 
     //animations for different cube colors
     this.animations.add('normal', [0], 2, true);
-    this.animations.add('normalHighlight', [1], 2, true);
+    this.animations.add('normalHighlight', [1, 0], 3, true);
     this.animations.add('green', [2], 2, true);
-    this.animations.add('greenHighlight', [3], 2, true);
+    this.animations.add('greenHighlight', [3, 2], 3, true);
     this.animations.play('green');
 
     // reference to if this is the cube currently highlighted
