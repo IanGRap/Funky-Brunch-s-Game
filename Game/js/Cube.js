@@ -8,10 +8,10 @@ function Cube(game, key, locationX, locationY){
     this.animations.add('normalHighlight', [1, 0], 3, true);
     this.animations.add('green', [2], 2, true);
     this.animations.add('greenHighlight', [3, 2], 3, false);
-    this.animations.add('normalcorrect',[4,0,4,0], 4, false);
-    this.animations.add('greencorrect',[5,2,5,2], 3, false);
-    this.animations.add('normalincorrect',[6,0,6,0], 3, false);
-    this.animations.add('greenincorrect',[7,2,7,2], 3, false);
+    this.animations.add('normalcorrect',[4,0], 2, false);
+    this.animations.add('greencorrect',[5,2], 2, false);
+    this.animations.add('normalincorrect',[6,0], 2, false);
+    this.animations.add('greenincorrect',[7,2], 2, false);
     this.animations.play('green');
 
     // reference to if this is the cube currently highlighted
