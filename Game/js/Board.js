@@ -73,8 +73,12 @@ function Board(game, columns, rows, tileSize, originX, originY){
     placed  = game.add.audio('placed');
     misplaced = game.add.audio('misplaced');
 
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+    //game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
+    this.controlsButton = game.input.keyboard.addKey(Phaser.Keyboard.C);
+    this.controlsButton.onDown.add(this.controlsDisplay, this);
+    this.controlsDisplayed = false;
+    this.controlsText = game.add.text(originX, originY + ((rows + 1) * tileSize), "C: Controls", {fontSize: '25px', fill: 'red'});
 }
 
 //set prototype and constructor
@@ -93,7 +97,7 @@ Board.prototype.update = function(){
     this.rArrow = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
 
 
-    this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
+    //this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
     this.h = game.input.keyboard.addKey(Phaser.Keyboard.H);
 
     //Checks if it needs to use a key press for hiding
@@ -110,8 +114,10 @@ Board.prototype.update = function(){
 	}else if(hide == false){
 		//Special case for spacebar
 		this.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
 	    this.spacebar.onDown.add(this.select, this);
+        this.enter.onDown.add(this.select, this)
 
 	    this.up.onDown.add(this.goUp, this);
 	    this.r.onDown.add(this.goRight, this);
@@ -123,9 +129,11 @@ Board.prototype.update = function(){
 	    this.downArrow.onDown.add(this.goDown, this);
 
 	    game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
+        game.input.keyboard.removeKeyCapture(Phaser.Keyboard.ENTER);
+
 	}
 		//Fullscreen code will always work regardless of placing tiles
-		this.f.onDown.add(this.fullscreen, this);
+		//this.f.onDown.add(this.fullscreen, this);
 };
 
 // called when we select a tile
@@ -201,8 +209,10 @@ Board.prototype.select = function(){
         // the player is placing the character where they are located
         if(this.currentColumn == this.selectedColumn && this.currentRow == this.selectedRow){
             this.tiles[this.selectedRow][this.selectedColumn].item.activate();
+            this.tiles[this.selectedRow][this.selectedColumn].select();
             this.selectedColumn = null;
             this.selectedRow = null;
+            placed.play();
         //if the tile we are on does not have an item
         }else /*if(temp == null)*/{
         	
@@ -427,13 +437,13 @@ Board.prototype.checkTiles = function(){
     return true;
 }
 
-Board.prototype.fullscreen = function(){
+/*Board.prototype.fullscreen = function(){
     if(game.scale.isFullScreen){
         game.scale.stopFullScreen();
     } else {
         game.scale.startFullScreen(false);
     }
-}
+}*/
 
 Board.prototype.hidebubbles = function(){
 	
@@ -504,4 +514,13 @@ Board.prototype.setDisplay = function(){
     if(this.tiles[this.currentRow][this.currentColumn ].item != null){
         this.tiles[this.currentRow][this.currentColumn ].item.displaying = !this.tiles[this.currentRow][this.currentColumn ].item.displaying;
     }
+}
+
+Board.prototype.controlsDisplay = function(){
+    if(this.controlsDisplayed){
+        this.controlsText.text = "C: Controls";
+    } else {
+        this.controlsText.text = "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nF: Toggle Fullscreen Mode";
+    }
+    this.controlsDisplayed = !this.controlsDisplayed;
 }

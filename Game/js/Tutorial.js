@@ -7,6 +7,8 @@ var Tutorial = function(game){
 
     //layouts of board layouts, 1 is green 0 is red
     var obstacles;  
+
+    var fullscreen;
 };
 
 //Wipe var
@@ -58,8 +60,8 @@ Tutorial.prototype = {
         var boat = game.add.image(-100,120,'boat');
         boat.scale.setTo(2.7,2.7);
         //add dialogue system
-        this.dialogue = new Dialogue(game, 'dialogue', 96);
-        game.add.existing(this.dialogue);
+        //this.dialogue = new Dialogue(game, 'dialogue', 96);
+        //game.add.existing(this.dialogue);
 
 
         this.obstacles = [
@@ -103,6 +105,9 @@ Tutorial.prototype = {
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles);
+
+        this.fullscreen = new Fullscreen(game);
+        game.add.existing(this.fullscreen);
 
         //Screen Wipe Object Creation
         wipe = new ScreenWipe(game,'wipe');

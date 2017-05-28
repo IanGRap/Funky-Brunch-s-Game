@@ -132,15 +132,25 @@ Cube.prototype.setBlank = function(){
 
 Cube.prototype.select = function(){
     if(this.selected){
-        console.log("no longer selected");
         this.selected = false;
-        if(this.charged){
-            this.animations.play('normal');
-        } else if(this.blank){
-            this.animations.play('blank');
+        if(this.active){
+            if(this.charged){
+                this.animations.play('normalHighlight');
+            } else if(this.blank){
+                this.animations.play('blankHighlight');
+            } else {
+                this.animations.play('greenHighlight');
+            }
         } else {
-            this.animations.play('green');
+            if(this.charged){
+                this.animations.play('normal');
+            } else if(this.blank){
+                this.animations.play('blank');
+            } else {
+                this.animations.play('green');
+            }
         }
+        
     } else {
         this.selected = true;
         if(this.charged){
