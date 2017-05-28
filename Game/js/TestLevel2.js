@@ -124,12 +124,14 @@ TestLevel2.prototype = {
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
         wipe.animIn();
+        do1 = true;
     },
 
 
     update: function(){
         if(this.board.checkTiles()){
             if(do1){
+                console.log("IN")
                 do1 = false;
                 wipe.animOut(this.nextlevel);
             }

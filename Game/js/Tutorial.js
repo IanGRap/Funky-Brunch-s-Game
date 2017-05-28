@@ -116,7 +116,6 @@ Tutorial.prototype = {
             if(do1){
                 do1 = false;
                 wipe.animOut(this.nextlevel);
-
             }
         }
     },
