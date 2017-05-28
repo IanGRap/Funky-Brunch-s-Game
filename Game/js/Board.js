@@ -170,10 +170,10 @@ Board.prototype.select = function(){
     rightb.angle = 90;
 
     //GET RID OF THIS LATER!! TESTING PURPOSES ONLY: It is used to make the bubbles small for now, but when we increase the scale it'll need to be bigger
-    upb.scale.setTo(.5, .5);
-    downb.scale.setTo(.5, .5);
-    leftb.scale.setTo(.5, .5);
-    rightb.scale.setTo(.5, .5);
+    //upb.scale.setTo(.5, .5);
+    //downb.scale.setTo(.5, .5);
+    //leftb.scale.setTo(.5, .5);
+    //rightb.scale.setTo(.5, .5);
 
     //hide 'em!
     upb.visible = false;
@@ -235,9 +235,9 @@ Board.prototype.select = function(){
                         upb.visible = true;
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
-                       	styleup = { font: "14px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 90, align: "center"};    
+                       	styleup = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 150, align: "center"};    
                         //draws the text over the sprite
-					    textup = game.add.text(upb.x + 2,upb.y,speach,styleup);
+					    textup = game.add.text(upb.x,upb.y-10,speach,styleup);
 					    textup.anchor.set(0.5);
 
             		}else{
@@ -268,9 +268,9 @@ Board.prototype.select = function(){
                         downb.visible = true;
 
                        	//Makes style for text with wordwrap so the text stays on the speach bubble
-                       	styledown = { font: "15px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 100, align: "center"};    
+                       	styledown = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 150, align: "center"};    
                         //draws the text over the sprite
-					    textdown = game.add.text(downb.x,downb.y + 5,speach,styledown);
+					    textdown = game.add.text(downb.x,downb.y + 15,speach,styledown);
 					    textdown.anchor.set(0.5);
             		}else{
                     	if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow + 1][this.currentColumn])){
@@ -300,9 +300,9 @@ Board.prototype.select = function(){
                         leftb.visible = true;
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
-                       	styleleft = { font: "15px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 80, align: "center"};    
+                       	styleleft = { font: "20px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 80, align: "center"};    
                         //draws the text over the sprite
-					    textleft = game.add.text(leftb.x - 5,leftb.y,speach,styleleft);
+					    textleft = game.add.text(leftb.x - 20,leftb.y,speach,styleleft);
 					    textleft.anchor.set(0.5);
             		}else{
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn - 1])){
@@ -332,9 +332,9 @@ Board.prototype.select = function(){
                         rightb.visible = true;
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
-                       	styleright = { font: "14px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 90, align: "center"};    
+                       	styleright = { font: "20px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 90, align: "center"};    
                         //draws the text over the sprite
-					    textright = game.add.text(rightb.x + 15,rightb.y,speach,styleright);
+					    textright = game.add.text(rightb.x + 20,rightb.y,speach,styleright);
 					    textright.anchor.set(0.5);
             		}else{
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn + 1])){
