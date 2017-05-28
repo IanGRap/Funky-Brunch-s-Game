@@ -5,13 +5,23 @@ function Cube(game, key, locationX, locationY){
 
     //animations for different cube colors
     this.animations.add('normal', [0], 2, true);
-    this.animations.add('normalHighlight', [1, 0], 3, true);
-    this.animations.add('green', [2], 2, true);
-    this.animations.add('greenHighlight', [3, 2], 3, false);
+    this.animations.add('normalHighlight', [1], 3, true);
+    this.animations.add('normalSelected', [0, 1], 3, true);
     this.animations.add('normalcorrect',[4,0], 2, false);
-    this.animations.add('greencorrect',[5,2], 2, false);
     this.animations.add('normalincorrect',[6,0], 2, false);
+
+    this.animations.add('green', [2], 2, true);
+    this.animations.add('greenHighlight', [3], 3, false);
+    this.animations.add('greenSelected', [2, 3], 3, false);
+    this.animations.add('greencorrect',[5,2], 2, false);  
     this.animations.add('greenincorrect',[7,2], 2, false);
+
+    this.animations.add('blank', [8], 2, false);
+    this.animations.add('blankHighlight', [1], 3, true);
+    this.animations.add('blankSelected', [8, 1], 3, true);
+    this.animations.add('blankcorrect',[4,8], 2, false);
+    this.animations.add('blankincorrect',[6,8], 2, false);
+
     this.animations.play('green');
 
     // reference to if this is the cube currently highlighted
@@ -25,6 +35,8 @@ function Cube(game, key, locationX, locationY){
 
     // if this cube is red and therefore a danger tile
     this.charged = false;
+
+    this.blank = false;
 }
 
 // set inherited prototype
@@ -42,6 +54,8 @@ Cube.prototype.activate = function(){
         //set to not selected animation based on whether or not this is a dangerous tile
         if(this.charged){
             this.animations.play('normal');
+        } else if(this.blank){
+            this.animations.play('blank');
         } else {
             this.animations.play('green');
         }
@@ -50,6 +64,8 @@ Cube.prototype.activate = function(){
         this.active = true;
         if(this.charged){
             this.animations.play('normalHighlight');
+        } else if(this.blank){
+            this.animations.play('blankHighlight');
         } else {
             this.animations.play('greenHighlight');
         }
@@ -60,6 +76,8 @@ Cube.prototype.activate = function(){
 Cube.prototype.correct = function(){
     if(this.charged){
         this.animations.play('normalcorrect');
+    }else if(this.blank){
+        this.animations.play('blankcorrect');
     }else{
         this.animations.play('greencorrect');
     }
@@ -70,6 +88,8 @@ Cube.prototype.incorrect = function(){
     if(this.charged){  
         console.log("norm")
         this.animations.play('normalincorrect');
+    }else if(this.blank){
+        this.animations.play('blankincorrect');
     }else{
         this.animations.play('greenincorrect');
     }
@@ -97,4 +117,9 @@ Cube.prototype.grab = function(){
 Cube.prototype.charge = function(){
     this.charged = true;
     this.animations.play('normal');
+}
+
+Cube.prototype.setBlank = function(){
+    this.blank = true;
+    this.animations.play('blank');
 }
