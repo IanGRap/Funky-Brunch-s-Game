@@ -37,6 +37,8 @@ function Cube(game, key, locationX, locationY){
     this.charged = false;
 
     this.blank = false;
+
+    this.selected = false;
 }
 
 // set inherited prototype
@@ -49,7 +51,8 @@ Cube.prototype.update = function(){};
 //called when this cube is the one being highlighted
 Cube.prototype.activate = function(){
     //if this is already active, set it to not active
-    if(this.active){
+    if( this.active && !this.selected){
+        console.log('this is selected');
         this.active = false;
         //set to not selected animation based on whether or not this is a dangerous tile
         if(this.charged){
@@ -60,7 +63,8 @@ Cube.prototype.activate = function(){
             this.animations.play('green');
         }
         //set to selected animation based on whether or not this is a dangerous tile
-    } else {
+    } else if(!this.selected){
+        console.log('this isn\'t currently selected');
         this.active = true;
         if(this.charged){
             this.animations.play('normalHighlight');
@@ -69,6 +73,8 @@ Cube.prototype.activate = function(){
         } else {
             this.animations.play('greenHighlight');
         }
+    } else {
+        this.active = false;
     }
 };
 
@@ -122,4 +128,28 @@ Cube.prototype.charge = function(){
 Cube.prototype.setBlank = function(){
     this.blank = true;
     this.animations.play('blank');
+}
+
+Cube.prototype.select = function(){
+    if(this.selected){
+        console.log("no longer selected");
+        this.selected = false;
+        if(this.charged){
+            this.animations.play('normal');
+        } else if(this.blank){
+            this.animations.play('blank');
+        } else {
+            this.animations.play('green');
+        }
+    } else {
+        this.selected = true;
+        if(this.charged){
+            this.animations.play('normalSelected');
+        } else if(this.blank){
+            this.animations.play('blankSelected');
+        } else {
+            this.animations.play('greenSelected');
+        }
+    }
+    //this.selected = !this.selected;
 }

@@ -194,6 +194,7 @@ Board.prototype.select = function(){
             this.selectedColumn = this.currentColumn;
             //set the item to active
             this.tiles[this.selectedRow][this.selectedColumn].item.activate();
+            this.tiles[this.selectedRow][this.selectedColumn].select();
         }
     //if we do have an item selected aka placing an item
     } else {
@@ -363,6 +364,7 @@ Board.prototype.select = function(){
                     this.tiles[this.selectedRow][this.selectedColumn].place( t );
                 }
 
+                this.tiles[this.selectedRow][this.selectedColumn].select();
 	            //set references to our selected item to null
 	            this.selectedRow = null;
 	            this.selectedColumn = null;
@@ -395,6 +397,8 @@ Board.prototype.setTiles = function(outline){
                 //if the input array has a 0 at this location set the corresponding tile to red
                 if(outline[r][c] == 0){
                     this.tiles[r][c].charge();
+                } else if (outline[r][c] == 2){
+                    this.tiles[r][c].setBlank();
                 }
             }
         }
@@ -414,7 +418,7 @@ Board.prototype.checkTiles = function(){
     for(let r=0; r<this.tiles.length; r++){
 		for(let c=0; c<this.tiles[0].length; c++){
             // if this tile is red but has an item return false
-			if(this.tiles[r][c].charged && this.tiles[r][c].item != null){
+			if( (this.tiles[r][c].charged || this.tiles[r][c].blank) && this.tiles[r][c].item != null){
                 return false;
             }
 		}
