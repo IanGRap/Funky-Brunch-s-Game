@@ -62,7 +62,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     //Display character icon
     this.displaySprite = game.add.sprite(1200, 88, key);
     this.displaySprite.anchor.setTo(0.5,0.5);
-    this.displaySprite.scale.setTo(2,2);
+    this.displaySprite.scale.setTo(2.2,2.2);
 
 
     // ----- Display selected objects. Hopefully will slide in. Fingers crossed -----
@@ -143,8 +143,8 @@ Character.prototype.update = function(){
 
     //Checks if you have a locked in selection
     if(this.lockedin){
-        //console.log("LOCKED IN BABY")
         this.lockeddisplayStats.text = this.lockeddisplayText;
+        //console.log("LOCKED IN BABY")
         this.lockedyto = 1;
     }else{
         this.lockedyto = 0;
