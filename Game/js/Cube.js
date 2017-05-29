@@ -49,9 +49,31 @@ Cube.prototype.constructor = Cube;
 Cube.prototype.update = function(){};
 
 //called when this cube is the one being highlighted
-Cube.prototype.activate = function(){
+Cube.prototype.activate = function(hovered){
     //if this is already active, set it to not active
-    if( this.active && !this.selected){
+    
+    this.active = hovered;
+    if(!this.selected){
+        if(this.active){
+            if(this.charged){
+                this.animations.play('normalHighlight');
+            } else if(this.blank){
+                this.animations.play('blankHighlight');
+            } else {
+                this.animations.play('greenHighlight');
+            }
+        } else {
+            if(this.charged){
+                this.animations.play('normal');
+            } else if(this.blank){
+                this.animations.play('blank');
+            } else {
+                this.animations.play('green');
+            }
+        }
+    }
+
+    /*if( this.active && !this.selected){
         console.log('this is selected');
         this.active = false;
         //set to not selected animation based on whether or not this is a dangerous tile
@@ -75,7 +97,7 @@ Cube.prototype.activate = function(){
         }
     } else {
         this.active = false;
-    }
+    }*/
 };
 
 //Code for the correct and incorrect animation feedback

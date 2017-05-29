@@ -201,7 +201,7 @@ Board.prototype.select = function(){
             this.selectedRow = this.currentRow;
             this.selectedColumn = this.currentColumn;
             //set the item to active
-            this.tiles[this.selectedRow][this.selectedColumn].item.activate();
+            this.tiles[this.selectedRow][this.selectedColumn].item.activate(true);
             this.tiles[this.selectedRow][this.selectedColumn].select();
 
             this.tiles[this.currentRow][this.currentColumn].item.showTraitWindow();
@@ -218,6 +218,7 @@ Board.prototype.select = function(){
             this.tiles[this.selectedRow][this.selectedColumn].item.activate();
             this.tiles[this.selectedRow][this.selectedColumn].select();
             this.tiles[this.currentRow][this.currentColumn].item.hideTraitWindow();
+            this.tiles[this.currentRow][this.currentColumn].activate(true);
             this.selectedColumn = null;
             this.selectedRow = null;
             placed.play();
@@ -379,7 +380,7 @@ Board.prototype.select = function(){
 	           	//this.tiles[this.SelectedRow][this.selectedColumn].item.hideTraitWindow();
 	            this.tiles[this.currentRow][this.currentColumn].place( this.tiles[this.selectedRow][this.selectedColumn].grab() );
 	            //set the item we placed to no longer active
-	            this.tiles[this.currentRow][this.currentColumn].item.activate();
+	            this.tiles[this.currentRow][this.currentColumn].item.activate(false);
 
                 //if there ended up being a character on the tile, put that character in previous position
                 if(t != null){
@@ -430,7 +431,7 @@ Board.prototype.setTiles = function(outline){
         this.currentColumn = 0;
         this.selectedRow = null;
         this.selectedColumn = null;
-        this.tiles[0][0].activate();
+        this.tiles[0][0].activate(true);
         this.setDisplay();
     }
 }
@@ -477,48 +478,48 @@ Board.prototype.hidebubbles = function(){
 Board.prototype.goLeft = function(){
 	tick.play();
     this.setDisplay();
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(false);
     this.currentColumn --;
     if(this.currentColumn  <0){
         this.currentColumn  = 0;
     }
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(true);
     this.setDisplay();
 }
 
 Board.prototype.goDown = function(){
 	tick.play();
     this.setDisplay();
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(false);
     this.currentRow++;
     if(this.currentRow >= this.tiles.length){
         this.currentRow = this.tiles.length-1;
     }
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(true);
     this.setDisplay();
 }
 
 Board.prototype.goUp = function(){
 	tick.play();
     this.setDisplay();
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(false);
     this.currentRow--;
     if(this.currentRow <0){
         this.currentRow = 0;
     }
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(true);
     this.setDisplay();
 }
 
 Board.prototype.goRight = function(){
 	tick.play();
     this.setDisplay();
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(false);
     this.currentColumn ++;
     if(this.currentColumn  >= this.tiles[0].length){
         this.currentColumn  = this.tiles[0].length-1;
     }
-    this.tiles[this.currentRow][this.currentColumn ].activate();
+    this.tiles[this.currentRow][this.currentColumn ].activate(true);
     this.setDisplay();
 }
 

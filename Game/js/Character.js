@@ -38,10 +38,12 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.traitTracker = visibleTraits;
 
     this.displaying = false;
-    this.displayText;
+    this.displayText = "";
     this.updateDisplay();
 
     this.lockedin = false;
+
+    //this.lockeddisplaytext;
 
 
     // ----- Display highlighted traits -----
@@ -80,7 +82,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.lockeddisplayName.alpha = 0;
 
     // Display traits
-    this.lockeddisplayStats = game.add.text(1200, 1020, this.lockeddisplayText, {fontSize: '30px', fill: 'Black'});
+    this.lockeddisplayStats = game.add.text(1200, 1020, this.displayText, {fontSize: '30px', fill: 'Black'});
     this.lockeddisplayStats.anchor.setTo(0.5,0.5);
     this.lockeddisplayStats.alpha = 0;
 
@@ -89,8 +91,6 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.lockeddisplaySprite.anchor.setTo(0.5,0.5);
     this.lockeddisplaySprite.scale.setTo(1.7,1.7);
     this.lockeddisplaySprite.alpha = 0;
-
-
 
 }
 
@@ -120,6 +120,7 @@ Character.prototype.revealTrait = function(trait){
             break;
         }
     }
+    this.updateDisplay();
 }
 
 Character.prototype.update = function(){
@@ -207,11 +208,7 @@ Character.prototype.update = function(){
         }
     }
 
-
-
-
-
-
+    this.lockeddisplayStats.text = this.displayText;
 };
 
 Character.prototype.activate = function(){
