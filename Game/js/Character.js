@@ -1,5 +1,7 @@
+var displayName;
+
 // constructor for circle
-function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name, visibleTraits){
+function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name, visibleTraits,traitwindow){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
@@ -23,19 +25,72 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.enableBody = true;
 
     this.name = name;
+    this.diplayName;
+    // Variable for tweening the alpha on selected
+    this.toAlpha = 0; 
+    this.currentAlpha = 0;
+
+    //Variables for locked in location
+    this.lockedy = 0;
+    this.lockedyloc = 0;
+
 
     this.traitTracker = visibleTraits;
 
     this.displaying = false;
     this.displayText;
     this.updateDisplay();
+
+    this.lockedin = false;
+
+
+    // ----- Display highlighted traits -----
+
+    //Background trait window
+    this.displayWindow = game.add.sprite(1200, -40, traitwindow);
+    this.displayWindow.anchor.setTo(0.5,0);
+    this.displayWindow.scale.setTo(1.2,1.2);
     
-    this.displayStats = game.add.text(1200, 256, this.displayText, {fontSize: '30px', fill: 'Red'});
+    //Separated name from traits
+    this.displayName = game.add.text(1200, 215, this.name, {fontSize: '30px', fill: 'Black'});
+    this.displayName.anchor.setTo(0.5,0.5);
+
+    // Display traits
+    this.displayStats = game.add.text(1200, 280, this.displayText, {fontSize: '30px', fill: 'Black'});
     this.displayStats.anchor.setTo(0.5,0.5);
 
-    this.displaySprite = game.add.sprite(1200, 128, key);
+    //Display character icon
+    this.displaySprite = game.add.sprite(1200, 88, key);
     this.displaySprite.anchor.setTo(0.5,0.5);
     this.displaySprite.scale.setTo(2,2);
+
+
+    // ----- Display selected objects. Hopefully will slide in. Fingers crossed -----
+
+    //Background trait window
+    this.lockeddisplayWindow = game.add.sprite(1200, 800, traitwindow);
+    this.lockeddisplayWindow.anchor.setTo(0.5,0);
+    this.displayWindow.scale.setTo(1.5,1.5);
+    this.lockeddisplayWindow.alpha = 0;
+
+    
+    //Separated name from traits
+    this.lockeddisplayName = game.add.text(1200, 970, this.name, {fontSize: '30px', fill: 'Black'});
+    this.lockeddisplayName.anchor.setTo(0.5,0.5);
+    this.lockeddisplayName.alpha = 0;
+
+    // Display traits
+    this.lockeddisplayStats = game.add.text(1200, 1020, this.lockeddisplayText, {fontSize: '30px', fill: 'Black'});
+    this.lockeddisplayStats.anchor.setTo(0.5,0.5);
+    this.lockeddisplayStats.alpha = 0;
+
+    //Display character icon
+    this.lockeddisplaySprite = game.add.sprite(1200, 880, key);
+    this.lockeddisplaySprite.anchor.setTo(0.5,0.5);
+    this.lockeddisplaySprite.scale.setTo(1.7,1.7);
+    this.lockeddisplaySprite.alpha = 0;
+
+
 
 }
 
@@ -45,16 +100,15 @@ Character.prototype = Object.create(Phaser.Sprite.prototype);
 Character.prototype.constructor = Character;
 
 Character.prototype.updateDisplay = function(){
-        console.log("HERES THE DISPLAY TEXT " + this.displayText);
 
-    this.displayText = ""+this.name;
+    this.displayText = "";
     for(let i=0; i<this.traits.length; i++){
         if(this.traitTracker[i] != false){
 
-            this.displayText += "\n"+this.traits[i];
+            this.displayText += "\n*  "+this.traits[i];
 
         } else {
-            this.displayText += "\n???";
+            this.displayText += "\n*  ???";
         }
     }
 }
@@ -69,14 +123,95 @@ Character.prototype.revealTrait = function(trait){
 }
 
 Character.prototype.update = function(){
+
     if(this.displaying){
         this.updateDisplay();
         this.displayStats.text = this.displayText;
-        this.displaySprite.alpha = 1;
+        //this.displaySprite.alpha = 1;
+        //this.displayWindow.alpha = 1;
+        this.displayName.text = this.name;
+        this.toAlpha = 1;
+
     } else {
+        this.displayName.text = "";
         this.displayStats.text = "";
-        this.displaySprite.alpha = 0;
+        //this.displaySprite.alpha = 0;
+        //this.displayWindow.alpha = 0;
+        this.toAlpha = 0;
+
     }
+
+    //Checks if you have a locked in selection
+    if(this.lockedin){
+        //console.log("LOCKED IN BABY")
+        this.lockeddisplayStats.text = this.lockeddisplayText;
+        this.lockedyto = 1;
+    }else{
+        this.lockedyto = 0;
+    }
+
+
+    if(this.toAlpha == 0){
+
+        if(this.currentAlpha >= 0){
+            this.currentAlpha -= .07;
+            if(this.currentAlpha < 0){ this.currentAlpha = 0;};
+            this.displayName.text.alpha = this.currentAlpha;
+            this.displayStats.text.alpha = this.currentAlpha;
+            this.displaySprite.alpha = this.currentAlpha;
+            this.displayWindow.alpha = this.currentAlpha;
+        }
+    }else if(this.toAlpha == 1){
+        if(this.currentAlpha <= 1){
+            this.currentAlpha += .1;
+            if(this.currentAlpha > 1){ this.currentAlpha = 1;};
+            this.displayName.text.alpha = this.currentAlpha;
+            this.displayStats.text.alpha = this.currentAlpha;
+            this.displaySprite.alpha = this.currentAlpha;
+            this.displayWindow.alpha = this.currentAlpha;
+        }
+    }
+
+    //console.log("lockedyto "+ this.lockedyto);
+    if(this.lockedyto == 0){
+
+        //console.log("in");
+        if(this.lockedyloc > 0){    //When you select a character it drops down from that location
+            this.lockedyloc -= 2;
+
+            this.lockeddisplayName.alpha = 1;
+            this.lockeddisplayStats.alpha = 1;
+            this.lockeddisplaySprite.alpha = 1;
+            this.lockeddisplayWindow.alpha = 1;
+
+            this.lockeddisplayName.y += 12;
+            this.lockeddisplayStats.y += 12;
+            this.lockeddisplaySprite.y += 12;
+            this.lockeddisplayWindow.y += 12;
+        }
+    }else if(this.lockedyto == 1){  //When you deselect the locked in char
+
+        if(this.lockedyloc < 50){
+            this.lockedyloc += 2;
+
+            this.lockeddisplayName.alpha = 1;
+            this.lockeddisplayStats.alpha = 1;
+            this.lockeddisplaySprite.alpha = 1;
+            this.lockeddisplayWindow.alpha = 1;
+
+
+            this.lockeddisplayName.y -= 12;
+            this.lockeddisplayStats.y -= 12;
+            this.lockeddisplaySprite.y -= 12;
+            this.lockeddisplayWindow.y -= 12;
+        }
+    }
+
+
+
+
+
+
 };
 
 Character.prototype.activate = function(){
@@ -90,10 +225,7 @@ Character.prototype.activate = function(){
     }
 };
 
-//logs the traits of the selected circle
-Character.prototype.showTraits = function(){
-	console.log("Trait Array : " + this.traits);
-};
+
 
 //Checks for Conflicts Among Traits    input : (other circle object)
 Character.prototype.conflictCheck = function(other){
@@ -110,3 +242,13 @@ Character.prototype.conflictCheck = function(other){
 	return[false,null];
 }
 
+//logs the traits of the selected circle
+Character.prototype.showTraitWindow = function(){
+    console.log("DISPLAY TEXT: " + this.displayText);
+    this.lockeddisplayText = this.displayText;
+    this.lockedin = true;
+}
+Character.prototype.hideTraitWindow = function(){
+
+    this.lockedin = false;
+};

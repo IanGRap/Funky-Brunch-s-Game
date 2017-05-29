@@ -203,6 +203,13 @@ Board.prototype.select = function(){
             //set the item to active
             this.tiles[this.selectedRow][this.selectedColumn].item.activate();
             this.tiles[this.selectedRow][this.selectedColumn].select();
+
+            this.tiles[this.currentRow][this.currentColumn].item.showTraitWindow();
+
+
+	        // logs the traits of the selected circle
+			Character.prototype.showTraits = function(){	console.log("Trait Array : " + this.traits);  		};
+
         }
     //if we do have an item selected aka placing an item
     } else {
@@ -210,6 +217,7 @@ Board.prototype.select = function(){
         if(this.currentColumn == this.selectedColumn && this.currentRow == this.selectedRow){
             this.tiles[this.selectedRow][this.selectedColumn].item.activate();
             this.tiles[this.selectedRow][this.selectedColumn].select();
+            this.tiles[this.currentRow][this.currentColumn].item.hideTraitWindow();
             this.selectedColumn = null;
             this.selectedRow = null;
             placed.play();
@@ -219,8 +227,10 @@ Board.prototype.select = function(){
             //Shows traits of the selected tile and its neighbors
             console.log("______________________");
             console.log("Placed Tile:");
+
            	//makes a temp var for the proposed object to move in
           	var proposed = this.tiles[this.selectedRow][this.selectedColumn].item;
+
           	proposed.showTraits();
 
           	let noConflicts = true;
@@ -356,6 +366,7 @@ Board.prototype.select = function(){
             }
 
             if(noConflicts){
+            	this.tiles[this.selectedRow][this.selectedColumn].item.hideTraitWindow();
             	placed.play();
                 console.log("no conflict");
                 let t = null;
@@ -365,6 +376,7 @@ Board.prototype.select = function(){
                     t = this.tiles[this.currentRow][this.currentColumn].grab();
                 }
 	            //place our selected item on this tile
+	           	//this.tiles[this.SelectedRow][this.selectedColumn].item.hideTraitWindow();
 	            this.tiles[this.currentRow][this.currentColumn].place( this.tiles[this.selectedRow][this.selectedColumn].grab() );
 	            //set the item we placed to no longer active
 	            this.tiles[this.currentRow][this.currentColumn].item.activate();

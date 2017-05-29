@@ -37,6 +37,7 @@ Tutorial.prototype = {
         //dialogue UI
         game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
         game.load.image('speachbubble','assets/speachbubble.png');
+        game.load.image('traitwindow', 'assets/traitwindow.png')
         //audio
         game.load.audio('tick',['assets/audio/tick.mp3']);
         game.load.audio('select',['assets/audio/select.mp3']);
@@ -66,11 +67,13 @@ Tutorial.prototype = {
 
         this.obstacles = [
                 [2, 0, 0, 0, 2],
-                [2, 1, 1, 1, 0]
+                [2, 1, 1, 1, 2],
+                [2, 0, 0, 0, 2]
+
         ];
 
         // define a new board object
-        this.board = new Board(game, 5, 2, 128, 128, 128);
+        this.board = new Board(game, 5, 3, 128, 128, 256);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
@@ -89,9 +92,9 @@ Tutorial.prototype = {
         var scientistText = ["I want someone silly"];
 
         this.characters = [
-            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits),
-            new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', knightTraits),
-            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', dinoTraits)
+            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits,'traitwindow'),
+            new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', knightTraits,'traitwindow'),
+            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', dinoTraits,'traitwindow')
         ];
 
         for(let i=0; i<this.characters.length; i++){
@@ -101,7 +104,7 @@ Tutorial.prototype = {
         // set the starting location for the circles
         this.board.tiles[0][0].place(this.characters[0]);
         this.board.tiles[1][2].place(this.characters[1]);
-        this.board.tiles[1][4].place(this.characters[2]);
+        this.board.tiles[0][3].place(this.characters[2]);
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles);
