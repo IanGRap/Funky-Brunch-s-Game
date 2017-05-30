@@ -53,9 +53,6 @@ Tutorial.prototype = {
 
     create: function(){
 
-        this.dialogue = new Dialogue(game);
-        this.dialogue.playsounds(['correct','misplaced']);
-        game.add.existing(this.dialogue);
 
 
         console.log("tutorial starting");
