@@ -393,7 +393,7 @@ Board.prototype.select = function(){
 	            this.selectedColumn = null;
 	            this.setDisplay();
       		} else {
-      			misplaced.play();
+      			this.conflict();
                 //make our currently selected character unselected
                 /*proposed.activate();
                 this.selectedRow = null;
@@ -407,6 +407,10 @@ Board.prototype.select = function(){
         	//Starts the process of hiding the bubbles after they've been shown
     		hide = true;
     }
+}
+
+Board.prototype.conflict = function(){
+    misplaced.play();
 }
 
 //take in a2d array that oultines the colors of our board
