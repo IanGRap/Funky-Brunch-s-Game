@@ -49,22 +49,22 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     // ----- Display highlighted traits -----
 
     //Background trait window
-    this.displayWindow = game.add.sprite(1200, -40, traitwindow);
+    this.displayWindow = game.add.sprite(1200, 0, traitwindow);
     this.displayWindow.anchor.setTo(0.5,0);
-    this.displayWindow.scale.setTo(1.2,1.2);
+    this.displayWindow.scale.setTo(1,1);
     
     //Separated name from traits
-    this.displayName = game.add.text(1200, 215, this.name, {fontSize: '30px', fill: 'Black'});
+    this.displayName = game.add.text(1200, 170, this.name, {fontSize: '30px', fill: 'Black'});
     this.displayName.anchor.setTo(0.5,0.5);
 
     // Display traits
-    this.displayStats = game.add.text(1200, 280, this.displayText, {fontSize: '30px', fill: 'Black'});
+    this.displayStats = game.add.text(1200, 200, this.displayText, {fontSize: '30px', fill: 'Black'});
     this.displayStats.anchor.setTo(0.5,0.5);
 
     //Display character icon
-    this.displaySprite = game.add.sprite(1200, 88, key);
+    this.displaySprite = game.add.sprite(1200, 80, key);
     this.displaySprite.anchor.setTo(0.5,0.5);
-    this.displaySprite.scale.setTo(2.2,2.2);
+    this.displaySprite.scale.setTo(1.7,1.7);
 
 
     // ----- Display selected objects. Hopefully will slide in. Fingers crossed -----
@@ -72,7 +72,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     //Background trait window
     this.lockeddisplayWindow = game.add.sprite(1200, 800, traitwindow);
     this.lockeddisplayWindow.anchor.setTo(0.5,0);
-    this.displayWindow.scale.setTo(1.5,1.5);
+    this.lockeddisplayWindow.scale.setTo(1, 1);
     this.lockeddisplayWindow.alpha = 0;
 
     
@@ -82,7 +82,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.lockeddisplayName.alpha = 0;
 
     // Display traits
-    this.lockeddisplayStats = game.add.text(1200, 1020, this.displayText, {fontSize: '30px', fill: 'Black'});
+    this.lockeddisplayStats = game.add.text(1200, 1000, this.displayText, {fontSize: '30px', fill: 'Black'});
     this.lockeddisplayStats.anchor.setTo(0.5,0.5);
     this.lockeddisplayStats.alpha = 0;
 
@@ -178,7 +178,7 @@ Character.prototype.update = function(){
 
         //console.log("in");
         if(this.lockedyloc > 0){    //When you select a character it drops down from that location
-            this.lockedyloc -= 2;
+            this.lockedyloc -= 1.5;
 
             this.lockeddisplayName.alpha = 1;
             this.lockeddisplayStats.alpha = 1;
@@ -193,7 +193,7 @@ Character.prototype.update = function(){
     }else if(this.lockedyto == 1){  //When you deselect the locked in char
 
         if(this.lockedyloc < 50){
-            this.lockedyloc += 2;
+            this.lockedyloc += 1.5;
 
             this.lockeddisplayName.alpha = 1;
             this.lockeddisplayStats.alpha = 1;
