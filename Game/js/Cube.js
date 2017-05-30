@@ -11,8 +11,8 @@ function Cube(game, key, locationX, locationY){
     this.animations.add('normalincorrect',[6,0], 2, false);
 
     this.animations.add('green', [2], 2, true);
-    this.animations.add('greenHighlight', [3], 3, false);
-    this.animations.add('greenSelected', [2, 3], 3, false);
+    this.animations.add('greenHighlight', [3], 3, true);
+    this.animations.add('greenSelected', [2, 3], 3, true);
     this.animations.add('greencorrect',[5,9,2], 4, false);  
     this.animations.add('greenincorrect',[7,2], 2, false);
 
