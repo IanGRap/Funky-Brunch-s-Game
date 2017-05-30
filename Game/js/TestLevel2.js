@@ -96,7 +96,7 @@ TestLevel2.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.characters = [
-            new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog', dogTraits),
+            new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog', dogTraits,'traitwindow'),
             new Character(game, 'scientist', 0, 0,  ["Silly","Fraidy Cat"],["Serious","Spooky"],["Why so SERIOUS?","You're scaring me!"], 'Scientist', docTraits,'traitwindow'),
             new Character(game, 'knight', 0, 0, ["Serious","Fantasy"],["Silly","Sci-Fi"],["I don't want to play with someone so SILLY","I wanted to play fantasy"], 'Knight', knightTraits,'traitwindow'),
             new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur', dinoTraits,'traitwindow'),

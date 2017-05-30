@@ -15,6 +15,7 @@ var Tutorial = function(game){
 var wipe;
 var do1 = true;
 
+
 Tutorial.prototype = {
     
     //load in art assets
@@ -43,12 +44,19 @@ Tutorial.prototype = {
         game.load.audio('select',['assets/audio/select.mp3']);
         game.load.audio('placed',['assets/audio/placed.mp3']);
         game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
+        //Correct sounds
+        game.load.audio('correct',['assets/audio/yep.mp3']);
         //Wipe
         game.load.image('wipe','assets/wipe.png');
 
     },
 
     create: function(){
+
+        this.dialogue = new Dialogue(game);
+        this.dialogue.playsounds(['correct','misplaced']);
+        game.add.existing(this.dialogue);
+
 
         console.log("tutorial starting");
 
