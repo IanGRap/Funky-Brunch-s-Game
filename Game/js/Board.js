@@ -29,6 +29,13 @@ var misplaced;
 //audio arrays for player specific feedback
 var goodsound = [];
 var badsound = [];
+
+//Neds multiple vars to work I think
+// goodtile[0] will give the index it is in the array. The others are full of cubes that would use the correct function to turn green
+// we can pass this into dialogue and call the animation on that tile when the audio is played! HYPE!!
+var goodtile = [];
+var badtile = [];
+
  
 //board constructor
 function Board(game, columns, rows, tileSize, originX, originY){
@@ -149,10 +156,15 @@ Board.prototype.update = function(){
 
 // called when we select a tile
 Board.prototype.select = function(){
-
-	//Sets the scale so it will work with differntly sized boards (YEEEE)
-    //var this.scale = 64;
    	
+    //Defines the arrays used for the feedback on correct and incorrect tiles
+    //Where the audio lives. It will contain the string of the audio to use
+    goodsound = [];
+    badsound = [];
+
+    //An array for the Cube Reference Array that starts with the index the reader is on  
+   	goodtile = [true];
+	badtile = [false];
 
     //error array for clearing text
     var messages = ["","","",""];
@@ -267,15 +279,24 @@ Board.prototype.select = function(){
                         upb.y = startY + (this.currentRow - 1.6) * this.scale;
                         upb.visible = true;
 
+                        //sends the bad audio for the character
+                        badsound.push(this.tiles[this.currentRow - 1][this.currentColumn].item.badsound);
+                        badtile.push(this.tiles[this.currentRow - 1][this.currentColumn]);
+
                         //Makes style for text with wordwrap so the text stays on the speach bubble
                        	styleup = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 150, align: "center"};    
                         //draws the text over the sprite
 					    textup = game.add.text(upb.x,upb.y-10,speach,styleup);
 					    textup.anchor.set(0.5);
 
+					//When there is no conflict for Above
             		}else{
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow - 1][this.currentColumn])){
-            				this.tiles[this.currentRow - 1][this.currentColumn].correct();
+            				//this.tiles[this.currentRow - 1][this.currentColumn].correct();
+            				//sends the good audio to the character
+            				goodsound.push(this.tiles[this.currentRow - 1][this.currentColumn].item.goodsound);
+            				goodtile.push(this.tiles[this.currentRow - 1][this.currentColumn]);  //The index of the tile we had above :D
+
             			}
             		}
           	  	}
@@ -300,6 +321,11 @@ Board.prototype.select = function(){
                         downb.y = startY + (this.currentRow + 2.7) * this.scale;
                         downb.visible = true;
 
+                        //sends the bad audio for the character
+                        badsound.push(this.tiles[this.currentRow + 1][this.currentColumn].item.badsound);
+                        badtile.push(this.tiles[this.currentRow + 1][this.currentColumn]);
+
+
                        	//Makes style for text with wordwrap so the text stays on the speach bubble
                        	styledown = { font: "22px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 150, align: "center"};    
                         //draws the text over the sprite
@@ -307,7 +333,11 @@ Board.prototype.select = function(){
 					    textdown.anchor.set(0.5);
             		}else{
                     	if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow + 1][this.currentColumn])){
-            				this.tiles[this.currentRow + 1][this.currentColumn].correct();
+            				//this.tiles[this.currentRow + 1][this.currentColumn].correct();
+            				//sends the good sounds for the character
+            				goodsound.push(this.tiles[this.currentRow + 1][this.currentColumn].item.goodsound);
+            				goodtile.push(this.tiles[this.currentRow + 1][this.currentColumn]);
+
             			}
             		}
 	       	  	}
@@ -332,6 +362,10 @@ Board.prototype.select = function(){
                         leftb.y = startY + this.currentRow * this.scale + this.scale/2;
                         leftb.visible = true;
 
+                        //Sends the bad audio for the character
+                        badsound.push(this.tiles[this.currentRow][this.currentColumn - 1].item.badsound);
+                        badtile.push(this.tiles[this.currentRow][this.currentColumn - 1]);
+
                         //Makes style for text with wordwrap so the text stays on the speach bubble
                        	styleleft = { font: "20px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 80, align: "center"};    
                         //draws the text over the sprite
@@ -339,7 +373,13 @@ Board.prototype.select = function(){
 					    textleft.anchor.set(0.5);
             		}else{
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn - 1])){
-            				this.tiles[this.currentRow][this.currentColumn - 1].correct();
+            				//this.tiles[this.currentRow][this.currentColumn - 1].correct();
+
+            				//sends the good audio for the character
+            				goodsound.push(this.tiles[this.currentRow][this.currentColumn - 1].item.goodsound);
+            				goodtile.push(this.tiles[this.currentRow][this.currentColumn - 1]);
+
+
             			}
             		}
           	 	}
@@ -364,6 +404,11 @@ Board.prototype.select = function(){
                         rightb.y = startY + this.currentRow * this.scale + this.scale/2;
                         rightb.visible = true;
 
+                        //sends the bad audio for the character
+                        badsound.push(this.tiles[this.currentRow][this.currentColumn + 1].item.badsound);
+                        badtile.push(this.tiles[this.currentRow][this.currentColumn + 1]);
+
+
                         //Makes style for text with wordwrap so the text stays on the speach bubble
                        	styleright = { font: "20px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 90, align: "center"};    
                         //draws the text over the sprite
@@ -371,7 +416,11 @@ Board.prototype.select = function(){
 					    textright.anchor.set(0.5);
             		}else{
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn + 1])){
-            				this.tiles[this.currentRow][this.currentColumn + 1].correct();
+            				//this.tiles[this.currentRow][this.currentColumn + 1].correct();
+            				//sends the goodsound for the character
+            				goodsound.push(this.tiles[this.currentRow][this.currentColumn + 1].item.goodsound);
+            				goodtile.push(this.tiles[this.currentRow][this.currentColumn + 1]);
+
             			}
             		}
           	  }
@@ -379,7 +428,8 @@ Board.prototype.select = function(){
 
             if(noConflicts){
 
-            	this.dialogue.playsounds(['correct']);
+            	//plys the collected good sounds
+            	this.dialogue.playsounds(goodsound, goodtile);
 
             	this.tiles[this.selectedRow][this.selectedColumn].item.hideTraitWindow();
             	placed.play();
@@ -407,6 +457,10 @@ Board.prototype.select = function(){
 	            this.selectedColumn = null;
 	            this.setDisplay();
       		} else {
+
+      			console.log("badsound = " + badsound + ", badtile = " + badtile);
+      			//plays the audio for all the accumulated bad sounds
+      			this.dialogue.playsounds(badsound, badtile);
       			this.conflict();
                 //make our currently selected character unselected
                 /*proposed.activate();
