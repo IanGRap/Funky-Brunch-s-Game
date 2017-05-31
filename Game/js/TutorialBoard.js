@@ -1,15 +1,16 @@
-function TutorialBoard(game, columns, rows, tileSize, originX, originY){
+function TutorialBoard(game, columns, rows, tileSize, originX, originY, key){
 	Board.call(this, game, columns, rows, tileSize, originX, originY);
+	this.window = game.add.image(originX - 64, -180, key);
 	this.cursorMoves = 0;
 	this.inputs = 0;
-	this.movePrompt = "Use WASD or the ARROW KEYS to move your cursor around.";
-	this.selectPrompt = "Use the SPACEBAR or ENTER to select a character \nand then choose where to place them. \nYour goal is to get everyone onto the green spaces.";
-	this.conflictPrompt = "Some characters have conflicting feelings. \nYou need to keep them from being next to each other \nin order to get everyone on the green tiles.";
+	this.movePrompt = "Use WASD or the ARROW KEYS \nto move your cursor around.";
+	this.selectPrompt = "Use the SPACEBAR or ENTER to select a \ncharacter and then choose where to place \nthem. Your goal is to get everyone onto\n the green spaces.";
+	this.conflictPrompt = "Some characters have conflicting feelings. \nYou need to keep them from being next to \neach other in order to get everyone on \nthe green tiles.";
 	this.controlsPrompt = "Press C at any time to review the controls.\nPress R to restart this tutorial.";
 	this.selectDisplayed = false;
 	this.conflictsDisplayed = false;
 	this.controlsDisplayed = false;
-	this.tutorialText = game.add.text(originX - 64, originY - 96, this.movePrompt, {fontSize: "20px", fill: "red"});
+	this.tutorialText = game.add.text(this.window.x + 32, this.window.y + 16, this.movePrompt, {fontSize: "20px", fill: "black", font: 'Architects Daughter'});
 
 	this.R = game.input.keyboard.addKey(Phaser.Keyboard.R);
 	this.R.onDown.add(this.restart, this);
@@ -18,6 +19,7 @@ function TutorialBoard(game, columns, rows, tileSize, originX, originY){
 
 TutorialBoard.prototype = Object.create(Board.prototype);
 TutorialBoard.constructor = TutorialBoard;
+
 
 TutorialBoard.prototype.goLeft = function(){
 	Board.prototype.goLeft.call(this);
@@ -45,6 +47,7 @@ TutorialBoard.prototype.conflict = function(){
 		this.conflictsDisplayed = true;
 		this.tutorialText.text = this.conflictPrompt;
 		this.cursorMoves = 0;
+		this.resetDisplay();
 	}
 }
 
@@ -53,9 +56,11 @@ TutorialBoard.prototype.checkCursorMoves = function(){
 	if(!this.selectDisplayed && this.cursorMoves >= 3){
 		this.selectDisplayed = true;
 		this.tutorialText.text = this.selectPrompt;
-	} else if(this.conflictsDisplayed && this.cursorMoves >= 5){
+		this.resetDisplay();
+	} else if(this.conflictsDisplayed && this.cursorMoves >= 5 && !this.controlsDisplayed){
 		this.tutorialText.text = this.controlsPrompt;
 		this.controlsDisplayed = true;
+		this.resetDisplay();
 	}
 }
 
@@ -66,7 +71,21 @@ TutorialBoard.prototype.restart = function(){
 		this.conflictsDisplayed = false;
 		this.controlsDisplayed = false;
 		this.tutorialText.text = this.movePrompt;
+		this.resetDisplay();
 	}
+}
+
+TutorialBoard.prototype.update = function(){
+	Board.prototype.update.call(this);
+	if(this.window.y < 0){
+		this.window.y += 3;
+		this.tutorialText.y += 3;
+	}
+}
+
+TutorialBoard.prototype.resetDisplay = function(){
+	this.window.y = -180;
+	this.tutorialText.y = this.window.y + 16;
 }
 
 
