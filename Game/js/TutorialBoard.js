@@ -1,6 +1,8 @@
 function TutorialBoard(game, columns, rows, tileSize, originX, originY, key){
 	Board.call(this, game, columns, rows, tileSize, originX, originY, key);
-	this.window = game.add.image(originX - 64, -180, key);
+	this.window = game.add.image(game.world.width/3 - 252, game.world.width/2 + 90, key);
+	this.window.anchor.setTo(0.5, 0.5);
+	this.window.angle += 180;
 	this.cursorMoves = 0;
 	this.inputs = 0;
 	this.movePrompt = "Use WASD or the ARROW KEYS \nto move your cursor around.";
@@ -13,8 +15,8 @@ function TutorialBoard(game, columns, rows, tileSize, originX, originY, key){
 	this.conflictsDisplayed = false;
 	this.controlsDisplayed = false;
 	this.tutorialDisplayed = true;
-	this.tutorialText = game.add.text(this.window.x + 32, this.window.y + 16, this.movePrompt, {fontSize: "20px", fill: "black", font: 'Architects Daughter'});
-	this.promptText = game.add.text(this.window.x + 128, 16, "", {fontSize: "30px", fill: "white", font: 'Architects Daughter'});
+	this.tutorialText = game.add.text(this.window.x - 198, this.window.y - 48, this.movePrompt, {fontSize: "20px", fill: "black", font: 'Architects Daughter'});
+	this.promptText = game.add.text(this.window.x - 198, this.window.y - 64, "", {fontSize: "30px", fill: "white", font: 'Architects Daughter'});
 
 	this.R = game.input.keyboard.addKey(Phaser.Keyboard.R);
 	this.R.onDown.add(this.restart, this);
@@ -87,15 +89,15 @@ TutorialBoard.prototype.restart = function(){
 
 TutorialBoard.prototype.update = function(){
 	Board.prototype.update.call(this);
-	if(this.window.y < 0){
-		this.window.y += 3;
-		this.tutorialText.y += 3;
+	if(this.window.y > game.world.height - 90){
+		this.window.y -= 3;
+		this.tutorialText.y -= 3;
 	}
 }
 
 TutorialBoard.prototype.resetDisplay = function(){
-	this.window.y = -180;
-	this.tutorialText.y = this.window.y + 16;
+	this.window.y = game.world.width/2 + 180;
+	this.tutorialText.y = this.window.y - 48;
 }
 
 TutorialBoard.prototype.activate = function(){
