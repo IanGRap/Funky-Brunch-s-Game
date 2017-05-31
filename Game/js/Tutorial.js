@@ -26,12 +26,13 @@ Tutorial.prototype = {
         // cube sprite
         game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
         //charcter images
-        game.load.spritesheet('astronaut', 'assets/astronaughtimg.png', 64, 64);
-        game.load.spritesheet('scientist', 'assets/scientistimg.png', 64, 64);
-        game.load.spritesheet('ghost', 'assets/ghostimg.png', 64, 64);
-        game.load.spritesheet('knight', 'assets/knightimg.png', 64, 64);
-        game.load.spritesheet('dino', 'assets/dinoimg.png', 64, 64);
-        game.load.spritesheet('dog', 'assets/dogimg.png', 64, 64);
+        game.load.spritesheet('astronaut', 'assets/astronaught.png', 256, 256);
+        game.load.spritesheet('scientist', 'assets/scientist.png', 256, 256);
+        game.load.spritesheet('ghost', 'assets/ghost.png', 256, 256);
+        game.load.spritesheet('knight', 'assets/knight.png', 256, 256);
+        game.load.spritesheet('dino', 'assets/dinosaur.png',  256, 256);
+        game.load.spritesheet('dog', 'assets/dog.png', 256, 256);
+
         //backround image
         game.load.image('river','assets/river.png');
         game.load.image('boat','assets/Boat.png');
