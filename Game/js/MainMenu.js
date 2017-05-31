@@ -41,7 +41,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         game.state.start('Tutorial');
-       //game.state.start('Intro');
+        //game.state.start('Intro');
     },
     fullscreen : function(){
         console.log("fullscreen function");

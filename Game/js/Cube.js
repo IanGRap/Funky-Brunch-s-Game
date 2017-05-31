@@ -7,13 +7,13 @@ function Cube(game, key, locationX, locationY){
     this.animations.add('normal', [0], 2, true);
     this.animations.add('normalHighlight', [1], 3, true);
     this.animations.add('normalSelected', [0, 1], 3, true);
-    this.animations.add('normalcorrect',[4,9,0], 4, false);
+    this.animations.add('normalcorrect',[4,0], 6, false);
     this.animations.add('normalincorrect',[6,0], 2, false);
 
     this.animations.add('green', [2], 2, true);
     this.animations.add('greenHighlight', [3], 3, true);
     this.animations.add('greenSelected', [2, 3], 3, true);
-    this.animations.add('greencorrect',[5,9,2], 4, false);  
+    this.animations.add('greencorrect',[5,2], 6, false);  
     this.animations.add('greenincorrect',[7,2], 2, false);
 
     this.animations.add('blank', [8], 2, false);
@@ -72,37 +72,14 @@ Cube.prototype.activate = function(hovered){
             }
         }
     }
-
-    /*if( this.active && !this.selected){
-        console.log('this is selected');
-        this.active = false;
-        //set to not selected animation based on whether or not this is a dangerous tile
-        if(this.charged){
-            this.animations.play('normal');
-        } else if(this.blank){
-            this.animations.play('blank');
-        } else {
-            this.animations.play('green');
-        }
-        //set to selected animation based on whether or not this is a dangerous tile
-    } else if(!this.selected){
-        console.log('this isn\'t currently selected');
-        this.active = true;
-        if(this.charged){
-            this.animations.play('normalHighlight');
-        } else if(this.blank){
-            this.animations.play('blankHighlight');
-        } else {
-            this.animations.play('greenHighlight');
-        }
-    } else {
-        this.active = false;
-    }*/
 };
 
 //Code for the correct and incorrect animation feedback
 Cube.prototype.correct = function(){
+    console.log("------- correct -------")
     if(this.charged){
+            console.log("------- timing -------")
+
         this.animations.play('normalcorrect');
     }else if(this.blank){
         this.animations.play('blankcorrect');
@@ -112,9 +89,7 @@ Cube.prototype.correct = function(){
 }
 
 Cube.prototype.incorrect = function(){
-    console.log("incorrect");
     if(this.charged){  
-        console.log("norm")
         this.animations.play('normalincorrect');
     }else if(this.blank){
         this.animations.play('blankincorrect');
