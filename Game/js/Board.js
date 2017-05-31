@@ -99,7 +99,7 @@ function Board(game, columns, rows, tileSize, originX, originY, key){
     this.controlsButton = game.input.keyboard.addKey(Phaser.Keyboard.C);
     this.controlsButton.onDown.add(this.controlsDisplay, this);
     this.displaying = false;
-    this.controlsText = game.add.text(game.world.width/3 + 128, game.world.height - 180, "C: Controls", {fontSize: '30px', fill: 'white', font: 'Architects Daughter'});
+    this.controlsText = game.add.text(game.world.width/3 + 128, game.world.height - 64, "C: Controls", {fontSize: '30px', fill: 'white', font: 'Architects Daughter'});
     this.windowText = game.add.text(game.world.width/3 + 48, game.world.height + 48, "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nF: Toggle Fullscreen Mode\nC: Toggle this Display", {fontSize: '20px', fill: 'black', font: 'Architects Daughter'});
 }
 
