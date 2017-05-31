@@ -1,7 +1,7 @@
 var displayName;
 
 // constructor for circle
-function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name, visibleTraits,traitwindow){
+function Character(game, key, locationX, locationY, traits, conflicts, conflictText, name, visibleTraits,goodsound,badsound,traitwindow){
     // sprite constructor
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
@@ -16,6 +16,10 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.traits = traits;
     this.conflicts = conflicts;
     this.conflictText = conflictText;
+
+    //Sets the positive and negative audio for the characters
+    this.badsound = badsound;
+    this.goodsound = goodsound;
 
     //this.inputEnabled = true;
     //reference for if this is the circle currently being selected

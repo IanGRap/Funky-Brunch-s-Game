@@ -43,6 +43,11 @@ TestLevel2.prototype = {
         game.load.audio('select',['assets/audio/select.mp3']);
         game.load.audio('placed',['assets/audio/placed.mp3']);
         game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
+        //character response audio
+        game.load.audio('dinogood',['assets/audio/dinogood.mp3']);
+        game.load.audio('dinobad',['assets/audio/dinobad.mp3']);
+        game.load.audio('knightgood',['assets/audio/knightgood.mp3']);
+        game.load.audio('knightbad',['assets/audio/knightbad.mp3']);
         //Wipe Image
         game.load.image('wipe','assets/wipe.png');
     },
@@ -98,11 +103,11 @@ TestLevel2.prototype = {
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]       
         this.characters = [
             new Character(game, 'dog', 0, 0,  ["Dog"],["Allergies"],["Bork Bork, GRRRRR"], 'Dog', dogTraits,'traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Silly","Fraidy Cat"],["Serious","Spooky"],["Why so SERIOUS?","You're scaring me!"], 'Scientist', docTraits,'traitwindow'),
-            new Character(game, 'knight', 0, 0, ["Serious","Fantasy"],["Silly","Sci-Fi"],["I don't want to play with someone so SILLY","I wanted to play fantasy"], 'Knight', knightTraits,'traitwindow'),
-            new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur', dinoTraits,'traitwindow'),
-            new Character(game, 'ghost', 0, 0,["Allergies","Spooky"],["Dog","Fraidy Cat"],["Achoo, I think I'm allergic to Dogs", "Boo! You're scared!"], 'Ghost', ghostTraits,'traitwindow'),
-            new Character(game, 'astronaut', 0, 0,["Quiet","Sci-Fi"],["Noise","Fantasy"],["You're too NOISY!","I wanted to play Sci-Fi"], 'Astronaut', astronautTraits,'traitwindow')
+            new Character(game, 'scientist', 0, 0,  ["Silly","Fraidy Cat"],["Serious","Spooky"],["Why so SERIOUS?","You're scaring me!"], 'Scientist', docTraits,'knightgood','knightbad','traitwindow'
+            new Character(game, 'knight', 0, 0, ["Serious","Fantasy"],["Silly","Sci-Fi"],["I don't want to play with someone so SILLY","I wanted to play fantasy"], 'Knight', knightTraits,'knightgood','knightbad','traitwindow'
+            new Character(game, 'dino', 0, 0, ["Serious","Noise"],["Silly","Quite"],["I don't want to play with someone so SILLY","I want to make noise but you're QUIET"], 'Dinosaur', dinoTraits,'knightgood','knightbad','traitwindow'
+            new Character(game, 'ghost', 0, 0,["Allergies","Spooky"],["Dog","Fraidy Cat"],["Achoo, I think I'm allergic to Dogs", "Boo! You're scared!"], 'Ghost', ghostTraits,'knightgood','knightbad','traitwindow'
+            new Character(game, 'astronaut', 0, 0,["Quiet","Sci-Fi"],["Noise","Fantasy"],["You're too NOISY!","I wanted to play Sci-Fi"], 'Astronaut', astronautTraits,'knightgood','knightbad','traitwindow'
 
         ];
 

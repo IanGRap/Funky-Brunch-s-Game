@@ -45,6 +45,13 @@ Tutorial.prototype = {
         game.load.audio('select',['assets/audio/select.mp3']);
         game.load.audio('placed',['assets/audio/placed.mp3']);
         game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
+        //character response audio
+        game.load.audio('dinogood',['assets/audio/dinogood.mp3']);
+        game.load.audio('dinobad',['assets/audio/dinobad.mp3']);
+        game.load.audio('knightgood',['assets/audio/knightgood.mp3']);
+        game.load.audio('knightbad',['assets/audio/knightbad.mp3']);
+
+
         //Correct sounds
         game.load.audio('correct',['assets/audio/yep.mp3']);
         //Wipe
@@ -98,9 +105,9 @@ Tutorial.prototype = {
         var scientistText = ["I want someone silly"];
 
         this.characters = [
-            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits,'traitwindow'),
-            new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', knightTraits,'traitwindow'),
-            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', dinoTraits,'traitwindow')
+            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', knightTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', dinoTraits,'dinogood','dinobad','traitwindow'),
         ];
 
         for(let i=0; i<this.characters.length; i++){

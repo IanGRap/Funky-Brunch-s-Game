@@ -280,7 +280,7 @@ Board.prototype.select = function(){
                         upb.visible = true;
 
                         //sends the bad audio for the character
-                        badsound.push('correct');
+                        badsound.push(this.tiles[this.currentRow - 1][this.currentColumn].item.badsound);
                         badtile.push(this.tiles[this.currentRow - 1][this.currentColumn]);
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
@@ -294,7 +294,7 @@ Board.prototype.select = function(){
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow - 1][this.currentColumn])){
             				//this.tiles[this.currentRow - 1][this.currentColumn].correct();
             				//sends the good audio to the character
-            				goodsound.push('correct');
+            				goodsound.push(this.tiles[this.currentRow - 1][this.currentColumn].item.goodsound);
             				goodtile.push(this.tiles[this.currentRow - 1][this.currentColumn]);  //The index of the tile we had above :D
 
             			}
@@ -322,7 +322,7 @@ Board.prototype.select = function(){
                         downb.visible = true;
 
                         //sends the bad audio for the character
-                        badsound.push('correct');
+                        badsound.push(this.tiles[this.currentRow + 1][this.currentColumn].item.badsound);
                         badtile.push(this.tiles[this.currentRow + 1][this.currentColumn]);
 
 
@@ -335,7 +335,7 @@ Board.prototype.select = function(){
                     	if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow + 1][this.currentColumn])){
             				//this.tiles[this.currentRow + 1][this.currentColumn].correct();
             				//sends the good sounds for the character
-            				goodsound.push('correct');
+            				goodsound.push(this.tiles[this.currentRow + 1][this.currentColumn].item.goodsound);
             				goodtile.push(this.tiles[this.currentRow + 1][this.currentColumn]);
 
             			}
@@ -363,7 +363,7 @@ Board.prototype.select = function(){
                         leftb.visible = true;
 
                         //Sends the bad audio for the character
-                        badsound.push('correct');
+                        badsound.push(this.tiles[this.currentRow][this.currentColumn - 1].item.badsound);
                         badtile.push(this.tiles[this.currentRow][this.currentColumn - 1]);
 
                         //Makes style for text with wordwrap so the text stays on the speach bubble
@@ -376,7 +376,7 @@ Board.prototype.select = function(){
             				//this.tiles[this.currentRow][this.currentColumn - 1].correct();
 
             				//sends the good audio for the character
-            				goodsound.push('correct');
+            				goodsound.push(this.tiles[this.currentRow][this.currentColumn - 1].item.goodsound);
             				goodtile.push(this.tiles[this.currentRow][this.currentColumn - 1]);
 
 
@@ -405,7 +405,7 @@ Board.prototype.select = function(){
                         rightb.visible = true;
 
                         //sends the bad audio for the character
-                        badsound.push('correct');
+                        badsound.push(this.tiles[this.currentRow][this.currentColumn + 1].item.badsound);
                         badtile.push(this.tiles[this.currentRow][this.currentColumn + 1]);
 
 
@@ -418,7 +418,7 @@ Board.prototype.select = function(){
             			if(!(this.tiles[this.selectedRow][this.selectedColumn] == this.tiles[this.currentRow][this.currentColumn + 1])){
             				//this.tiles[this.currentRow][this.currentColumn + 1].correct();
             				//sends the goodsound for the character
-            				goodsound.push('correct');
+            				goodsound.push(this.tiles[this.currentRow][this.currentColumn + 1].item.goodsound);
             				goodtile.push(this.tiles[this.currentRow][this.currentColumn + 1]);
 
             			}
