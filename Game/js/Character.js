@@ -6,11 +6,11 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     Phaser.Sprite.call(this, game, locationX, locationY, key);
 
     //DEBUG>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
-    this.scale.setTo(2,2);
+    this.scale.setTo(0.5,0.5);
 
     // animations for circle being highlighted
     this.animations.add('nonactive', [0], 2, true);
-    this.animations.add('active', [1], 2, true);
+    this.animations.add('active', [0], 2, true);
 
     //trait arrays set
     this.traits = traits;
@@ -64,7 +64,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     //Display character icon
     this.displaySprite = game.add.sprite(1200, 80, key);
     this.displaySprite.anchor.setTo(0.5,0.5);
-    this.displaySprite.scale.setTo(1.7,1.7);
+    this.displaySprite.scale.setTo(0.5,0.5);
 
 
     // ----- Display selected objects. Hopefully will slide in. Fingers crossed -----
@@ -89,7 +89,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     //Display character icon
     this.lockeddisplaySprite = game.add.sprite(1200, 880, key);
     this.lockeddisplaySprite.anchor.setTo(0.5,0.5);
-    this.lockeddisplaySprite.scale.setTo(1.7,1.7);
+    this.lockeddisplaySprite.scale.setTo(0.5,0.5);
     this.lockeddisplaySprite.alpha = 0;
 
 }

@@ -4,6 +4,7 @@ function Dialogue(game){
     Phaser.Sprite.call(this, game, 20,20, 'dino');
     this.music;
     this.gothrough = 0;
+    this.once = false;
 
     this.sounds;
     this.play = false;
@@ -17,30 +18,39 @@ Dialogue.prototype.constructor = Dialogue;
 
 
 Dialogue.prototype.update = function(){
-    if(this.play){
-        this.play = false;
-        this.music.play();
-        console.log("Eeyyyy")
+    if(this.gothrough != this.sounds.length){
+        if(this.play){
+            this.play = false;
+            this.music.play();
+            this.once = true;
+        }else{
+            this.music.onStop.add(function(){            this.nextsound();         }, this);
+        }
     }
-    this.music.onStop.add(function(){  console.log(this.gothrough);}, this);
+}
+
+Dialogue.prototype.nextsound = function(){
+    if(this.once){
+        this.once = false;
+        console.log("Aight")
+        this.gothrough ++;
+        this.music = game.add.audio(this.sounds[this.gothrough]);
+        this.play = true;
+    }
+
 }
 
 
 //Pass this one an array of sounds you're looking to play. Ideally you'd call this in 2 instances, one for playing the correct sounds and one for playing the incorrect sounds
-Dialogue.prototype.playsounds = function(sounds){
-    this.gothrough = 0;
+Dialogue.prototype.playsounds = function(locsounds){
+    if(locsounds != null){
+        this.gothrough = 0;
 
-    this.play = true;
+        this.sounds = locsounds;
+        this.play = true;
 
-    if(this.gothrough < sounds.length){
-        console.log("gothrough = " + this.gothrough);
-        this.music = game.add.audio(sounds[this.gothrough]);
-        //this.music.play();
-
-        //I can possibly itterate on the loop when the music stops?
+        this.music = game.add.audio(this.sounds[this.gothrough]);
     }
-
-
 }
 
 

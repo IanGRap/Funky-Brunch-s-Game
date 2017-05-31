@@ -25,11 +25,22 @@ var tick;
 var select;
 var placed;
 var misplaced;
+
+//audio arrays for player specific feedback
+var goodsound = [];
+var badsound = [];
  
 //board constructor
 function Board(game, columns, rows, tileSize, originX, originY){
     //group constructor
     Phaser.Group.call(this, game);
+
+    //Sets dialogue system
+    this.dialogue = new Dialogue(game);
+    this.dialogue.playsounds([]);
+    game.add.existing(this.dialogue);
+
+
     //reference to the cubes that set up our tile system essentially
     //set 2d array with dimensions rows x columns
     this.tiles = [rows];
@@ -367,6 +378,9 @@ Board.prototype.select = function(){
             }
 
             if(noConflicts){
+
+            	this.dialogue.playsounds(['correct']);
+
             	this.tiles[this.selectedRow][this.selectedColumn].item.hideTraitWindow();
             	placed.play();
                 console.log("no conflict");
