@@ -1,7 +1,7 @@
 
 function Dialogue(game){
     // sprite constructor
-    Phaser.Sprite.call(this, game, 20,20, 'dino');
+    Phaser.Group.call(this, game/*, 20,20, 'dino'*/);
     this.music;
     this.gothrough = 0;
     this.tilecount = 0;
@@ -13,7 +13,7 @@ function Dialogue(game){
 }
 
 // set inherited prototype
-Dialogue.prototype = Object.create(Phaser.Sprite.prototype);
+Dialogue.prototype = Object.create(Phaser.Group.prototype);
 // declare constructor
 Dialogue.prototype.constructor = Dialogue;
 

@@ -38,7 +38,7 @@ var badtile = [];
 
  
 //board constructor
-function Board(game, columns, rows, tileSize, originX, originY){
+function Board(game, columns, rows, tileSize, originX, originY, key){
     //group constructor
     Phaser.Group.call(this, game);
 
@@ -47,6 +47,9 @@ function Board(game, columns, rows, tileSize, originX, originY){
     this.dialogue.playsounds([]);
     game.add.existing(this.dialogue);
 
+    this.controlWindow = game.add.image(game.world.width/3, game.world.height + 180, key);
+    this.controlWindow.anchor.setTo(1, 0);
+    this.controlWindow.angle += 180;
 
     //reference to the cubes that set up our tile system essentially
     //set 2d array with dimensions rows x columns
@@ -95,8 +98,9 @@ function Board(game, columns, rows, tileSize, originX, originY){
 
     this.controlsButton = game.input.keyboard.addKey(Phaser.Keyboard.C);
     this.controlsButton.onDown.add(this.controlsDisplay, this);
-    this.controlsDisplayed = false;
-    this.controlsText = game.add.text(originX, originY + ((rows + 1) * tileSize), "C: Controls", {fontSize: '25px', fill: 'red'});
+    this.displaying = false;
+    this.controlsText = game.add.text(game.world.width/3 + 128, game.world.height - 180, "C: Controls", {fontSize: '30px', fill: 'white', font: 'Architects Daughter'});
+    this.windowText = game.add.text(game.world.width/3 + 48, game.world.height + 48, "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nF: Toggle Fullscreen Mode\nC: Toggle this Display", {fontSize: '20px', fill: 'black', font: 'Architects Daughter'});
 }
 
 //set prototype and constructor
@@ -152,6 +156,11 @@ Board.prototype.update = function(){
 	}
 		//Fullscreen code will always work regardless of placing tiles
 		//this.f.onDown.add(this.fullscreen, this);
+
+    if(this.displaying && this.controlWindow.y > game.world.height){
+        this.controlWindow.y -= 3;
+        this.windowText.y -=3;
+    }
 };
 
 // called when we select a tile
@@ -602,10 +611,12 @@ Board.prototype.setDisplay = function(){
 }
 
 Board.prototype.controlsDisplay = function(){
-    if(this.controlsDisplayed){
+    if(this.displaying){
         this.controlsText.text = "C: Controls";
+        this.controlWindow.y = game.world.height + 180;
+        this.windowText.y = game.world.height + 48;
     } else {
-        this.controlsText.text = "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nF: Toggle Fullscreen Mode";
+        this.controlsText.text = "";
     }
-    this.controlsDisplayed = !this.controlsDisplayed;
+    this.displaying = !this.displaying;
 }

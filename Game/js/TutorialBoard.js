@@ -1,5 +1,5 @@
 function TutorialBoard(game, columns, rows, tileSize, originX, originY, key){
-	Board.call(this, game, columns, rows, tileSize, originX, originY);
+	Board.call(this, game, columns, rows, tileSize, originX, originY, key);
 	this.window = game.add.image(originX - 64, -180, key);
 	this.cursorMoves = 0;
 	this.inputs = 0;

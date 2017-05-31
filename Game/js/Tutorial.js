@@ -86,7 +86,7 @@ Tutorial.prototype = {
         ];
 
         // define a new board object
-        this.board = new TutorialBoard(game, 5, 3, 128, 128, 256);
+        this.board = new TutorialBoard(game, 5, 3, 128, 128, 256, 'window');
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept

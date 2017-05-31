@@ -8,6 +8,7 @@ MainMenu.prototype = {
     preload : function(){
         game.load.image('menu','assets/menuplaceholder.png');
         game.load.image('wipe','assets/wipe.png');
+        game.load.image('window', 'assets/tutorialWindow.png');
     },
 
     create : function(){
