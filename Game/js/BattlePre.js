@@ -35,6 +35,28 @@ var gY;
 
 var index = 0;
 
+battlePreConversations = [
+    function(){dialogue('Bork Bork Bark, heckin Bork!', doX, doY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Wolfy\'s trying to say something! The ritual worked!', diX, diY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('No she isn\'t, Dogs can\'t talk.', kX, kY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('The ritual failed \'cause Frankie brought a fake magical monster!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Your monsters are the fakers!', gX, gY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('LMons is all about training hard and making friends.', gX, gY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('DMons are just scary and violent.', gX, gY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Well lets have a battle then to see whose Mons are best!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Let\'s do it, you\'ll be no match for my ghostly magic!', gX, gY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Ooh I\'m so scared of your flowery ghost sheet.', kX, kY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('You should be, it\'s how I generate my natural spectral powers!', gX, gY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Uh, you guys, I don\'t think we should fight with a sword like that.', sX, sY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Nonsense, it might be real but I\'m a master swordsman!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Yeah actually I think you should take it back to your parents.', diX, diY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('I don\'t want anyone to get hurt and that\'s too powerful.', diX, diY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('If he knows how to use it then why take it away?', aX, aY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Swords are cool.', aX, aY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('En Garde!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
+];
+
 //Dog: Bork Bork Bark, heckin Bork!
 //Dino: Wolfy's trying to say something! The ritual worked!
 //Knight: No she isn't, Dogs can't talk. The ritual failed because Frankie brought a fake magical monster to the idols!
@@ -50,27 +72,7 @@ var index = 0;
 //Dog: Bark Bark Bark!
 //Knight: En Garde!
 //Dog: Bork!
-var conversations = [
-    function(){dialogue('Bork Bork Bark, heckin Bork!', doX, doY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Wolfy\'s trying to say something! The ritual worked!', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('No she isn\'t, Dogs can\'t talk.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('The ritual failed \'cause Frankie brought a fake magical monster!', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Your monsters are the fakers!', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('LMons is all about training hard and making friends.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('DMons are just scary and violent.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Well lets have a battle then to see whose Mons are best!', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Let\'s do it, you\'ll be no match for my ghostly magic!', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Ooh I\'m so scared of your flowery ghost sheet.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('You should be, it\'s how I generate my natural spectral powers!', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Uh, you guys, I don\'t think we should fight with a sword like that.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Nonsense, it might be real but I\'m a master swordsman!', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Yeah actually I think you should take it back to your parents.', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I don\'t want anyone to get hurt and that\'s too powerful.', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('If he knows how to use it then why take it away?', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Swords are cool.', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('En Garde!', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
-];
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -116,6 +118,7 @@ BattlePre.prototype = {
     },
 
     create : function(){
+
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
@@ -149,7 +152,7 @@ BattlePre.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        battlePreConversations[index]();
     },
 
     update : function(){
