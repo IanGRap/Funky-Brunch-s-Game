@@ -51,7 +51,7 @@ var monTalkConversations = [
     function(){dialogue('Yeah actually I\'m more of a DMONS Dino myself.', diX, diY, 'speachR', monTalkConversations[++index], 1);},
     function(){dialogue('So let\'s just stand on these magical tiles and see what happens then!', sX, sY, 'speachR', monTalkConversations[++index], 1);},
     function(){dialogue('I\'m gonna offer my Cantankerous Void Dancer instead.', kX, kY, 'speachR', monTalkConversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', MonTalk.prototype.gamestart, 1);},
 ];
 
 //Ghost: Here, in front of the Idol, I offer my favorite Legendary Mon, Pyrochilla! ...
@@ -191,6 +191,10 @@ MonTalk.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart : function(){
+        game.state.start('Level4Religion');
     }
 }
 
