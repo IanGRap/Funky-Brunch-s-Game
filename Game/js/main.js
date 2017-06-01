@@ -53,6 +53,7 @@ game.state.add('Intro', Intro);
 game.state.add('WagonIntro', WagonIntro);
 game.state.add('WagonOutro', WagonOutro);
 game.state.add('WagonParents', WagonParents);
+game.state.add('RiverOutro', RiverOutro);
 
 //start with Main Menu State
 game.state.start('MainMenu');
