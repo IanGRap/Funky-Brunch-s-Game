@@ -29,16 +29,16 @@ var parent2Y;
 var index = 0;
 
 wagonParentsConversations = [
-            function(){dialogue('I can\'t believe you could say something like that!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
-            function(){dialogue('If we don\'t implement a carbon tax the oil industry will melt the ice caps!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);}, 
-            function(){dialogue('I just don\'t think the science is all there yet to prove that it\'s man made!', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},   
-            function(){dialogue('I\'m blaming you when the planet floods.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
-            function(){dialogue('Mom we\'re going exploring!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
-            function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
-            function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},
-            function(){dialogue('Everyone, the world is flooding, we need to get to my boat!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
-            function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', gamestartParents, 1);},
-        ];
+    function(){dialogue('I can\'t believe you could say something like that!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
+    function(){dialogue('If we don\'t implement a carbon tax the oil industry will melt the ice caps!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);}, 
+    function(){dialogue('I just don\'t think the science is all there yet to prove that it\'s man made!', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},   
+    function(){dialogue('I\'m blaming you when the planet floods.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
+    function(){dialogue('Mom we\'re going exploring!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
+    function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
+    function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},
+    function(){dialogue('Everyone, the world is flooding, we need to get to my boat!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
+    function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', gamestart, 1);},
+];
 
 //function dialogue(phrase,x,y,direction,localfunct,scale)
 //Parent: I can't believe you could say something like that! If we don't implement a carbon tax the oil industry will melt the ice caps!
@@ -94,24 +94,31 @@ WagonParents.prototype = {
     },
 
     create : function(){
+        var background = game.add.image(-700, -900, 'background');
+        var backgroundfront = game.add.image(-700, -900, 'backgroundfront');
 
-        scientistPositionX = game.world.width/4 - 128;
-        parent1X = game.world.width * (1/2) - 128;
-        parent2X = game.world.width * (3/4) - 128;
-        scientistPositionY = game.world.height/2;
-        parent1Y = game.world.height/2;
-        parent2Y = game.world.height/2;
+        scientistPositionX = 1028;
+        parent1X = 800;
+        parent2X = 600;
+        scientistPositionY = 325;
+        parent1Y = 250;
+        parent2Y = 250;
 
+        var scientist = game.add.sprite(scientistPositionX - 128, scientistPositionY + 128, 'scientist');
+        scientist.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(700, 700, 'dino');
+        dino.scale.setTo(0.5, 0.5);
+        var dog = game.add.sprite(1100, 500, 'dog');
+        dog.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(850, 750, 'knight');
+        knight.scale.setTo(0.5, 0.5);
         
-        //Fade in from black
-        var fadeout = game.add.sprite(0,0,'fadeout');
-        fadeout.scale.setTo(20,20);
-        fadeout.alpha = 1;
-        
-        //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
-
-        //When the prevois tween is complete run [THIS FUNCTION]
-        //tween.onComplete.add(function(){         conversations[0]         },this);    
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
+        delay = 1500;
+        time = game.time.now;
+   
 
         game.world.setBounds(0, 0, 4000, 4000);
 
@@ -122,7 +129,6 @@ WagonParents.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        wagonParentsConversations[index]();
     },
 
     update : function(){
@@ -139,6 +145,13 @@ WagonParents.prototype = {
         if(scaletrigger == 2){
             if(worldScale > 0.6){
                 worldScale -= 0.0012;
+            }
+        }
+
+        if(start){
+            if (game.time.now - time > delay){ // Delay is up for writing the next character
+                start = false;
+                wagonParentsConversations[index]();
             }
         }
 
