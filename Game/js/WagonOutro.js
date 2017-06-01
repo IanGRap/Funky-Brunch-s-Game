@@ -29,13 +29,13 @@ var dinoPositionY;
 var index = 0;
 
 //function dialogue(phrase,x,y,direction,localfunct,scale)
-var conversations = [
-    function(){dialogue('Wow Doc this yard is amazing, looks like we\'ve got a cool adventure ahead of us!', dinoPositionX, dinoPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Thanks, I\'ve got a lot of ideas about where we should explore.',  scientistPositionX, scientistPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('And Sir Goldhelm I feel much safer about this adventure with a knight.', dinoPositionX, dinoPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Why thank you. Doc, I do have to say that this is an impressive carriage.', knightPositionX, knightPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I\'m glad you think so. I\'m going to go tell my parents we\'re going exploring.',  scientistPositionX, scientistPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue(' I\'ll be right back!',  scientistPositionX, scientistPositionY, 'speachR', gamestart, 1);}
+var conversationsWagonOutro = [
+    function(){dialogue('Wow Doc this yard is amazing, looks like we\'ve got a cool adventure ahead of us!', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
+    function(){dialogue('Thanks, I\'ve got a lot of ideas about where we should explore.',  scientistPositionX, scientistPositionY, 'speachL', conversationsWagonOutro[++index], 1);},
+    function(){dialogue('And Sir Goldhelm I feel much safer about this adventure with a knight.', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
+    function(){dialogue('Why thank you. Doc, I do have to say that this is an impressive carriage.', knightPositionX, knightPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
+    function(){dialogue('I\'m glad you think so. I\'m going to go tell my parents we\'re going exploring.',  scientistPositionX, scientistPositionY, 'speachL', conversationsWagonOutro[++index], 1);},
+    function(){dialogue(' I\'ll be right back!',  scientistPositionX, scientistPositionY, 'speachL', startriver, 1);}
 ];
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -66,7 +66,13 @@ WagonOutro.prototype = {
         game.load.image('camera','assets/camera.png');
         game.load.image('fadeout','assets/fadeout.png');
 
-        //Load's scene images
+        //Loads scene images
+        game.load.image('background','assets/WagonScene.png');
+
+        //Loads the character sprites
+        game.load.image('scientist','assets/Scientist.png');
+        game.load.image('knight','assets/knight.png');
+        game.load.image('dino','assets/Dinosaur.png');
 
 
         //Load Speach Assets
@@ -82,23 +88,29 @@ WagonOutro.prototype = {
     },
 
     create : function(){
-        scientistPositionX = game.world.width/4 - 128;
-        knightPositionX = game.world.width * (1/2) - 128;
-        dinoPositionX = game.world.width * (3/4) - 128;
-        scientistPositionY = game.world.height/2;
-        knightPositionY = game.world.height/2;
+        start = true;
+        var background = game.add.image(0,80,'background');
+        background.scale.setTo(1,1.2);
+
+        scientistPositionX = game.world.width/4 - 300;
+        knightPositionX = game.world.width * (1/2) + 20;
+        dinoPositionX = game.world.width * (3/4) - 88;
+        scientistPositionY = game.world.height/2 - 100;
+        knightPositionY = game.world.height/2 - 150;
         dinoPositionY = game.world.height/2;
 
-        
-        //Fade in from black
-        var fadeout = game.add.sprite(0,0,'fadeout');
-        fadeout.scale.setTo(20,20);
-        fadeout.alpha = 1;
-        
-        //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
+        scientist = game.add.sprite(game.world.width/4,game.world.height/2,'scientist');
+        knight = game.add.sprite(game.world.width * (1/2) - 128, game.world.height/2,'knight');
+        dino = game.add.sprite(game.world.width * (3/4) - 258,game.world.height/2+20,'dino');
 
-        //When the prevois tween is complete run [THIS FUNCTION]
-        //tween.onComplete.add(function(){         conversations[0]         },this);    
+
+        //Screen Wipe Object Creation
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
+        delay = 1500;
+        time = game.time.now;
+   
 
         game.world.setBounds(0, 0, 4000, 4000);
 
@@ -109,23 +121,15 @@ WagonOutro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        //conversationsWagonIntro[index]();
     },
 
     update : function(){
 
-        //Zooming Functionality, write an if statement with scaletrigger's value as an id then change the value of scale trigger
-        //when you want to start zooming
-       //   /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
-       if(scaletrigger == 1){
-            if(worldScale < 1.3){
-                worldScale += 0.0004;
-            }
-        }
-       //    *///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
-        if(scaletrigger == 2){
-            if(worldScale > 0.6){
-                worldScale -= 0.0012;
+        if(start){
+            if (game.time.now - time > delay){ // Delay is up for writing the next character
+                start = false;
+                conversationsWagonOutro[index]();
             }
         }
 
@@ -134,157 +138,13 @@ WagonOutro.prototype = {
     }
 }
 
-// Chronological Scenes
-
-function movedown1(){
-    scaletrigger = 1;
-    tween = game.add.tween(camera).to( { y: 1160, x: 700},17000,"Linear",true,0);
-    //console.log("Hey there");
-
-    //starts the timer for the car moving into the shot
-    time = game.time.now;
-    delay = 7000;
-    carmove = true;
-
-    //When the prevois tween is complete run [THIS FUNCTION]
-    tween.onComplete.add(function(){             cartalk1();        },this);    
-
-}
-
-function cartalk1(){
-    //Adds the speach bubble
-    themeIntro();
-    dialogue("Have a good time with your\nfriends Sam!",400,1000,'speachL',cartalk2,1);
-}
-function cartalk2(){
-    dialogue("Come on Mom, you've got to call me Dino",900,1000,'speachR',cartalk3,1);
-}
-function cartalk3(){
-    dialogue("Alright honey, I'll be inside if you need anything",400,1000,'speachL',dinowalking,1);
-}
-function dinowalking(){
-    dino = game.add.sprite(670,1200,'dino');
-    dino.scale.setTo(0.8,0.8);
-    dino.animations.add('stand', [0], 2, true);
-    dino.animations.add('walk', [0,1,0,2], 2, true);
-    dino.animations.play('walk',3);
-
-    door.kill();
-    door = game.add.sprite(650,1130,'door');  
-    door.scale.setTo(1,.9);                    //REMOVE WHEN YOU GET PROPER ASSETS
-    //makes door animations
-    door.animations.add('open',[0,1,2]);  
-
-    //Sets a delay for the door opening
-    time = game.time.now;
-    delay = 3000;
-    doormove = true;   
-
-    tween = game.add.tween(dino.scale).to({x:1.4,y:1.4},5000,"Linear",true,0);
-    //When the prevois tween is complete run [THIS FUNCTION]
-    tween.onComplete.add(function(){             closedoorscene();        },this);    
-
-
-}
-function closedoorscene(){
-    dino.kill();
-    dino = game.add.sprite(670,1200,'dino');
-    dino.scale.setTo(1.4,1.4);
-    dino.animations.add('stand', [0], 2, true);
-    dino.animations.add('walk', [0,1,0,2], 2, true);
-    dino.animations.play('stand',3);
-
-    door.animations.add('close',[2,1,0]);  
-    door.animations.play('close',4);
-    door.animations.currentAnim.onComplete.add(function(){       walkright();     },this);
-}
-
-function walkright(){
-    //Starts phase 2 zooming
-    scaletrigger = 2;
-    var tweencam = game.add.tween(camera).to( { x: 1430, y: 1350},9000,"Linear",true,0);
-
-
-    //Starts the dino walking to the right
-    dino.animations.play('walk',3);
-    tween = game.add.tween(dino).to({x:1300,y: 1340},9000,"Linear",true,0);
-    tween.onComplete.add(function(){         dino.animations.play('stand',3);      kidschat1();       },this);    
-}
-
-function kidschat1(){
-    dialogue("Hey Dino,  glad you could make it to the party.",1950,1200,'speachR',kidschat2,1.8);
-}
-function kidschat2(){
-    dialogue("No problem Doc, where's everyone at?",700,1100,'speachL',kidschat3,1.8);
-}
-function kidschat3(){
-    dialogue("They're inside with their parents right now. Anyways, want to play a game?",1950,1200,'speachR',gamestart,1.8);
-}
-
-function gamestart(){
+function startriver(){
     //Screen Wipe Object Creation
     wipe = new ScreenWipe(game,'wipe');
     game.add.existing(wipe);
-    wipe.animOutComplex(level1start,5000,3800,1.5);
+    wipe.animOutComplex(runtutorial,5000,3800,1.5);
 }
 
-function level1start(){
-    game.state.start('Tutorial');
+function runriver(){
+    game.state.start('TestLevel2');
 }
-
-
-//Function to do the work on the Speach js file
-//To use you need ["string"],[#],[#],['speachL' or 'speachR'] [function to go to after speach plays]
-function dialogue(phrase,x,y,direction,localfunct,scale){
-    //Adds the speach bubble
-    talking = new Speach(game, direction, x, y, phrase,scale);
-    game.add.existing(talking);
-
-    funct = localfunct;
-    triggered = 1;
-
-    spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    spacebar.onDown.add(check);
-}
-
-function check(){
-    if(talking.writing){
-        //space bar to make the delay between characters immediate
-        talking.delay = .0001;
-    }else if(talking.writing == false){
-        if(triggered==1){
-            //gets rid of current bubble
-            talking.kill();  
-            game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
-            triggered = 0;
-            //Next scene
-            funct();
-         }
-    }   
-}
-
-//Music Flow
-function introSong(){
-    //start audio
-    music = game.add.audio('intro');
-    music.play();
-
-    //Jump to next song when over
-   // music.onStop.add(function(){ themeIntro(); }, this);
-}
-
-function themeIntro(){
-    music = game.add.audio('themestart');
-    music.play();
-
-    //jump to loop version when over
-    music.onStop.add(function(){ themeLoop(); }, this);
-}
-
-function themeLoop(){
-    //plays and loops
-    music = game.add.audio('themeloop');
-    music.play();
-    music.loopFull();
-}
-
