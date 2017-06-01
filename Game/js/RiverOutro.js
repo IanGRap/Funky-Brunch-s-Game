@@ -32,6 +32,30 @@ var aY;
 
 var index = 0;
 
+riverOutroConversations = [
+    function(){dialogue('Even if you don\'t believe me, the world is still ending.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Well, it might flood but I just don\'t think it\'s our job to worry about it.', diX, diY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('We all made it on board, so let\'s just focus on finding new lands to adventure in.', kX, kY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Hey, over here!', aX, aY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Steven? I mean, Captain Blastoffe, what are you doing here?', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('My parents are arguing about something so I thought I\'d come next door.', aX, aY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Do I smell french fries?', aX, aY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Oh yes there\'s a BBQ going on in the village.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('The adults are all arguing about something there too.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('We\'re on an adventure to figure out where the problems are coming from.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Climb aboard!', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Hold on, he wasn\'t invited to join our party. ', kX, kY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Does that matter?.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('The Captain is clearly hungry and needs someone to play with right now.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('I don\'t think we can trust him.', kX, kY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Your parents didn\'t say he could come over.', kX, kY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Please, I really can\'t go back home right now.', aX, aY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('We can make some room for you Captain.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('Dino, help me move these boxes.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
+    function(){dialogue('There should be snacks somewhere in here that we can share.', sX, sY, 'speachR', gamestart, 1);},
+];
+
 //Scientist: Even if you don't believe me, the world is still ending.
 //Dino: Well, it might flood but I just don't think it's our job to worry about it.
 //Knight: We all made it on board, so let's just focus on finding new lands to adventure in.
@@ -45,29 +69,7 @@ var index = 0;
 //Knight: I don't think we can trust him, I don't think he should be here if your parents didn't already say he could come over. 
 //Astronaut: Please, I really can't go back home right now.
 //Scientist: We can make some room for you Captain. Dino, help me move these boxes, there should be snacks somewhere in here that we can share. 
-var conversations = [
-    function(){dialogue('Even if you don\'t believe me, the world is still ending.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Well, it might flood but I just don\'t think it\'s our job to worry about it.', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('We all made it on board, so let\'s just focus on finding new lands to adventure in.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Hey, over here!', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Steven? I mean, Captain Blastoffe, what are you doing here?', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('My parents are arguing about something so I thought I\'d come next door.', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Do I smell french fries?', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Oh yes there\'s a BBQ going on in the village.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('The adults are all arguing about something there too.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('We\'re on an adventure to figure out where the problems are coming from.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Climb aboard!', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Hold on, he wasn\'t invited to join our party. ', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Does that matter?.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('The Captain is clearly hungry and needs someone to play with right now.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I don\'t think we can trust him.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Your parents didn\'t say he could come over.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Please, I really can\'t go back home right now.', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('We can make some room for you Captain.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Dino, help me move these boxes.', sX, sY, 'speachR', gamestart, 1);},
-    function(){dialogue('There should be snacks somewhere in here that we can share.', sX, sY, 'speachR', gamestart, 1);},
-];
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -113,6 +115,7 @@ RiverOutro.prototype = {
     },
 
     create : function(){
+
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
@@ -144,7 +147,7 @@ RiverOutro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        riverOutroConversations[index]();
     },
 
     update : function(){
