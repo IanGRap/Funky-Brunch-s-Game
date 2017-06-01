@@ -11,6 +11,7 @@ var delay;
 var spacebar;
 var music;
 var wipe;
+var clouds;
 
 //Scene objects
 var door;
@@ -29,6 +30,7 @@ Intro.prototype = {
     preload: function(){
         //loads the main background image
         game.load.image('background','assets/introbackground.png');
+        game.load.image('clouds','assets/clouds.png');
         game.load.image('backgroundfront','assets/introbackgroundfront.png');
         //Load debug images and effects
         game.load.image('camera','assets/camera.png');
@@ -63,6 +65,12 @@ Intro.prototype = {
 
         //Sets the background images
         var background = game.add.image(0,0,'background');
+
+        clouds = game.add.tileSprite(-100,130,2800,800,'clouds');
+
+        //treeline0 = this.add.tileSprite(0,250,1800,228,'treeline');
+
+
         car = game.add.sprite(-300,1090,'car');  
         car.scale.setTo(1,1.2);                    //REMOVE WHEN YOU GET PROPER ASSETS
         var backgroundfront = game.add.image(0,0,'backgroundfront');
@@ -101,6 +109,9 @@ Intro.prototype = {
     },
 
     update : function(){
+
+        //For cloud scrolling
+        clouds.tilePosition.x += .2;
 
         //Zooming Functionality, write an if statement with scaletrigger's value as an id then change the value of scale trigger
         //when you want to start zooming
