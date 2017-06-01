@@ -5,10 +5,50 @@ var MainMenu = function(game){
 var wipe;
 
 MainMenu.prototype = {
-    preload : function(){
+    preload : function(){      
         game.load.image('menu','assets/menuplaceholder.png');
         game.load.image('wipe','assets/wipe.png');
         game.load.image('window', 'assets/tutorialWindow.png');
+        game.load.image('fadeout','assets/fadeout.png');
+
+        //Load Speach Assets
+        game.load.spritesheet('speachR','assets/speachR.png',381,157,3);
+        game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
+
+        //UI
+        game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
+        game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
+
+        //charcter images
+        game.load.spritesheet('astronaut', 'assets/astronaught.png', 256, 256);
+        game.load.spritesheet('scientist', 'assets/scientist.png', 256, 256);
+        game.load.spritesheet('ghost', 'assets/ghost.png', 256, 256);
+        game.load.spritesheet('knight', 'assets/knight.png', 256, 256);
+        game.load.spritesheet('dino', 'assets/dinosaur.png',  256, 256);
+        game.load.spritesheet('dog', 'assets/dog.png', 256, 256);
+
+        //backround image
+        game.load.image('river','assets/river.png');
+        game.load.image('temple','assets/Temple.png');
+
+        //scenery images
+        game.load.image('boat','assets/Boat.png');
+
+        //dialogue UI
+        game.load.image('speachbubble','assets/speachbubble.png');
+
+        //audio
+        game.load.audio('tick',['assets/audio/tick.mp3']);
+        game.load.audio('select',['assets/audio/select.mp3']);
+        game.load.audio('placed',['assets/audio/placed.mp3']);
+        game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
+
+        //character response audio
+        game.load.audio('dinogood',['assets/audio/dinogood.mp3']);
+        game.load.audio('dinobad',['assets/audio/dinobad.mp3']);
+        game.load.audio('knightgood',['assets/audio/knightgood.mp3']);
+        game.load.audio('knightbad',['assets/audio/knightbad.mp3']);
+
     },
 
     create : function(){
