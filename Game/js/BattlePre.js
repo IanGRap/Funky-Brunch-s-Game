@@ -54,7 +54,7 @@ battlePreConversations = [
     function(){dialogue('If he knows how to use it then why take it away?', aX, aY, 'speachR', battlePreConversations[++index], 1);},
     function(){dialogue('Swords are cool.', aX, aY, 'speachR', battlePreConversations[++index], 1);},
     function(){dialogue('En Garde!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', BattlePre.prototype.gamestart, 1);},
 ];
 
 //Dog: Bork Bork Bark, heckin Bork!
@@ -192,5 +192,9 @@ BattlePre.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart : function(){
+        game.state.start('MainMenu');
     }
 }
