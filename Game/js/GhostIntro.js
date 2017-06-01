@@ -119,6 +119,10 @@ GhostIntro.prototype = {
 
     create : function(){
 
+        
+        var background = game.add.image(-700, -900, 'background');
+        var backgroundfront = game.add.image(-700, -900, 'backgroundfront');
+
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
@@ -132,16 +136,26 @@ GhostIntro.prototype = {
         kY = game.world.height/2 + 128;
         aY = game.world.height/2;
         gY = game.world.height/2 + 128;
-        
-        //Fade in from black
-        var fadeout = game.add.sprite(0,0,'fadeout');
-        fadeout.scale.setTo(20,20);
-        fadeout.alpha = 1;
-        
-        //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
 
-        //When the prevois tween is complete run [THIS FUNCTION]
-        //tween.onComplete.add(function(){         conversations[0]         },this);    
+        var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
+        scientist.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
+        dino.scale.setTo(0.5, 0.5);
+        var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
+        dog.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
+        knight.scale.setTo(0.5, 0.5);
+        var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
+        astronaut.scale.setTo(0.5, 0.5);
+        var ghost = game.add.sprite(gX - 128, gY + 128, 'ghost');
+        ghost.scale.setTo(0.5, 0.5);
+        
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
+        delay = 1500;
+        time = game.time.now;
+   
 
         game.world.setBounds(0, 0, 4000, 4000);
 
@@ -152,7 +166,6 @@ GhostIntro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        ghostIntroConversations[index]();
     },
 
     update : function(){
@@ -169,6 +182,13 @@ GhostIntro.prototype = {
         if(scaletrigger == 2){
             if(worldScale > 0.6){
                 worldScale -= 0.0012;
+            }
+        }
+
+        if(start){
+            if (game.time.now - time > delay){ // Delay is up for writing the next character
+                start = false;
+                ghostIntroConversations[index]();
             }
         }
 
