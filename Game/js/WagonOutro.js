@@ -35,7 +35,7 @@ var conversationsWagonOutro = [
     function(){dialogue('And Sir Goldhelm I feel much safer about this adventure with a knight.', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('Why thank you. Doc, I do have to say that this is an impressive carriage.', knightPositionX, knightPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('I\'m glad you think so. I\'m going to go tell my parents we\'re going exploring.',  scientistPositionX, scientistPositionY, 'speachL', conversationsWagonOutro[++index], 1);},
-    function(){dialogue(' I\'ll be right back!',  scientistPositionX, scientistPositionY, 'speachL', startriver, 1);}
+    function(){dialogue(' I\'ll be right back!',  scientistPositionX, scientistPositionY, 'speachL', WagonOutro.prototype.gamestart, 1);}
 ];
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -122,6 +122,9 @@ WagonOutro.prototype = {
         camera.alpha = 0;
         console.log("gonna do a conversation");
         //conversationsWagonIntro[index]();
+
+        index = 0;
+        start = true;
     },
 
     update : function(){
@@ -135,16 +138,20 @@ WagonOutro.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart: function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(WagonOutro.prototype.start,5000,3800,1.5);
+    },
+
+    start : function(){
+       game.state.start('WagonParents'); 
     }
 }
 
-function startriver(){
-    //Screen Wipe Object Creation
-    wipe = new ScreenWipe(game,'wipe');
-    game.add.existing(wipe);
-    wipe.animOutComplex(runtutorial,5000,3800,1.5);
-}
 
-function runriver(){
-    game.state.start('WagonParents');
-}
+
+
+

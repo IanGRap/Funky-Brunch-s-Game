@@ -197,6 +197,12 @@ MonTalk.prototype = {
     },
 
     gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(MonTalk.prototype.start,5000,3800,1.5); 
+    },
+
+    start :function(){
         game.state.start('Level4Religion');
     }
 }

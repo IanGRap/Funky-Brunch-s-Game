@@ -43,7 +43,7 @@ var conversationsWagonIntro = [
     function(){dialogue('Doctor, this is clearly a horse drawn carriage, please use the correct play terminology', knightPositionX, knightPositionY, 'speachR', conversationsWagonIntro[++index], 1);},
     function(){dialogue('C\'mon Mr knight we\'re just playing a game, settle down.', scientistPositionX, scientistPositionY, 'speachL', conversationsWagonIntro[++index], 1);},
     function(){dialogue('It\'s Sir Goldhelm!', knightPositionX, knightPositionY, 'speachR', conversationsWagonIntro[++index], 1);},
-    function(){dialogue('RAWWWRERRR!', dinoPositionX, dinoPositionY, 'speachR', starttutorial, 1);},
+    function(){dialogue('RAWWWRERRR!', dinoPositionX, dinoPositionY, 'speachR', WagonIntro.prototype.gamestart, 1);},
 ];
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -131,6 +131,9 @@ WagonIntro.prototype = {
         camera.alpha = 0;
         console.log("gonna do a conversation");
         //conversationsWagonIntro[index]();
+
+        index = 0;
+        start = true;
     },
 
     update : function(){
@@ -143,16 +146,15 @@ WagonIntro.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart : function (){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(WagonIntro.prototype.start,5000,3800,1.5);    
+    },
+
+    start : function(){
+       game.state.start('Tutorial'); 
     }
-}
-
-function starttutorial(){
-    //Screen Wipe Object Creation
-    wipe = new ScreenWipe(game,'wipe');
-    game.add.existing(wipe);
-    wipe.animOutComplex(runtutorial,5000,3800,1.5);
-}
-
-function runtutorial(){
-    game.state.start('Tutorial');
 }

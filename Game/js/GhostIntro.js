@@ -202,13 +202,11 @@ GhostIntro.prototype = {
     gamestart: function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(level1start,5000,3800,1.5);
+        wipe.animOutComplex(GhostIntro.prototype.start,5000,3800,1.5);     
+    },
+
+    start : function(){
         game.state.start('MonTalk');
     }
-}
-
-
-function level1start(){
-    game.state.start('Tutorial');
 }
 

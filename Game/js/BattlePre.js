@@ -198,6 +198,13 @@ BattlePre.prototype = {
     },
 
     gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(BattlePre.prototype.start,5000,3800,1.5); 
+    },
+
+    start : function(){
         game.state.start('MainMenu');
     }
+
 }

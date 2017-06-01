@@ -199,14 +199,13 @@ RiverOutro.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(levelRefugeestart,5000,3800,1.5);
+        wipe.animOutComplex(RiverOutro.prototype.start,5000,3800,1.5);
+        
+    },
+
+    start : function(){
         game.state.start('Level3Refugee');
     }
-}
-
-
-function levelRefugeestart(){
-    game.state.start('Level3Refugee');
 }
 
 
