@@ -68,6 +68,8 @@ WagonIntro.prototype = {
 
     //load in art assets
     preload: function(){
+    	game.world.scale.set(1);
+
         //loads the main background image
 
         //Load debug images and effects
@@ -95,19 +97,20 @@ WagonIntro.prototype = {
     },
 
     create : function(){
+    	console.log("In wagon intro")
     	var background = game.add.image(0,80,'background');
     	background.scale.setTo(1,1.2);
 
-        scientistPositionX = game.world.width/4 - 300;
-        knightPositionX = game.world.width * (1/2) + 20;
-        dinoPositionX = game.world.width * (3/4) - 88;
-        scientistPositionY = game.world.height/2 - 100;
-        knightPositionY = game.world.height/2 - 150;
-        dinoPositionY = game.world.height/2;
+        scientistPositionX = 1440/4 - 300;
+        knightPositionX = 1440 * (1/2) + 20;
+        dinoPositionX = 1440 * (3/4) - 88;
+        scientistPositionY = 810/2 - 100;
+        knightPositionY = 810/2 - 150;
+        dinoPositionY = 810/2;
 
-        scientist = game.add.sprite(game.world.width/4,game.world.height/2,'scientist');
-        knight = game.add.sprite(game.world.width * (1/2) - 128, game.world.height/2,'knight');
-        dino = game.add.sprite(game.world.width * (3/4) - 258,game.world.height/2+20,'dino');
+        scientist = game.add.sprite(1440/4,810/2,'scientist');
+        knight = game.add.sprite(1440 * (1/2) - 128, 810/2,'knight');
+        dino = game.add.sprite(1440* (3/4) - 258,810/2+20,'dino');
 
 
         //Screen Wipe Object Creation
@@ -131,7 +134,6 @@ WagonIntro.prototype = {
     },
 
     update : function(){
-
         if(start){
             if (game.time.now - time > delay){ // Delay is up for writing the next character
                 start = false;

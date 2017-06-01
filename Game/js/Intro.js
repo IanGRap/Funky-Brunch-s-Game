@@ -232,18 +232,22 @@ function kidschat2(){
     dialogue("No problem Doc, where's everyone at?",700,1100,'speachL',kidschat3,1.8);
 }
 function kidschat3(){
-    dialogue("They're inside with their parents right now. Anyways, want to play a game?",1950,1200,'speachR',gamestart,1.8);
+    console.log("well it's here");
+    dialogue("They're inside with their parents right now. Anyways, want to play a game?",1950,1200,'speachR',gamewagonstart,1.8);
 }
 
-function gamestart(){
+function gamewagonstart(){
     //Screen Wipe Object Creation
     wipe = new ScreenWipe(game,'wipe');
     game.add.existing(wipe);
-    wipe.animOutComplex(level1start,5000,3800,1.5);
+    wipe.animOutComplex(Wagonintrostart,5000,3800,1.5);
 }
 
-function level1start(){
-    game.state.start('Tutorial');
+function Wagonintrostart(){
+    console.log("Jumping over to wagon");
+    worldScale = 1;
+    game.world.scale.set(worldScale);
+    game.state.start('WagonIntro');
 }
 
 

@@ -135,6 +135,6 @@ TestLevel2.prototype = {
         }
     },
     nextlevel: function(){
-        game.state.start("TestLevel2");
+        game.state.start("RiverOutro");
     }
 };

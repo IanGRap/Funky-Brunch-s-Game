@@ -141,6 +141,6 @@ Tutorial.prototype = {
         }
     },
     nextlevel: function(){
-        game.state.start("TestLevel2");
+        game.state.start("WagonOutro");
     }
 };
