@@ -28,6 +28,18 @@ var parent2Y;
 
 var index = 0;
 
+wagonParentsConversations = [
+            function(){dialogue('I can\'t believe you could say something like that!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
+            function(){dialogue('If we don\'t implement a carbon tax the oil industry will melt the ice caps!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);}, 
+            function(){dialogue('I just don\'t think the science is all there yet to prove that it\'s man made!', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},   
+            function(){dialogue('I\'m blaming you when the planet floods.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
+            function(){dialogue('Mom we\'re going exploring!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
+            function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
+            function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},
+            function(){dialogue('Everyone, the world is flooding, we need to get to my boat!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
+            function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', gamestart, 1);},
+        ];
+
 //function dialogue(phrase,x,y,direction,localfunct,scale)
 //Parent: I can't believe you could say something like that! If we don't implement a carbon tax the oil industry will melt the ice caps!
 //Parent2: I just don't think the science is all there yet to prove that it's man made!
@@ -36,17 +48,7 @@ var index = 0;
 //Parent: That's nice honey, have fun.
 //Parent2: Well let's not get stuck on that one topic, how do you feel about immigration?
 //Everyone, the world is flooding, we need to get to my boat! And we're bringing my pet Wolfy! She's really nice.
-var conversations = [
-    function(){dialogue('I can\'t believe you could say something like that!', parent1X, parent1Y, 'speachR', conversations[++index], 1);},
-    function(){dialogue('If we don\'t implement a carbon tax the oil industry will melt the ice caps!', parent1X, parent1Y, 'speachR', conversations[++index], 1);}, 
-    function(){dialogue('I just don\'t think the science is all there yet to prove that it\'s man made!', parent2X, parent2Y, 'speachR', conversations[++index], 1);},   
-    function(){dialogue('I\'m blaming you when the planet floods.', parent1X, parent1Y, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Mom we\'re going exploring!', scientistPositionX, scientistPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Everyone, the world is flooding, we need to get to my boat!', scientistPositionX, scientistPositionY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', gamestart, 1);},
-];
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -92,6 +94,7 @@ WagonParents.prototype = {
     },
 
     create : function(){
+
         scientistPositionX = game.world.width/4 - 128;
         parent1X = game.world.width * (1/2) - 128;
         parent2X = game.world.width * (3/4) - 128;
@@ -119,7 +122,7 @@ WagonParents.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        wagonParentsConversations[index]();
     },
 
     update : function(){
