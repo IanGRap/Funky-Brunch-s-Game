@@ -57,6 +57,7 @@ game.state.add('RiverOutro', RiverOutro);
 game.state.add('GhostIntro', GhostIntro);
 game.state.add('MonTalk', MonTalk);
 game.state.add('BattlePre', MonTalk);
+game.state.add('BattlePost', MonTalk);
 
 //start with Main Menu State
 game.state.start('MainMenu');
