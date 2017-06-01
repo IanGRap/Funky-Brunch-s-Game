@@ -51,6 +51,7 @@ game.state.add('LoseScreen', LoseScreen);
 game.state.add('WinScreen', WinScreen);
 game.state.add('Intro', Intro);
 game.state.add('WagonIntro', WagonIntro);
+game.state.add('WagonOutro', WagonOutro);
 
 //start with Main Menu State
 game.state.start('MainMenu');
