@@ -1,4 +1,5 @@
-var BattlePre = function(game){
+var HealthCare = function(game){
+    
 }
 
 //Global variables for Camera Control
@@ -35,43 +36,47 @@ var gY;
 
 var index = 0;
 
-battlePreConversations = [
-    function(){dialogue('Bork Bork Bark, heckin Bork!', doX, doY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Wolfy\'s trying to say something! The ritual worked!', diX, diY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('No she isn\'t, Dogs can\'t talk.', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('The ritual failed \'cause Frankie brought a fake magical monster!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Your monsters are the fakers!', gX, gY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('LMons is all about training hard and making friends.', gX, gY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('DMons are just scary and violent.', gX, gY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Well lets have a battle then to see whose Mons are best!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Let\'s do it, you\'ll be no match for my ghostly magic!', gX, gY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Ooh I\'m so scared of your flowery ghost sheet.', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('You should be, it\'s how I generate my natural spectral powers!', gX, gY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Uh, you guys, I don\'t think we should fight with a sword like that.', sX, sY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Nonsense, it might be real but I\'m a master swordsman!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Yeah actually I think you should take it back to your parents.', diX, diY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('I don\'t want anyone to get hurt and that\'s too powerful.', diX, diY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('If he knows how to use it then why take it away?', aX, aY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Swords are cool.', aX, aY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('En Garde!', kX, kY, 'speachR', battlePreConversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
+healthCareConversations = [
+    function(){dialogue('Goldhelm, have a seat on this medical bed while I look through a Doctor\'s kit.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Ow... Ow... Ow... Ow...', kX, kY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Well at least you might have a cool battle scar later!', aX, aY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Where\'s the cut?', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Right here on my finger. It\'s bleeding a little bit.', kX, kY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Goldhelm I don\'t know how to say this, but I can\'t help you.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('What? I thought you had band-aids in there?', kX, kY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('I only have two and they\'re my favorite Vindicators team bandaids.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('They have all of the heroes on them and everything.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('But I\'m hurt!', kX, kY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('That\'s not my fault.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('You\'ve been mean and rowdy this whole time.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('I don\'t owe you squat.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Hey aren\'t you the Doctor? Shouldn\'t you fix him?', diX, diY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('I\'m a Doctor of science, not medicine, and I don\'t feel like it.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('C\'mon Doc, sharing is caring.', aX, aY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Since he\'s hurt, he\'ll probably die.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Then we won\'t have to deal with his meanness anymore.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('I\'m gonna die?', kX, kY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('You\'re already dead! Everyone, ignore the spirit of Sir Goldhelm.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
+    function(){dialogue('Nooo!', kX, kY, 'speachR', gamestart, 1);},
 ];
 
-//Dog: Bork Bork Bark, heckin Bork!
-//Dino: Wolfy's trying to say something! The ritual worked!
-//Knight: No she isn't, Dogs can't talk. The ritual failed because Frankie brought a fake magical monster to the idols!
-//Ghost: Your monsters are the fakers! LMONS is all about training hard and making friends. DMONS are just scary and violent.
-//Knight: Well lets have a battle then to see whose Mons are best!
-//Ghost: Let's do it, you'll be no match for my ghostly magic!
-//Knight: Ooh I'm so scared of your flowery ghost sheet.
-//Ghost: You should be, it's how I generate my natural spectral powers!
-//Scientist: Uh, you guys, I don't think we should fight with a sword like that, it looks too dangerous...
-//Knight: Nonsense, it might be real but I'm a master swordsman! I need it to fight off danger, I'll be careful with it.
-//Dino: Yeah actually I think you should take it back to your parents, I don't want anyone to get hurt and that's too powerful.
-//Astronaut: If he said he knows how to use it then who are we to take his sword away? Swords are cool.
-//Dog: Bark Bark Bark!
-//Knight: En Garde!
-//Dog: Bork!
+//Scientist: Goldhelm, have a seat on this medical bed while I look through a Doctor's kit.
+//Knight: Ow... Ow... Ow... Ow...
+//Astronaut: Well at least you might have a cool battle scar later!
+//Scientist: Where's the cut?
+//Knight: Right here on my finger. It's bleeding a little bit.
+//Scientist: Hmmm... Goldhelm I don't know how to say this... but I can't help you.
+//Knight: What? I thought you had band-aids in there?
+//Scientist: Well I only have two left and they're my favorite Vindicators team bandaids with all of the heroes on them and everything.
+//Knight: But I'm hurt! 
+//Scientist: That's not my fault, you've been mean and rowdy this whole time, I don't owe you squat.
+//Dino: Hey aren't you the Doctor? Shouldn't you fix him?
+//Scientist: I'm a Doctor of science, not medicine, and I don't feel like it.
+//Astronaut: C'mon Doc, sharing is caring.
+//Scientist: Since he's hurt, he'll probably die, and then we won't have to deal with his meanness anymore.
+//Knight: I'm gonna die?
+//Scientist: You're already dead! Everyone, ignore the spirit of Sir Goldhelm.
+//Knight: Nooo!
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -92,10 +97,12 @@ tween.onComplete.add(function(){         movedown1()         },this);
 
 */
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-BattlePre.prototype = {
+HealthCare.prototype = {
 
     //load in art assets
     preload: function(){
+
+
         //loads the main background image
 
         //Load debug images and effects
@@ -151,8 +158,7 @@ BattlePre.prototype = {
 
         game.camera.follow(camera);
         camera.alpha = 0;
-        console.log("gonna do a conversation");
-        battlePreConversations[index]();
+        healthCareConversations[index]();
     },
 
     update : function(){
@@ -175,6 +181,10 @@ BattlePre.prototype = {
         // set our world scale as needed
         game.world.scale.set(worldScale);
     }
+}
+
+function next(){
+    this.conversations[++index]();
 }
 
 // Chronological Scenes

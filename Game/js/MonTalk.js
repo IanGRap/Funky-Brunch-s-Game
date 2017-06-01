@@ -35,6 +35,25 @@ var gY;
 
 var index = 0;
 
+var monTalkConversations = [
+    function(){dialogue('Here, in front of the Idol,', gX, gY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('I offer my favorite Legendary Mon, Pyrochilla!', gX, gY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('...', gX, gY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('I don\'t think anything is happening.', gX, gY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('Maybe we didn\'t do something right.', gX, gY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('I think these markings might have something to do with it!', diX, diY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('I drew those last week...', sX, sY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('But maybe you didn\'t know they were magical when you drew them.', diX, diY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('We should stand on them!', diX, diY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('You\'re all wrong, LMons are just a copy of Dungeon Mons.', kX, kY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('They are the real magical creatures to collect.', kX, kY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('My older brothers said so.', kX, kY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('Yeah actually I\'m more of a DMONS Dino myself.', diX, diY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('So let\'s just stand on these magical tiles and see what happens then!', sX, sY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('I\'m gonna offer my Cantankerous Void Dancer instead.', kX, kY, 'speachR', monTalkConversations[++index], 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
+];
+
 //Ghost: Here, in front of the Idol, I offer my favorite Legendary Mon, Pyrochilla! ...
 //hmm, I don't think anything is happening, maybe we didn't do something right.
 //Dino: I think these markings on these tiles might have something to do with it!
@@ -45,24 +64,7 @@ var index = 0;
 //Scientist: So let's just stand on these magical tiles and see what happens then!
 //Knight: I'll be offering my Cantankerous Void Dancer to the Idol instead of that dumb LMON Pyrochilla.
 //Dog: Bork!
-var conversations = [
-    function(){dialogue('Here, in front of the Idol,', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I offer my favorite Legendary Mon, Pyrochilla!', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('...', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I don\'t think anything is happening.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Maybe we didn\'t do something right.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I think these markings might have something to do with it!', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I drew those last week...', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('But maybe you didn\'t know they were magical when you drew them.', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('We should stand on them!', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('You\'re all wrong, LMons are just a copy of Dungeon Mons.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('They are the real magical creatures to collect.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('My older brothers said so.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Yeah actually I\'m more of a DMONS Dino myself.', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('So let\'s just stand on these magical tiles and see what happens then!', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I\'m gonna offer my Cantankerous Void Dancer instead.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', gamestart, 1);},
-];
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -108,6 +110,7 @@ MonTalk.prototype = {
     },
 
     create : function(){
+
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
@@ -141,7 +144,7 @@ MonTalk.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        monTalkConversations[index]();
     },
 
     update : function(){

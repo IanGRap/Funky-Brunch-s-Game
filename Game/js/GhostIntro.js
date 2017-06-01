@@ -35,6 +35,27 @@ var gY;
 
 var index = 0;
 
+ghostIntroConversations = [
+    function(){dialogue('Thanks for letting me on your boat!', aX, aY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('I think we\'ll have a lot of fun together!', aX, aY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Well I suppose if the Doctor can vouch for you then you\'re ok to stay.', kX, kY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Everyone is a stranger until you give them a chance to be your friend!', diX, diY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Heckin Bork!', doX, doY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Boo.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('AAAH! Ghost!', diX, diY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Oh hi Frankie!', sX, sY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('I saw you all arguing from over by the sandbox.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('I didn\'t want to come over until you worked things out.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Yeah everyone seems to be angry these days and we don\'t know why.', sX, sY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('Well I have an idea of how we might get some answers.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('How?', sX, sY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('What if we bring an offering to the Idols of the garden temple.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('They might have an answer for us!', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('How would you know that? ', diX, diY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('I saw it on an episode of Legendary Mons.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
+    function(){dialogue('I love LMONS! Let\'s go!', aX, aY, 'speachR', gamestart, 1);},
+];
+
 //Astronaut: Thanks for letting me on your boat! I think we'll have a lot of fun together!
 //Knight: Well I suppose if the Doctor can vouch for you then you're ok to stay.
 //Dino: Everyone is a stranger until you give them a chance to be your friend!
@@ -51,26 +72,7 @@ var index = 0;
 //Dino: How would you know that? 
 //Ghost: I saw it on an episode of Legendary Mons.
 //Astronaut: I love LMONS! Let's go!
-var conversations = [
-    function(){dialogue('Thanks for letting me on your boat!', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I think we\'ll have a lot of fun together!', aX, aY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Well I suppose if the Doctor can vouch for you then you\'re ok to stay.', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Everyone is a stranger until you give them a chance to be your friend!', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Heckin Bork!', doX, doY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Boo.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('AAAH! Ghost!', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Oh hi Frankie!', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I saw you all arguing from over by the sandbox.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I didn\'t want to come over until you worked things out.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Yeah everyone seems to be angry these days and we don\'t know why.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('Well I have an idea of how we might get some answers.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('How?', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('What if we bring an offering to the Idols of the garden temple.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('They might have an answer for us!', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('How would you know that? ', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I saw it on an episode of Legendary Mons.', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I love LMONS! Let\'s go!', aX, aY, 'speachR', gamestart, 1);},
-];
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -116,6 +118,7 @@ GhostIntro.prototype = {
     },
 
     create : function(){
+
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
@@ -149,7 +152,7 @@ GhostIntro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        ghostIntroConversations[index]();
     },
 
     update : function(){

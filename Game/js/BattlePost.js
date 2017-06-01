@@ -35,21 +35,23 @@ var gY;
 
 var index = 0;
 
+var battlePostConversations = [
+    function(){dialogue('AAaAaah! Ouch!', kX, kY, 'speachR', battlePostConversations[++index], 1);},
+    function(){dialogue('AAh I\'m sorry I didn\'t think my magic would hurt you!', gX, gY, 'speachR', battlePostConversations[++index], 1);},
+    function(){dialogue('AAaaah, no I accidentally cut myself!', kX, kY, 'speachR', battlePostConversations[++index], 1);},
+    function(){dialogue('I knew something like this would happen, we have to go back to the village!', sX, sY, 'speachR', battlePostConversations[++index], 1);},
+    function(){dialogue('What about the idols?', diX, diY, 'speachR', battlePostConversations[++index], 1);},
+    function(){dialogue('I don\'t think they\'re paying attention right now.', sX, sY, 'speachR', battlePostConversations[++index], 1);},
+    function(){dialogue('We gotta get some medicine.', sX, sY, 'speachR', gamestart, 1);},
+];
+
 //Knight: AAaAaah! Ouch! 
 //Ghost: AAh I'm sorry I didn't think my magic would hurt you!
 //Knight: AAaaah, no I accidentally cut myself!
 //Scientist: I knew something like this would happen, we have to go back to the village!
 //Dino: What about the idols? 
 //Scientist: I don't think they're paying attention right now, let alone caring which monsters we collect. We need to go back!
-var conversations = [
-    function(){dialogue('AAaAaah! Ouch!', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('AAh I\'m sorry I didn\'t think my magic would hurt you!', gX, gY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('AAaaah, no I accidentally cut myself!', kX, kY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I knew something like this would happen, we have to go back to the village!', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('What about the idols?', diX, diY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('I don\'t think they\'re paying attention right now.', sX, sY, 'speachR', conversations[++index], 1);},
-    function(){dialogue('We gotta get some medicine.', sX, sY, 'speachR', gamestart, 1);},
-];
+
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -70,6 +72,7 @@ tween.onComplete.add(function(){         movedown1()         },this);
 */
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 BattlePost.prototype = {
+
 
     //load in art assets
     preload: function(){
@@ -95,6 +98,8 @@ BattlePost.prototype = {
     },
 
     create : function(){
+
+        console.log("post battle");
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
@@ -128,7 +133,7 @@ BattlePost.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        conversations[index]();
+        battlePostConversations[index]();
     },
 
     update : function(){
