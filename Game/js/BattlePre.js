@@ -164,6 +164,9 @@ BattlePre.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
+
+        start = true;
+        index = 0;
     },
 
     update : function(){
