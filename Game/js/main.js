@@ -55,6 +55,7 @@ game.state.add('WagonOutro', WagonOutro);
 game.state.add('WagonParents', WagonParents);
 game.state.add('RiverOutro', RiverOutro);
 game.state.add('GhostIntro', GhostIntro);
+game.state.add('MonTalk', MonTalk);
 
 //start with Main Menu State
 game.state.start('MainMenu');
