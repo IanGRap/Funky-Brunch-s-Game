@@ -116,27 +116,43 @@ RiverOutro.prototype = {
 
     create : function(){
 
-        sX = game.world.width/4 - 128;
-        doX = game.world.width/4 - 128;
-        diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
-        aX = game.world.width * (3/4) - 128;
+        var river = game.add.image(700,400,'river');
+        river.scale.setTo(1.3,2.5);
+        river.anchor.setTo(0.5,0.5);
+        river.angle = 90;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
-        diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
-        aY = game.world.height/2 - 128;
-        
-        //Fade in from black
-        var fadeout = game.add.sprite(0,0,'fadeout');
-        fadeout.scale.setTo(20,20);
-        fadeout.alpha = 1;
-        
-        //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
+        var boat = game.add.image(-100, 0,'boat');
+        boat.scale.setTo(2.7,2.7);
 
-        //When the prevois tween is complete run [THIS FUNCTION]
-        //tween.onComplete.add(function(){         conversations[0]         },this);    
+        sX = game.world.width/3 - 64;
+        doX = game.world.width/3 - 64;
+        diX = game.world.width/3 + 128;
+        kX = game.world.width/3 + 128;
+        aX = game.world.width/3 + 128;
+
+        sY = 96;
+        doY = 256;
+        diY = 96;
+        kY = 256;
+        aY = game.world.height - 256;
+
+        var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
+        scientist.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
+        dino.scale.setTo(0.5, 0.5);
+        var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
+        dog.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
+        knight.scale.setTo(0.5, 0.5);
+        var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
+        astronaut.scale.setTo(0.5, 0.5);
+        
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
+        delay = 1500;
+        time = game.time.now;
+   
 
         game.world.setBounds(0, 0, 4000, 4000);
 
@@ -147,7 +163,6 @@ RiverOutro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        riverOutroConversations[index]();
     },
 
     update : function(){
@@ -164,6 +179,13 @@ RiverOutro.prototype = {
         if(scaletrigger == 2){
             if(worldScale > 0.6){
                 worldScale -= 0.0012;
+            }
+        }
+
+        if(start){
+            if (game.time.now - time > delay){ // Delay is up for writing the next character
+                start = false;
+                riverOutroConversations[index]();
             }
         }
 
