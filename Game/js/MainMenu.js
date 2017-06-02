@@ -90,7 +90,7 @@ MainMenu.prototype = {
         wipe.animOut(this.nextstate);
     },
     nextstate : function(){
-        //game.state.start('GhostIntro');
+        //game.state.start('Level4Religion');
         game.state.start('Intro');
     },
     fullscreen : function(){

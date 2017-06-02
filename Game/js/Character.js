@@ -55,7 +55,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     //Background trait window
     this.displayWindow = game.add.sprite(1200, 0, traitwindow);
     this.displayWindow.anchor.setTo(0.5,0);
-    this.displayWindow.scale.setTo(1,1);
+    this.displayWindow.scale.setTo(1.1,1.1);
     
     //Separated name from traits
     this.displayName = game.add.text(1200, 170, this.name, {fontSize: '30px', fill: 'Black'});
@@ -76,7 +76,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     //Background trait window
     this.lockeddisplayWindow = game.add.sprite(1200, 800, traitwindow);
     this.lockeddisplayWindow.anchor.setTo(0.5,0);
-    this.lockeddisplayWindow.scale.setTo(1, 1);
+    this.lockeddisplayWindow.scale.setTo(1.1, 1.1);
     this.lockeddisplayWindow.alpha = 0;
 
     
