@@ -72,6 +72,9 @@ WagonParents.prototype = {
 
     //load in art assets
     preload: function(){
+        worldScale = 1;
+        game.world.scale.set(worldScale);
+
   
     },
 
@@ -121,17 +124,6 @@ WagonParents.prototype = {
         //Zooming Functionality, write an if statement with scaletrigger's value as an id then change the value of scale trigger
         //when you want to start zooming
        //   /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
-       if(scaletrigger == 1){
-            if(worldScale < 1.3){
-                worldScale += 0.0004;
-            }
-        }
-       //    *///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DEBUG
-        if(scaletrigger == 2){
-            if(worldScale > 0.6){
-                worldScale -= 0.0012;
-            }
-        }
 
         if(start){
             if (game.time.now - time > delay){ // Delay is up for writing the next character
