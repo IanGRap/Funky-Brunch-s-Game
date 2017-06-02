@@ -96,24 +96,6 @@ GhostIntro.prototype = {
 
     //load in art assets
     preload: function(){
-        //loads the main background image
-
-        //Load debug images and effects
-        game.load.image('camera','assets/camera.png');
-        game.load.image('fadeout','assets/fadeout.png');
-
-        //Load's scene images
-
-
-        //Load Speach Assets
-        game.load.spritesheet('speachR','assets/speachR.png',381,157,3);
-        game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
-        //Loads the Audio
-        game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
-
-        //Loads fadeout asset
-        game.load.image('wipe','assets/wipe.png');
-
 
     },
 
@@ -123,32 +105,32 @@ GhostIntro.prototype = {
         var background = game.add.image(-700, -900, 'background');
         var backgroundfront = game.add.image(-700, -900, 'backgroundfront');
 
-        sX = game.world.width/4 - 128;
-        doX = game.world.width/4 - 128;
-        diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
-        aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 128;
+        sX = 650;
+        doX = 360 - 128;
+        diX = 1440 * (1/2) - 128;
+        kX = 425;
+        aX = 850;
+        gX = 1440 * (3/4) - 128;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
-        diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
-        aY = game.world.height/2;
-        gY = game.world.height/2 + 128;
+        sY = 275;
+        doY = 450;
+        diY = 405 + 100;
+        kY = 300;
+        aY = 250;
+        gY = 405 + 100;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
-        scientist.scale.setTo(0.5, 0.5);
+        //scientist.scale.setTo(0.5, 0.5);
         var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
-        dino.scale.setTo(0.5, 0.5);
+        //dino.scale.setTo(0.5, 0.5);
         var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
-        dog.scale.setTo(0.5, 0.5);
+        //dog.scale.setTo(0.5, 0.5);
         var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
-        knight.scale.setTo(0.5, 0.5);
+        //knight.scale.setTo(0.5, 0.5);
         var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
-        astronaut.scale.setTo(0.5, 0.5);
+        //astronaut.scale.setTo(0.5, 0.5);
         var ghost = game.add.sprite(gX - 128, gY + 128, 'ghost');
-        ghost.scale.setTo(0.5, 0.5);
+        //ghost.scale.setTo(0.5, 0.5);
         
         var wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
