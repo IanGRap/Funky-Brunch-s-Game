@@ -165,7 +165,7 @@ function cartalk3(){
 }
 function dinowalking(){
     dino = game.add.sprite(670,1200,'dino');
-    dino.scale.setTo(0.2,0.2);
+    dino.scale.setTo(0.5,0.5);
     //dino.animations.add('stand', [0], 2, true);
     //dino.animations.add('walk', [0,1,0,2], 2, true);
     //dino.animations.play('walk',3);
@@ -181,7 +181,7 @@ function dinowalking(){
     delay = 3000;
     doormove = true;   
 
-    tween = game.add.tween(dino.scale).to({x:1.4,y:1.4},5000,"Linear",true,0);
+    tween = game.add.tween(dino.scale).to({x:1,y:1},5000,"Linear",true,0);
     //When the prevois tween is complete run [THIS FUNCTION]
     tween.onComplete.add(function(){             closedoorscene();        },this);    
 
@@ -220,10 +220,16 @@ function kidschat2(){
 }
 function kidschat3(){
     console.log("well it's here");
-    dialogue("Most kids are inside with their parents.\n There's a lot of grown up talk going on.",1950,1200,'speachR',kidschat4,1.8);
+    dialogue("Most kids are inside with their parents.",1950,1200,'speachR',kidschat4,1.8);
 }
 
 function kidschat4(){
+    console.log("well it's here");
+    dialogue("There's a lot of grown up talk going on.",1950,1200,'speachR',kidschat5,1.8);
+}
+
+
+function kidschat5(){
     console.log("well it's here2");
     dialogue("My cousin has a cool knight costume, he'll be out soon.\n Want to play with us?",1950,1200,'speachR',gamewagonstart,1.8);
 }
