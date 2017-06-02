@@ -113,19 +113,19 @@ MonTalk.prototype = {
         var background = game.add.image(0, 20, 'temple');
         background.scale.setTo(1, 1.1);
 
-        sX = 232;
-        doX = 232;
-        diX = 592;
+        sX = 300;
+        doX = 200;
+        diX = 500;
         kX = 592;
-        aX = 952;
+        aX = 900;
         gX = 952;
 
-        sY = 520;
-        doY = 648;
-        diY = 520;
-        kY = 648;
-        aY = 520;
-        gY = 648;
+        sY = 200;
+        doY = 400;
+        diY = 220;
+        kY = 448;
+        aY = 120;
+        gY = 348;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
