@@ -139,13 +139,13 @@ RiverOutro.prototype = {
         var rafts = [
             game.add.image(400, 400, 'raft'),
             game.add.image(528, 400, 'raft'),
-            game.add.image(656, 400, 'raft'),
+            game.add.image(656, 400, 'crate'),
             game.add.image(400, 528, 'raft'),
             game.add.image(528, 528, 'raft'),
-            game.add.image(656, 528, 'raft'),
-            game.add.image(400, 656, 'raft'),
-            game.add.image(528, 656, 'raft'),
-            game.add.image(656, 656, 'raft')
+            game.add.image(656, 528, 'crate'),
+            game.add.image(400, 656, 'crate'),
+            game.add.image(528, 656, 'crate'),
+            game.add.image(656, 656, 'crate')
         ];
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');

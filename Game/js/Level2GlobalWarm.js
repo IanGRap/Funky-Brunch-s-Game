@@ -49,7 +49,13 @@ Level2GlobalWarm.prototype = {
             game.add.image(512, 384, 'raft'),
             game.add.image(512, 512, 'raft'),
             game.add.image(640, 512, 'raft'),
-            game.add.image(640, 384, 'raft')
+            game.add.image(640, 384, 'raft'),
+
+            game.add.image(512, 256, 'crate'),
+            game.add.image(640, 256, 'crate'),
+            game.add.image(768, 256, 'crate'),
+            game.add.image(768, 384, 'crate'),
+            game.add.image(768, 512, 'crate'),
         ];
 
         // define a new board object
