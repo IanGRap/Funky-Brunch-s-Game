@@ -121,19 +121,19 @@ BattlePre.prototype = {
         var background = game.add.image(0, 20, 'temple');
         background.scale.setTo(1, 1.1);
 
-        sX = game.world.width/4 - 128;
-        doX = game.world.width/4 - 128;
-        diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
-        aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 128;
+        sX = 1440 * (1/2);
+        doX = 1440 * (1/2);
+        gX = 1440 * (1/2) - 128;
+        kX = 1440 * (1/2) - 128;
+        aX = 1440 * (1/2) - 256;
+        diX = 1440 * (1/2) - 256;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
-        diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
-        aY = game.world.height/2;
-        gY = game.world.height/2 + 128;
+        sY = 205;
+        doY = 205 + 128;
+        gY = 205;
+        kY = 205 + 128;
+        aY = 205;
+        diY = 205 + 128;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
