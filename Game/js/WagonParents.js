@@ -72,25 +72,7 @@ WagonParents.prototype = {
 
     //load in art assets
     preload: function(){
-        //loads the main background image
-
-        //Load debug images and effects
-        game.load.image('camera','assets/camera.png');
-        game.load.image('fadeout','assets/fadeout.png');
-
-        //Load's scene images
-
-
-        //Load Speach Assets
-        game.load.spritesheet('speachR','assets/speachR.png',381,157,3);
-        game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
-        //Loads the Audio
-        game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
-
-        //Loads fadeout asset
-        game.load.image('wipe','assets/wipe.png');
-
-
+  
     },
 
     create : function(){
@@ -100,18 +82,18 @@ WagonParents.prototype = {
         scientistPositionX = 1028;
         parent1X = 800;
         parent2X = 600;
-        scientistPositionY = 325;
+        scientistPositionY = 250;
         parent1Y = 250;
         parent2Y = 250;
 
         var scientist = game.add.sprite(scientistPositionX - 128, scientistPositionY + 128, 'scientist');
-        scientist.scale.setTo(0.5, 0.5);
-        var dino = game.add.sprite(700, 700, 'dino');
-        dino.scale.setTo(0.5, 0.5);
+        //scientist.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(550, 650, 'dino');
+        //dino.scale.setTo(0.5, 0.5);
         var dog = game.add.sprite(1100, 500, 'dog');
-        dog.scale.setTo(0.5, 0.5);
-        var knight = game.add.sprite(850, 750, 'knight');
-        knight.scale.setTo(0.5, 0.5);
+        //dog.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(750, 600, 'knight');
+        //knight.scale.setTo(0.5, 0.5);
         
         var wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
