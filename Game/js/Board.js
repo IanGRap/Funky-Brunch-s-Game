@@ -1,5 +1,4 @@
 //global vars
-
 var startX;
 var startY;
 

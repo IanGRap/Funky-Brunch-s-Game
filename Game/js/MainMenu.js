@@ -55,9 +55,21 @@ MainMenu.prototype = {
         //character response audio
         game.load.audio('dinogood',['assets/audio/dinogood.mp3']);
         game.load.audio('dinobad',['assets/audio/dinobad.mp3']);
+
         game.load.audio('knightgood',['assets/audio/knightgood.mp3']);
         game.load.audio('knightbad',['assets/audio/knightbad.mp3']);
 
+        game.load.audio('astrogood',['assets/audio/astrogood.mp3']);
+        game.load.audio('astrobad',['assets/audio/astrobad.mp3']);
+
+        game.load.audio('doggood',['assets/audio/doggood.mp3']);
+        game.load.audio('dogbad',['assets/audio/dogbad.mp3']);
+
+        game.load.audio('scientistbad',['assets/audio/scientistbad.mp3']);
+        game.load.audio('scientistgood',['assets/audio/scientistgood.mp3']);
+
+        game.load.audio('ghostgood',['assets/audio/ghostgood.mp3']);
+        game.load.audio('ghostbad',['assets/audio/ghostbad.mp3']);
     },
 
     create : function(){

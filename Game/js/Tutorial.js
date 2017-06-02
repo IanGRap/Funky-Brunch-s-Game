@@ -75,7 +75,7 @@ Tutorial.prototype = {
         var scientistText = ["I want someone silly"];
 
         this.characters = [
-            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
             new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', knightTraits,'knightgood','knightbad','traitwindow'),
             new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', dinoTraits,'dinogood','dinobad','traitwindow'),
         ];

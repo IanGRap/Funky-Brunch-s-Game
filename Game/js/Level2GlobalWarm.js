@@ -70,10 +70,10 @@ Level2GlobalWarm.prototype = {
 
 
         this.characters = [
-            new Character(game, 'dino', 0, 0, ["Skeptic"],["Believer"],["How could you BELIEVE we're going extinct?"], 'Dinosaur', dinoTraits, 'knightgood','knightbad','traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Believer"],["Skeptic"],["You can't be a SKEPTIC, the world is ending!"], 'Scientist', docTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'dino', 0, 0, ["Skeptic"],["Believer"],["How could you BELIEVE we're going extinct?"], 'Dinosaur', dinoTraits, 'dinogood','dinobad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Believer"],["Skeptic"],["You can't be a SKEPTIC, the world is ending!"], 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
             new Character(game, 'knight', 0, 0, ["Happy"],[],["I'm Happy"], 'Knight', [true],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'knightgood','knightbad','traitwindow')
+            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'doggood','dogbad','traitwindow')
            
           //  new Character(game, 'ghost', 0, 0,["Allergies","Spooky"],["Dog","Fraidy Cat"],["Achoo, I think I'm allergic to Dogs", "Boo! You're scared!"], 'Ghost', ghostTraits,'traitwindow'),
          //   new Character(game, 'astronaut', 0, 0,["Quiet","Sci-Fi"],["Noise","Fantasy"],["You're too NOISY!","I wanted to play Sci-Fi"], 'Astronaut', astronautTraits,'traitwindow')

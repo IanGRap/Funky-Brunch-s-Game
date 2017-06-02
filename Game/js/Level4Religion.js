@@ -58,12 +58,12 @@ Level4Religion.prototype = {
 
 
         this.characters = [
-            new Character(game, 'dino', 0, 0, ["DMONS Fan"],["LMONS Fan", "Uninterested"],["The LMONS aren't even cool.", "How could you be UNINTERESTED in mons?"], 'Dinosaur', dinoTraits,'knightgood','knightbad','traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Uninterested"],["DMONS Fan", "LMONS Fan"],["DMONS are just too scary, and boring", "There are just too many LMONS to keep track of."], 'Scientist', docTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'dino', 0, 0, ["DMONS Fan"],["LMONS Fan", "Uninterested"],["The LMONS aren't even cool.", "How could you be UNINTERESTED in mons?"], 'Dinosaur', dinoTraits,'dinogood','dinobad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Uninterested"],["DMONS Fan", "LMONS Fan"],["DMONS are just too scary, and boring", "There are just too many LMONS to keep track of."], 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
             new Character(game, 'knight', 0, 0, ["DMONS Fan", "Unfamiliar"],["LMONS Fan", "Uninterested"],["The LMONS copied us, they're fake!", "UNINTERESTED?, Dmons are important." ], 'Knight', [true],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'astronaut', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["Your DMONS aren't fun and happy.", "Lmons are the best, stay out this if you're UNINTERESTED!"], 'Astronaut', astronautTraits,'knightgood','knightbad','traitwindow'),
-            new Character(game, 'ghost', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["DMONS are so violent, I can't support that.", "Lmons are superior, I don't understand being UNINTERESTED in them!"], 'Ghost', ghostTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'doggood','dogbad','traitwindow'),
+            new Character(game, 'astronaut', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["Your DMONS aren't fun and happy.", "Lmons are the best, stay out this if you're UNINTERESTED!"], 'Astronaut', astronautTraits,'astrogood','astrobad','traitwindow'),
+            new Character(game, 'ghost', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["DMONS are so violent, I can't support that.", "Lmons are superior, I don't understand being UNINTERESTED in them!"], 'Ghost', ghostTraits,'ghostgood','ghostbad','traitwindow'),
          
         ];
 

@@ -7,7 +7,8 @@ function ScreenWipe(game, key){
     this.angle = -45;
     this.alpha = 0;
 
-    
+	this.music;
+	this.volumelower = false;   
 }
 
 // set inherited prototype
@@ -16,7 +17,14 @@ ScreenWipe.prototype = Object.create(Phaser.Sprite.prototype);
 ScreenWipe.prototype.constructor = ScreenWipe;
 
 ScreenWipe.prototype.update = function(){
-
+	if(this.volumelower){
+		console.log("actually running, volume =  : " + this.music.volume);
+		if(this.music.volume > 0){
+			this.music.volume -= .05;
+		}else{
+			this.volumelower = false;
+		}
+	}
 
 };
 ScreenWipe.prototype.animIn = function(){
@@ -50,6 +58,22 @@ ScreenWipe.prototype.animOutComplex = function(nextFunc,xpos,ypos,scale){
     this.alpha = 1;
     this.scale.setTo(4+scale,6+scale);
     //1440, 810,
+    this.x = xpos;
+    this.y = ypos;
+
+    //Slides over the view then calls the next state
+    var tween = game.add.tween(this).to( { x: xpos - 3040, y: ypos - 1410},1300,"Linear",true,0);
+    tween.onComplete.add(function(){         nextFunc();       },this);    
+}
+
+ScreenWipe.prototype.animOutMusic = function(nextFunc,xpos,ypos,music){
+    console.log("Halt da music mon");   
+    this.alpha = 1;
+    //this.scale.setTo(4+scale,6+scale);
+
+    this.volumelower = true;
+    this.music = music;
+
     this.x = xpos;
     this.y = ypos;
 

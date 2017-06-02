@@ -238,7 +238,9 @@ function gamewagonstart(){
     //Screen Wipe Object Creation
     wipe = new ScreenWipe(game,'wipe');
     game.add.existing(wipe);
-    wipe.animOutComplex(Wagonintrostart,5000,3800,1.5);
+    //wipe.animOutComplex(Wagonintrostart,5000,3800,1.5);
+    wipe.animOutMusic(Wagonintrostart,5000,3800,music);
+
 }
 
 function Wagonintrostart(){
@@ -284,6 +286,8 @@ function introSong(){
     //start audio
     music = game.add.audio('intro');
     music.play();
+    music.volume = 1;
+
 
     //Jump to next song when over
    // music.onStop.add(function(){ themeIntro(); }, this);

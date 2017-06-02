@@ -69,11 +69,11 @@ Level3Refugee.prototype = {
 
 
         this.characters = [
-            new Character(game, 'dino', 0, 0, ["Inclusive", "Unfamiliar"],["Exclusive","New Arrival"],["Hey I was new too, don't be EXCLUSIVE", "You're too NEW, sit with your friend"], 'Dinosaur', dinoTraits,'knightgood','knightbad','traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Inclusive"],["Exclusive"],["Don't EXCLUDE others from playtime!"], 'Scientist', docTraits,'knightgood','knightbad','traitwindow'),
+            new Character(game, 'dino', 0, 0, ["Inclusive", "Unfamiliar"],["Exclusive","New Arrival"],["Hey I was new too, don't be EXCLUSIVE", "You're too NEW, sit with your friend"], 'Dinosaur', dinoTraits,'dinogood','dinobad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Inclusive"],["Exclusive"],["Don't EXCLUDE others from playtime!"], 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
             new Character(game, 'knight', 0, 0, ["Exclusive", "Unfamiliar"],["Inclusive", "New Arrival"],["He's not invited, don't INCLUDE him.", "I don't trust you, you're too NEW" ], 'Knight', [true],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'astronaut', 0, 0,["New Arrival"],["Exclusive", "Unfamiliar"],["Hey I'm hungry and want to play, don't EXCLUDE me.", "You're too UNFAMILIAR"], 'Astronaut', astronautTraits,'knightgood','knightbad','traitwindow')
+            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'doggood','doggood','traitwindow'),
+            new Character(game, 'astronaut', 0, 0,["New Arrival"],["Exclusive", "Unfamiliar"],["Hey I'm hungry and want to play, don't EXCLUDE me.", "You're too UNFAMILIAR"], 'Astronaut', astronautTraits,'astrogood','astrobad','traitwindow')
           //  new Character(game, 'ghost', 0, 0,["Allergies","Spooky"],["Dog","Fraidy Cat"],["Achoo, I think I'm allergic to Dogs", "Boo! You're scared!"], 'Ghost', ghostTraits,'traitwindow'),
          
         ];
