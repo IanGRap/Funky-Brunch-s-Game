@@ -92,14 +92,14 @@ TutorialBoard.prototype.restart = function(){
 
 TutorialBoard.prototype.update = function(){
 	Board.prototype.update.call(this);
-	if(this.window.y > game.world.height - 90){
+	if(this.window.y > 810 - 90){
 		this.window.y -= 3;
 		this.tutorialText.y -= 3;
 	}
 }
 
 TutorialBoard.prototype.resetDisplay = function(){
-	this.window.y = game.world.width/2 + 180;
+	this.window.y = 720 + 180;
 	this.tutorialText.y = this.window.y - 48;
 }
 

@@ -106,7 +106,7 @@ MonTalk.prototype = {
         //Loads fadeout asset
         game.load.image('wipe','assets/wipe.png');
 
-
+            game.world.scale.setTo(1);
     },
 
     create : function(){
@@ -193,7 +193,7 @@ MonTalk.prototype = {
         }
 
         // set our world scale as needed
-        game.world.scale.set(worldScale);
+        //game.world.scale.set(worldScale);
     },
 
     gamestart : function(){

@@ -65,6 +65,7 @@ WagonIntro.prototype = {
 
     //load in art assets
     preload: function(){
+        game.world.scale.setTo(1);
     },
 
     create : function(){

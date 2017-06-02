@@ -36,30 +36,25 @@ Level3Refugee.prototype = {
         this.obstacles = [
             [
                 [0, 0, 2, 2, 2, 2],
-                [0, 0, 2, 2, 2, 2],
                 [0, 0, 2, 2, 2, 1],
                 [0, 0, 2, 1, 1, 1],
-                [0, 0, 2, 2, 2, 1]
+                [0, 0, 2, 2, 2, 1],
+                [0, 0, 2, 2, 2, 2]
             ]
          
         ];
 
         var raft = [
-            game.add.image(512, 512, 'raft'),
-            game.add.image(640, 512, 'raft'),
-            game.add.image(768, 384, 'raft'),
-            game.add.image(768, 640, 'raft'),
-            game.add.image(768, 512, 'raft'),
-
             game.add.image(512, 384, 'raft'),
-            game.add.image(512, 640, 'raft'),
-            game.add.image(640, 640, 'raft'),
             game.add.image(640, 384, 'raft'),
+            game.add.image(768, 256, 'raft'),
+            game.add.image(768, 512, 'raft'),
+            game.add.image(768, 384, 'raft'),
 
-            game.add.image(512, 384, 'crate'),
-            game.add.image(512, 640, 'crate'),
-            game.add.image(640, 640, 'crate'),
-            game.add.image(640, 384, 'crate'),
+            game.add.image(512, 256, 'crate'),
+            game.add.image(512, 512, 'crate'),
+            game.add.image(640, 512, 'crate'),
+            game.add.image(640, 256, 'crate'),
         ];
 
         // define a new board object
@@ -77,7 +72,7 @@ Level3Refugee.prototype = {
             new Character(game, 'dino', 0, 0, ["Inclusive", "Unfamiliar"],["Exclusive","New Arrival"],["Hey I was new too, don't be EXCLUSIVE", "You're too NEW, sit with your friend"], 'Dinosaur', dinoTraits,'knightgood','knightbad','traitwindow'),
             new Character(game, 'scientist', 0, 0,  ["Inclusive"],["Exclusive"],["Don't EXCLUDE others from playtime!"], 'Scientist', docTraits,'knightgood','knightbad','traitwindow'),
             new Character(game, 'knight', 0, 0, ["Exclusive", "Unfamiliar"],["Inclusive", "New Arrival"],["He's not invited, don't INCLUDE him.", "I don't trust you, you're too NEW" ], 'Knight', [true],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'traitwindow'),
+            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'knightgood','knightbad','traitwindow'),
             new Character(game, 'astronaut', 0, 0,["New Arrival"],["Exclusive", "Unfamiliar"],["Hey I'm hungry and want to play, don't EXCLUDE me.", "You're too UNFAMILIAR"], 'Astronaut', astronautTraits,'knightgood','knightbad','traitwindow')
           //  new Character(game, 'ghost', 0, 0,["Allergies","Spooky"],["Dog","Fraidy Cat"],["Achoo, I think I'm allergic to Dogs", "Boo! You're scared!"], 'Ghost', ghostTraits,'traitwindow'),
          

@@ -96,6 +96,7 @@ GhostIntro.prototype = {
 
     //load in art assets
     preload: function(){
+        game.world.scale.setTo(1);
 
     },
 
@@ -178,7 +179,7 @@ GhostIntro.prototype = {
         }
 
         // set our world scale as needed
-        game.world.scale.set(worldScale);
+        //game.world.scale.set(worldScale);
     },
 
     gamestart: function(){
