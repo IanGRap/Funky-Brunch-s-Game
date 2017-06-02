@@ -28,22 +28,9 @@ Intro.prototype = {
 
     //load in art assets
     preload: function(){
-        //loads the main background image
-        game.load.image('background','assets/introbackground.png');
-        game.load.image('clouds','assets/clouds.png');
-        game.load.image('backgroundfront','assets/introbackgroundfront.png');
-        //Load debug images and effects
-        game.load.image('camera','assets/camera.png');
-        game.load.image('fadeout','assets/fadeout.png');
-
         //Load's scene images
         game.load.image('car','assets/car.png');
         game.load.spritesheet('door','assets/door.png',275,403,3);
-        game.load.spritesheet('dino','assets/dinowalk.png',192,192,3);
-        game.load.spritesheet('scientist','assets/scientistcut.png',192,192,2);
-        //Load Speach Assets
-        game.load.spritesheet('speachR','assets/speachR.png',381,157,3);
-        game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
         //Loads the Audio
         game.load.audio('intro',['assets/audio/sunrise song.mp3']);
         game.load.audio('themestart',['assets/audio/main theme intro.mp3']);
@@ -84,9 +71,9 @@ Intro.prototype = {
         //Places the kids in the scene
         //scientist
         scientist = game.add.sprite(1740,1440,'scientist');
-        scientist.scale.setTo(1.5,1.5);
-        scientist.animations.add('bubble',[0,1],2,true);
-        scientist.animations.play('bubble',4);
+        //scientist.scale.setTo(1.5,1.5);
+        //scientist.animations.add('bubble',[0,1],2,true);
+        //scientist.animations.play('bubble',4);
 
         //Fade in from black
         var fadeout = game.add.sprite(0,0,'fadeout');
@@ -178,10 +165,10 @@ function cartalk3(){
 }
 function dinowalking(){
     dino = game.add.sprite(670,1200,'dino');
-    dino.scale.setTo(0.8,0.8);
-    dino.animations.add('stand', [0], 2, true);
-    dino.animations.add('walk', [0,1,0,2], 2, true);
-    dino.animations.play('walk',3);
+    dino.scale.setTo(0.2,0.2);
+    //dino.animations.add('stand', [0], 2, true);
+    //dino.animations.add('walk', [0,1,0,2], 2, true);
+    //dino.animations.play('walk',3);
 
     door.kill();
     door = game.add.sprite(650,1130,'door');  
@@ -203,10 +190,10 @@ function dinowalking(){
 function closedoorscene(){
     dino.kill();
     dino = game.add.sprite(670,1200,'dino');
-    dino.scale.setTo(1.4,1.4);
-    dino.animations.add('stand', [0], 2, true);
-    dino.animations.add('walk', [0,1,0,2], 2, true);
-    dino.animations.play('stand',3);
+    //dino.scale.setTo(1.4,1.4);
+    //dino.animations.add('stand', [0], 2, true);
+    //dino.animations.add('walk', [0,1,0,2], 2, true);
+    //dino.animations.play('stand',3);
 
     door.animations.add('close',[2,1,0]);  
     door.animations.play('close',4);
