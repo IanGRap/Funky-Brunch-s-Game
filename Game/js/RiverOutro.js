@@ -53,7 +53,7 @@ riverOutroConversations = [
     function(){dialogue('Please, I really can\'t go back home right now.', aX, aY, 'speachR', riverOutroConversations[++index], 1);},
     function(){dialogue('We can make some room for you Captain.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
     function(){dialogue('Dino, help me move these boxes.', sX, sY, 'speachR', riverOutroConversations[++index], 1);},
-    function(){dialogue('There should be snacks somewhere in here that we can share.', sX, sY, 'speachR', gamestartRefugee, 1);},
+    function(){dialogue('There should be snacks somewhere in here that we can share.', sX, sY, 'speachR', RiverOutro.prototype.gamestart, 1);},
 ];
 
 //Scientist: Even if you don't believe me, the world is still ending.
@@ -163,6 +163,9 @@ RiverOutro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
+
+        index = 0;
+        start = true;
     },
 
     update : function(){
@@ -191,19 +194,18 @@ RiverOutro.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(RiverOutro.prototype.start,5000,3800,1.5);
+        
+    },
+
+    start : function(){
+        game.state.start('Level3Refugee');
     }
-}
-
-
-function gamestartRefugee(){
-    //Screen Wipe Object Creation
-    wipe = new ScreenWipe(game,'wipe');
-    game.add.existing(wipe);
-    wipe.animOutComplex(levelRefugeestart,5000,3800,1.5);
-}
-
-function levelRefugeestart(){
-    game.state.start('Level3Refugee');
 }
 
 

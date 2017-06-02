@@ -53,7 +53,7 @@ ghostIntroConversations = [
     function(){dialogue('They might have an answer for us!', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
     function(){dialogue('How would you know that? ', diX, diY, 'speachR', ghostIntroConversations[++index], 1);},
     function(){dialogue('I saw it on an episode of Legendary Mons.', gX, gY, 'speachR', ghostIntroConversations[++index], 1);},
-    function(){dialogue('I love LMONS! Let\'s go!', aX, aY, 'speachR', gamestart, 1);},
+    function(){dialogue('I love LMONS! Let\'s go!', aX, aY, 'speachR', GhostIntro.prototype.gamestart, 1);},
 ];
 
 //Astronaut: Thanks for letting me on your boat! I think we'll have a lot of fun together!
@@ -166,6 +166,9 @@ GhostIntro.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
+
+        start = true;
+        index = 0;
     },
 
     update : function(){
@@ -194,20 +197,16 @@ GhostIntro.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart: function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(GhostIntro.prototype.start,5000,3800,1.5);     
+    },
+
+    start : function(){
+        game.state.start('MonTalk');
     }
-}
-
-// Chronological Scenes
-
-
-function gamestart(){
-    //Screen Wipe Object Creation
-    wipe = new ScreenWipe(game,'wipe');
-    game.add.existing(wipe);
-    wipe.animOutComplex(level1start,5000,3800,1.5);
-}
-
-function level1start(){
-    game.state.start('Tutorial');
 }
 

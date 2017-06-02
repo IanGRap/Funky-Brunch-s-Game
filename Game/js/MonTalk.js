@@ -113,19 +113,19 @@ MonTalk.prototype = {
         var background = game.add.image(0, 20, 'temple');
         background.scale.setTo(1, 1.1);
 
-        sX = game.world.width/4 - 128;
-        doX = game.world.width/4 - 128;
-        diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
-        aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 128;
+        sX = 232;
+        doX = 232;
+        diX = 592;
+        kX = 592;
+        aX = 952;
+        gX = 952;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
-        diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
-        aY = game.world.height/2;
-        gY = game.world.height/2 + 128;
+        sY = 520;
+        doY = 648;
+        diY = 520;
+        kY = 648;
+        aY = 520;
+        gY = 648;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
@@ -157,7 +157,9 @@ MonTalk.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        
+
+        start = true;
+        index = 0;
         //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
 
         //When the prevois tween is complete run [THIS FUNCTION]
@@ -184,8 +186,9 @@ MonTalk.prototype = {
 
         if(start){
             if (game.time.now - time > delay){ // Delay is up for writing the next character
+                console.log('starting dialogue');
                 start = false;
-                monTalkConversations[index]();
+                monTalkConversations[0]();
             }
         }
 
@@ -194,6 +197,12 @@ MonTalk.prototype = {
     },
 
     gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(MonTalk.prototype.start,5000,3800,1.5); 
+    },
+
+    start :function(){
         game.state.start('Level4Religion');
     }
 }

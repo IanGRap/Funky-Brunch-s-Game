@@ -37,7 +37,7 @@ wagonParentsConversations = [
     function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('Everyone, the world is flooding, we need to get to my boat!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
-    function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', gamestart, 1);},
+    function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', WagonParents.prototype.gamestart, 1);},
 ];
 
 //function dialogue(phrase,x,y,direction,localfunct,scale)
@@ -129,6 +129,9 @@ WagonParents.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
+
+        index = 0;
+        start = true;
     },
 
     update : function(){
@@ -157,15 +160,23 @@ WagonParents.prototype = {
 
         // set our world scale as needed
         game.world.scale.set(worldScale);
+    },
+
+    gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(WagonParents.prototype.start,5000,3800,1.5);    
+    },
+
+    start : function(){
+        game.state.start('Level2GlobalWarm');
     }
 }
 
 
 function gamestartparents(){
     //Screen Wipe Object Creation
-    wipe = new ScreenWipe(game,'wipe');
-    game.add.existing(wipe);
-    wipe.animOutComplex(levelGlobalWarmstart,5000,3800,1.5);
+    
 }
 
 function levelGlobalWarmstart(){
