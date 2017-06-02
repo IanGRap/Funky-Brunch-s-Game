@@ -22,36 +22,6 @@ Tutorial.prototype = {
     preload: function(){
         //fixes aftermath of intro
         game.world.scale.set(1);
-
-        // cube sprite
-        game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
-        //charcter images
-        game.load.spritesheet('astronaut', 'assets/astronaught.png', 256, 256);
-        game.load.spritesheet('scientist', 'assets/scientist.png', 256, 256);
-        game.load.spritesheet('ghost', 'assets/ghost.png', 256, 256);
-        game.load.spritesheet('knight', 'assets/knight.png', 256, 256);
-        game.load.spritesheet('dino', 'assets/dinosaur.png',  256, 256);
-        game.load.spritesheet('dog', 'assets/dog.png', 256, 256);
-
-        //backround image river and boat are filler to save time on code, change to village and wagon
-        game.load.image('river','assets/WagonScene.png');
-        game.load.image('boat','assets/Wagon.png');
-        //dialogue UI
-        game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
-        game.load.image('speachbubble','assets/speachbubble.png');
-        game.load.image('traitwindow', 'assets/traitwindow.png')
-        //audio
-        game.load.audio('tick',['assets/audio/tick.mp3']);
-        game.load.audio('select',['assets/audio/select.mp3']);
-        game.load.audio('placed',['assets/audio/placed.mp3']);
-        game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
-        //character response audio
-        game.load.audio('dinogood',['assets/audio/dinogood.mp3']);
-        game.load.audio('dinobad',['assets/audio/dinobad.mp3']);
-        game.load.audio('knightgood',['assets/audio/knightgood.mp3']);
-        game.load.audio('knightbad',['assets/audio/knightbad.mp3']);
-
-
         //Correct sounds
         game.load.audio('correct',['assets/audio/yep.mp3']);
         //Wipe
@@ -66,13 +36,13 @@ Tutorial.prototype = {
         console.log("tutorial starting");
 
         //loads background image
-        river = game.add.image(700,400,'river');
-        river.scale.setTo(1.3,2.5);
-        river.anchor.setTo(0.5,0.5);
-        river.angle = 0;
+        var background = game.add.image(0,0,'village');
+        //river.scale.setTo(1.3,2.5);
+        //river.anchor.setTo(0.5,0.5);
+        //river.angle = 0;
 
-        var boat = game.add.image(-160,150,'boat' );
-        boat.scale.setTo(.9,.9);
+        var wagon = game.add.image(-250, 115, 'wagon');
+        //wagon.scale.setTo(.9,.9);
         //add dialogue system
         //this.dialogue = new Dialogue(game, 'dialogue', 96);
         //game.add.existing(this.dialogue);

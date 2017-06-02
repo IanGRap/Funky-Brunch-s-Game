@@ -16,8 +16,6 @@ var wipe;
 var talking;
 var funct;
 var triggered = 0;
-var dino;
-var scientist;
 
 var scientistPositionX;
 var knightPositionX;
@@ -31,11 +29,11 @@ var index = 0;
 //function dialogue(phrase,x,y,direction,localfunct,scale)
 var conversationsWagonOutro = [
     function(){dialogue('Wow Doc this yard is amazing, looks like we\'ve got a cool adventure ahead of us!', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
-    function(){dialogue('Thanks, I\'ve got a lot of ideas about where we should explore.',  scientistPositionX, scientistPositionY, 'speachL', conversationsWagonOutro[++index], 1);},
+    function(){dialogue('Thanks, I\'ve got a lot of ideas about where we should explore.',  scientistPositionX, scientistPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('And Sir Goldhelm I feel much safer about this adventure with a knight.', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('Why thank you. Doc, I do have to say that this is an impressive carriage.', knightPositionX, knightPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
-    function(){dialogue('I\'m glad you think so. I\'m going to go tell my parents we\'re going exploring.',  scientistPositionX, scientistPositionY, 'speachL', conversationsWagonOutro[++index], 1);},
-    function(){dialogue(' I\'ll be right back!',  scientistPositionX, scientistPositionY, 'speachL', WagonOutro.prototype.gamestart, 1);}
+    function(){dialogue('I\'m glad you think so. I\'m going to go tell my parents we\'re going exploring.',  scientistPositionX, scientistPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
+    function(){dialogue(' I\'ll be right back!',  scientistPositionX, scientistPositionY, 'speachR', WagonOutro.prototype.gamestart, 1);}
 ];
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -60,48 +58,28 @@ WagonOutro.prototype = {
 
     //load in art assets
     preload: function(){
-        //loads the main background image
-
-        //Load debug images and effects
-        game.load.image('camera','assets/camera.png');
-        game.load.image('fadeout','assets/fadeout.png');
-
-        //Loads scene images
-        game.load.image('background','assets/WagonScene.png');
-
-        //Loads the character sprites
-        game.load.image('scientist','assets/Scientist.png');
-        game.load.image('knight','assets/knight.png');
-        game.load.image('dino','assets/Dinosaur.png');
-
-
-        //Load Speach Assets
-        game.load.spritesheet('speachR','assets/speachR.png',381,157,3);
-        game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
-        //Loads the Audio
-        game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
-
-        //Loads fadeout asset
-        game.load.image('wipe','assets/wipe.png');
-
-
     },
 
     create : function(){
+        console.log("WagonOutro Create");
         start = true;
-        var background = game.add.image(0,80,'background');
+        var background = game.add.image(0,80,'village');
         background.scale.setTo(1,1.2);
+        var wagon = game.add.image( -250, 115, 'wagon');
 
-        scientistPositionX = game.world.width/4 - 300;
-        knightPositionX = game.world.width * (1/2) + 20;
-        dinoPositionX = game.world.width * (3/4) - 88;
-        scientistPositionY = game.world.height/2 - 100;
-        knightPositionY = game.world.height/2 - 150;
-        dinoPositionY = game.world.height/2;
+        scientistPositionX = 400;
+        knightPositionX = 600;
+        dinoPositionX = 500;
+        scientistPositionY = 250;
+        knightPositionY = 250;
+        dinoPositionY = 250;
 
-        scientist = game.add.sprite(game.world.width/4,game.world.height/2,'scientist');
-        knight = game.add.sprite(game.world.width * (1/2) - 128, game.world.height/2,'knight');
-        dino = game.add.sprite(game.world.width * (3/4) - 258,game.world.height/2+20,'dino');
+        var scientist = game.add.sprite(scientistPositionX - 128, scientistPositionY + 128,'scientist');
+        scientist.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(knightPositionX - 128, knightPositionY + 128,'knight');
+        knight.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(dinoPositionX - 128, dinoPositionY + 128,'dino');
+        dino.scale.setTo(0.5, 0.5);
 
 
         //Screen Wipe Object Creation
@@ -130,7 +108,10 @@ WagonOutro.prototype = {
     update : function(){
 
         if(start){
+            console.log("start is true");
             if (game.time.now - time > delay){ // Delay is up for writing the next character
+                console.log("dialogue begins with index "+index);
+                console.log(""+conversationsWagonIntro[index]);
                 start = false;
                 conversationsWagonOutro[index]();
             }
