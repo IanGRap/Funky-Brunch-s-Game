@@ -204,7 +204,7 @@ BattlePre.prototype = {
     },
 
     start : function(){
-        game.state.start('MainMenu');
+        game.state.start('temp');
     }
 
 }

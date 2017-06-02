@@ -65,6 +65,7 @@ game.state.add('MonTalk', MonTalk);
 game.state.add('BattlePre', BattlePre);
 game.state.add('BattlePost', BattlePost);
 game.state.add('HealthCare', HealthCare);
+game.state.add('temp', Temp);
 
 //start with Main Menu State
 game.state.start('MainMenu');
