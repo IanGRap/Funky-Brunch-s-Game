@@ -116,25 +116,37 @@ RiverOutro.prototype = {
 
     create : function(){
 
-        var river = game.add.image(700,400,'river');
-        river.scale.setTo(1.3,2.5);
-        river.anchor.setTo(0.5,0.5);
-        river.angle = 90;
+        var river = game.add.image(0,95,'river');
+        //river.scale.setTo(1.3,2.5);
+        //river.anchor.setTo(0.5,0.5);
+        //river.angle = 90;
 
-        var boat = game.add.image(-100, 0,'boat');
-        boat.scale.setTo(2.7,2.7);
+        //var boat = game.add.image(-100, 0,'boat');
+        //boat.scale.setTo(2.7,2.7);
 
-        sX = game.world.width/3 - 64;
-        doX = game.world.width/3 - 64;
-        diX = game.world.width/3 + 128;
-        kX = game.world.width/3 + 128;
-        aX = game.world.width/3 + 128;
+        sX = 528;
+        doX = 656;
+        diX = 528;
+        kX = 656;
+        aX = 200;
 
-        sY = 96;
-        doY = 256;
-        diY = 96;
-        kY = 256;
-        aY = game.world.height - 256;
+        sY = 272;
+        doY = 272;
+        diY = 400;
+        kY = 400;
+        aY = 300;
+
+        var rafts = [
+            game.add.image(400, 400, 'raft'),
+            game.add.image(528, 400, 'raft'),
+            game.add.image(656, 400, 'raft'),
+            game.add.image(400, 528, 'raft'),
+            game.add.image(528, 528, 'raft'),
+            game.add.image(656, 528, 'raft'),
+            game.add.image(400, 656, 'raft'),
+            game.add.image(528, 656, 'raft'),
+            game.add.image(656, 656, 'raft')
+        ];
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
