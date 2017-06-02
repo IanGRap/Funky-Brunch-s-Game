@@ -33,9 +33,9 @@ Tutorial.prototype = {
         game.load.spritesheet('dino', 'assets/dinosaur.png',  256, 256);
         game.load.spritesheet('dog', 'assets/dog.png', 256, 256);
 
-        //backround image
-        game.load.image('river','assets/river.png');
-        game.load.image('boat','assets/Boat.png');
+        //backround image river and boat are filler to save time on code, change to village and wagon
+        game.load.image('river','assets/WagonScene.png');
+        game.load.image('boat','assets/Wagon.png');
         //dialogue UI
         game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
         game.load.image('speachbubble','assets/speachbubble.png');
@@ -69,10 +69,10 @@ Tutorial.prototype = {
         river = game.add.image(700,400,'river');
         river.scale.setTo(1.3,2.5);
         river.anchor.setTo(0.5,0.5);
-        river.angle = 90;
+        river.angle = 0;
 
-        var boat = game.add.image(-100,120,'boat');
-        boat.scale.setTo(2.7,2.7);
+        var boat = game.add.image(-160,150,'boat' );
+        boat.scale.setTo(.9,.9);
         //add dialogue system
         //this.dialogue = new Dialogue(game, 'dialogue', 96);
         //game.add.existing(this.dialogue);
@@ -115,7 +115,7 @@ Tutorial.prototype = {
         };
 
         // set the starting location for the circles
-        this.board.tiles[0][0].place(this.characters[0]);
+        this.board.tiles[2][1].place(this.characters[0]);
         this.board.tiles[1][2].place(this.characters[1]);
         this.board.tiles[0][3].place(this.characters[2]);
 

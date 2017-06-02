@@ -171,7 +171,7 @@ function cartalk1(){
     dialogue("Have a good time with your\nfriends Sam!",400,1000,'speachL',cartalk2,1);
 }
 function cartalk2(){
-    dialogue("Come on Mom, you've got to call me Dino",900,1000,'speachR',cartalk3,1);
+    dialogue("Come on Mom, you've got to call me Dinosaurus",900,1000,'speachR',cartalk3,1);
 }
 function cartalk3(){
     dialogue("Alright honey, I'll be inside if you need anything",400,1000,'speachL',dinowalking,1);
@@ -226,14 +226,19 @@ function walkright(){
 }
 
 function kidschat1(){
-    dialogue("Hey Dino,  glad you could make it to the party.",1950,1200,'speachR',kidschat2,1.8);
+    dialogue("Hey Dino, glad you could make it to the costume party.",1950,1200,'speachR',kidschat2,1.8);
 }
 function kidschat2(){
-    dialogue("No problem Doc, where's everyone at?",700,1100,'speachL',kidschat3,1.8);
+    dialogue("Of course Doc, where's everyone at?",700,1100,'speachL',kidschat3,1.8);
 }
 function kidschat3(){
     console.log("well it's here");
-    dialogue("They're inside with their parents right now. Anyways, want to play a game?",1950,1200,'speachR',gamewagonstart,1.8);
+    dialogue("Most kids are inside with their parents.\n There's a lot of grown up talk going on.",1950,1200,'speachR',kidschat4,1.8);
+}
+
+function kidschat4(){
+    console.log("well it's here2");
+    dialogue("My cousin has a cool knight costume, he'll be out soon.\n Want to play with us?",1950,1200,'speachR',gamewagonstart,1.8);
 }
 
 function gamewagonstart(){
