@@ -69,6 +69,10 @@ WagonIntro.prototype = {
     },
 
     create : function(){
+		//music = game.add.audio('themeloop');
+	    //music.play();
+	    //music.loopFull();
+
     	console.log("In wagon intro")
     	var background = game.add.image(0,80,'village');
     	background.scale.setTo(1,1.2);

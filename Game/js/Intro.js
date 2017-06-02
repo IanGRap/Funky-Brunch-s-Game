@@ -30,6 +30,7 @@ Intro.prototype = {
     preload: function(){
         //Load's scene images
         game.load.image('car','assets/car.png');
+        game.load.spritesheet('dinowalk','assets/dinowalk.png',256,256,3);
         game.load.spritesheet('door','assets/door.png',275,403,3);
         //Loads the Audio
         game.load.audio('intro',['assets/audio/sunrise song.mp3']);
@@ -164,11 +165,11 @@ function cartalk3(){
     dialogue("Alright honey, I'll be inside if you need anything",400,1000,'speachL',dinowalking,1);
 }
 function dinowalking(){
-    dino = game.add.sprite(670,1200,'dino');
+    dino = game.add.sprite(670,1200,'dinowalk');
     dino.scale.setTo(0.5,0.5);
-    //dino.animations.add('stand', [0], 2, true);
-    //dino.animations.add('walk', [0,1,0,2], 2, true);
-    //dino.animations.play('walk',3);
+    dino.animations.add('stand', [0], 2, true);
+    dino.animations.add('walk', [0,1,0,2], 2, true);
+    dino.animations.play('walk',3);
 
     door.kill();
     door = game.add.sprite(650,1130,'door');  
@@ -189,11 +190,11 @@ function dinowalking(){
 }
 function closedoorscene(){
     dino.kill();
-    dino = game.add.sprite(670,1200,'dino');
+    dino = game.add.sprite(670,1200,'dinowalk');
     //dino.scale.setTo(1.4,1.4);
-    //dino.animations.add('stand', [0], 2, true);
-    //dino.animations.add('walk', [0,1,0,2], 2, true);
-    //dino.animations.play('stand',3);
+    dino.animations.add('stand', [0], 2, true);
+    dino.animations.add('walk', [0,1,0,2], 2, true);
+    dino.animations.play('stand',3);
 
     door.animations.add('close',[2,1,0]);  
     door.animations.play('close',4);
@@ -230,7 +231,7 @@ function kidschat4(){
 
 
 function kidschat5(){
-    console.log("well it's here2");
+    console.log("well it's BRAHHH");
     dialogue("My cousin has a cool knight costume, he'll be out soon.\n Want to play with us?",1950,1200,'speachR',gamewagonstart,1.8);
 }
 
@@ -238,8 +239,8 @@ function gamewagonstart(){
     //Screen Wipe Object Creation
     wipe = new ScreenWipe(game,'wipe');
     game.add.existing(wipe);
-    //wipe.animOutComplex(Wagonintrostart,5000,3800,1.5);
-    wipe.animOutMusic(Wagonintrostart,5000,3800,music);
+    wipe.animOutComplex(Wagonintrostart,5000,3800,1.5);
+    //wipe.animOutMusic(Wagonintrostart,5000,3800,music);
 
 }
 

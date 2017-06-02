@@ -185,7 +185,8 @@ GhostIntro.prototype = {
     gamestart: function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(GhostIntro.prototype.start,5000,3800,1.5);     
+        wipe.animOutComplex(GhostIntro.prototype.start,5000,3800,1.5); 
+        //wipe.animOutMusic(Wagonintrostart,5000,3800,music);    
     },
 
     start : function(){
