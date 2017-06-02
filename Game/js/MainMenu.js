@@ -28,14 +28,22 @@ MainMenu.prototype = {
         game.load.spritesheet('dog', 'assets/dog.png', 256, 256);
 
         //backround image
-        game.load.image('river','assets/river.png');
+        game.load.image('river','assets/riverRedo.png');
         game.load.image('temple','assets/Temple.png');
+        game.load.image('village','assets/WagonScene.png');
+        game.load.image('background','assets/introbackground.png');
+        game.load.image('clouds','assets/clouds.png');
+        game.load.image('backgroundfront','assets/introbackgroundfront.png');
 
         //scenery images
         game.load.image('boat','assets/Boat.png');
+        game.load.image('wagon','assets/Wagon.png');
+        game.load.image('raft','assets/raft.png');
+        game.load.image('crate','assets/crateRedo.png');
 
         //dialogue UI
         game.load.image('speachbubble','assets/speachbubble.png');
+        game.load.image('traitwindow', 'assets/traitwindow.png');
 
         //audio
         game.load.audio('tick',['assets/audio/tick.mp3']);
@@ -68,7 +76,7 @@ MainMenu.prototype = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-        var text = game.add.text(650, 350, "Press Space to Start \n Press f to pay respects and go fullscreen \n use wsad or arrow keys to move and space to select", {fontSize: '25px',align: "center", fill: 'black'});
+        var text = game.add.text(650, 350, "Press Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black'});
         text.anchor.setTo(0.5,0.5);
 
     },
