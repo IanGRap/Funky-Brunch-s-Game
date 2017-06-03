@@ -17,7 +17,7 @@ var Level8Congress = function(game){
 var wipe;
 var do1 = true;
 
-TestLevel2.prototype = {
+Level8Congress.prototype = {
     
     //load in art assets
     preload: function(){

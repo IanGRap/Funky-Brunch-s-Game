@@ -45,16 +45,12 @@ for(let i=0; i<stats.length; i++){
 // load in states
 game.state.add('MainMenu', MainMenu);
 game.state.add('Tutorial', Tutorial);
-game.state.add('TestLevel', TestLevel);
-game.state.add('TestLevel2', TestLevel2);
 game.state.add('Level2GlobalWarm',Level2GlobalWarm);
 game.state.add('Level3Refugee',Level3Refugee);
 game.state.add('Level4Religion',Level4Religion);
 game.state.add('Level5GunControl',Level5GunControl);
 game.state.add('Level6Healthcare',Level6Healthcare);
 game.state.add('Level8Congress',Level8Congress);
-game.state.add('LoseScreen', LoseScreen);
-game.state.add('WinScreen', WinScreen);
 game.state.add('Intro', Intro);
 game.state.add('WagonIntro', WagonIntro);
 game.state.add('WagonOutro', WagonOutro);

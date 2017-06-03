@@ -18,7 +18,6 @@ MainMenu.prototype = {
         //UI
         game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
         game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
-        game.load.image('camera','assets/camera.png');
 
         //charcter images
         game.load.spritesheet('astronaut', 'assets/astronaught.png', 256, 256);

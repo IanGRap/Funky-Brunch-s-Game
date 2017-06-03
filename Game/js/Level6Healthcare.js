@@ -17,7 +17,7 @@ var Level6Healthcare = function(game){
 var wipe;
 var do1 = true;
 
-TestLevel2.prototype = {
+Level6Healthcare.prototype = {
     
     //load in art assets
     preload: function(){
