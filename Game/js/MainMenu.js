@@ -33,7 +33,7 @@ MainMenu.prototype = {
         game.load.image('village','assets/WagonScene.png');
         game.load.image('background','assets/IntroBackground.png');
         game.load.image('clouds','assets/clouds.png');
-        game.load.image('backgroundfront','assets/IntroBackgroundfront.png');
+        game.load.image('backgroundfront','assets/IntroBackgroundFront.png');
 
         //scenery images
         game.load.image('boat','assets/Boat.png');
