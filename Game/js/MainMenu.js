@@ -31,9 +31,9 @@ MainMenu.prototype = {
         game.load.image('river','assets/riverRedo.png');
         game.load.image('temple','assets/Temple.png');
         game.load.image('village','assets/WagonScene.png');
-        game.load.image('background','assets/introbackground.png');
+        game.load.image('background','assets/IntroBackground.png');
         game.load.image('clouds','assets/clouds.png');
-        game.load.image('backgroundfront','assets/introbackgroundfront.png');
+        game.load.image('backgroundfront','assets/IntroBackgroundfront.png');
 
         //scenery images
         game.load.image('boat','assets/Boat.png');
