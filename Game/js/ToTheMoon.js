@@ -1,4 +1,4 @@
-var HealthCare = function(game){
+var ToTheMoon = function(game){
     
 }
 
@@ -10,6 +10,7 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
+var music;
 var wipe;
 
 //Scene objects
@@ -35,47 +36,38 @@ var gY;
 
 var index = 0;
 
-healthCareConversations = [
-    function(){dialogue('Goldhelm, have a seat on this medical bed while I look through a Doctor\'s kit.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Ow... Ow... Ow... Ow...', kX, kY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Well at least you might have a cool battle scar later!', aX, aY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Where\'s the cut?', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Right here on my finger. It\'s bleeding a little bit.', kX, kY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Goldhelm I don\'t know how to say this, but I can\'t help you.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('What? I thought you had band-aids in there?', kX, kY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('I only have two and they\'re my favorite Vindicators team bandaids.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('They have all of the heroes on them and everything.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('But I\'m hurt!', kX, kY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('That\'s not my fault.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('You\'ve been mean and rowdy this whole time.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('I don\'t owe you squat.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Hey aren\'t you the Doctor? Shouldn\'t you fix him?', diX, diY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('I\'m a Doctor of science, not medicine, and I don\'t feel like it.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('C\'mon Doc, sharing is caring.', aX, aY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Since he\'s hurt, he\'ll probably die.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Then we won\'t have to deal with his meanness anymore.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('I\'m gonna die?', kX, kY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('You\'re already dead! Everyone, ignore the spirit of Sir Goldhelm.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Nooo!', kX, kY, 'speachR', HealthCare.prototype.gamestart, 1);},
+ToTheMoonConversations = [
+    function(){dialogue('Frankie, why aren\'t you ignoring me?', kX, kY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I\'m a ghost! So I must be dead too.', gX, gY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I just thought at least we could talk.', gX, gY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Doctor Xperiment, it isn\'t cool for you to let someone die because you don\'t want to share.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Yeah! Even Wolfy agrees!.', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Ugh, ok if it\'s really that important.', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Goldhelm, you can have a bandaid. My parents can always just buy more.', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I can\'t figure out why we\'re all having such a hard time getting along today!', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I know! We can ask the Council of Heroes! They run the land!', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Where do they live?', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('On the moon! I saw it in a Seaspan.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('They all live together in a fancy castle and argue about how to use our rockets!', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('What\'s a Seaspan?', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I don\'t know, but that\'s what my Mom calls it when she watches them.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Let\'s use my spaceship!', aX, aY, 'speachR', ToTheMoon.prototype.gamestart, 1);},
 ];
 
-//Scientist: Goldhelm, have a seat on this medical bed while I look through a Doctor's kit.
-//Knight: Ow... Ow... Ow... Ow...
-//Astronaut: Well at least you might have a cool battle scar later!
-//Scientist: Where's the cut?
-//Knight: Right here on my finger. It's bleeding a little bit.
-//Scientist: Hmmm... Goldhelm I don't know how to say this... but I can't help you.
-//Knight: What? I thought you had band-aids in there?
-//Scientist: Well I only have two left and they're my favorite Vindicators team bandaids with all of the heroes on them and everything.
-//Knight: But I'm hurt! 
-//Scientist: That's not my fault, you've been mean and rowdy this whole time, I don't owe you squat.
-//Dino: Hey aren't you the Doctor? Shouldn't you fix him?
-//Scientist: I'm a Doctor of science, not medicine, and I don't feel like it.
-//Astronaut: C'mon Doc, sharing is caring.
-//Scientist: Since he's hurt, he'll probably die, and then we won't have to deal with his meanness anymore.
-//Knight: I'm gonna die?
-//Scientist: You're already dead! Everyone, ignore the spirit of Sir Goldhelm.
-//Knight: Nooo!
+//Knight: Frankie, why aren't you ignoring me?
+//Ghost: I'm a ghost! So I must be dead too, I just thought at least we could talk.
+//Astronaut: Doctor Xperiment, it isn't cool for you to let someone die because you don't want to share.
+//Dino: Yeah! Even Wolfy agrees!
+//Dog: Bork!
+//Scientist: Ugh, ok if it's really that important. Goldhelm, you can have a bandaid. My parents can always just buy more at the store. 
+//Dino: I can't figure out why we're all having such a hard time getting along today!
+//Scientist: Well our parents can't either, it seems like there's just a lot of problems that nobody really knows how to solve.
+//Astronaut: I know! We can ask the Council of Heroes! They run the country!
+//Scientist: Wouldn't it be the Congress of Heroes? And where do they even live?
+//Astronaut: On the moon! I saw it in a Seaspan, they all live together in a fancy castle and argue about how to use our rockets!
+//Dino: What's a Seaspan?
+//Astronaut: I don't know, but that's what my Mom calls it when she watches them. Let's use my spaceship!
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -96,7 +88,7 @@ tween.onComplete.add(function(){         movedown1()         },this);
 
 */
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-HealthCare.prototype = {
+ToTheMoon.prototype = {
 
     //load in art assets
     preload: function(){
@@ -199,7 +191,7 @@ HealthCare.prototype = {
         if(start){
             if (game.time.now - time > delay){ // Delay is up for writing the next character
                 start = false;
-                healthCareConversations[index]();
+                ToTheMoonConversations[index]();
             }
         }
 
@@ -210,7 +202,7 @@ HealthCare.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(level1start,5000,3800,1.5);
+        wipe.animOutComplex(this.start,5000,3800,1.5);
     },
 
     start : function(){

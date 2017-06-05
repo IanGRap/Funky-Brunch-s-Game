@@ -9,6 +9,7 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
+var music;
 var wipe;
 
 //Scene objects
@@ -41,7 +42,7 @@ var battlePostConversations = [
     function(){dialogue('I knew something like this would happen, we have to go back to the village!', sX, sY, 'speachR', battlePostConversations[++index], 1);},
     function(){dialogue('What about the idols?', diX, diY, 'speachR', battlePostConversations[++index], 1);},
     function(){dialogue('I don\'t think they\'re paying attention right now.', sX, sY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('We gotta get some medicine.', sX, sY, 'speachR', gamestart, 1);},
+    function(){dialogue('We gotta get some medicine.', sX, sY, 'speachR', BattlePost.prototype.gamestart, 1);},
 ];
 
 //Knight: AAaAaah! Ouch! 
@@ -98,6 +99,9 @@ BattlePost.prototype = {
 
     create : function(){
 
+        var background = game.add.image(0, 95, 'temple');
+        game.world.scale.setTo(1);
+
         console.log("post battle");
         sX = game.world.width/4 - 128;
         doX = game.world.width/4 - 128;
@@ -112,16 +116,26 @@ BattlePost.prototype = {
         kY = game.world.height/2 + 128;
         aY = game.world.height/2;
         gY = game.world.height/2 + 128;
-        
-        //Fade in from black
-        var fadeout = game.add.sprite(0,0,'fadeout');
-        fadeout.scale.setTo(20,20);
-        fadeout.alpha = 1;
-        
-        //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
 
-        //When the prevois tween is complete run [THIS FUNCTION]
-        //tween.onComplete.add(function(){         conversations[0]         },this);    
+        var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
+        scientist.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
+        dino.scale.setTo(0.5, 0.5);
+        var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
+        dog.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
+        knight.scale.setTo(0.5, 0.5);
+        var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
+        astronaut.scale.setTo(0.5, 0.5);
+        var ghost = game.add.sprite(gX - 128, gY + 128, 'ghost');
+        ghost.scale.setTo(0.5, 0.5);
+        
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
+        delay = 1500;
+        time = game.time.now;
+   
 
         game.world.setBounds(0, 0, 4000, 4000);
 
@@ -132,7 +146,9 @@ BattlePost.prototype = {
         game.camera.follow(camera);
         camera.alpha = 0;
         console.log("gonna do a conversation");
-        battlePostConversations[index]();
+
+        start = true;
+        index = 0;
     },
 
     update : function(){
@@ -152,8 +168,28 @@ BattlePost.prototype = {
             }
         }
 
+        if(start){
+            if (game.time.now - time > delay){ // Delay is up for writing the next character
+                start = false;
+                battlePostConversations[index]();
+            }
+        }
+
         // set our world scale as needed
-        game.world.scale.set(worldScale);
+        //game.world.scale.set(worldScale);
+    },
+
+    gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(level1start,5000,3800,1.5);
+    },
+
+    start : function(){
+        game.state.start('HealthCare');
     }
 }
+
+
+
 

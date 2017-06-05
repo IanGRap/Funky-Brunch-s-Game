@@ -53,13 +53,10 @@ Level6Healthcare.prototype = {
     create: function(){
 
         //loads background image
-        river = game.add.image(700,400,'river');
-        river.scale.setTo(1.3,2.5);
-        river.anchor.setTo(0.5,0.5);
-        river.angle = 90;
+        var background = game.add.image(0, 0, 'village');
 
-        var boat = game.add.image(-100,120,'boat');
-        boat.scale.setTo(2.7,2.7);
+        var crate = game.add.image(500, 400, 'medical');
+        var gurney = game.add.image(628, 400, 'gurney');
         //add dialogue system
         //this.dialogue = new Dialogue(game, 'dialogue', 96);
         //game.add.existing(this.dialogue);
@@ -67,13 +64,10 @@ Level6Healthcare.prototype = {
 
         this.obstacles = [
             [
-                [2, 2, 2, 2, 2, 2, 2],
-                [2, 2, 2, 2, 2, 2, 2],
-                [2, 1, 2, 1, 1, 2, 2],
-                [2, 1, 2, 2, 1, 1, 2],
-                [2, 2, 2, 2, 2, 2, 2],
-                [2, 0, 0, 0, 0, 0, 2],
-                [2, 0, 0, 0, 0, 0, 2]
+                [2, 2, 2, 2, 2, 2],
+                [2, 1, 2, 1, 1, 2],
+                [2, 1, 2, 2, 1, 1],
+                [2, 2, 2, 2, 2, 2]
             ]
          
         ];
@@ -81,7 +75,7 @@ Level6Healthcare.prototype = {
         this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, 7, 7, 128, 128, 128);
+        this.board = new Board(game, 6, 4, 128, 128, 128);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
@@ -92,12 +86,12 @@ Level6Healthcare.prototype = {
 
 
         this.characters = [
-            new Character(game, 'dino', 0, 0, ["Ignoring", "Shares"],["Ignored", "Don't Share"],["Sorry Goldhelm, but you're IGNORED", "Play isn't fun when you DON'T SHARE"], 'Dinosaur', dinoTraits,'traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Ignoring", "Don't Share"],["Ignored", "Shares"],["You're not real, you're IGNORED", "I don't have to SHARE!"], 'Scientist', docTraits,'traitwindow'),
-            new Character(game, 'knight', 0, 0, ["Ignored"],["Ignoring"],["I don't like people IGNORING me"], 'Knight', [true],'traitwindow'),
-            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'traitwindow'),
-            new Character(game, 'astronaut', 0, 0,["Ignoring", "Shares"],["Sorry, can't talk to IGNORED spirits", "It's mean when you DON'T SHARE"],["I like real weapons not MAGICAL ones!"], 'Astronaut', astronautTraits,'traitwindow'),
-            new Character(game, 'ghost', 0, 0,["Shares"],["Don't Share"],["Doc, I can't believe you DON'T SHARE"], 'Ghost', ghostTraits,'traitwindow')
+            new Character(game, 'dino', 0, 0, ["Ignoring", "Shares"],["Ignored", "Don't Share"],["Sorry Goldhelm, but you're IGNORED", "Play isn't fun when you DON'T SHARE"], 'Dinosaur', dinoTraits, 'dinogood', 'dinobad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Ignoring", "Don't Share"],["Ignored", "Shares"],["You're not real, you're IGNORED", "I don't have to SHARE!"], 'Scientist', docTraits, 'scientistgood', 'scientistbad', 'traitwindow'),
+            new Character(game, 'knight', 0, 0, ["Ignored"],["Ignoring"],["I don't like people IGNORING me"], 'Knight', [true], 'knightgood', 'knightbad', 'traitwindow'),
+            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true], 'doggood', 'dogbad', 'traitwindow'),
+            new Character(game, 'astronaut', 0, 0,["Ignoring", "Shares"],["Sorry, can't talk to IGNORED spirits", "It's mean when you DON'T SHARE"],["I like real weapons not MAGICAL ones!"], 'Astronaut', astronautTraits, 'astronautgood', 'astronautbad', 'traitwindow'),
+            new Character(game, 'ghost', 0, 0,["Shares"],["Don't Share"],["Doc, I can't believe you DON'T SHARE"], 'Ghost', ghostTraits, 'ghostgood', 'ghostbad', 'traitwindow')
          
         ];
 
@@ -108,10 +102,10 @@ Level6Healthcare.prototype = {
         // set the starting location for the circles
         this.board.tiles[1][5].place(this.characters[0]);
         this.board.tiles[3][5].place(this.characters[1]);
-        this.board.tiles[1][2].place(this.characters[2]);
-        this.board.tiles[5][5].place(this.characters[3]);
-        this.board.tiles[2][6].place(this.characters[4]);
-        this.board.tiles[4][6].place(this.characters[5]);
+        this.board.tiles[0][1].place(this.characters[2]);
+        this.board.tiles[1][0].place(this.characters[3]);
+        this.board.tiles[3][2].place(this.characters[4]);
+        this.board.tiles[3][0].place(this.characters[5]);
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles[0]);
