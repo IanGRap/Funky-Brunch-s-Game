@@ -9,7 +9,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects
@@ -116,6 +115,11 @@ RiverOutro.prototype = {
 
     create : function(){
 
+        //skip code
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipriveroutro);
+        confirmskip = false;
+
         var river = game.add.image(0,95,'river');
         //river.scale.setTo(1.3,2.5);
         //river.anchor.setTo(0.5,0.5);
@@ -211,7 +215,7 @@ RiverOutro.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(RiverOutro.prototype.start,5000,3800,1.5);
+        wipe.animOut(RiverOutro.prototype.start);
         
     },
 
@@ -251,28 +255,14 @@ function check(){
     }   
 }
 
-//Music Flow
-function introSong(){
-    //start audio
-    music = game.add.audio('intro');
-    music.play();
-
-    //Jump to next song when over
-   // music.onStop.add(function(){ themeIntro(); }, this);
+//Skip cutscene button
+function skipriveroutro(){
+    if(confirmskip){
+        RiverOutro.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
 }
 
-function themeIntro(){
-    music = game.add.audio('themestart');
-    music.play();
-
-    //jump to loop version when over
-    music.onStop.add(function(){ themeLoop(); }, this);
-}
-
-function themeLoop(){
-    //plays and loops
-    music = game.add.audio('themeloop');
-    music.play();
-    music.loopFull();
-}
 

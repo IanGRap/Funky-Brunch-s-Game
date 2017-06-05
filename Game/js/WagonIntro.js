@@ -9,7 +9,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 var start = true;
 
@@ -72,6 +71,9 @@ WagonIntro.prototype = {
 		//music = game.add.audio('themeloop');
 	    //music.play();
 	    //music.loopFull();
+	    enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipwagon);
+        confirmskip = false;
 
     	console.log("In wagon intro")
     	var background = game.add.image(0,80,'village');
@@ -135,7 +137,7 @@ WagonIntro.prototype = {
     gamestart : function (){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(WagonIntro.prototype.start,5000,3800,1.5);    
+        wipe.animOut(WagonIntro.prototype.start);    
     },
 
     start : function(){
@@ -146,14 +148,23 @@ WagonIntro.prototype = {
 function startTutorial(){
     wipe = new ScreenWipe(game,'wipe');
     game.add.existing(wipe);
-    wipe.animOutComplex(WagonIntro.prototype.start,5000,3800,1.5);   
+    wipe.animOut(WagonIntro.prototype.start);   
 }
 
 function TutorialStarting(){
     game.state.start('WagonOutro');
 }
+function skipwagon(){
+    if(confirmskip){
+        startTutorial();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
+}
 
-
+//enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+//enter.onDown.add(skipintro);
 
 
 

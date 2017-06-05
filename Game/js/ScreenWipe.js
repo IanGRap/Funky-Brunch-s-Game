@@ -66,18 +66,18 @@ ScreenWipe.prototype.animOutComplex = function(nextFunc,xpos,ypos,scale){
     tween.onComplete.add(function(){         nextFunc();       },this);    
 }
 
-ScreenWipe.prototype.animOutMusic = function(nextFunc,xpos,ypos,music){
+ScreenWipe.prototype.animOutMusic = function(nextFunc,music){
     console.log("Halt da music mon");   
-    this.alpha = 1;
-    //this.scale.setTo(4+scale,6+scale);
 
     this.volumelower = true;
     this.music = music;
 
-    this.x = xpos;
-    this.y = ypos;
+    this.scale.setTo(4,6);
+    //1440, 810,
+    this.x = 1440 + 1600;
+    this.y = 810 + 1000;
 
     //Slides over the view then calls the next state
-    var tween = game.add.tween(this).to( { x: xpos - 3040, y: ypos - 1410},1300,"Linear",true,0);
-    tween.onComplete.add(function(){         nextFunc();       },this);    
+    var tween = game.add.tween(this).to( { x: 700, y: 400},1300,"Linear",true,0);
+    tween.onComplete.add(function(){         nextFunc();       },this);  
 }

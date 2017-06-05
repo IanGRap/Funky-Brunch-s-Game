@@ -9,9 +9,10 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
+var enter;
 var wipe;
 var clouds;
+var confirmskip = false;
 
 //Scene objects
 var door;
@@ -50,6 +51,9 @@ Intro.prototype = {
 
         //Starts the music
         introSong();
+        //Starts the skip function
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipintro);
 
         //Sets the background images
         var background = game.add.image(0,0,'background');
@@ -236,6 +240,7 @@ function kidschat5(){
 }
 
 function gamewagonstart(){
+    enter = null;
     //Screen Wipe Object Creation
     wipe = new ScreenWipe(game,'wipe');
     game.add.existing(wipe);
@@ -269,7 +274,7 @@ function dialogue(phrase,x,y,direction,localfunct,scale){
 function check(){
     if(talking.writing){
         //space bar to make the delay between characters immediate
-        talking.delay = .0001;
+        talking.delay = .00001;
     }else if(talking.writing == false){
         if(triggered==1){
             //gets rid of current bubble
@@ -309,3 +314,12 @@ function themeLoop(){
     music.loopFull();
 }
 
+function skipintro(){
+    if(confirmskip){
+        gamewagonstart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
+
+}

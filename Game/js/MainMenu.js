@@ -36,7 +36,6 @@ MainMenu.prototype = {
         game.load.image('backgroundfront','assets/IntroBackgroundFront.png');
 
         //scenery images
-        game.load.image('boat','assets/Boat.png');
         game.load.image('wagon','assets/Wagon.png');
         game.load.image('raft','assets/raft.png');
         game.load.image('crate','assets/crateRedo.png');
@@ -44,6 +43,7 @@ MainMenu.prototype = {
         //dialogue UI
         game.load.image('speachbubble','assets/speachbubble.png');
         game.load.image('traitwindow', 'assets/traitwindow.png');
+        game.load.image('skipimg', 'assets/skip.png');
 
         //audio
         game.load.audio('tick',['assets/audio/tick.mp3']);

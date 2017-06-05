@@ -9,7 +9,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects
@@ -156,18 +155,5 @@ BattlePost.prototype = {
         // set our world scale as needed
         game.world.scale.set(worldScale);
     }
-}
-
-
-
-function gamestart(){
-    //Screen Wipe Object Creation
-    wipe = new ScreenWipe(game,'wipe');
-    game.add.existing(wipe);
-    wipe.animOutComplex(level1start,5000,3800,1.5);
-}
-
-function level1start(){
-    game.state.start('Tutorial');
 }
 

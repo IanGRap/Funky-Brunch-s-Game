@@ -9,7 +9,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects
@@ -79,6 +78,11 @@ WagonParents.prototype = {
     },
 
     create : function(){
+        //skip stuff
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipwagonpadres);
+        confirmskip = false;
+
         var background = game.add.image(-700, -900, 'background');
         var backgroundfront = game.add.image(-700, -900, 'backgroundfront');
 
@@ -139,7 +143,7 @@ WagonParents.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(WagonParents.prototype.start,5000,3800,1.5);    
+        wipe.animOut(WagonParents.prototype.start);    
     },
 
     start : function(){
@@ -148,41 +152,20 @@ WagonParents.prototype = {
 }
 
 
-function gamestartparents(){
-    //Screen Wipe Object Creation
-    
-}
-
 function levelGlobalWarmstart(){
     game.state.start('Level2GlobalWarm');
 }
 
-//Function to do the work on the Speach js file
-//To use you need ["string"],[#],[#],['speachL' or 'speachR'] [function to go to after speach plays]
-function dialogue(phrase,x,y,direction,localfunct,scale){
-    //Adds the speach bubble
-    talking = new Speach(game, direction, x, y, phrase,scale);
-    game.add.existing(talking);
-
-    funct = localfunct;
-    triggered = 1;
-
-    spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    spacebar.onDown.add(check);
+//Skip cutscene button
+function skipwagonpadres(){
+    if(confirmskip){
+        WagonParents.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
 }
 
-function check(){
-    if(talking.writing){
-        //space bar to make the delay between characters immediate
-        talking.delay = .0001;
-    }else if(talking.writing == false){
-        if(triggered==1){
-            //gets rid of current bubble
-            talking.kill();  
-            game.input.keyboard.removeKeyCapture(Phaser.Keyboard.SPACEBAR);
-            triggered = 0;
-            //Next scene
-            funct();
-         }
-    }   
-}
+//enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+//enter.onDown.add(skipintro);
+//confirmskip = false;

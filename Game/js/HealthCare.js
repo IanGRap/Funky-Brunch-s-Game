@@ -10,7 +10,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects

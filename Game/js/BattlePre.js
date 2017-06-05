@@ -9,7 +9,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects
@@ -118,6 +117,11 @@ BattlePre.prototype = {
     },
 
     create : function(){
+        //skip code
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipbattlepre);
+        confirmskip = false;
+
         var background = game.add.image(0, 20, 'temple');
         background.scale.setTo(1, 1.1);
 
@@ -200,11 +204,21 @@ BattlePre.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(BattlePre.prototype.start,5000,3800,1.5); 
+        wipe.animOut(BattlePre.prototype.start); 
     },
 
     start : function(){
         game.state.start('temp');
     }
 
+}
+
+//Skip cutscene button
+function skipbattlepre(){
+    if(confirmskip){
+        BattlePre.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
 }

@@ -20,6 +20,8 @@ var docConflicts = [];
 var knightConflicts = [];
 var astronautConflicts = [];
 
+var music;
+
 var stats = [
 	dinoTraits,
 	ghostTraits,
