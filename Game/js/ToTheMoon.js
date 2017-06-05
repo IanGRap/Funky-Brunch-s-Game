@@ -1,4 +1,5 @@
-var BattlePost = function(game){
+var ToTheMoon = function(game){
+    
 }
 
 //Global variables for Camera Control
@@ -35,22 +36,38 @@ var gY;
 
 var index = 0;
 
-var battlePostConversations = [
-    function(){dialogue('AAaAaah! Ouch!', kX, kY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('AAh I\'m sorry I didn\'t think my magic would hurt you!', gX, gY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('AAaaah, no I accidentally cut myself!', kX, kY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('I knew something like this would happen, we have to go back to the village!', sX, sY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('What about the idols?', diX, diY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('I don\'t think they\'re paying attention right now.', sX, sY, 'speachR', battlePostConversations[++index], 1);},
-    function(){dialogue('We gotta get some medicine.', sX, sY, 'speachR', BattlePost.prototype.gamestart, 1);},
+ToTheMoonConversations = [
+    function(){dialogue('Frankie, why aren\'t you ignoring me?', kX, kY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I\'m a ghost! So I must be dead too.', gX, gY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I just thought at least we could talk.', gX, gY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Doctor Xperiment, it isn\'t cool for you to let someone die because you don\'t want to share.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Yeah! Even Wolfy agrees!.', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Bork!', doX, doY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Ugh, ok if it\'s really that important.', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Goldhelm, you can have a bandaid. My parents can always just buy more.', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I can\'t figure out why we\'re all having such a hard time getting along today!', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I know! We can ask the Council of Heroes! They run the land!', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Where do they live?', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('On the moon! I saw it in a Seaspan.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('They all live together in a fancy castle and argue about how to use our rockets!', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('What\'s a Seaspan?', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('I don\'t know, but that\'s what my Mom calls it when she watches them.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
+    function(){dialogue('Let\'s use my spaceship!', aX, aY, 'speachR', ToTheMoon.prototype.gamestart, 1);},
 ];
 
-//Knight: AAaAaah! Ouch! 
-//Ghost: AAh I'm sorry I didn't think my magic would hurt you!
-//Knight: AAaaah, no I accidentally cut myself!
-//Scientist: I knew something like this would happen, we have to go back to the village!
-//Dino: What about the idols? 
-//Scientist: I don't think they're paying attention right now, let alone caring which monsters we collect. We need to go back!
+//Knight: Frankie, why aren't you ignoring me?
+//Ghost: I'm a ghost! So I must be dead too, I just thought at least we could talk.
+//Astronaut: Doctor Xperiment, it isn't cool for you to let someone die because you don't want to share.
+//Dino: Yeah! Even Wolfy agrees!
+//Dog: Bork!
+//Scientist: Ugh, ok if it's really that important. Goldhelm, you can have a bandaid. My parents can always just buy more at the store. 
+//Dino: I can't figure out why we're all having such a hard time getting along today!
+//Scientist: Well our parents can't either, it seems like there's just a lot of problems that nobody really knows how to solve.
+//Astronaut: I know! We can ask the Council of Heroes! They run the country!
+//Scientist: Wouldn't it be the Congress of Heroes? And where do they even live?
+//Astronaut: On the moon! I saw it in a Seaspan, they all live together in a fancy castle and argue about how to use our rockets!
+//Dino: What's a Seaspan?
+//Astronaut: I don't know, but that's what my Mom calls it when she watches them. Let's use my spaceship!
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -71,11 +88,12 @@ tween.onComplete.add(function(){         movedown1()         },this);
 
 */
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-BattlePost.prototype = {
-
+ToTheMoon.prototype = {
 
     //load in art assets
     preload: function(){
+
+
         //loads the main background image
 
         //Load debug images and effects
@@ -99,21 +117,23 @@ BattlePost.prototype = {
 
     create : function(){
 
-        var background = game.add.image(0, 95, 'temple');
+        var background = game.add.image(0, 95, 'village');
         game.world.scale.setTo(1);
 
-        console.log("post battle");
-        sX = game.world.width/4 - 128;
+        var crate = game.add.image(600, 400, 'medical');
+        var gurney = game.add.image(728, 400, 'gurney');
+
+        sX = game.world.width/4 + 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
+        kX = game.world.width * (1/2);
         aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 128;
+        gX = game.world.width * (3/4) - 256;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
+        sY = game.world.height/2 - 128;
+        doY = game.world.height/2;
         diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
+        kY = game.world.height/2;
         aY = game.world.height/2;
         gY = game.world.height/2 + 128;
 
@@ -171,7 +191,7 @@ BattlePost.prototype = {
         if(start){
             if (game.time.now - time > delay){ // Delay is up for writing the next character
                 start = false;
-                battlePostConversations[index]();
+                ToTheMoonConversations[index]();
             }
         }
 
@@ -182,14 +202,11 @@ BattlePost.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(level1start,5000,3800,1.5);
+        wipe.animOutComplex(this.start,5000,3800,1.5);
     },
 
     start : function(){
-        game.state.start('HealthCare');
+        game.state.start('');
     }
 }
-
-
-
 

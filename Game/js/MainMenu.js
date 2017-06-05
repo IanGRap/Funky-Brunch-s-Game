@@ -36,10 +36,11 @@ MainMenu.prototype = {
         game.load.image('backgroundfront','assets/IntroBackgroundFront.png');
 
         //scenery images
-        game.load.image('boat','assets/Boat.png');
         game.load.image('wagon','assets/Wagon.png');
         game.load.image('raft','assets/raft.png');
         game.load.image('crate','assets/crateRedo.png');
+        game.load.image('medical','assets/MedCrate.png');
+        game.load.image('gurney','assets/gurney.png');
 
         //dialogue UI
         game.load.image('speachbubble','assets/speachbubble.png');
@@ -102,7 +103,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         //game.state.start('Level4Religion');
-        game.state.start('Intro');
+        game.state.start('ToTheMoon');
     },
     fullscreen : function(){
         console.log("fullscreen function");

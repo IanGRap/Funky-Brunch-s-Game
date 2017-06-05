@@ -57,7 +57,7 @@ healthCareConversations = [
     function(){dialogue('Then we won\'t have to deal with his meanness anymore.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
     function(){dialogue('I\'m gonna die?', kX, kY, 'speachR', healthCareConversations[++index], 1);},
     function(){dialogue('You\'re already dead! Everyone, ignore the spirit of Sir Goldhelm.', sX, sY, 'speachR', healthCareConversations[++index], 1);},
-    function(){dialogue('Nooo!', kX, kY, 'speachR', gamestart, 1);},
+    function(){dialogue('Nooo!', kX, kY, 'speachR', HealthCare.prototype.gamestart, 1);},
 ];
 
 //Scientist: Goldhelm, have a seat on this medical bed while I look through a Doctor's kit.
@@ -126,29 +126,45 @@ HealthCare.prototype = {
 
     create : function(){
 
-        sX = game.world.width/4 - 128;
+        var background = game.add.image(0, 95, 'village');
+        game.world.scale.setTo(1);
+
+        var crate = game.add.image(600, 400, 'medical');
+        var gurney = game.add.image(728, 400, 'gurney');
+
+        sX = game.world.width/4 + 128;
         doX = game.world.width/4 - 128;
         diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
+        kX = game.world.width * (1/2);
         aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 128;
+        gX = game.world.width * (3/4) - 256;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
+        sY = game.world.height/2 - 128;
+        doY = game.world.height/2;
         diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
+        kY = game.world.height/2;
         aY = game.world.height/2;
         gY = game.world.height/2 + 128;
-        
-        //Fade in from black
-        var fadeout = game.add.sprite(0,0,'fadeout');
-        fadeout.scale.setTo(20,20);
-        fadeout.alpha = 1;
-        
-        //tween = game.add.tween(fadeout).to({alpha: 0}, 3000, Phaser.Easing.Linear.None, true);
 
-        //When the prevois tween is complete run [THIS FUNCTION]
-        //tween.onComplete.add(function(){         conversations[0]         },this);    
+        var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
+        scientist.scale.setTo(0.5, 0.5);
+        var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
+        dino.scale.setTo(0.5, 0.5);
+        var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
+        dog.scale.setTo(0.5, 0.5);
+        var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
+        knight.scale.setTo(0.5, 0.5);
+        var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
+        astronaut.scale.setTo(0.5, 0.5);
+        var ghost = game.add.sprite(gX - 128, gY + 128, 'ghost');
+        ghost.scale.setTo(0.5, 0.5);
+        
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
+        delay = 1500;
+        time = game.time.now;
+   
 
         game.world.setBounds(0, 0, 4000, 4000);
 
@@ -158,7 +174,10 @@ HealthCare.prototype = {
 
         game.camera.follow(camera);
         camera.alpha = 0;
-        healthCareConversations[index]();
+        console.log("gonna do a conversation");
+
+        start = true;
+        index = 0;
     },
 
     update : function(){
@@ -178,11 +197,25 @@ HealthCare.prototype = {
             }
         }
 
+        if(start){
+            if (game.time.now - time > delay){ // Delay is up for writing the next character
+                start = false;
+                healthCareConversations[index]();
+            }
+        }
+
         // set our world scale as needed
-        game.world.scale.set(worldScale);
+        //game.world.scale.set(worldScale);
+    },
+
+    gamestart : function(){
+        wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animOutComplex(level1start,5000,3800,1.5);
+    },
+
+    start : function(){
+        game.state.start('');
     }
 }
 
-function next(){
-    this.conversations[++index]();
-}

@@ -18,70 +18,24 @@ var wipe;
 var do1 = true;
 
 Level5GunControl.prototype = {
-    
-    //load in art assets
-    preload: function(){
-        //fixes aftermath of intro
-        game.world.scale.set(1);
-
-        // cube sprite
-        game.load.spritesheet('cubes', 'assets/tilesV2128.png', 128, 128);
-        //charcter images
-        game.load.spritesheet('astronaut', 'assets/astronaughtimg.png', 64, 64);
-        game.load.spritesheet('scientist', 'assets/scientistimg.png', 64, 64);
-        game.load.spritesheet('ghost', 'assets/ghostimg.png', 64, 64);
-        game.load.spritesheet('knight', 'assets/knightimg.png', 64, 64);
-        game.load.spritesheet('dino', 'assets/dinoimg.png', 64, 64);
-        game.load.spritesheet('dog', 'assets/dogimg.png', 64, 64);
-        //backround image
-        game.load.image('river','assets/river.png');
-        game.load.image('boat','assets/Boat.png');
-        //dialogue UI
-        game.load.image('dialogue', 'assets/dialoguePlaceholder.png');
-        game.load.image('speachbubble','assets/speachbubble.png');
-        game.load.image('traitwindow', 'assets/traitwindow.png')
-
-        //audio
-        game.load.audio('tick',['assets/audio/tick.mp3']);
-        game.load.audio('select',['assets/audio/select.mp3']);
-        game.load.audio('placed',['assets/audio/placed.mp3']);
-        game.load.audio('misplaced',['assets/audio/misplaced.mp3']);
-        //Wipe Image
-        game.load.image('wipe','assets/wipe.png');
-    },
 
     create: function(){
 
         //loads background image
-        river = game.add.image(700,400,'river');
-        river.scale.setTo(1.3,2.5);
-        river.anchor.setTo(0.5,0.5);
-        river.angle = 90;
-
-        var boat = game.add.image(-100,120,'boat');
-        boat.scale.setTo(2.7,2.7);
-        //add dialogue system
-        //this.dialogue = new Dialogue(game, 'dialogue', 96);
-        //game.add.existing(this.dialogue);
-
+        var background = game.add.image(0, 0, 'temple');
 
         this.obstacles = [
             [
-                [2, 2, 2, 2, 2, 0, 0],
-                [2, 2, 2, 2, 2, 0, 0],
-                [2, 1, 1, 2, 2, 0, 0],
-                [2, 2, 1, 2, 2, 0, 0],
-                [2, 2, 1, 2, 2, 0, 0],
-                [2, 2, 1, 1, 2, 0, 0],
-                [2, 2, 2, 2, 2, 0, 0]
+                [2, 1, 1, 2, 2],
+                [2, 2, 1, 2, 2],
+                [2, 2, 1, 2, 2],
+                [2, 2, 1, 1, 2]
             ]
          
         ];
 
-        this.timer = 12500;
-
         // define a new board object
-        this.board = new Board(game, 7, 7, 128, 128, 128);
+        this.board = new Board(game, 5, 4, 128, 80, 140);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
@@ -92,12 +46,12 @@ Level5GunControl.prototype = {
 
 
         this.characters = [
-            new Character(game, 'dino', 0, 0, ["Scared"],["Fighting"],["Hey you're FIGHTING, stay away!"], 'Dinosaur', dinoTraits,'traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Scared"],["Fighting"],["That's too dangerous to be FIGHTING with!"], 'Scientist', docTraits,'traitwindow'),
-            new Character(game, 'knight', 0, 0, ["Fighting"],["Scared"],["Don't be SCARED, I'm a master, but stay back!" ], 'Knight', [true],'traitwindow'),
-            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'traitwindow'),
-            new Character(game, 'astronaut', 0, 0,["Sword Fan"],["Magical"],["I like real weapons not MAGICAL ones!"], 'Astronaut', astronautTraits,'traitwindow'),
-            new Character(game, 'ghost', 0, 0,["Fighting", "Magical"],["Scared", "Sword Fan"],["Stay back if you're SCARED", "I don't need any SWORD FANS on my side!"], 'Ghost', ghostTraits,'traitwindow')
+            new Character(game, 'dino', 0, 0, ["Scared"],["Fighting"],["Hey you're FIGHTING, stay away!"], 'Dinosaur', dinoTraits, 'dinogood', 'dinobad', 'traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Scared"],["Fighting"],["That's too dangerous to be FIGHTING with!"], 'Scientist', docTraits, 'scientistgood', 'scientistbad', 'traitwindow'),
+            new Character(game, 'knight', 0, 0, ["Fighting"],["Scared"],["Don't be SCARED, I'm a master, but stay back!" ], 'Knight', [true], 'knightgood', 'knightbad', 'traitwindow'),
+            new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true], 'doggood', 'dogbad', 'traitwindow'),
+            new Character(game, 'astronaut', 0, 0,["Sword Fan"],["Magical"],["I like real weapons not MAGICAL ones!"], 'Astronaut', astronautTraits, 'astronautgood', 'astronautbad', 'traitwindow'),
+            new Character(game, 'ghost', 0, 0,["Fighting", "Magical"],["Scared", "Sword Fan"],["Stay back if you're SCARED", "I don't need any SWORD FANS on my side!"], 'Ghost', ghostTraits, 'ghostgood', 'ghostbad', 'traitwindow')
          
         ];
 
@@ -106,12 +60,12 @@ Level5GunControl.prototype = {
         };
 
         // set the starting location for the circles
-        this.board.tiles[6][1].place(this.characters[0]);
-        this.board.tiles[6][3].place(this.characters[1]);
-        this.board.tiles[6][5].place(this.characters[2]);
-        this.board.tiles[5][2].place(this.characters[3]);
-        this.board.tiles[5][4].place(this.characters[4]);
-        this.board.tiles[5][6].place(this.characters[5]);
+        this.board.tiles[0][0].place(this.characters[0]);
+        this.board.tiles[1][1].place(this.characters[1]);
+        this.board.tiles[2][0].place(this.characters[2]);
+        this.board.tiles[3][1].place(this.characters[3]);
+        this.board.tiles[0][4].place(this.characters[4]);
+        this.board.tiles[1][3].place(this.characters[5]);
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles[0]);
@@ -134,6 +88,6 @@ Level5GunControl.prototype = {
         }
     },
     nextlevel: function(){
-        game.state.start("TestLevel2");
+        game.state.start("BattlePost");
     }
 };

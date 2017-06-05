@@ -204,7 +204,7 @@ BattlePre.prototype = {
     },
 
     start : function(){
-        game.state.start('temp');
+        game.state.start('Level5GunControl');
     }
 
 }
