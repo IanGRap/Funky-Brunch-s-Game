@@ -116,7 +116,7 @@ WagonIntro.prototype = {
         console.log("gonna do a conversation");
         //conversationsWagonIntro[index]();
 
-        this.i = 0;
+        index = 0;
         start = true;
     },
 
@@ -141,7 +141,7 @@ WagonIntro.prototype = {
     },
 
     start : function(){
-       game.state.start('Tutorial'); 
+       game.state.start('MainMenu'); 
     }
 }
 
@@ -152,7 +152,7 @@ function startTutorial(){
 }
 
 function TutorialStarting(){
-    game.state.start('WagonOutro');
+    game.state.start('Tutorial');
 }
 function skipwagon(){
     if(confirmskip){

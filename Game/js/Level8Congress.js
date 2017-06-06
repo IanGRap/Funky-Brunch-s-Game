@@ -115,7 +115,6 @@ Level8Congress.prototype = {
 
     update: function(){
         this.timer -= game.time.elapsed;
-        console.log(''+this.timer);
         if(!this.dialogue1){
             if(this.timer < 55000){
                 this.dialogue1 = true;
@@ -146,6 +145,8 @@ Level8Congress.prototype = {
             if(this.timer < 20000){
                 this.dialogueText.text = '';
                 this.dialogueBubble.alpha = 0;
+            } else if( this.timer < 15000){
+                this.nextlevel();
             }
         }
     },

@@ -206,7 +206,7 @@ ToTheMoon.prototype = {
     },
 
     start : function(){
-        game.state.start('');
+        game.state.start('Moon');
     }
 }
 

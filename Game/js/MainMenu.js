@@ -108,7 +108,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         //game.state.start('Level4Religion');
-        game.state.start('Level8Congress');
+        game.state.start('Intro');
     },
     fullscreen : function(){
         console.log("fullscreen function");

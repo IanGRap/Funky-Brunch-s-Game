@@ -214,7 +214,7 @@ HealthCare.prototype = {
     },
 
     start : function(){
-        game.state.start('');
+        game.state.start('Level6Healthcare');
     }
 }
 
