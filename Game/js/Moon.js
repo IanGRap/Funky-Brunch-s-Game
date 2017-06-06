@@ -207,7 +207,7 @@ Moon.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOut(this.start);
+        wipe.animOut(Moon.prototype.start);
     },
 
     start : function(){
