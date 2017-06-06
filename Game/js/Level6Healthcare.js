@@ -75,7 +75,7 @@ Level6Healthcare.prototype = {
         this.timer = 12500;
 
         // define a new board object
-        this.board = new Board(game, 6, 4, 128, 128, 128);
+        this.board = new Board(game, 6, 4, 128, 128, 128, 'window');
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept

@@ -124,7 +124,12 @@ Council.prototype = {
         trumpY = trump.y - 128;
 
         var congress = [
-            game.add.image(600, 600, 'congress')
+            game.add.image(900, 700, 'congress'),
+            game.add.image(400, 400, 'congress'),
+            game.add.image(300, 50, 'congress'),
+            game.add.image(1000, 150, 'congress'),
+            game.add.image(700, 300, 'congress')
+
         ];
 
         congressX = congress[0].x + 128;
@@ -213,7 +218,7 @@ Council.prototype = {
     },
 
     start : function(){
-        game.state.start('');
+        game.state.start('Level8Congress');
     }
 }
 
