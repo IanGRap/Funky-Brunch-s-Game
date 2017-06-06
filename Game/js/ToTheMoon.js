@@ -10,7 +10,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects
@@ -116,6 +115,11 @@ ToTheMoon.prototype = {
     },
 
     create : function(){
+        //skip code
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skiptothemooon);
+        confirmskip = false;
+        
 
         var background = game.add.image(0, 95, 'village');
         game.world.scale.setTo(1);
@@ -202,7 +206,7 @@ ToTheMoon.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(this.start,5000,3800,1.5);
+        wipe.animOutMusic(ToTheMoon.prototype.start,music);
     },
 
     start : function(){
@@ -210,3 +214,12 @@ ToTheMoon.prototype = {
     }
 }
 
+//Skip cutscene button
+function skiptothemooon(){
+    if(confirmskip){
+        ToTheMoon.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
+}

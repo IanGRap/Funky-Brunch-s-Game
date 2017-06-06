@@ -106,7 +106,7 @@ Level3Refugee.prototype = {
             if(do1){
                 console.log("IN")
                 do1 = false;
-                wipe.animOut(this.nextlevel);
+                wipe.animOutMusic(this.nextlevel,music);
             }
         }
     },

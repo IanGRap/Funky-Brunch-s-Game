@@ -51,6 +51,7 @@ Intro.prototype = {
 
         //Starts the music
         introSong();
+        
         //Starts the skip function
         enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enter.onDown.add(skipintro);
@@ -321,5 +322,4 @@ function skipintro(){
         var skipimg = game.add.sprite(670,600,'skipimg');
         confirmskip = true; 
     }
-
 }

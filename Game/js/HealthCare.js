@@ -116,6 +116,8 @@ HealthCare.prototype = {
         game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
         //Loads the Audio
         game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
+        game.load.audio('themeloop',['assets/audio/main theme loop.mp3']);
+
 
         //Loads fadeout asset
         game.load.image('wipe','assets/wipe.png');
@@ -124,6 +126,18 @@ HealthCare.prototype = {
     },
 
     create : function(){
+
+        //Starts the music
+        music = game.add.audio('themeloop');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
+
+        //skip code
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipHealthCare);
+        confirmskip = false;
+        
 
         var background = game.add.image(0, 95, 'village');
         game.world.scale.setTo(1);
@@ -138,12 +152,12 @@ HealthCare.prototype = {
         aX = 1440 * (3/4) - 128;
         gX = 1440 * (3/4) - 256;
 
-        sY = 1440/2 - 128;
-        doY = 1440/2;
-        diY = 1440/2;
-        kY = 1440/2;
-        aY = 1440/2;
-        gY = 1440/2 + 128;
+        sY = 810/2 - 128;
+        doY = 810/2;
+        diY = 810/2;
+        kY = 810/2;
+        aY = 810/2;
+        gY = 810/2 + 128;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
@@ -196,7 +210,7 @@ HealthCare.prototype = {
             }
         }
 
-        if(start){
+        if(start){start
             if (game.time.now - time > delay){ // Delay is up for writing the next character
                 start = false;
                 healthCareConversations[index]();
@@ -210,11 +224,21 @@ HealthCare.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(level1start,5000,3800,1.5);
+        wipe.animOut(HealthCare.prototype.start);
     },
 
     start : function(){
         game.state.start('Level6Healthcare');
+    }
+}
+
+//Skip cutscene button
+function skipHealthCare(){
+    if(confirmskip){
+        HealthCare.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
     }
 }
 

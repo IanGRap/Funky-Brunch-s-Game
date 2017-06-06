@@ -123,7 +123,7 @@ Level6Healthcare.prototype = {
             if(do1){
                 console.log("IN")
                 do1 = false;
-                wipe.animOut(this.nextlevel);
+                wipe.animOut(Level6Healthcare.prototype.nextlevel);
             }
         }
     },

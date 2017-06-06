@@ -10,7 +10,6 @@ var scaletrigger = 0;
 var time;
 var delay;
 var spacebar;
-var music;
 var wipe;
 
 //Scene objects
@@ -105,6 +104,7 @@ Moon.prototype = {
         game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
         //Loads the Audio
         game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
+		game.load.audio('finalfrontier',['assets/audio/finalfrontier.mp3']);
 
         //Loads fadeout asset
         game.load.image('wipe','assets/wipe.png');
@@ -113,6 +113,17 @@ Moon.prototype = {
     },
 
     create : function(){
+    	//skip code
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipmoon);
+        confirmskip = false;
+
+        //Starts the music
+        music = game.add.audio('finalfrontier');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
+        
 
         var background = game.add.image(0, 95, 'space');
         game.world.scale.setTo(1);
@@ -196,11 +207,20 @@ Moon.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(this.start,5000,3800,1.5);
+        wipe.animOut(this.start);
     },
 
     start : function(){
-        game.state.start('');
+        game.state.start('Level8Congress');
     }
 }
 
+//Skip cutscene button
+function skipmoon(){
+    if(confirmskip){
+        Moon.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
+}

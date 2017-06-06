@@ -68,9 +68,11 @@ ScreenWipe.prototype.animOutComplex = function(nextFunc,xpos,ypos,scale){
 
 ScreenWipe.prototype.animOutMusic = function(nextFunc,music){
     console.log("Halt da music mon");   
+    this.alpha = 1;
 
     this.volumelower = true;
     this.music = music;
+    music = null;
 
     this.scale.setTo(4,6);
     //1440, 810,

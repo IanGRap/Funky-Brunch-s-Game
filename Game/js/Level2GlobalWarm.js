@@ -21,11 +21,17 @@ Level2GlobalWarm.prototype = {
     
     //load in art assets
     preload: function(){
+        game.load.audio('wispywater',['assets/audio/wispywater.mp3']);
+
         //fixes aftermath of intro
         game.world.scale.set(1);
     },
 
     create: function(){
+        music = game.add.audio('wispywater');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
 
         //loads background image
         river = game.add.image(0, 0,'river');

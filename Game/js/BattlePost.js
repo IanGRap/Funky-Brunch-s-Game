@@ -98,23 +98,29 @@ BattlePost.prototype = {
 
     create : function(){
 
+        //skip code
+        enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(skipbattlepost);
+        confirmskip = false;
+        
+
         var background = game.add.image(0, 95, 'temple');
         game.world.scale.setTo(1);
 
         console.log("post battle");
-        sX = game.world.width/4 - 128;
-        doX = game.world.width/4 - 128;
-        diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2) - 128;
-        aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 128;
+        sX = 1440/4 - 128;
+        doX = 1440/4 - 128;
+        diX = 1440 * (1/2) - 128;
+        kX = 1440 * (1/2) - 128;
+        aX = 1440 * (3/4) - 128;
+        gX = 1440 * (3/4) - 128;
 
-        sY = game.world.height/2;
-        doY = game.world.height/2 + 128;
-        diY = game.world.height/2;
-        kY = game.world.height/2 + 128;
-        aY = game.world.height/2;
-        gY = game.world.height/2 + 128;
+        sY = 810/2;
+        doY = 810/2 + 128;
+        diY = 810/2;
+        kY = 810/2 + 128;
+        aY = 810/2;
+        gY = 810/2 + 128;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
@@ -181,7 +187,7 @@ BattlePost.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(level1start,5000,3800,1.5);
+        wipe.animOutMusic(BattlePost.prototype.start,music);
     },
 
     start : function(){
@@ -190,5 +196,13 @@ BattlePost.prototype = {
 }
 
 
-
+//Skip cutscene button
+function skipbattlepost(){
+    if(confirmskip){
+        BattlePost.prototype.gamestart();
+    }else{
+        var skipimg = game.add.sprite(670,600,'skipimg');
+        confirmskip = true; 
+    }
+}
 

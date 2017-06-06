@@ -96,10 +96,17 @@ GhostIntro.prototype = {
     //load in art assets
     preload: function(){
         game.world.scale.setTo(1);
+        game.load.audio('themestart',['assets/audio/main theme intro.mp3']);
 
     },
 
     create : function(){
+        music = game.add.audio('themestart');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
+
+
         //skip code
         enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enter.onDown.add(skipghostintro);
@@ -187,7 +194,7 @@ GhostIntro.prototype = {
     gamestart: function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOut(GhostIntro.prototype.start); 
+        wipe.animOutMusic(GhostIntro.prototype.start,music); 
         //wipe.animOutMusic(Wagonintrostart,5000,3800,music);    
     },
 

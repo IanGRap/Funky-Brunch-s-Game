@@ -141,7 +141,7 @@ WagonIntro.prototype = {
     },
 
     start : function(){
-       game.state.start('MainMenu'); 
+       game.state.start('Tutorial'); 
     }
 }
 

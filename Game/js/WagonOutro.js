@@ -128,7 +128,7 @@ WagonOutro.prototype = {
     gamestart: function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOut(WagonOutro.prototype.start);
+        wipe.animOutMusic(WagonOutro.prototype.start,music);
     },
 
     start : function(){

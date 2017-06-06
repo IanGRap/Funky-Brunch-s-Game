@@ -101,6 +101,8 @@ MonTalk.prototype = {
         game.load.spritesheet('speachL','assets/speachL.png',381,157,3);
         //Loads the Audio
         game.load.audio('dialogue',['assets/audio/dialogue.mp3']);
+        game.load.audio('desertsands',['assets/audio/desertsands.mp3']);
+
 
         //Loads fadeout asset
         game.load.image('wipe','assets/wipe.png');
@@ -109,6 +111,11 @@ MonTalk.prototype = {
     },
 
     create : function(){
+        music = game.add.audio('desertsands');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
+
         //skip code
         enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enter.onDown.add(skipMonTalk);

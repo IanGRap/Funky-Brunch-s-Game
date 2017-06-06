@@ -34,10 +34,12 @@ wagonParentsConversations = [
     function(){dialogue('I\'m blaming you when the planet floods.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('Mom we\'re going exploring!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
-    function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('Everyone, the world is flooding, we need to get to my boat!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('And we\'re bringing my pet Wolfy! She\'s really nice.', scientistPositionX, scientistPositionY, 'speachR', WagonParents.prototype.gamestart, 1);},
 ];
+
+//    function(){dialogue('Well let\'s not get stuck on that one topic, how do you feel about immigration?', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},
+
 
 //function dialogue(phrase,x,y,direction,localfunct,scale)
 //Parent: I can't believe you could say something like that! If we don't implement a carbon tax the oil industry will melt the ice caps!
@@ -71,6 +73,8 @@ WagonParents.prototype = {
 
     //load in art assets
     preload: function(){
+        game.load.audio('themestart',['assets/audio/main theme intro.mp3']);
+
         worldScale = 1;
         game.world.scale.set(worldScale);
 
@@ -78,6 +82,13 @@ WagonParents.prototype = {
     },
 
     create : function(){
+        //Starts the music
+        music = game.add.audio('themestart');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
+
+
         //skip stuff
         enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enter.onDown.add(skipwagonpadres);
@@ -143,7 +154,7 @@ WagonParents.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOut(WagonParents.prototype.start);    
+        wipe.animOutMusic(WagonParents.prototype.start,music);    
     },
 
     start : function(){
