@@ -79,21 +79,21 @@ WagonIntro.prototype = {
     	var background = game.add.image(0,80,'village');
     	background.scale.setTo(1,1.2);
 
-        scientistPositionX = 500;
-        knightPositionX = 700;
-        dinoPositionX = 900;
-        scientistPositionY = 550;
-        knightPositionY = 550;
-        dinoPositionY = 550;
+        scientistPositionX = 300;
+        knightPositionX = 900;
+        dinoPositionX = 600;
+        scientistPositionY = 350;
+        knightPositionY = 350;
+        dinoPositionY = 300;
 
         var wagon = game.add.image(-250, 115, 'wagon');
 
         var scientist = game.add.sprite(scientistPositionX - 128, scientistPositionY + 128,'scientist');
-        scientist.scale.setTo(0.5, 0.5);
+        //scientist.scale.setTo(0.5, 0.5);
         var knight = game.add.sprite(knightPositionX - 128, knightPositionY + 128,'knight');
-        knight.scale.setTo(0.5, 0.5);
+        //knight.scale.setTo(0.5, 0.5);
         var dino = game.add.sprite(dinoPositionX - 128, dinoPositionY + 128,'dino');
-        dino.scale.setTo(0.5, 0.5);
+        //dino.scale.setTo(0.5, 0.5);
 
         
 

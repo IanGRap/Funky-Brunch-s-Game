@@ -69,21 +69,22 @@ WagonOutro.prototype = {
 
         var background = game.add.image(0,80,'village');
         background.scale.setTo(1,1.2);
-        var wagon = game.add.image( -250, 115, 'wagon');
+        var wagon = game.add.image( -400, 50, 'wagon');
+        wagon.scale.setTo(1.2,1.2);
 
-        scientistPositionX = 400;
-        knightPositionX = 600;
-        dinoPositionX = 500;
-        scientistPositionY = 250;
-        knightPositionY = 250;
-        dinoPositionY = 250;
+        scientistPositionX = 260;
+        knightPositionX = 590;
+        dinoPositionX = 440;
+        scientistPositionY = 100;
+        knightPositionY = 100;
+        dinoPositionY = 150;
 
         var scientist = game.add.sprite(scientistPositionX - 128, scientistPositionY + 128,'scientist');
-        scientist.scale.setTo(0.5, 0.5);
+        //scientist.scale.setTo(0.5, 0.5);
         var knight = game.add.sprite(knightPositionX - 128, knightPositionY + 128,'knight');
-        knight.scale.setTo(0.5, 0.5);
+        //knight.scale.setTo(0.5, 0.5);
         var dino = game.add.sprite(dinoPositionX - 128, dinoPositionY + 128,'dino');
-        dino.scale.setTo(0.5, 0.5);
+        //dino.scale.setTo(0.5, 0.5);
 
 
         //Screen Wipe Object Creation

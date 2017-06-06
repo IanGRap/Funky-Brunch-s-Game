@@ -30,8 +30,11 @@ function Speach(game, key, locationX, locationY, dialogue,scale){
         this.style = { font: "24px Architects Daughter", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};    
     }
 
+    //Sets the line spacing to a bit tighter
+
     //Adds the text on top of the bubble
     this.text = game.add.text(25,10,"",this.style);
+    this.text.lineSpacing = -8;
     //Binds the text to the bubble
     this.addChild(this.text);
 }
