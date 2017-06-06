@@ -27,7 +27,7 @@ var index = 0;
 
 //function dialogue(phrase,x,y,direction,localfunct,scale)
 var conversationsWagonOutro = [
-    function(){dialogue('Wow Doc this yard is amazing, looks like we\'ve got a cool adventure ahead of us!', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
+    function(){dialogue('Wow Doc this yard is amazing! Looks like we\'ve got a cool adventure ahead!', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('Thanks, I\'ve got a lot of ideas about where we should explore.',  scientistPositionX, scientistPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('And Sir Goldhelm I feel much safer about this adventure with a knight.', dinoPositionX, dinoPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
     function(){dialogue('Why thank you. Doc, I do have to say that this is an impressive carriage.', knightPositionX, knightPositionY, 'speachR', conversationsWagonOutro[++index], 1);},
@@ -72,7 +72,7 @@ WagonOutro.prototype = {
         var wagon = game.add.image( -400, 50, 'wagon');
         wagon.scale.setTo(1.2,1.2);
 
-        scientistPositionX = 260;
+        scientistPositionX = 270;
         knightPositionX = 590;
         dinoPositionX = 440;
         scientistPositionY = 100;

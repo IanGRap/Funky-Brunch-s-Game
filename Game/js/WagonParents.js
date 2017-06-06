@@ -30,7 +30,7 @@ var index = 0;
 wagonParentsConversations = [
     function(){dialogue('I can\'t believe you could say something like that!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('If we don\'t implement a carbon tax the oil industry will melt the ice caps!', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);}, 
-    function(){dialogue('I just don\'t think the science is all there yet to prove that it\'s man made!', parent2X, parent2Y, 'speachR', wagonParentsConversations[++index], 1);},   
+    function(){dialogue('I just don\'t think the science is all there yet to prove that it\'s man made!', parent2X, parent2Y, 'speachL', wagonParentsConversations[++index], 1);},   
     function(){dialogue('I\'m blaming you when the planet floods.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('Mom we\'re going exploring!', scientistPositionX, scientistPositionY, 'speachR', wagonParentsConversations[++index], 1);},
     function(){dialogue('That\'s nice honey, have fun.', parent1X, parent1Y, 'speachR', wagonParentsConversations[++index], 1);},
@@ -99,7 +99,7 @@ WagonParents.prototype = {
 
         scientistPositionX = 1028;
         parent1X = 800;
-        parent2X = 600;
+        parent2X = 500;
         scientistPositionY = 250;
         parent1Y = 250;
         parent2Y = 250;

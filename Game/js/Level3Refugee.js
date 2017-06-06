@@ -44,7 +44,7 @@ Level3Refugee.prototype = {
          
         ];
 
-        var raft = [
+        /*var raft = [
             game.add.image(512, 384, 'raft'),
             game.add.image(640, 384, 'raft'),
             game.add.image(768, 256, 'raft'),
@@ -56,6 +56,15 @@ Level3Refugee.prototype = {
             game.add.image(640, 512, 'crate'),
             game.add.image(640, 256, 'crate'),
         ];
+        */
+        var raft = game.add.image(455, 205, 'raft');
+        raft.scale.setTo(3.8,3.8);
+
+
+        game.add.image(512, 256, 'crate');
+        game.add.image(512, 512, 'crate');
+        game.add.image(640, 512, 'crate');
+        game.add.image(640, 256, 'crate');
 
         // define a new board object
         this.board = new Board(game, 6, 5, 128, 128, 128, 'window');

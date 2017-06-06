@@ -51,7 +51,7 @@ Level2GlobalWarm.prototype = {
          
         ];
 
-        var raft = [
+        /*ar raft = [
             game.add.image(512, 384, 'raft'),
             game.add.image(512, 512, 'raft'),
             game.add.image(640, 512, 'raft'),
@@ -63,6 +63,16 @@ Level2GlobalWarm.prototype = {
             game.add.image(768, 384, 'crate'),
             game.add.image(768, 512, 'crate'),
         ];
+        */
+        var raft = game.add.image(455, 205, 'raft');
+        raft.scale.setTo(3.8,3.8);
+
+        game.add.image(512, 256, 'crate'),
+            game.add.image(640, 256, 'crate'),
+            game.add.image(768, 256, 'crate'),
+            game.add.image(768, 384, 'crate'),
+            game.add.image(768, 512, 'crate'),
+
 
         // define a new board object
         this.board = new Board(game, 6, 4, 128, 128, 128, 'window');

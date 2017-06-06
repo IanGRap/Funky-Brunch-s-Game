@@ -140,7 +140,7 @@ RiverOutro.prototype = {
         kY = 400;
         aY = 300;
 
-        var rafts = [
+        /*var rafts = [
             game.add.image(400, 400, 'raft'),
             game.add.image(528, 400, 'raft'),
             game.add.image(656, 400, 'crate'),
@@ -151,6 +151,14 @@ RiverOutro.prototype = {
             game.add.image(528, 656, 'crate'),
             game.add.image(656, 656, 'crate')
         ];
+    */
+        var raft = game.add.image(350, 350, 'raft');
+        raft.scale.setTo(3.8,3.8);
+
+        game.add.image(656, 528, 'crate'),
+        game.add.image(400, 656, 'crate'),
+        game.add.image(528, 656, 'crate'),
+        game.add.image(656, 656, 'crate')
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);

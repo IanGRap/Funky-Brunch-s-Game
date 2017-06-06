@@ -62,8 +62,8 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.displayName.anchor.setTo(0.5,0.5);
 
     // Display traits
-    this.displayStats = game.add.text(1200, 210, this.displayText, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
-    this.displayStats.anchor.setTo(0.5,0.5);
+    this.displayStats = game.add.text(1200, 220, this.displayText, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
+    this.displayStats.anchor.setTo(0.5,0);
 
     //Display character icon
     this.displaySprite = game.add.sprite(1200, 80, key);
@@ -87,7 +87,7 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
 
     // Display traits
     this.lockeddisplayStats = game.add.text(1200, 1010, this.displayText, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
-    this.lockeddisplayStats.anchor.setTo(0.5,0.5);
+    this.lockeddisplayStats.anchor.setTo(0.5,0);
     this.lockeddisplayStats.alpha = 0;
 
     //Display character icon
