@@ -19,15 +19,15 @@ function Speach(game, key, locationX, locationY, dialogue,scale){
 
 
     //Makes style for text with wordwrap so the text stays on the speach bubble
-    this.style = { font: "25px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};    
+    this.style = { font: "20px Architects Daughter", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};    
 
     //Adjusts the text style depending on whether the bubble is left or right
     if(key == 'speachL'){
-        this.style = { font: "25px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};
+        this.style = { font: "20px Architects Daughter", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};
     }
 
     if(key == 'speachR'){
-        this.style = { font: "25px Arial", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};    
+        this.style = { font: "20px Architects Daughter", fill: "#000000", wordWrap: true, wordWrapWidth: 330, align: "left"};    
     }
 
     //Adds the text on top of the bubble

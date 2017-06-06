@@ -1,4 +1,4 @@
-var ToTheMoon = function(game){
+var Council = function(game){
     
 }
 
@@ -34,41 +34,40 @@ var dY;
 var aY;
 var gY;
 
+var trumpX;
+var trumpY;
+var congressX;
+var congressY;
+
 var index = 0;
 
-ToTheMoonConversations = [
-    function(){dialogue('Frankie, why aren\'t you ignoring me?', kX, kY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('I\'m a ghost! So I must be dead too.', gX, gY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('I just thought at least we could talk.', gX, gY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Doctor Xperiment, it isn\'t cool for you to let someone die because you don\'t want to share.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Yeah! Even Wolfy agrees!.', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Bork!', doX, doY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Ugh, ok if it\'s really that important.', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Goldhelm, you can have a bandaid. My parents can always just buy more.', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('I can\'t figure out why we\'re all having such a hard time getting along today!', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('I know! We can ask the Council of Heroes! They run the land!', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Where do they live?', sX, sY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('On the moon! I saw it in a Seaspan.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('They all live together in a fancy castle and argue about how to use our rockets!', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('What\'s a Seaspan?', diX, diY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('I don\'t know, but that\'s what my Mom calls it when she watches them.', aX, aY, 'speachR', ToTheMoonConversations[++index], 1);},
-    function(){dialogue('Let\'s use my spaceship!', aX, aY, 'speachR', ToTheMoon.prototype.gamestart, 1);},
+CouncilConversations = [
+    function(){dialogue('See, I told you we\'d make it!', aX, aY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('There heroes here will be able to solve all our problems!', aX, aY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('I agree, if they are in charge of the country they have to figure out a solution.', sX, sY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Hey Congress heroes! We have a lot of problems for you to fix', diX, diY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Sorry kids but we actually have some problems of our own to work out here first.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Like What?!?', diX, diY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('We can\'t figure out how to get along.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Things have just gotten worse since we picked the new king of heroes.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('You don\'t know how to get along?!? You\'re the Congress of Heroes!', sX, sY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Shhh, he\'s about to speak.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Trump speaks', trumpX, trumpY, 'speachL', Council.prototype.gamestart, 1);},
+    /*function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('', , , 'speachR', Council.prototype.gamestart, 1);},*/
 ];
 
-//Knight: Frankie, why aren't you ignoring me?
-//Ghost: I'm a ghost! So I must be dead too, I just thought at least we could talk.
-//Astronaut: Doctor Xperiment, it isn't cool for you to let someone die because you don't want to share.
-//Dino: Yeah! Even Wolfy agrees!
-//Dog: Bork!
-//Scientist: Ugh, ok if it's really that important. Goldhelm, you can have a bandaid. My parents can always just buy more at the store. 
-//Dino: I can't figure out why we're all having such a hard time getting along today!
-//Scientist: Well our parents can't either, it seems like there's just a lot of problems that nobody really knows how to solve.
-//Astronaut: I know! We can ask the Council of Heroes! They run the country!
-//Scientist: Wouldn't it be the Congress of Heroes? And where do they even live?
-//Astronaut: On the moon! I saw it in a Seaspan, they all live together in a fancy castle and argue about how to use our rockets!
-//Dino: What's a Seaspan?
-//Astronaut: I don't know, but that's what my Mom calls it when she watches them. Let's use my spaceship!
-
+//Astronaut: See, I told you we'd make it! I know we're all afraid of the world ending for a bunch of different reasons, but we can ask the heroes here to help solve the world's problems before it does!
+//Scientist: I agree, if they are in charge of the country they must be smart enough to figure out a solution.
+//Dino: Hey Congress heroes! We have a lot of problems for you to help work out!
+//Congress: Well I'm sorry to disappoint you kids but we actually have some problems of our own to work out here on the moon before we can even think about helping the people of Earth!
+//Dino: Like What?!?
+//Congress: Well we can't figure out how to get along, and things have just gotten worse since we picked the new king of heroes, he's got a fiery tongue, that one. 
+//Scientist: You don't know how to get along?!? You're the Congress of Heroes!
+//Congress: Shh, stand back, here he comes, we have to listen!
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -88,7 +87,7 @@ tween.onComplete.add(function(){         movedown1()         },this);
 
 */
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-ToTheMoon.prototype = {
+Council.prototype = {
 
     //load in art assets
     preload: function(){
@@ -117,25 +116,33 @@ ToTheMoon.prototype = {
 
     create : function(){
 
-        var background = game.add.image(0, 95, 'village');
+        var background = game.add.image(0, 95, 'council');
         game.world.scale.setTo(1);
 
-        var crate = game.add.image(600, 400, 'medical');
-        var gurney = game.add.image(728, 400, 'gurney');
+        var trump = game.add.image(1440 - 256, 400, 'trump');
+        trumpX = trump.x - 256;
+        trumpY = trump.y - 128;
 
-        sX = 1440/4 + 128;
-        doX = 1440/4 - 128;
-        diX = 1440 * (1/2) - 128;
-        kX = 1440 * (1/2);
-        aX = 1440 * (3/4) - 128;
-        gX = 1440 * (3/4) - 256;
+        var congress = [
+            game.add.image(600, 600, 'congress')
+        ];
 
-        sY = 810/2 - 128;
-        doY = 810/2;
-        diY = 810/2;
-        kY = 810/2;
-        aY = 810/2;
-        gY = 810/2 + 128;
+        congressX = congress[0].x + 128;
+        congressY = congress[0].y - 128;
+
+        sX = 1440/4 - 100;
+        doX = 1440/4 - 200;
+        diX = 1440/4 - 128;
+        kX = 1440/4;
+        aX = 1440/4 - 128;
+        gX = 1440/4 - 200;
+
+        sY = 810/2 - 256;
+        doY = 810/2 - 300;
+        diY = 810/2 + 64;
+        kY = 810/2 + 25;
+        aY = 810/2 - 64;
+        gY = 810/2 + 175;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
@@ -191,7 +198,7 @@ ToTheMoon.prototype = {
         if(start){
             if (game.time.now - time > delay){ // Delay is up for writing the next character
                 start = false;
-                ToTheMoonConversations[index]();
+                CouncilConversations[index]();
             }
         }
 

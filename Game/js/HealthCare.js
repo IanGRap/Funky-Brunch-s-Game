@@ -131,19 +131,19 @@ HealthCare.prototype = {
         var crate = game.add.image(600, 400, 'medical');
         var gurney = game.add.image(728, 400, 'gurney');
 
-        sX = game.world.width/4 + 128;
-        doX = game.world.width/4 - 128;
-        diX = game.world.width * (1/2) - 128;
-        kX = game.world.width * (1/2);
-        aX = game.world.width * (3/4) - 128;
-        gX = game.world.width * (3/4) - 256;
+        sX = 1440/4 + 128;
+        doX = 1440/4 - 128;
+        diX = 1440 * (1/2) - 128;
+        kX = 1440 * (1/2);
+        aX = 1440 * (3/4) - 128;
+        gX = 1440 * (3/4) - 256;
 
-        sY = game.world.height/2 - 128;
-        doY = game.world.height/2;
-        diY = game.world.height/2;
-        kY = game.world.height/2;
-        aY = game.world.height/2;
-        gY = game.world.height/2 + 128;
+        sY = 1440/2 - 128;
+        doY = 1440/2;
+        diY = 1440/2;
+        kY = 1440/2;
+        aY = 1440/2;
+        gY = 1440/2 + 128;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         scientist.scale.setTo(0.5, 0.5);
