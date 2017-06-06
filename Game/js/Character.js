@@ -58,11 +58,11 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
     this.displayWindow.scale.setTo(1.1,1.1);
     
     //Separated name from traits
-    this.displayName = game.add.text(1200, 170, this.name, {fontSize: '30px', fill: 'Black'});
+    this.displayName = game.add.text(1200, 185, this.name, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
     this.displayName.anchor.setTo(0.5,0.5);
 
     // Display traits
-    this.displayStats = game.add.text(1200, 200, this.displayText, {fontSize: '30px', fill: 'Black'});
+    this.displayStats = game.add.text(1200, 210, this.displayText, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
     this.displayStats.anchor.setTo(0.5,0.5);
 
     //Display character icon
@@ -81,12 +81,12 @@ function Character(game, key, locationX, locationY, traits, conflicts, conflictT
 
     
     //Separated name from traits
-    this.lockeddisplayName = game.add.text(1200, 970, this.name, {fontSize: '30px', fill: 'Black'});
+    this.lockeddisplayName = game.add.text(1200, 985, this.name, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
     this.lockeddisplayName.anchor.setTo(0.5,0.5);
     this.lockeddisplayName.alpha = 0;
 
     // Display traits
-    this.lockeddisplayStats = game.add.text(1200, 1000, this.displayText, {fontSize: '30px', fill: 'Black'});
+    this.lockeddisplayStats = game.add.text(1200, 1010, this.displayText, {fontSize: '30px', fill: 'Black', font: 'Architects Daughter'});
     this.lockeddisplayStats.anchor.setTo(0.5,0.5);
     this.lockeddisplayStats.alpha = 0;
 
