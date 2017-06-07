@@ -6,7 +6,7 @@ var wipe;
 
 MainMenu.prototype = {
     preload : function(){      
-        game.load.image('menu','assets/menuplaceholder.png');
+        game.load.image('menu','assets/titles.png');
         game.load.image('wipe','assets/wipe.png');
         game.load.image('window', 'assets/tutorialWindow.png');
         game.load.image('fadeout','assets/fadeout.png');
