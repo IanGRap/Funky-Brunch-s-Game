@@ -9,18 +9,21 @@ function Cube(game, key, locationX, locationY){
     this.animations.add('normalSelected', [0, 1], 3, true);
     this.animations.add('normalcorrect',[4,0], 3, false);
     this.animations.add('normalincorrect',[6,0], 2, false);
+    this.animations.add('normalhighlightincorrect',[6,1], 2, false);
 
     this.animations.add('green', [2], 2, true);
     this.animations.add('greenHighlight', [3], 3, true);
     this.animations.add('greenSelected', [2, 3], 3, true);
     this.animations.add('greencorrect',[5,2], 3, false);  
     this.animations.add('greenincorrect',[7,2], 2, false);
+    this.animations.add('greenhighlightincorrect',[7,3], 2, false);
 
     this.animations.add('blank', [8], 2, false);
     this.animations.add('blankHighlight', [1], 3, true);
     this.animations.add('blankSelected', [8, 1], 3, true);
     this.animations.add('blankcorrect',[4,8], 2, false);
     this.animations.add('blankincorrect',[6,8], 2, false);
+    this.animations.add('blankhighlightincorrect',[6,1], 2, false);
 
     this.animations.play('green');
 
@@ -92,11 +95,23 @@ Cube.prototype.correct = function(){
 
 Cube.prototype.incorrect = function(){
     if(this.charged){  
-        this.animations.play('normalincorrect');
+        if(this.active){
+            this.animations.play('normalhighlightincorrect');
+        } else {
+            this.animations.play('normalincorrect');
+        }
     }else if(this.blank){
-        this.animations.play('blankincorrect');
+        if(this.active){
+            this.animations.play('blankhighlightincorrect');
+        } else {
+            this.animations.play('blankincorrect');
+        }
     }else{
-        this.animations.play('greenincorrect');
+        if(this.active){
+            this.animations.play('greenhighlightincorrect');
+        } else {
+            this.animations.play('greenincorrect');
+        }
     }
 }
 

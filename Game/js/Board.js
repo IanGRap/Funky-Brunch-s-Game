@@ -227,7 +227,7 @@ Board.prototype.select = function(){
     var temp = this.tiles[this.currentRow][this.currentColumn].item;
     if(this.tiles[this.currentRow][this.currentColumn].blocked){
         this.blockedSound.play();
-        //this.tiles[this.currentRow][this.currentColumn].incorrect();
+        this.tiles[this.currentRow][this.currentColumn].incorrect();
         console.log('blocked');
     //if we currently don't have an item selected
     }else if(this.selectedRow == null){
