@@ -45,7 +45,7 @@ MainMenu.prototype = {
         game.load.image('gurney','assets/gurney.png');
         game.load.image('trump','assets/trumpWyrm.png');
         game.load.image('congress','assets/congressperson.png');
-	game.load.image(‘rocket’,’assets/Rocket.png');
+	    game.load.image('rocket','assets/Rocket.png');
 
         //dialogue UI
         game.load.image('speachbubble','assets/speachbubble.png');
@@ -109,7 +109,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         //game.state.start('Level4Religion');
-        game.state.start('Intro');
+        game.state.start('Moon');
     },
     fullscreen : function(){
         console.log("fullscreen function");

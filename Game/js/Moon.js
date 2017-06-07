@@ -128,6 +128,10 @@ Moon.prototype = {
         var background = game.add.image(0, 95, 'space');
         game.world.scale.setTo(1);
 
+        var spaceship = game.add.image(600, 425, 'rocket');
+        spaceship.anchor.setTo(0.5, 0.5);
+        spaceship.angle += 45;
+
         sX = 1440/4 - 100;
         doX = 1440/4 - 200;
         diX = 1440/4 - 128;

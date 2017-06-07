@@ -39,6 +39,8 @@ function Cube(game, key, locationX, locationY){
     this.blank = false;
 
     this.selected = false;
+
+    this.blocked = false;
 }
 
 // set inherited prototype

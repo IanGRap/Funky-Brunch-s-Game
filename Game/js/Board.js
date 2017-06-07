@@ -100,6 +100,8 @@ function Board(game, columns, rows, tileSize, originX, originY, key){
     this.displaying = false;
     this.controlsText = game.add.text(480 + 128, 810 - 64, "C: Controls", {fontSize: '30px', fill: 'white', font: 'Architects Daughter'});
     this.windowText = game.add.text(480 + 48, 810 + 48, "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nF: Toggle Fullscreen Mode\nC: Toggle this Display", {fontSize: '20px', fill: 'black', font: 'Architects Daughter'});
+
+    this.blockedSound = game.add.audio('misplaced');
 }
 
 //set prototype and constructor
@@ -223,8 +225,12 @@ Board.prototype.select = function(){
 
     //reference to the item on this tile, if there is one
     var temp = this.tiles[this.currentRow][this.currentColumn].item;
+    if(this.tiles[this.currentRow][this.currentColumn].blocked){
+        this.blockedSound.play();
+        //this.tiles[this.currentRow][this.currentColumn].incorrect();
+        console.log('blocked');
     //if we currently don't have an item selected
-    if(this.selectedRow == null){
+    }else if(this.selectedRow == null){
         //if the tile we are on does have an item
         if(temp != null){
         	select.play();
@@ -502,6 +508,9 @@ Board.prototype.setTiles = function(outline){
                     this.tiles[r][c].charge();
                 } else if (outline[r][c] == 2){
                     this.tiles[r][c].setBlank();
+                } else if (outline[r][c] == 3){
+                    this.tiles[r][c].setBlank();
+                    this.tiles[r][c].blocked = true;
                 }
             }
         }
