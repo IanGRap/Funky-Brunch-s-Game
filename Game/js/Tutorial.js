@@ -49,9 +49,9 @@ Tutorial.prototype = {
 
 
         this.obstacles = [
-                [2, 0, 0, 0, 2],
-                [2, 1, 1, 1, 2],
-                [2, 0, 0, 0, 2]
+                [0, 0, 0, 0, 0],
+                [0, 1, 1, 1, 0],
+                [0, 0, 0, 0, 0]
 
         ];
 
@@ -75,9 +75,9 @@ Tutorial.prototype = {
         var scientistText = ["I want someone silly"];
 
         this.characters = [
-            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
-            new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', knightTraits,'knightgood','knightbad','traitwindow'),
-            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', dinoTraits,'dinogood','dinobad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', [false],'scientistgood','scientistbad','traitwindow'),
+            new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', [false],'knightgood','knightbad','traitwindow'),
+            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', [false],'dinogood','dinobad','traitwindow'),
         ];
 
         for(let i=0; i<this.characters.length; i++){
