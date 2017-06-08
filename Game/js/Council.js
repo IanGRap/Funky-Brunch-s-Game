@@ -38,12 +38,14 @@ var trumpX;
 var trumpY;
 var congressX;
 var congressY;
+var parentX;
+var parentY;
 
 var index = 0;
 
 CouncilConversations = [
     function(){dialogue('See, I told you we\'d make it!', aX, aY, 'speachR', CouncilConversations[++index], 1);},
-    function(){dialogue('There heroes here will be able to solve all our problems!', aX, aY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('The heroes here will be able to solve all our problems!', aX, aY, 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('I agree, if they are in charge of the country they have to figure out a solution.', sX, sY, 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('Hey Congress heroes! We have a lot of problems for you to fix', diX, diY, 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('Sorry kids but we actually have some problems of our own to work out here first.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
@@ -52,7 +54,11 @@ CouncilConversations = [
     function(){dialogue('Things have just gotten worse since we picked the new king of heroes.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('You don\'t know how to get along?!? You\'re the Congress of Heroes!', sX, sY, 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('Shhh, he\'s about to speak.', congressX, congressY, 'speachR', CouncilConversations[++index], 1);},
-    function(){dialogue('Trump speaks', trumpX, trumpY, 'speachL', Council.prototype.gamestart, 1);},
+    function(){dialogue('I\'m the king and you all better listen to what I have to say.', trumpX, trumpY, 'speachL', CouncilConversations[++index], 1);},
+    function(){dialogue('If you don\'t then you are no good to me!', trumpX, trumpY, 'speachL', CouncilConversations[++index], 1);},
+    function(){dialogue('What? This is crazy!', gX, gY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Hey kids. The party is wrapping up so get ready to leave', parentX, parentY, 'speachR', CouncilConversations[++index], 1);},
+    function(){dialogue('Oh no! We\'re running out of time', diX, diY, 'speachR', Council.prototype.gamestart, 1);},
     /*function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
     function(){dialogue('', , , 'speachR', CouncilConversations[++index], 1);},
@@ -135,6 +141,9 @@ Council.prototype = {
         congressX = congress[0].x + 128;
         congressY = congress[0].y - 128;
 
+        parentX = 25;
+        parentY = 425;
+
         sX = 1440/4 - 100;
         doX = 1440/4 - 200;
         diX = 1440/4 - 128;
@@ -214,7 +223,7 @@ Council.prototype = {
     gamestart : function(){
         wipe = new ScreenWipe(game,'wipe');
         game.add.existing(wipe);
-        wipe.animOutComplex(this.start,5000,3800,1.5);
+        wipe.animOutComplex(Council.prototype.start,5000,3800,1.5);
     },
 
     start : function(){

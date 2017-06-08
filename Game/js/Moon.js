@@ -47,7 +47,7 @@ MoonConversations = [
     function(){dialogue('Well if it destroyed the planet it would probably just kill all the bad guys.', sX, sY, 'speachR', MoonConversations[++index], 1);},
     function(){dialogue('Wait everybody I can see the moon in the sky right now! We\'re all gonna die!', gX, gY, 'speachR', MoonConversations[++index], 1);},
     function(){dialogue('That\'s nonsense! Everybody needs the earth.', sX, sY, 'speachR', MoonConversations[++index], 1);},
-    function(){dialogue('Everyone settle down back there, I need a calm environment to fly properly!', sX, sY, 'speachR', MoonConversations[++index], 1);},
+    function(){dialogue('Everyone settle down back there, I need a calm environment to fly properly!', aX, aY, 'speachR', MoonConversations[++index], 1);},
     function(){dialogue('Bork Bork Bork Bork Bork Bork Bork!', doX, doY, 'speachR', Moon.prototype.gamestart, 1);},
 ];
 

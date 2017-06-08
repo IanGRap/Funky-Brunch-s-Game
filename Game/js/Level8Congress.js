@@ -119,7 +119,7 @@ Level8Congress.prototype = {
             if(this.timer < 55000){
                 this.dialogue1 = true;
                 this.dialogueBubble.alpha = 1;
-                this.dialogueText.text = 'warning 1';
+                this.dialogueText.text = 'Try to wrap it up.';
             }
         } else if (!this.dialogue2){
             if(this.timer < 50000){
@@ -127,7 +127,7 @@ Level8Congress.prototype = {
                 this.dialogueBubble.alpha = 0;
             }
             if(this.timer < 40000){
-                this.dialogueText.text = 'warning 2';
+                this.dialogueText.text = 'Are you ready?';
                 this.dialogueBubble.alpha = 1;
                 this.dialogue2 = true;
             }
@@ -137,7 +137,7 @@ Level8Congress.prototype = {
                 this.dialogueBubble.alpha = 0;
             }
             if(this.timer < 25000){
-                this.dialogueText.text = 'warning 3';
+                this.dialogueText.text = 'Okay, time to go.';
                 this.dialogueBubble.alpha = 1;
                 this.dialogue3 = true;
             }
@@ -145,7 +145,6 @@ Level8Congress.prototype = {
             if(this.timer < 20000){
                 this.dialogueText.text = '';
                 this.dialogueBubble.alpha = 0;
-            } else if( this.timer < 15000){
                 this.nextlevel();
             }
         }
