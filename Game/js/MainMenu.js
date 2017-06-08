@@ -45,7 +45,7 @@ MainMenu.prototype = {
         game.load.image('gurney','assets/gurney.png');
         game.load.image('trump','assets/trumpWyrm.png');
         game.load.image('congress','assets/congressperson.png');
-	game.load.image('rocket','assets/Rocket.png');
+	game.load.image('rocket','assets/Rocketeer.png');
         
 	//dialogue UI
         game.load.image('speachbubble','assets/speachbubble.png');
