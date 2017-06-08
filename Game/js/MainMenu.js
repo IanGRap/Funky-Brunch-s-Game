@@ -109,7 +109,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         //game.state.start('Level4Religion');
-        game.state.start('Moon');
+        game.state.start('Level4Religion');
     },
     fullscreen : function(){
         console.log("fullscreen function");

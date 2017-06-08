@@ -52,6 +52,7 @@ game.state.add('Level3Refugee',Level3Refugee);
 game.state.add('Level4Religion',Level4Religion);
 game.state.add('Level5GunControl',Level5GunControl);
 game.state.add('Level6Healthcare',Level6Healthcare);
+game.state.add('Level7NukeWar',Level7NukeWar);
 game.state.add('Level8Congress',Level8Congress);
 game.state.add('Intro', Intro);
 game.state.add('WagonIntro', WagonIntro);
@@ -66,6 +67,8 @@ game.state.add('HealthCare', HealthCare);
 game.state.add('ToTheMoon', ToTheMoon);
 game.state.add('Moon', Moon);
 game.state.add('Council', Council);
+game.state.add('TimeToGo', TimeToGo);
+game.state.add('End', End);
 game.state.add('temp', Temp);
 
 //start with Main Menu State

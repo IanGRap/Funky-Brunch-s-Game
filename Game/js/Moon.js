@@ -215,7 +215,7 @@ Moon.prototype = {
     },
 
     start : function(){
-        game.state.start('Level8Congress');
+        game.state.start('Level7NukeWar');
     }
 }
 
