@@ -1,4 +1,11 @@
 body {
 	font-family: Helvetica;
-	float: center;
+	background-color: gray;
+}
+
+#gameDiv {
+	border: 5px solid AliceBlue;
+	width: 1440px;
+	height: 810px;
+	margin: auto;
 }

@@ -99,12 +99,12 @@ function Board(game, columns, rows, tileSize, originX, originY, key){
     this.controlsButton.onDown.add(this.controlsDisplay, this);
     this.displaying = false;
     this.controlsText = game.add.text(480 + 128, 810 - 64, "C: Controls", {fontSize: '30px', fill: 'white', font: 'Architects Daughter'});
-    this.windowText = game.add.text(480 + 48, 810 + 48, "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nF: Toggle Fullscreen Mode\nC: Toggle this Display", {fontSize: '20px', fill: 'black', font: 'Architects Daughter'});
+    this.windowText = game.add.text(480 + 48, 810 + 48, "WASD and ARROW KEYS: Move Cursor\nENTER and SPACEBAR: Selected A Tile\nC: Toggle this Display", {fontSize: '20px', fill: 'black', font: 'Architects Daughter'});
 
     this.blockedSound = game.add.audio('misplaced');
 
-    this.fullscreen = new Fullscreen(game);
-    game.add.existing(this.fullscreen);
+    //this.fullscreen = new Fullscreen(game);
+    //game.add.existing(this.fullscreen);
 }
 
 //set prototype and constructor

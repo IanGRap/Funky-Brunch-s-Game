@@ -10,8 +10,8 @@ function ScreenWipe(game, key){
 	this.music;
 	this.volumelower = false;   
 
-    this.fullscreen = new Fullscreen(game);
-    game.add.existing(this.fullscreen);
+    //this.fullscreen = new Fullscreen(game);
+    //game.add.existing(this.fullscreen);
 }
 
 // set inherited prototype
