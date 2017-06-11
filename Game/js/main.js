@@ -69,7 +69,7 @@ game.state.add('Moon', Moon);
 game.state.add('Council', Council);
 game.state.add('TimeToGo', TimeToGo);
 game.state.add('End', End);
-game.state.add('temp', Temp);
+game.state.add('EndScreen', EndScreen);
 
 //start with Main Menu State
 game.state.start('MainMenu');

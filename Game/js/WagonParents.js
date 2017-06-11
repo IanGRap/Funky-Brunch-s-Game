@@ -99,10 +99,10 @@ WagonParents.prototype = {
 
         scientistPositionX = 1028;
         parent1X = 800;
-        parent2X = 500;
+        parent2X = 300;
         scientistPositionY = 250;
-        parent1Y = 250;
-        parent2Y = 250;
+        parent1Y = 200;
+        parent2Y = 200;
 
         var scientist = game.add.sprite(scientistPositionX - 128, scientistPositionY + 128, 'scientist');
         //scientist.scale.setTo(0.5, 0.5);

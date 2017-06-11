@@ -95,7 +95,7 @@ MainMenu.prototype = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-        var text = game.add.text(650, 350, "Jejune\nPress Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black'});
+        var text = game.add.text(650, 350, "Jejune\nPress Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
         text.anchor.setTo(0.5,0.5);
 
     },
@@ -109,7 +109,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         //game.state.start('Level4Religion');
-        game.state.start('Level4Religion');
+        game.state.start('Intro');
     },
     fullscreen : function(){
         console.log("fullscreen function");

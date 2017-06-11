@@ -37,43 +37,13 @@ var parentY;
 var index = 0;
 
 timeToGoConversations = [
-    function(){dialogue('Thanks for letting me on your boat!', aX, aY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('I think we\'ll have a lot of fun together!', aX, aY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Well I suppose if the Doctor can vouch for you then you\'re ok to stay.', kX, kY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Everyone is a stranger until you give them a chance to be your friend!', diX, diY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Heckin Bork!', doX, doY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Boo.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('AAAH! Ghost!', diX, diY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Oh hi Frankie!', sX, sY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('I saw you all arguing from over by the sandbox.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('I didn\'t want to come over until you worked things out.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Yeah everyone seems to be angry these days and we don\'t know why.', sX, sY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('Well I have an idea of how we might get some answers.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('How?', sX, sY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('What if we bring an offering to the Idols of the garden temple.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('They might have an answer for us!', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('How would you know that? ', diX, diY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('I saw it on an episode of Legendary Mons.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
-    function(){dialogue('I love LMONS! Let\'s go!', aX, aY, 'speachR', TimeToGo.prototype.gamestart, 1);},
+    function(){dialogue('Alright Sam, I\'m walking to the car now!', parentX, parentY, 'speachR', timeToGoConversations[++index], 1);},
+    function(){dialogue('But we didn\'t solve anything...', diX, diY, 'speachR', timeToGoConversations[++index], 1);},
+    function(){dialogue('We lost... we\'re some bad heroes.', gX, gY, 'speachR', timeToGoConversations[++index], 1);},
+    function(){dialogue('Whatever. I don\'t even want to play anymore.', kX, kY, 'speachR', timeToGoConversations[++index], 1);},
+    function(){dialogue('Sam, come on.', parentX, parentY, 'speachR', timeToGoConversations[++index], 1);},
+    function(){dialogue('Okay... bye I guess.', diX, diY, 'speachR', TimeToGo.prototype.gamestart, 1);},
 ];
-
-//Astronaut: Thanks for letting me on your boat! I think we'll have a lot of fun together!
-//Knight: Well I suppose if the Doctor can vouch for you then you're ok to stay.
-//Dino: Everyone is a stranger until you give them a chance to be your friend!
-//Dog: Heckin Bork!
-//Ghost tweens from transparent to opaque, appearing next to the boat
-//Ghost: Boo.
-//Dino: AAAH! Ghost!
-//Scientist: Oh hi Frankie! 
-//Ghost: I saw you all arguing from over by the sandbox and I didn't want to come over until you worked things out.
-//Scientist: Yeah everyone seems to be angry these days and we don't know why.
-//Ghost: Well I have an idea of how we might get some answers.
-//Scientist: How?
-//Ghost: If we bring an offering to the Idols of the garden temple, they might have an answer for us!
-//Dino: How would you know that? 
-//Ghost: I saw it on an episode of Legendary Mons.
-//Astronaut: I love LMONS! Let's go!
-
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Building Blocks for cutscenes
@@ -111,7 +81,7 @@ TimeToGo.prototype = {
 
         //skip code
         enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-        enter.onDown.add(skipTimeToGointro);
+        enter.onDown.add(skipTimeToGo);
         confirmskip = false;
         
         var background = game.add.image(-700, -900, 'background');
@@ -123,6 +93,7 @@ TimeToGo.prototype = {
         kX = 425;
         aX = 850;
         gX = 1440 * (3/4) - 128;
+        parentX = 625;
 
         sY = 275;
         doY = 450;
@@ -130,6 +101,7 @@ TimeToGo.prototype = {
         kY = 300;
         aY = 250;
         gY = 405 + 100;
+        parentY = 150;
 
         var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         //scientist.scale.setTo(0.5, 0.5);

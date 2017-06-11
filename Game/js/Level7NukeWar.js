@@ -93,7 +93,7 @@ Level7NukeWar.prototype = {
             if(do1){
                 console.log("IN")
                 do1 = false;
-                wipe.animOut(Level6Healthcare.prototype.nextlevel);
+                wipe.animOut(Level7NukeWar.prototype.nextlevel);
             }
         }
     },

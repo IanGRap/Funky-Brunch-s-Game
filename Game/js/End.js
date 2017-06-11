@@ -26,24 +26,18 @@ var parentY;
 var index = 0;
 
 EndConversations = [
-    function(){dialogue('Thanks for letting me on your boat!', aX, aY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('I think we\'ll have a lot of fun together!', aX, aY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Well I suppose if the Doctor can vouch for you then you\'re ok to stay.', kX, kY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Everyone is a stranger until you give them a chance to be your friend!', diX, diY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Heckin Bork!', doX, doY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Boo.', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('AAAH! Ghost!', diX, diY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Oh hi Frankie!', sX, sY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('I saw you all arguing from over by the sandbox.', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('I didn\'t want to come over until you worked things out.', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Yeah everyone seems to be angry these days and we don\'t know why.', sX, sY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('Well I have an idea of how we might get some answers.', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('How?', sX, sY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('What if we bring an offering to the Idols of the garden temple.', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('They might have an answer for us!', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('How would you know that? ', diX, diY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('I saw it on an episode of Legendary Mons.', gX, gY, 'speachR', EndConversations[++index], 1);},
-    function(){dialogue('I love LMONS! Let\'s go!', aX, aY, 'speachR', End.prototype.gamestart, 1);},
+    function(){dialogue('So, did you have fun at the party.', parentX, parentY, 'speachL', EndConversations[++index], 1);},
+    function(){dialogue('No, everyone was fighting and we couldn\'t make anyone get along.', diX, diY, 'speachR', EndConversations[++index], 1);},
+    function(){dialogue('We tried so hard.', diX, diY, 'speachR', EndConversations[++index], 1);},
+    function(){dialogue('Awww, Sam it\'s okay.', parentX, parentY, 'speachL', EndConversations[++index], 1);},
+    function(){dialogue('It is...?', diX, diY, 'speachR', EndConversations[++index], 1);},
+    function(){dialogue('You aren\'t going to be able to solve everyone\'s problem in a day.', parentX, parentY, 'speachL', EndConversations[++index], 1);},
+    function(){dialogue('But if you give it your best, you will make a difference.', parentX, parentY, 'speachL', EndConversations[++index], 1);},
+    function(){dialogue('That makes it all worth it in the end.', parentX, parentY, 'speachL', EndConversations[++index], 1);},
+    function(){dialogue('It does?', diX, diY, 'speachR', EndConversations[++index], 1);},
+    function(){dialogue('Yep. And don\'t worry, you are still my little hero!', parentX, parentY, 'speachL', EndConversations[++index], 1);},
+    function(){dialogue('...', diX, diY, 'speachR', EndConversations[++index], 1);},
+    function(){dialogue('... Thanks Mom.', diX, diY, 'speachR', End.prototype.gamestart, 1);},
 ];
 
 //Astronaut: Thanks for letting me on your boat! I think we'll have a lot of fun together!
@@ -100,37 +94,30 @@ End.prototype = {
 
         //skip code
         enter = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-        enter.onDown.add(skipEndintro);
+        enter.onDown.add(skipEnd);
         confirmskip = false;
         
-        var background = game.add.image(-700, -900, 'background');
-        var backgroundfront = game.add.image(-700, -900, 'backgroundfront');
+        //var background = game.add.image(-700, -900, 'background');
+        //var backgroundfront = game.add.image(-700, -900, 'backgroundfront');
 
-        sX = 650;
-        doX = 360 - 128;
-        diX = 1440 * (1/2) - 128;
-        kX = 425;
-        aX = 850;
-        gX = 1440 * (3/4) - 128;
 
-        sY = 275;
-        doY = 450;
-        diY = 405 + 100;
-        kY = 300;
-        aY = 250;
-        gY = 405 + 100;
+        diX = 900;
+        diY = 400;
 
-        var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
+        parentX = 200;
+        parentY = 300;
+
+        //var scientist = game.add.sprite(sX - 128, sY + 128, 'scientist');
         //scientist.scale.setTo(0.5, 0.5);
-        var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
+        //var dino = game.add.sprite(diX - 128, diY + 128, 'dino');
         //dino.scale.setTo(0.5, 0.5);
-        var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
+        //var dog = game.add.sprite(doX - 128, doY + 128, 'dog');
         //dog.scale.setTo(0.5, 0.5);
-        var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
+        //var knight = game.add.sprite(kX - 128, kY + 128, 'knight');
         //knight.scale.setTo(0.5, 0.5);
-        var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
+        //var astronaut = game.add.sprite(aX - 128, aY + 128, 'astronaut');
         //astronaut.scale.setTo(0.5, 0.5);
-        var ghost = game.add.sprite(gX - 128, gY + 128, 'ghost');
+        //var ghost = game.add.sprite(gX - 128, gY + 128, 'ghost');
         //ghost.scale.setTo(0.5, 0.5);
         
         var wipe = new ScreenWipe(game,'wipe');
@@ -190,7 +177,7 @@ End.prototype = {
     },
 
     start : function(){
-        game.state.start('');
+        game.state.start('EndScreen');
     }
 }
 
