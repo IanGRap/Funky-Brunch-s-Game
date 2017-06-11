@@ -119,7 +119,7 @@ Moon.prototype = {
         confirmskip = false;
 
         //Starts the music
-        music = game.add.audio('finalfrontier');
+        music = game.add.audio('space');
         music.play();
         music.loopFull();
         music.volume = 1;

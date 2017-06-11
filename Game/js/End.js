@@ -86,10 +86,10 @@ End.prototype = {
     },
 
     create : function(){
-        music = game.add.audio('themestart');
+        /*music = game.add.audio('themestart');
         music.play();
         music.loopFull();
-        music.volume = 1;
+        music.volume = 1;*/
 
 
         //skip code

@@ -93,7 +93,7 @@ Level7NukeWar.prototype = {
             if(do1){
                 console.log("IN")
                 do1 = false;
-                wipe.animOut(Level7NukeWar.prototype.nextlevel);
+                wipe.animOutMusic(Level7NukeWar.prototype.nextlevel, music);
             }
         }
     },

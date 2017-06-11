@@ -35,6 +35,11 @@ Level8Congress.prototype = {
 
     create: function(){
 
+        music = game.add.audio('congress');
+        music.play();
+        music.loopFull();
+        music.volume = 1;
+
         //loads background image
         var background = game.add.image(0, 0, 'council');
 
@@ -145,7 +150,7 @@ Level8Congress.prototype = {
             if(this.timer < 20000){
                 this.dialogueText.text = '';
                 this.dialogueBubble.alpha = 0;
-                this.nextlevel();
+                wipe.animOutMusic(this.nextlevel, music);
             }
         }
     },

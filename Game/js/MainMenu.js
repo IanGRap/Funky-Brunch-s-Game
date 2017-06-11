@@ -76,6 +76,11 @@ MainMenu.prototype = {
 
         game.load.audio('ghostgood',['assets/audio/ghostgood.mp3']);
         game.load.audio('ghostbad',['assets/audio/ghostbad.mp3']);
+
+        game.load.audio('wispywater',['assets/audio/wispywater.mp3']);
+        game.load.audio('river',['assets/audio/riverTheme.mp3']);
+        game.load.audio('congress',['assets/audio/congressTheme.mp3']);
+        game.load.audio('space',['assets/audio/spaceTheme.mp3']);
     },
 
     create : function(){
