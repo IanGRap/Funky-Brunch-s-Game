@@ -7,8 +7,6 @@ var Tutorial = function(game){
 
     //layouts of board layouts, 1 is green 0 is red
     var obstacles;  
-
-    var fullscreen;
 };
 
 //Wipe var
@@ -91,9 +89,6 @@ Tutorial.prototype = {
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles);
-
-        this.fullscreen = new Fullscreen(game);
-        game.add.existing(this.fullscreen);
 
         //Screen Wipe Object Creation
         wipe = new ScreenWipe(game,'wipe');

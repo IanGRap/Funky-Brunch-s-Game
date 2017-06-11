@@ -11,8 +11,10 @@ Fullscreen.prototype.constructor = Fullscreen;
 
 Fullscreen.prototype.activate = function(){
 	if(game.scale.isFullScreen){
+		console.log('stopping fullscreening');
         game.scale.stopFullScreen();
     } else {
+    	console.log('fullscreening');
         game.scale.startFullScreen(false);
     }
 }

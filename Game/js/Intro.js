@@ -99,6 +99,10 @@ Intro.prototype = {
 
         game.camera.follow(camera);
         camera.alpha = 0;
+
+        var wipe = new ScreenWipe(game,'wipe');
+        game.add.existing(wipe);
+        wipe.animIn();
     },
 
     update : function(){
