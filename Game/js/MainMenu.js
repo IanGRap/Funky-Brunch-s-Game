@@ -29,9 +29,9 @@ MainMenu.prototype = {
 
         //backround image
         game.load.image('river','assets/riverRedo.png');
-        game.load.image('temple','assets/Idol.png');
+        game.load.image('temple','assets/Altar.png');
         game.load.image('village','assets/VillageFinal.png');
-        game.load.image('space','assets/space.png');
+        game.load.image('space','assets/frontier.png');
         game.load.image('council','assets/Heroes.png');
         game.load.image('background','assets/IntroBackground.png');
         game.load.image('clouds','assets/clouds.png');
