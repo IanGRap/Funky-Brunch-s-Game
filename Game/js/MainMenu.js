@@ -29,10 +29,10 @@ MainMenu.prototype = {
 
         //backround image
         game.load.image('river','assets/riverRedo.png');
-        game.load.image('temple','assets/Temple.png');
-        game.load.image('village','assets/WagonScene.png');
+        game.load.image('temple','assets/Idol.png');
+        game.load.image('village','assets/VillageFinal.png');
         game.load.image('space','assets/space.png');
-        game.load.image('council','assets/CouncilOfHeroes.png');
+        game.load.image('council','assets/Heroes.png');
         game.load.image('background','assets/IntroBackground.png');
         game.load.image('clouds','assets/clouds.png');
         game.load.image('backgroundfront','assets/IntroBackgroundFront.png');
