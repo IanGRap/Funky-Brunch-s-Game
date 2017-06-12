@@ -64,7 +64,7 @@ Level2GlobalWarm.prototype = {
         ];
         */
         var raft = game.add.image(455, 205, 'raft');
-        raft.scale.setTo(3.8,3.8);
+        // raft.scale.setTo(3.8,3.8);
 
         game.add.image(512, 256, 'crate'),
             game.add.image(640, 256, 'crate'),
