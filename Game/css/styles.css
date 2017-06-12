@@ -1,11 +1,21 @@
 body {
 	font-family: Helvetica;
-	background-color: gray;
+	/*v1 background-color: #808F87;*/
+	background-color: #AFD0BF; 
 }
 
 #gameDiv {
-	border: 5px solid AliceBlue;
+	/*border: 5px solid #AFD0BF;*/
+	border: 5px solid #EAFFDA;
 	width: 1440px;
 	height: 810px;
 	margin: auto;
 }
+
+/*
+EAFFDA
+C7C7A6
+A49966
+605C4E
+363020
+*/
