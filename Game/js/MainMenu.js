@@ -106,7 +106,10 @@ MainMenu.prototype = {
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
         //var text = game.add.text(650, 350, "Jejune\nPress Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
-        var text = game.add.text(680, 470, "Press Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
+        var text = game.add.text(680, 450, "Press Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
+        text.anchor.setTo(0.5,0.5);
+        // music credits
+        var text = game.add.text(710, 790, "Additional music: “Um Bongo” by Eaters | | “Stop to Start Over” by Artofescapism | | “Camille Saint-Saens: Danse Macabre - Finale” by Kevin MacLeod", {fontSize: '20px',align: "center", fill: 'white', font: 'Architects Daughter'});
         text.anchor.setTo(0.5,0.5);
 
     },
