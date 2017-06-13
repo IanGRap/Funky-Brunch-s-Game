@@ -33,6 +33,10 @@ Level4Religion.prototype = {
         //this.dialogue = new Dialogue(game, 'dialogue', 96);
         //game.add.existing(this.dialogue);
 
+        // place idols
+        var dmon = game.add.image(1250, 445, 'dmon');
+        dmon.scale.setTo(0.5, 0.5);
+
 
         this.obstacles = [
             [

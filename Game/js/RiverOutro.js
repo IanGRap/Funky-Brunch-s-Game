@@ -153,7 +153,7 @@ RiverOutro.prototype = {
         ];
     */
         var raft = game.add.image(350, 350, 'raft');
-        raft.scale.setTo(3.8,3.8);
+        // raft.scale.setTo(3.8,3.8);
 
         game.add.image(656, 528, 'crate'),
         game.add.image(400, 656, 'crate'),
