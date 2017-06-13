@@ -64,7 +64,7 @@ Intro.prototype = {
         //treeline0 = this.add.tileSprite(0,250,1800,228,'treeline');
 
 
-        car = game.add.sprite(-300,1090,'car');  
+        car = game.add.sprite(-300,1150,'car');  
         car.scale.setTo(1,1.2);                    //REMOVE WHEN YOU GET PROPER ASSETS
         var backgroundfront = game.add.image(0,0,'backgroundfront');
 

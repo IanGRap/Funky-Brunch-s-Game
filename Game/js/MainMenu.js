@@ -41,6 +41,7 @@ MainMenu.prototype = {
         game.load.image('wagon','assets/Wagon.png');
         game.load.image('raft','assets/raft.png');
         game.load.image('crate','assets/crateRedo.png');
+        game.load.image('dmon', 'assets/DMON.png');
         game.load.image('medical','assets/MedCrate.png');
         game.load.image('gurney','assets/gurney.png');
         game.load.image('trump','assets/trumpWyrm.png');

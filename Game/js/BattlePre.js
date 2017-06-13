@@ -125,6 +125,12 @@ BattlePre.prototype = {
         var background = game.add.image(0, 20, 'temple');
         background.scale.setTo(1, 1.1);
 
+        // place idols
+        var dmon = game.add.image(1250, 520, 'dmon');
+        dmon.scale.setTo(0.5, 0.5);
+        var lmon = game.add.image(1225, 110, 'lmon');
+        lmon.scale.setTo(0.6, 0.6);
+
         sX = 1440 * (1/2);
         doX = 1440 * (1/2);
         gX = 1440 * (1/2) - 128;

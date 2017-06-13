@@ -24,6 +24,12 @@ Level5GunControl.prototype = {
         //loads background image
         var background = game.add.image(0, 0, 'temple');
 
+        // place idols
+        var dmon = game.add.image(1250, 445, 'dmon');
+        dmon.scale.setTo(0.5, 0.5);
+        var lmon = game.add.image(1225, 70, 'lmon');
+        lmon.scale.setTo(0.6, 0.6);
+
         this.obstacles = [
             [
                 [2, 2, 1, 1, 2, 2],
