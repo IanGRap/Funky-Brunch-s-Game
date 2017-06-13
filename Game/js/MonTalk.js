@@ -94,8 +94,8 @@ MonTalk.prototype = {
         game.load.image('fadeout','assets/fadeout.png');
 
         //Load's scene images
-        game.load.image('temple','assets/Temple.png');
-        game.load.image('dmon', 'assets/DMON.png');
+        // game.load.image('temple','assets/Temple.png');
+        // game.load.image('dmon', 'assets/DMON.png');
 
         //Load Speach Assets
         game.load.spritesheet('speachR','assets/speachR.png',381,157,3);
@@ -128,6 +128,8 @@ MonTalk.prototype = {
         // place idols on pedastals
         var dmon = game.add.image(1250, 520, 'dmon');
         dmon.scale.setTo(0.5, 0.5);
+        var lmon = game.add.image(1225, 110, 'lmon');
+        lmon.scale.setTo(0.6, 0.6);
 
         sX = 300;
         doX = 200;

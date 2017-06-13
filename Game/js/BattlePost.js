@@ -110,6 +110,8 @@ BattlePost.prototype = {
         // place idols
         var dmon = game.add.image(1250, 540, 'dmon');
         dmon.scale.setTo(0.5, 0.5);
+        var lmon = game.add.image(1225, 160, 'lmon');
+        lmon.scale.setTo(0.6, 0.6);
 
         console.log("post battle");
         sX = 1440/4 - 128;
