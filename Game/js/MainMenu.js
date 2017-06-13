@@ -38,6 +38,7 @@ MainMenu.prototype = {
         game.load.image('backgroundfront','assets/IntroBackgroundFront.png');
 
         //scenery images
+        game.load.image('logo', 'assets/Logo.png');
         game.load.image('wagon','assets/Wagon.png');
         game.load.image('raft','assets/raft.png');
         game.load.image('crate','assets/crateRedo.png');
@@ -86,6 +87,8 @@ MainMenu.prototype = {
 
     create : function(){
         var background = game.add.image(0,0,'menu');
+        var logo = game.add.image(370, 10, 'logo');
+        logo.scale.setTo(0.7);
         //text for explaining rules and prompting the player to start
         this.press = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.f = game.input.keyboard.addKey(Phaser.Keyboard.F);
@@ -101,7 +104,8 @@ MainMenu.prototype = {
 
         game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
-        var text = game.add.text(650, 350, "Jejune\nPress Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
+        //var text = game.add.text(650, 350, "Jejune\nPress Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
+        var text = game.add.text(680, 470, "Press Space to Start \n Press f to pay respects and go fullscreen \nuse wsad or arrow keys to move and space to select\nCreated by Jake Weidner, Liam Dugard, Jenny Fullerton, Reed Scriven and Ian Rapoport", {fontSize: '25px',align: "center", fill: 'black', font: 'Architects Daughter'});
         text.anchor.setTo(0.5,0.5);
 
     },
