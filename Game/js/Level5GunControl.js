@@ -26,16 +26,17 @@ Level5GunControl.prototype = {
 
         this.obstacles = [
             [
-                [2, 1, 1, 2, 2],
-                [2, 2, 1, 2, 2],
-                [2, 2, 1, 2, 2],
-                [2, 2, 1, 1, 2]
+                [2, 2, 1, 1, 2, 2],
+                [2, 2, 2, 1, 2, 2],
+                [2, 2, 2, 1, 2, 2],
+                [2, 2, 2, 1, 1, 2],
+                [2, 2, 2, 2, 2, 2],
             ]
          
         ];
 
         // define a new board object
-        this.board = new Board(game, 5, 4, 128, 80, 140);
+        this.board = new Board(game, 6, 5, 128, 80, 140);
         game.add.existing(this.board);
 
         //DISCLAIMER: these are by no means final traits as they don't work super well, it's a proof of concept
@@ -51,7 +52,7 @@ Level5GunControl.prototype = {
             new Character(game, 'knight', 0, 0, ["Fighting"],["Scared"],["Don't be SCARED, I'm a master, but stay back!" ], 'Knight', [true], 'knightgood', 'knightbad', 'traitwindow'),
             new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true], 'doggood', 'dogbad', 'traitwindow'),
             new Character(game, 'astronaut', 0, 0,["Sword Fan"],["Magical"],["I like real weapons not MAGICAL ones!"], 'Astronaut', astronautTraits, 'astronautgood', 'astronautbad', 'traitwindow'),
-            new Character(game, 'ghost', 0, 0,["Fighting", "Magical"],["Scared", "Sword Fan"],["Stay back if you're SCARED", "I don't need any SWORD FANS on my side!"], 'Ghost', ghostTraits, 'ghostgood', 'ghostbad', 'traitwindow')
+            new Character(game, 'ghost', 0, 0,["Fighting", "Magical"],["Scared", "Sword Fan"],["Stay back if you're SCARED", "SWORD FANS are scary, go away"], 'Ghost', ghostTraits, 'ghostgood', 'ghostbad', 'traitwindow')
          
         ];
 

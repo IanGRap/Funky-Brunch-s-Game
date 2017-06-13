@@ -70,12 +70,12 @@ Level7NukeWar.prototype = {
         };
 
         // set the starting location for the circles
-        this.board.tiles[2][1].place(this.characters[0]);
-        this.board.tiles[3][5].place(this.characters[1]);
-        this.board.tiles[0][1].place(this.characters[2]);
-        this.board.tiles[1][0].place(this.characters[3]);
-        this.board.tiles[3][2].place(this.characters[4]);
-        this.board.tiles[3][0].place(this.characters[5]);
+        this.board.tiles[2][4].place(this.characters[0]);
+        this.board.tiles[2][2].place(this.characters[1]);
+        this.board.tiles[3][1].place(this.characters[2]);
+        this.board.tiles[4][2].place(this.characters[3]);
+        this.board.tiles[3][6].place(this.characters[4]); //AAAAHHH WHYYYY?
+        this.board.tiles[4][4].place(this.characters[5]);
 
         // pass one of the obstacles for the board object
         this.board.setTiles(this.obstacles[0]);

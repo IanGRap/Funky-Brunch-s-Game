@@ -62,20 +62,20 @@ Tutorial.prototype = {
 
         //make 6 circles, 2 of each color   [Trait Arrays]     [Difference Array]      [Conflict Text Array]    
 
-        var dinoAttributes = ["chill"];
+        var dinoAttributes = ["Happy"];
         var dinoConflicts = [];
         var dinoText = [];
-        var knightAttributes = ["serious"];
-        var knightConflicts = ["silly"];
-        var knightText = ["I need a party that plays SERIOUSLY"];
-        var scientistAttributes = ["silly"];
-        var scientistConflicts = ["serious"];
-        var scientistText = ["I want someone silly"];
+        var knightAttributes = ["Serious"];
+        var knightConflicts = ["Silly"];
+        var knightText = ["You're too SILLY!"];
+        var scientistAttributes = ["Silly"];
+        var scientistConflicts = ["Serious"];
+        var scientistText = ["You're too SERIOUS!"];
 
         this.characters = [
             new Character(game, 'scientist', 0, 0,  scientistAttributes, scientistConflicts, scientistText, 'Scientist', [false],'scientistgood','scientistbad','traitwindow'),
             new Character(game, 'knight', 0, 0, knightAttributes, knightConflicts, knightText, 'Knight', [false],'knightgood','knightbad','traitwindow'),
-            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', [false],'dinogood','dinobad','traitwindow'),
+            new Character(game, 'dino', 0, 0, dinoAttributes, dinoConflicts, dinoText, 'Dinosaur', [true],'dinogood','dinobad','traitwindow'),
         ];
 
         for(let i=0; i<this.characters.length; i++){

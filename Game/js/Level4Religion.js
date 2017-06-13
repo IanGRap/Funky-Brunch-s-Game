@@ -63,7 +63,7 @@ Level4Religion.prototype = {
             new Character(game, 'knight', 0, 0, ["DMONS Fan", "Unfamiliar"],["LMONS Fan", "Uninterested"],["The LMONS copied us, they're fake!", "UNINTERESTED?, Dmons are important." ], 'Knight', [true],'knightgood','knightbad','traitwindow'),
             new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'doggood','dogbad','traitwindow'),
             new Character(game, 'astronaut', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["Your DMONS aren't fun and happy.", "Lmons are the best, stay out this if you're UNINTERESTED!"], 'Astronaut', astronautTraits,'astrogood','astrobad','traitwindow'),
-            new Character(game, 'ghost', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["DMONS are so violent, I can't support that.", "Lmons are superior, I don't understand being UNINTERESTED in them!"], 'Ghost', ghostTraits,'ghostgood','ghostbad','traitwindow'),
+            new Character(game, 'ghost', 0, 0,["LMONS Fan"],["DMONS Fan", "Uninterested"],["DMONS are so violent, I can't support that.", "UNINTERESTED in them!? Hmph."], 'Ghost', ghostTraits,'ghostgood','ghostbad','traitwindow'),
          
         ];
 

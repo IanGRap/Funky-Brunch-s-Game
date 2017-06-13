@@ -65,9 +65,9 @@ Level6Healthcare.prototype = {
         this.obstacles = [
             [
                 [2, 2, 2, 2, 2, 2],
-                [2, 1, 2, 1, 1, 2],
-                [2, 1, 2, 2, 1, 1],
-                [2, 2, 2, 2, 2, 2]
+                [2, 2, 2, 2, 2, 2],
+                [2, 1, 1, 2, 1, 1],
+                [2, 2, 1, 1, 2, 2]
             ]
          
         ];
@@ -90,7 +90,7 @@ Level6Healthcare.prototype = {
             new Character(game, 'scientist', 0, 0,  ["Ignoring", "Don't Share"],["Ignored", "Shares"],["You're not real, you're IGNORED", "I don't have to SHARE!"], 'Scientist', docTraits, 'scientistgood', 'scientistbad', 'traitwindow'),
             new Character(game, 'knight', 0, 0, ["Ignored"],["Ignoring"],["I don't like people IGNORING me"], 'Knight', [true], 'knightgood', 'knightbad', 'traitwindow'),
             new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true], 'doggood', 'dogbad', 'traitwindow'),
-            new Character(game, 'astronaut', 0, 0,["Ignoring", "Shares"],["Sorry, can't talk to IGNORED spirits", "It's mean when you DON'T SHARE"],["I like real weapons not MAGICAL ones!"], 'Astronaut', astronautTraits, 'astronautgood', 'astronautbad', 'traitwindow'),
+            new Character(game, 'astronaut', 0, 0,["Ignoring", "Shares"],["Ignored","Don't Share"],["Sorry, can't talk to IGNORED spirits", "It's mean when you DON'T SHARE"], 'Astronaut', astronautTraits, 'astronautgood', 'astronautbad', 'traitwindow'),
             new Character(game, 'ghost', 0, 0,["Shares"],["Don't Share"],["Doc, I can't believe you DON'T SHARE"], 'Ghost', ghostTraits, 'ghostgood', 'ghostbad', 'traitwindow')
          
         ];
@@ -100,11 +100,11 @@ Level6Healthcare.prototype = {
         };
 
         // set the starting location for the circles
-        this.board.tiles[1][5].place(this.characters[0]);
-        this.board.tiles[3][5].place(this.characters[1]);
-        this.board.tiles[0][1].place(this.characters[2]);
+        this.board.tiles[0][4].place(this.characters[0]);
+        this.board.tiles[1][3].place(this.characters[1]);
+        this.board.tiles[2][5].place(this.characters[2]);
         this.board.tiles[1][0].place(this.characters[3]);
-        this.board.tiles[3][2].place(this.characters[4]);
+        this.board.tiles[0][2].place(this.characters[4]);
         this.board.tiles[3][0].place(this.characters[5]);
 
         // pass one of the obstacles for the board object

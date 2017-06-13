@@ -114,7 +114,7 @@ MainMenu.prototype = {
     },
     nextstate : function(){
         //game.state.start('Level4Religion');
-        game.state.start('Intro');
+        game.state.start('Intro');//'Intro'
     },
     fullscreen : function(){
         console.log("fullscreen function");

@@ -81,8 +81,8 @@ Level8Congress.prototype = {
 
         this.characters = [
             new Character(game, 'dino', 0, 0, ["Angry", "Anti King"],["Chill", "Pro King"],["There's nothing CHILL about this!", "He's clearly evil, why are you PRO KING?"], 'Dinosaur', dinoTraits, 'dinogood', 'dinobad','traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Chill", "Anti King"],["Angry", "Anti King"],["It's bad but don't be ANGRY about it.", "PRO KING people are awful"], 'Scientist', docTraits, 'scientistgood', 'scientistbad','traitwindow'),
-            new Character(game, 'knight', 0, 0, ["Chill", "Pro King"],["Angry","Anti King"],["What is there to be ANGRY about?", "ANTI KING? He's keeping order!"], 'Knight', [true], 'knightgood', 'knightbad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Chill", "Anti King"],["Angry", "Pro King"],["It's bad but don't be ANGRY about it.", "PRO KING people are awful"], 'Scientist', docTraits, 'scientistgood', 'scientistbad','traitwindow'),
+            new Character(game, 'knight', 0, 0, ["Chill", "Pro King"],["Angry", "Anti King"],["What is there to be ANGRY about?", "ANTI KING? He's keeping order!"], 'Knight', [true], 'knightgood', 'knightbad','traitwindow'),
             new Character(game, 'dog', 0, 0,  ["Chill", "Angry"],["Angry", "Chill"],["Bork!", "Heck!"], 'Dog', [true], 'doggood', 'dogbad','traitwindow'),
             new Character(game, 'astronaut', 0, 0,["Anti King"],["Pro King"],["PRO KING? He divides and enflames us!"], 'Astronaut', astronautTraits, 'astronautgood', 'astronautbad','traitwindow'),
             new Character(game, 'ghost', 0, 0,["Angry"],["Chill"],["No one should be CHILL about any of this."], 'Ghost', ghostTraits, 'ghostgood', 'ghostbad','traitwindow')

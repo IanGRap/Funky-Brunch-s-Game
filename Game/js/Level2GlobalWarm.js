@@ -85,8 +85,8 @@ Level2GlobalWarm.prototype = {
 
 
         this.characters = [
-            new Character(game, 'dino', 0, 0, ["Skeptic"],["Believer"],["How could you BELIEVE we're going extinct?"], 'Dinosaur', dinoTraits, 'dinogood','dinobad','traitwindow'),
-            new Character(game, 'scientist', 0, 0,  ["Believer"],["Skeptic"],["You can't be a SKEPTIC, the world is ending!"], 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
+            new Character(game, 'dino', 0, 0, ["Skeptic"],["Believer"],["You can't BELIEVE we're going extinct?"], 'Dinosaur', dinoTraits, 'dinogood','dinobad','traitwindow'),
+            new Character(game, 'scientist', 0, 0,  ["Believer"],["Skeptic"],["You're SKEPTICAL? The world is ending!"], 'Scientist', docTraits,'scientistgood','scientistbad','traitwindow'),
             new Character(game, 'knight', 0, 0, ["Happy"],[],["I'm Happy"], 'Knight', [true],'knightgood','knightbad','traitwindow'),
             new Character(game, 'dog', 0, 0,  ["Happy"],[],["I'm Happy"], 'Dog', [true],'doggood','dogbad','traitwindow')
            
